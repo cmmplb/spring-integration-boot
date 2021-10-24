@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-integration-boot</artifactId>
+        <groupId>com.cmmplb</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-boot-flyway</artifactId>
+    <groupId>com.cmmplb.flyway</groupId>
+    <packaging>jar</packaging>
+    <name>spring-boot-flyway</name>
+    <description>spring-boot-flyway</description>
+    <dependencies>
+        <!-- web模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-integration-web</artifactId>
+        </dependency>
+        <!-- flyway -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway-maven-plugin.version}</version>
+        </dependency>
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+        <!-- druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid-spring-boot-starter.version}</version>
+        </dependency>
+        <!-- mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus-boot-starter.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- flyway -->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway-maven-plugin.version}</version>
+                <configuration>
+                    <url>jdbc:mysql://127.0.0.1:3306/spring-integration?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT</url>
+                    <user>root</user>
+                    <password>cmmplb</password>
+                    <driver>com.mysql.cj.jdbc.Driver</driver>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

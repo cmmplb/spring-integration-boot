@@ -1,0 +1,11 @@
+spring:
+  boot:
+    admin:
+      ui:
+        title: Spring Boot Admin Server
+      notify:
+        mail:
+          enabled: true # 启动通知
+          ignore-changes: {"UNKNOWN:UP"} # 忽略应用上线状态
+          from: 1045599379@qq.com  # 发送人信息
+          to: 1045599379@qq.com  # 接收人列表（用逗号隔开）

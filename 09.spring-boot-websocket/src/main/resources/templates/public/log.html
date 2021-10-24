@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en_US">
+<head>
+    <meta charset="UTF-8">
+    <title>控制台日志</title>
+    <link rel="shortcut icon" th:href='${logo}' th:mce_href='${logo}' type="image/x-icon">
+    <link rel="shortcut icon" href='/static/images/home.jpg' mce_href='/static/images/home.jpg' type="image/x-icon">
+</head>
+<body>
+<img src="/static/images/logo.jpg" alt="logo">
+<label for="text">发送</label><input id="text" type="text" onchange="send()">
+<!--  显示区  -->
+<div id="loggingText" contenteditable="true"
+     style="width:100%;height: 500px;background-color: ghostwhite; overflow: auto;">
+</div>
+<!--  操作栏  -->
+<div style="text-align: center;">
+    <button onclick="$('#loggingText').text('')" style="color: green; height: 35px;">清屏</button>
+    <button onclick="$('#loggingText').animate({scrollTop:$('#loggingText')[0].scrollHeight});"
+            style="color: green; height: 35px;">滚动至底部
+    </button>
+    <button onclick="if(window.loggingAutoBottom){$(this).text('开启自动滚动');}else{$(this).text('关闭自动滚动');};window.loggingAutoBottom = !window.loggingAutoBottom"
+            style="color: green; height: 35px; ">开启自动滚动
+    </button>
+</div>
+</body>
+<!--  Jquery  -->
+<script src="../../static/js/jquery-3.3.1.js"></script>
+<!-- 引入jquery的在线包 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:inline="javascript">
+
+    //判断当前浏览器是否支持WebSocket
+    if (!'WebSocket' in window) {
+        console.error("不支持WebSocket");
+    }
+
+    //动态获取域名或ip
+    let hostname = window.location.hostname;                                        // ip
+    let port = [[${port}]];                                                         // 端口
+    let contextPath = [[${contextPath}]];                                           // 路径
+    let baseUrl = "ws://" + hostname + ":" + port + contextPath + "/log/server";    // 请求路径
+    console.log(baseUrl);
+    //websocket对象
+    let websocket = new WebSocket(baseUrl);
+
+    //连接发生错误的回调方法
+    websocket.onerror = function (e) {
+        console.error("WebSocket连接发生错误");
+    };
+
+    //连接成功建立的回调方法
+    websocket.onopen = function () {
+        console.log("WebSocket连接成功")
+    };
+
+    //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+    window.onbeforeunload = function () {
+        closeWebSocket();
+    };
+
+    //关闭WebSocket连接
+    function closeWebSocket() {
+        websocket.close();
+    }
+
+    //接收到消息的回调方法
+    websocket.onmessage = function (event) {
+        //追加
+        if (event.data) {
+            //日志内容
+            let $loggingText = $("#loggingText");
+            $loggingText.append(event.data);
+
+            //是否开启自动底部
+            if (window.loggingAutoBottom) {
+                //滚动条自动到最底部
+                $loggingText.scrollTop($loggingText[0].scrollHeight);
+            }
+
+        }
+    };
+    //发送消息
+    function send() {
+        var message = document.getElementById('text').value;
+        websocket.send(message);
+    }
+    //连接关闭的回调方法
+    websocket.onclose = function () {
+        console.log("WebSocket连接关闭")
+    };
+</script>
+</html>

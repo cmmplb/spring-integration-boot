@@ -1,0 +1,9 @@
+spring:
+  boot:
+    admin:
+      client:
+        instance.service-url: http://localhost:81/api/spring-boot-admin-client/
+        url: http://localhost:80/api/spring-boot-admin-server
+        username: admin
+        password: cmmplb
+

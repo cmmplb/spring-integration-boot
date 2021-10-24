@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmmplb.dynamic.datasource.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.cmmplb.dynamic.datasource.entity.Goods">
+    <!-- @mbg.generated -->
+    <!-- @Table goods -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!-- @mbg.generated -->
+    id, `name`, `count`, amount, create_time, update_time
+  </sql>
+</mapper>

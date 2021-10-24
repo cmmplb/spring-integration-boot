@@ -1,0 +1,23 @@
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: cmmplb
+    password: cmmplb
+    virtual-host: spring-boot-rabbitmq #相当于db配置
+    publisher-confirm-type: correlated #开启消息二次确认,生产者到broker的交换机
+    publisher-returns: true #开启消息二次确认，交换机到队列的可靠性投递
+    template:
+      mandatory: true #为true,则交换机处理消息到路由失败，则会返回给生产者
+    listener:
+      simple:
+        #消费端
+        concurrency: 5
+        #最大消费端数
+        max-concurrency: 10
+        #自动签收auto 手动 manual
+        acknowledge-mode: manual
+        #限流（海量数据，同时只能过来一条）
+        prefetch: 1
+      direct:
+        acknowledge-mode: manual #消息手工确认ACK，自动签收auto

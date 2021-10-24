@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-integration-boot</artifactId>
+        <groupId>com.cmmplb</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-boot-data-jpa</artifactId>
+    <groupId>com.cmmplb.data.jpa</groupId>
+    <packaging>jar</packaging>
+    <name>spring-boot-data-jpa</name>
+    <description>spring-boot-data-jpa</description>
+    <dependencies>
+        <!-- web模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-integration-web</artifactId>
+        </dependency>
+        <!-- knife4j模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-integration-knife4j</artifactId>
+        </dependency>
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+        <!--  jpa  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!--  Spring Data JPA -> Persist data in SQL stores with Java Persistence API using Spring Data and Hibernate.  -->
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <!-- <version>${querydsl-jpa.version}</version> -->
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <!-- <version>${querydsl-apt.version}</version> -->
+            <scope>provided</scope>
+        </dependency>
+        <!--  MapStruct -> 无论是 BeanUtils, BeanCopier等在使用反射的时候都会影响到性能，MapSturct是一个生成类型安全， 高性能， 通过注解(基于JSR 269的Java注解处理器)的方式实现JavaBean之间的转换  -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct-processor.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--  querydsl apt plugin  -->
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>${apt-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/java</outputDirectory>
+                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.querydsl</groupId>
+                        <artifactId>querydsl-apt</artifactId>
+                        <version>${querydsl-apt.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>

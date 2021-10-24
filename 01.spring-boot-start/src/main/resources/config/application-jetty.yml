@@ -1,0 +1,6 @@
+server:
+  #jetty配置，主要是acceptors和selectors
+  jetty:
+    threads:
+      acceptors: 2 #要使用的接受者线程数。当值为 -1 时，默认情况下，接受器的 * 数量来自运行环境。 *
+      selectors: 4 #要使用的选择器线程数。当值为 -1 时，默认情况下，选择器的 * 数量来自运行环境。

@@ -1,0 +1,45 @@
+knife4j:
+  # 开启增强配置
+  enable: true
+  # 开启生产环境屏蔽
+  #production: true
+  setting:
+    #禁用调试-文档页面就没调试按钮了
+    enableDebug: true
+    #禁用搜索框
+    enableSearch: true
+    #禁用OpenApi结构显示
+    enableOpenApi: true
+    # 对于调试中的请求参数是否缓存进行开启配置，该参数默认为true - 后端配置-前台也可以在文档管理里面配置
+    enableRequestCache: true
+    # 是否启用Host
+    enableHost: false
+    # 启用Host后地址，例如：http://192.168.0.111:8080
+    enableHostText: ""
+    # 自定义Swagger Models名称
+    enableSwaggerModels: true
+    swaggerModelName: 我是自定义的Model名称
+    #自定义主页内容
+    enableHomeCustom: true
+    homeCustomLocation: classpath:markdown/home.md
+    #自定义Footer
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: cmmplb
+  #开启Swagger的Basic认证功能,默认是false
+  basic:
+    enable: false
+    # Basic认证用户名
+    username: admin
+    # Basic认证密码-不配置默认账号admin/123321
+    password: 123321
+  #开启更多文档
+  documents:
+    - group: 1.2.x
+      name: 测试自定义标题分组
+      # 某一个文件夹下所有的.md文件
+      locations: classpath:markdown/*
+    - group: 1.2.x
+      name: 接口签名
+      # 某一个文件夹下单个.md文件
+      locations: classpath:markdown/5.md

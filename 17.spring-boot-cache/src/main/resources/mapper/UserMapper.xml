@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmmplb.cache.dao.UserMapper">
+    <cache/>
+
+    <sql id="base_column">
+        <!-- @sql select -->
+        u.`id`,
+        u.`name`,
+        u.`sex`,
+        u.`mobile`,
+        u.`status`,
+        u.`create_time`,
+        u.`update_time`,
+        u.`version`,
+        u.`deleted`
+        <!-- @sql from `user` u -->
+    </sql>
+
+    <sql id="base_select">
+        select
+        <include refid="base_column"/>
+        from `user` u
+    </sql>
+
+    <select id="selectList" resultType="com.cmmplb.cache.entity.User">
+        <include refid="base_select"/>
+    </select>
+
+    <insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into `user` ( `tenant_id`, `name`, `sex`, `mobile`, `status`, `create_time`, `update_time`,
+                            `deleted`)
+        values (#{tenantId}, #{name}, #{sex}, #{mobile}, 1, current_date(), current_date(), 0)
+    </insert>
+
+    <delete id="deleteById">
+        delete
+        from `user`
+        where `id` = #{id}
+    </delete>
+
+    <update id="updateById">
+        update `user`
+        <set>
+            `update_time` = now(),
+            <if test="tenantId != null">
+                `tenant_id` = #{tenantId},
+            </if>
+            <if test="name != null and name != ''">
+                `name` = #{name},
+            </if>
+            <if test="sex != null">
+                `sex` = #{sex},
+            </if>
+            <if test="mobile != null and mobile != ''">
+                `mobile` = #{mobile},
+            </if>
+            <if test="version != null">
+                `version` = #{version},
+            </if>
+            <if test="deleted != null">
+                `deleted` = #{deleted},
+            </if>
+        </set>
+        where `id` = #{id}
+    </update>
+
+    <select id="selectById" resultType="com.cmmplb.cache.entity.User">
+        <include refid="base_select"/>
+        where u.`id` = #{id}
+    </select>
+</mapper>

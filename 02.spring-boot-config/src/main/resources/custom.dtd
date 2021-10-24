@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 自定义dtd教程:https://my.oschina.net/zhangyongjun/blog/4640052 -->
+<!--
+    dtd元素声明格式
+    <!ELEMENT 元素名称 元素类型>
+ -->
+<!-- 定义一个可以包含任何类型的元素，包含一个custom元素 -->
+<!ELEMENT custom (name,version)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT version (#PCDATA)>
+<!--
+    <!ATTLIST 元素名称 属性名称 属性类型 设置说明 >
+ -->
+<!-- 定义custom的属性,name必须设置,version可以不设置，并且设置了默认值 -->
+<!ATTLIST custom name CDATA #REQUIRED>
+<!ATTLIST custom version ( 1.0.0 | 2.0.0 ) #IMPLIED >

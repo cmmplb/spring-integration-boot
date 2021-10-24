@@ -1,0 +1,11 @@
+server:
+  #tomcat的配置可以保留，切换回来可用，反正不会生效
+  tomcat:
+    background-processor-delay: 30
+    max-connections: 5000
+    remoteip:
+      host-header: x-forward-for
+    max-http-form-post-size: 8096
+    connection-timeout: 600000
+    threads:
+      max: 200 #最大工作线程数

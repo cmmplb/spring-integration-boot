@@ -1,7 +1,7 @@
-# spring-integration-boot
+# spring-all
 
 #### Description
-spring-integration-boot
+learn
 
 #### Software Architecture
 Software architecture description

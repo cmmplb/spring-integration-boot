@@ -1,0 +1,17 @@
+version: 1.0.0
+services:
+  spring-boot-start:
+    image: spring-boot-start:1.0.0
+    container_name: spring-boot-start
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      - COMPOSE_PROJECT_NAME=spring-boot-start
+    volumes:
+      - ../log/:/logs/
+    networks:
+      - cmmplb
+networks:
+  cmmplb:
+    external: true

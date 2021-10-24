@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-integration-boot</artifactId>
+        <groupId>com.cmmplb</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-boot-shiro</artifactId>
+    <groupId>com.cmmplb.shiro</groupId>
+    <packaging>jar</packaging>
+    <name>spring-boot-shiro</name>
+    <description>spring-boot-shiro</description>
+    <dependencies>
+        <!-- web模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-integration-web</artifactId>
+        </dependency>
+        <!-- knife4j模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-integration-knife4j</artifactId>
+        </dependency>
+        <!-- redis模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-integration-redis</artifactId>
+        </dependency>
+        <!-- freemarker -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <!-- 验证码工具 -->
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+            <version>${easy-captcha.version}</version>
+        </dependency>
+        <!-- shiro-spring-boot -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring-boot-starter</artifactId>
+            <version>${shiro-spring-boot-starter.version}</version>
+        </dependency>
+        <!-- shiro-redis -->
+        <dependency>
+            <groupId>org.crazycake</groupId>
+            <artifactId>shiro-redis</artifactId>
+            <version>${shiro-redis.version}</version>
+        </dependency>
+        <!-- 整合上面两个-版本没更新 -->
+        <!--<dependency>
+            <groupId>org.crazycake</groupId>
+            <artifactId>shiro-redis-spring-boot-starter</artifactId>
+            <version>${shiro-redis.version}</version>
+        </dependency>-->
+    </dependencies>
+</project>
