@@ -35,11 +35,13 @@ knife4j:
     password: 123321
   #开启更多文档
   documents:
-    - group: 1.2.x
+    -
+      group: 1.2.x
       name: 测试自定义标题分组
       # 某一个文件夹下所有的.md文件
       locations: classpath:markdown/*
-    - group: 1.2.x
+    -
+      group: 1.2.x
       name: 接口签名
       # 某一个文件夹下单个.md文件
       locations: classpath:markdown/5.md
