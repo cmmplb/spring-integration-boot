@@ -2,6 +2,7 @@ package com.cmmplb.shiro.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.cmmplb.common.redis.service.RedisService;
+import com.cmmplb.core.utils.ServletUtil;
 import com.cmmplb.shiro.constants.AuthorizationConstants;
 import com.cmmplb.core.exception.CustomException;
 import com.cmmplb.core.result.HttpCodeEnum;
@@ -13,7 +14,6 @@ import com.cmmplb.shiro.entity.User;
 import com.cmmplb.shiro.service.LoginService;
 import com.cmmplb.shiro.utils.ShiroUtil;
 import com.cmmplb.shiro.vo.LoginVO;
-import com.cmmplb.web.utils.ServletUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -61,7 +61,7 @@ public class LoginServiceImpl implements LoginService {
 
             // 这里前后端未分离就重定向到首页
             if (!shiroProperties.getSplit()) {
-                ServletUtils.getResponse().sendRedirect(SpringApplicationUtil.path);
+                ServletUtil.getResponse().sendRedirect(SpringApplicationUtil.path);
             }
             // 如果前后端分离就返回登录信息
             return new LoginVO(token);

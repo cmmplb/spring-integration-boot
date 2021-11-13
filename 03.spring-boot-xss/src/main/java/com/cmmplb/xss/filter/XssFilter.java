@@ -1,6 +1,6 @@
 package com.cmmplb.xss.filter;
 
-import com.cmmplb.core.utils.StringUtils;
+import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.xss.wrapper.XssHttpServletRequestWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
@@ -40,15 +40,15 @@ public class XssFilter implements Filter {
         String strEnabled = filterConfig.getInitParameter(ENABLED);
         String strExcludes = filterConfig.getInitParameter(EXCLUDES);
         String isIncludeRichText = filterConfig.getInitParameter(IS_INCLUDE_RICH_TEXT);
-        if (StringUtils.isNotBlank(isIncludeRichText)) {
+        if (StringUtil.isNotBlank(isIncludeRichText)) {
             this.isIncludeRichText = BooleanUtils.toBoolean(isIncludeRichText);
         }
         //将不需要xss过滤的接口添加到列表中
-        if (StringUtils.isNotEmpty(strExcludes)) {
+        if (StringUtil.isNotEmpty(strExcludes)) {
             String[] urls = strExcludes.split(",");
             Collections.addAll(excludes, urls);
         }
-        if (StringUtils.isNotEmpty(strEnabled)) {
+        if (StringUtil.isNotEmpty(strEnabled)) {
             enabled = Boolean.parseBoolean(strEnabled);
         }
     }

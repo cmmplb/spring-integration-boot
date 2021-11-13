@@ -1,12 +1,12 @@
 package com.cmmplb.log.aspect;
 
+import com.cmmplb.core.threads.ThreadContext;
+import com.cmmplb.core.utils.IpUtil;
+import com.cmmplb.core.utils.SpringUtil;
 import com.cmmplb.log.annotations.SysLog;
 import com.cmmplb.log.dao.LogDao;
 import com.cmmplb.log.entity.Log;
 import com.cmmplb.log.event.SysLogEvent;
-import com.cmmplb.web.threads.ThreadContext;
-import com.cmmplb.web.utils.IpUtils;
-import com.cmmplb.web.utils.SpringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -77,7 +77,7 @@ public class LogAspect {
         }
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         // 设置IP地址
-        log.setIp(IpUtils.getIpAddr(Objects.requireNonNull(requestAttributes).getRequest()));
+        log.setIp(IpUtil.getIpAddr(Objects.requireNonNull(requestAttributes).getRequest()));
         // 模拟一个用户名
         log.setUsername("cmmplb");
         log.setCreateTime(new Date());
@@ -106,7 +106,7 @@ public class LogAspect {
                 }
             });
             // 使用事件发布
-            SpringUtils.publishEvent(new SysLogEvent(log));
+            SpringUtil.publishEvent(new SysLogEvent(log));
         }
         return result;
     }

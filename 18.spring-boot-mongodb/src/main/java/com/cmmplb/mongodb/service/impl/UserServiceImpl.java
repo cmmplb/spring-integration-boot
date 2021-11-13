@@ -1,7 +1,7 @@
 package com.cmmplb.mongodb.service.impl;
 
 import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.utils.StringUtils;
+import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.mongodb.dao.UserDao;
 import com.cmmplb.mongodb.dto.UserPageQueryDTO;
 import com.cmmplb.mongodb.entity.User;
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
         Query query = new Query();
         Criteria criteria = new Criteria();
 
-        if (!StringUtils.isEmpty(dto.getName())) {
+        if (!StringUtil.isEmpty(dto.getName())) {
             criteria.and(User.COLUMN_NAME).is(dto.getName());
         }
         if (null != dto.getSex()) {

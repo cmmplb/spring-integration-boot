@@ -1,9 +1,9 @@
 
 package com.cmmplb.log.event;
 
+import com.cmmplb.core.threads.ThreadContext;
 import com.cmmplb.log.dao.LogDao;
 import com.cmmplb.log.entity.Log;
-import com.cmmplb.web.threads.ThreadContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;

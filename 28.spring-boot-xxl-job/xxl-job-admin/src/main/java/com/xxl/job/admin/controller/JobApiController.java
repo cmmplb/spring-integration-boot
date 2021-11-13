@@ -1,6 +1,6 @@
 package com.xxl.job.admin.controller;
 
-import com.cmmplb.core.utils.ListUtils;
+import com.cmmplb.core.utils.ListUtil;
 import com.xxl.job.admin.controller.annotation.PermissionLimit;
 import com.xxl.job.admin.core.conf.XxlJobAdminConfig;
 import com.xxl.job.core.biz.AdminBiz;
@@ -57,7 +57,7 @@ public class JobApiController {
         switch (uri) {
             case "callback":
                 // List<HandleCallbackParam> callbackParamList = GsonTool.fromJson(data, List.class, HandleCallbackParam.class);
-                List<HandleCallbackParam> callbackParamList = ListUtils.castList(data, HandleCallbackParam.class);
+                List<HandleCallbackParam> callbackParamList = ListUtil.castList(data, HandleCallbackParam.class);
                 return adminBiz.callback(callbackParamList);
             case "registry": {
                 RegistryParam registryParam = GsonTool.fromJson(data, RegistryParam.class);

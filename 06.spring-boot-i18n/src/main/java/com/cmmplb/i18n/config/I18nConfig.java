@@ -1,6 +1,6 @@
 package com.cmmplb.i18n.config;
 
-import com.cmmplb.core.utils.StringUtils;
+import com.cmmplb.core.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
@@ -69,7 +69,7 @@ public class I18nConfig {
         }
         // 设置默认语言
         String[] i18n_defaultArray = new String[]{EN, US};
-        if (StringUtils.isEmpty(i18nSpringConfigProperties.getDefaultLanguage())) {
+        if (StringUtil.isEmpty(i18nSpringConfigProperties.getDefaultLanguage())) {
             i18n_defaultArray = i18nSpringConfigProperties.getDefaultLanguage().split("_");
         }
         if (i18n_defaultArray.length == 1) {

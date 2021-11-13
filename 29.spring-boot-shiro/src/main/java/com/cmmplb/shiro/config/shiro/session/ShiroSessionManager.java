@@ -1,10 +1,10 @@
 package com.cmmplb.shiro.config.shiro.session;
 
 import com.cmmplb.common.redis.service.RedisService;
+import com.cmmplb.core.threads.ThreadContext;
+import com.cmmplb.core.utils.SpringUtil;
 import com.cmmplb.shiro.constants.AuthorizationConstants;
-import com.cmmplb.core.utils.StringUtils;
-import com.cmmplb.web.threads.ThreadContext;
-import com.cmmplb.web.utils.SpringUtils;
+import com.cmmplb.core.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
@@ -41,7 +41,7 @@ public class ShiroSessionManager extends DefaultWebSessionManager {
 
         //获取请求头中的数据
         String token = req.getHeader(AuthorizationConstants.AUTHORIZATION);
-        if (StringUtils.isEmpty(token)) {
+        if (StringUtil.isEmpty(token)) {
             //如果没有携带，生成新的sessionId
             // return super.getSessionId(request, response); // 父类是通过org.apache.shiro.web.servlet.SimpleCookie#readValue读取默认cookie的JSESSIONID
             //禁用cookie、sessionk
@@ -58,7 +58,7 @@ public class ShiroSessionManager extends DefaultWebSessionManager {
 
     private boolean check(String token) {
         // 校验令牌是否有效
-        RedisService redisService = SpringUtils.getBean(RedisService.class);
+        RedisService redisService = SpringUtil.getBean(RedisService.class);
         String tokenUidCacheKey = AuthorizationConstants.AUTHORIZATION_UID_CACHE_PREFIX + token;
         Object uid = redisService.get(tokenUidCacheKey);
         if (null == uid) {

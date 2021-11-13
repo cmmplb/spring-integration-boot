@@ -7,9 +7,9 @@ import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.cmmplb.core.constants.StringConstants;
 import com.cmmplb.core.exception.ExcelException;
+import com.cmmplb.core.utils.ServletUtil;
 import com.cmmplb.excel.project.beans.ExcelResult;
 import com.cmmplb.excel.project.listen.ExcelListener;
-import com.cmmplb.web.utils.ServletUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -126,7 +126,7 @@ public class ExcelUtil<T> {
      * @param list      导出数据列表
      */
     public void writeSingleExcel(String fileName, String sheetName, T t, List<T> list) {
-        HttpServletResponse response = ServletUtils.getResponse();
+        HttpServletResponse response = ServletUtil.getResponse();
         response.setContentType(StringConstants.EXCEL_CONTENT_TYPE);
         response.setCharacterEncoding(StringConstants.UTF8);
         try {
@@ -139,7 +139,7 @@ public class ExcelUtil<T> {
     }
 
     public void writeManyExcel(String fileName, String sheetName, List<Integer> sheetNos, T t, List<T> list) {
-        HttpServletResponse response = ServletUtils.getResponse();
+        HttpServletResponse response = ServletUtil.getResponse();
         response.setContentType(StringConstants.EXCEL_CONTENT_TYPE);
         response.setCharacterEncoding(StringConstants.UTF8);
         ExcelWriter excelWriter = null;
@@ -185,7 +185,7 @@ public class ExcelUtil<T> {
      */
     public void test(String fileName, String sheetName, T t, List<T> list) {
         // 重复多次写入(写到单个或者多个Sheet)
-        HttpServletResponse response = ServletUtils.getResponse();
+        HttpServletResponse response = ServletUtil.getResponse();
         response.setContentType(StringConstants.EXCEL_CONTENT_TYPE);
         response.setCharacterEncoding(StringConstants.UTF8);
         // 方法1 如果写到同一个sheet

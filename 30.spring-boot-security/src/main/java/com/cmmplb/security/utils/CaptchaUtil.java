@@ -2,8 +2,8 @@ package com.cmmplb.security.utils;
 
 import com.cmmplb.common.redis.service.RedisService;
 import com.cmmplb.core.constants.RedisConstants;
-import com.cmmplb.web.utils.ServletUtils;
-import com.cmmplb.web.utils.SpringUtils;
+import com.cmmplb.core.utils.ServletUtil;
+import com.cmmplb.core.utils.SpringUtil;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ public class CaptchaUtil {
      */
     public static void create(String uuid) throws IOException {
         // web写入
-        HttpServletResponse response = ServletUtils.getResponse();
+        HttpServletResponse response = ServletUtil.getResponse();
         response.setContentType("image/gif");
         response.setHeader("Pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");
@@ -98,7 +98,7 @@ public class CaptchaUtil {
      * @return RedisService
      */
     public static RedisService getRedisService() {
-        return SpringUtils.getBean(RedisService.class);
+        return SpringUtil.getBean(RedisService.class);
     }
 
 }

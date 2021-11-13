@@ -1,7 +1,7 @@
 package com.cmmplb.security.filter;
 
 import com.cmmplb.core.utils.SpringApplicationUtil;
-import com.cmmplb.core.utils.StringUtils;
+import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.security.handler.AuthenticationFailureHandler;
 import com.cmmplb.security.handler.excetion.ValidateCodeException;
 import com.cmmplb.security.utils.CaptchaUtil;
@@ -29,8 +29,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, @NonNull HttpServletResponse httpServletResponse, @NonNull FilterChain filterChain) throws ServletException, IOException {
         log.info("------------doFilterInternal------------");
-        if (StringUtils.equalsIgnoreCase(SpringApplicationUtil.path + SmsCodeAuthenticationFilter.LOGIN, httpServletRequest.getRequestURI())
-                && StringUtils.equalsIgnoreCase(httpServletRequest.getMethod(), HttpMethod.POST.name())) {
+        if (StringUtil.equalsIgnoreCase(SpringApplicationUtil.path + SmsCodeAuthenticationFilter.LOGIN, httpServletRequest.getRequestURI())
+                && StringUtil.equalsIgnoreCase(httpServletRequest.getMethod(), HttpMethod.POST.name())) {
             try {
                 validateCode(httpServletRequest);
             } catch (ValidateCodeException e) {
@@ -44,7 +44,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
     private void validateCode(HttpServletRequest httpServletRequest) {
         String uuid = httpServletRequest.getParameter("uuid");
         String graphCode = httpServletRequest.getParameter("graphCode");
-        if (StringUtils.isBlank(graphCode)) {
+        if (StringUtil.isBlank(graphCode)) {
             throw new ValidateCodeException("图形验证码不能为空！");
         }
         if (!CaptchaUtil.validate(uuid, graphCode)) {
