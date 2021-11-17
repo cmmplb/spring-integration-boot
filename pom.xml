@@ -32,31 +32,32 @@
         <module>01.spring-boot-start</module>
         <module>02.spring-boot-config</module>
         <module>03.spring-boot-xss</module>
-        <module>04.spring-boot-freemarker</module>
-        <module>05.spring-boot-thymeleaf</module>
-        <module>06.spring-boot-i18n</module>
-        <module>07.spring-boot-mail</module>
-        <module>08.spring-boot-sync</module>
-        <module>09.spring-boot-websocket</module>
-        <module>10.spring-boot-netty</module>
-        <module>11.spring-boot-aop-log</module>
-        <module>12.spring-boot-knife4j</module>
-        <module>13.spring-boot-mybatis</module>
-        <module>14.spring-boot-mybatis-plus</module>
-        <module>15.spring-boot-data-jpa</module>
-        <module>16.spring-boot-dynamic-datasource</module>
-        <module>17.spring-boot-cache</module>
-        <module>18.spring-boot-mongodb</module>
-        <module>19.spring-boot-rabbitmq</module>
-        <module>20.spring-boot-rocketmq</module>
-        <module>21.spring-boot-kafka</module>
+        <module>04.spring-boot-velocity</module>
+        <module>05.spring-boot-freemarker</module>
+        <module>06.spring-boot-thymeleaf</module>
+        <module>07.spring-boot-i18n</module>
+        <module>08.spring-boot-mail</module>
+        <module>09.spring-boot-sync</module>
+        <module>10.spring-boot-websocket</module>
+        <module>11.spring-boot-netty</module>
+        <module>12.spring-boot-aop-log</module>
+        <module>13.spring-boot-knife4j</module>
+        <module>14.spring-boot-mybatis</module>
+        <module>15.spring-boot-mybatis-plus</module>
+        <module>16.spring-boot-data-jpa</module>
+        <module>17.spring-boot-dynamic-datasource</module>
+        <module>18.spring-boot-cache</module>
+        <module>19.spring-boot-mongodb</module>
+        <module>20.spring-boot-rabbitmq</module>
+        <module>21.spring-boot-rocketmq</module>
+        <module>22.spring-boot-kafka</module>
         <module>25.spring-boot-excel</module>
         <module>26.spring-boot-activiti</module>
         <module>27.spring-boot-flyway</module>
         <module>28.spring-boot-xxl-job</module>
+		<module>29.spring-boot-shiro</module>
         <module>30.spring-boot-security</module>
         <module>50.spring-boot-admin</module>
-        <module>29.spring-boot-shiro</module>
     </modules>
 
     <!-- 依赖声明 -->

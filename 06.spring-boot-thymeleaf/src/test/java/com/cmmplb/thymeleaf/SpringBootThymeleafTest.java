@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 
 @SpringBootTest
-public class SpringBootStartTest {
+public class SpringBootThymeleafTest {
 
     @Test
     public void contextLoads() {
