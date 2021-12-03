@@ -58,6 +58,7 @@
 		<module>29.spring-boot-shiro</module>
         <module>30.spring-boot-security</module>
         <module>50.spring-boot-admin</module>
+        <module>23.spring-boot-canal</module>
     </modules>
 
     <!-- 依赖声明 -->

@@ -1,0 +1,47 @@
+# swagger配置
+swagger:
+  # 是否开启swagger
+  enabled: true
+  # swagger会解析的包路径
+  base-package: com.momo
+  # swagger会解析的url规则
+  base-path:
+  # 在basePath基础上需要排除的url规则
+  exclude-path:
+  # 分组名称
+  group-name: momo
+  # 标题
+  title: Swagger API
+  # 描述
+  description: description
+  # 版本
+  version: 1.0.0
+  # 许可证
+  license: license
+  # 许可证URL
+  licenseUrl: licenseUrl
+  # 服务条款URL
+  terms-of-service-url: terms-of-service-url
+  # host信息
+  host:
+  # 联系人信息
+  contact:
+    # 联系人
+    name: momo
+    url: url
+    email: email
+  # 全局统一鉴权配置
+  authorization:
+    # 鉴权策略ID，需要和SecurityReferences ID保持一致
+    name: momo
+    # 需要开启鉴权URL的正则
+    auth-regex: ^.*$
+    # 鉴权作用域列表
+    authorization-scope-list:
+      # 作用域名称
+      - scope: server
+        # 作用域描述
+        description: server all
+    # 权限认证调用服务的 Api
+    token-url-list:
+      - http://localhost:8080/auth/oauth/token

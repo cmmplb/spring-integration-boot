@@ -1,0 +1,55 @@
+version: '3.1'
+services:
+  canal:
+    image: docker.io/canal/canal-server
+    restart: always
+    container_name: canal-server
+    ports:
+      - 11111:11111
+    environment:
+      # mysql的slaveid， 不要与my.cnf一样。
+      - canal.instance.mysql.slaveId=2000
+      - canal.auto.scan=false
+      - canal.destinations=example
+      # mysql的服务地址-镜像ip地址
+      - canal.instance.master.address=172.19.0.2:3306
+      # mysql 的账户
+      - canal.instance.dbUsername=canal
+      # mysql密码
+      - canal.instance.dbPassword=canal
+      - canal.mq.topic=example
+      # 监听的表，支持表达式。 .\… 为监听所有表
+      - canal.instance.filter.regex=.*\\..*
+
+      #配置admin
+      # register ip
+      - canal.register.ip=192.168.68.129
+
+      # canal admin config
+      - canal.admin.manager=192.168.68.129:8089
+      - canal.admin.port=11110
+      - canal.admin.user=admin
+      - canal.admin.passwd=4ACFE3202A5FF5CF467898FC58AAB1D615029441
+      # admin auto register
+      - canal.admin.register.auto=true
+      - canal.admin.register.cluster=
+
+      # 更多配置：https://github.com/alibaba/canal/wiki/AdminGuide
+    volumes:
+      - ./data/conf/:/admin/canal-server/conf/
+      - ./data/logs/:/admin/canal-server/logs/
+    networks:
+      - cmmplb
+networks:
+  cmmplb:
+    external: true
+
+
+#mysql -uroot -proot
+##创建账号(账号：canal;密码：canal）
+#CREATE USER canal IDENTIFIED BY 'canal'; 
+##授予权限
+#GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'canal'@'%';
+##刷新并应用权限
+#FLUSH PRIVILEGES;
+
