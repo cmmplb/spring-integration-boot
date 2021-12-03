@@ -3,17 +3,17 @@
 function start()
 {
 	echo '=====运行====='
-	docker-compose -f docker-compose.yml up -d
+	docker-compose -f main.yml up -d
 }
 function stop()
 {
 	echo '=====停止====='
-	docker-compose -f docker-compose.yml down
+	docker-compose -f main.yml down
 }
 function restart()
 {
 	echo '=====重启====='
-	docker-compose -f docker-compose.yml restart
+	docker-compose -f main.yml restart
 }
 case $1 in
 	"start")
