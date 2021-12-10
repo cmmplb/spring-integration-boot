@@ -5,7 +5,7 @@ package com.cmmplb.shiro.constants;
  * @date 2021-09-28 15:38:28
  * @since jdk 1.8
  */
-public interface HttpConstants extends com.cmmplb.core.constants.HttpConstants {
+public interface HttpConstants {
 
     String VERIFICATION_CODE_ERROR = "验证码错误";
     String INCORRECT_CREDENTIALS = "用户名不存在或密码错误";

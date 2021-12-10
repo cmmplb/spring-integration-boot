@@ -1,4 +1,4 @@
-package com.cmmplb.cache.config;
+package com.cmmplb.cache.config.serializer;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.ParserConfig;

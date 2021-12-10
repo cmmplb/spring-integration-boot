@@ -1,6 +1,5 @@
 package com.cmmplb.cache.service.impl;
 
-import com.cmmplb.cache.config.RedisConfig;
 import com.cmmplb.cache.entity.RedisMessage;
 import com.cmmplb.cache.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +23,9 @@ public class RedisMessageServiceImpl implements MessageListener {
     @Autowired
     private RedisUtil redisUtil;
 
+    public static final String REDIS_LISTENER_CHANNEL_MESSAGE = "redis.listener.message";
+
+    public static final String REDIS_ADAPTER_CHANNEL_MESSAGE = "redis.adapter.message";
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
@@ -38,7 +40,7 @@ public class RedisMessageServiceImpl implements MessageListener {
         String nodeId = ManagementFactory.getRuntimeMXBean().getName();
         RedisMessage.MessageBody messageBody = new RedisMessage.MessageBody(message, nodeId);
         log.info("nodeId:{},messageBody:{}", nodeId, messageBody);
-        redisUtil.convertAndSend(RedisConfig.REDIS_LISTENER_CHANNEL_MESSAGE, messageBody);
+        redisUtil.convertAndSend(REDIS_LISTENER_CHANNEL_MESSAGE, messageBody);
         // redisUtil.convertAndSend(RedisConfig.REDIS_ADAPTER_CHANNEL_MESSAGE, messageBody);
     }
 

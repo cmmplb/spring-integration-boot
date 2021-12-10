@@ -1,13 +1,13 @@
 package com.cmmplb.shiro.config.shiro;
 
 import com.cmmplb.common.redis.service.RedisService;
-import com.cmmplb.core.constants.RedisConstants;
 import com.cmmplb.shiro.config.properties.RedisProperties;
 import com.cmmplb.shiro.config.properties.ShiroProperties;
 import com.cmmplb.shiro.config.shiro.session.CustomSessionDao;
 import com.cmmplb.shiro.config.shiro.session.ShiroSessionIdGenerator;
 import com.cmmplb.shiro.config.shiro.session.ShiroSessionListener;
 import com.cmmplb.shiro.config.shiro.session.ShiroSessionManager;
+import com.cmmplb.shiro.constants.RedisConstants;
 import com.cmmplb.shiro.filter.AuthenticationFilter;
 import com.cmmplb.shiro.utils.MD5Util;
 import lombok.extern.slf4j.Slf4j;

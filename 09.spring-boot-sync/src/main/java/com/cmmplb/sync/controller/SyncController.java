@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -62,5 +63,40 @@ public class SyncController {
         // return ResultUtil.success(syncService.asyncReturn().get());
         // 重载方法，当时间超过设置时间将会抛出TimeoutException
         return ResultUtil.success(syncService.asyncReturn().get(1, TimeUnit.SECONDS));
+    }
+
+    @ApiOperation("异步执行多个方法，返回所有方法的返回值")
+    @ApiOperationSupport(order = 4)
+    @GetMapping("/async/all")
+    public Result<String> asyncAll() throws ExecutionException, InterruptedException {
+
+        long start = System.currentTimeMillis();
+
+        CompletableFuture<Void> runAsync1 = CompletableFuture.runAsync(() -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("runAsync1");
+        });
+
+        CompletableFuture<Void> runAsync2 = CompletableFuture.runAsync(() -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("runAsync2");
+        });
+
+        // 等待两个CompletableFuture都完成的时候，future才会完成
+        CompletableFuture<Void> future = CompletableFuture.allOf(runAsync1, runAsync2);
+
+        // 阻塞到CompletableFuture1完成
+        future.get();
+        // 耗时大于3000毫秒
+        System.out.println(System.currentTimeMillis() - start);
+        return ResultUtil.success();
     }
 }

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableCaching
 @Configuration
-public class CacheConfig {
+public class CacheConfiguration {
 
     /**
      * 缓存注解

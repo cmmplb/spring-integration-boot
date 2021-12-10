@@ -22,10 +22,11 @@ public class SyncServiceImpl implements SyncService {
         sleep();
     }
 
-    @Async
+    @Async("one")
     @Override
     public void async() {
         sleep();
+        System.out.println("sleep,"+Thread.currentThread().getName());
     }
 
     @Async("one") // 配置使用自定义线程池
@@ -39,7 +40,7 @@ public class SyncServiceImpl implements SyncService {
 
     private void sleep() {
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
