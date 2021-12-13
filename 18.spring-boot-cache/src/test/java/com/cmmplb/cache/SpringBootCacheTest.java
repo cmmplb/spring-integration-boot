@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.test.context.SpringBootTest;
 import redis.clients.jedis.*;
 
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -94,7 +95,7 @@ public class SpringBootCacheTest {
         config.setMaxIdle(500);
         //等待可用连接的最大时间，单位是毫秒，默认值为-1，表示永不超时。
         //如果超过等待时间，则直接抛出JedisConnectionException
-        config.setMaxWaitMillis(10000);
+        config.setMaxWait(Duration.ofMillis(10000));
         //在空闲时检查有效性, 默认false
         config.setTestWhileIdle(true);
         //在borrow(用)一个jedis实例时，是否提前进行validate(验证)操作；

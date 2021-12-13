@@ -19,7 +19,7 @@
     <!-- 项目的打包类型：pom、jar、war -->
     <packaging>pom</packaging>
     <!-- 项目名称 -->
-    <name>spring-boot-xxl-job</name>
+    <name>${project.artifactId}</name>
     <!-- 描述信息 -->
     <description>spring-boot-xxl-job</description>
 

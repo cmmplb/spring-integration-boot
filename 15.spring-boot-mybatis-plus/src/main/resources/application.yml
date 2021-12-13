@@ -1,4 +1,5 @@
 spring:
+  main.allow-bean-definition-overriding: true
   application.name: @project.name@
   profiles.include: datasource, jackson, knife4j, mybatis-plus, redis
 server:
