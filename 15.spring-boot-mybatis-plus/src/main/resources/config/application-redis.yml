@@ -69,4 +69,4 @@ redis:
     # pool中定时进行连接有效性扫描, 无效连接将被释放
     test-while-idle: true
     # pool中定时进行连接有效性扫描时间间隔(单位: 毫秒, 使用负值为不启用扫描)
-    time-between-eviction-runsMillis: 30000
+    time-between-eviction-runs-millis: 30000

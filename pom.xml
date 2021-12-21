@@ -2,15 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- 指定当前POM模型的版本 -->
-    <modelVersion>4.0.0</modelVersion>
-
     <!-- 父工程 -->
     <parent>
         <artifactId>spring-parent</artifactId>
         <groupId>com.cmmplb</groupId>
         <version>1.0.0</version>
     </parent>
+
+    <!-- 指定当前POM模型的版本 -->
+    <modelVersion>4.0.0</modelVersion>
 
     <!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。 -->
     <artifactId>spring-integration-boot</artifactId>
@@ -51,14 +51,15 @@
         <module>20.spring-boot-rabbitmq</module>
         <module>21.spring-boot-rocketmq</module>
         <module>22.spring-boot-kafka</module>
+        <module>23.spring-boot-canal</module>
+        <module>24.spring-boot-elasticsearch</module>
         <module>25.spring-boot-excel</module>
         <module>26.spring-boot-activiti</module>
         <module>27.spring-boot-flyway</module>
         <module>28.spring-boot-xxl-job</module>
-		<module>29.spring-boot-shiro</module>
+        <module>29.spring-boot-shiro</module>
         <module>30.spring-boot-security</module>
         <module>50.spring-boot-admin</module>
-        <module>23.spring-boot-canal</module>
     </modules>
 
     <!-- 依赖声明 -->

@@ -1,14 +1,20 @@
 spring:
   rabbitmq:
-    host: 127.0.0.1
+    # 集群配置，以逗号分隔的客户端应连接的地址列表。设置后，主机和端口将被忽略。
+    addresses: 192.168.68.129:5673,192.168.68.129:5674,192.168.68.129:5675
+    host: 192.168.68.129
     port: 5672
-    username: cmmplb
+    username: root
     password: cmmplb
-    virtual-host: spring-boot-rabbitmq #相当于db配置
-    publisher-confirm-type: correlated #开启消息二次确认,生产者到broker的交换机
-    publisher-returns: true #开启消息二次确认，交换机到队列的可靠性投递
+    #相当于db配置=如果不存在的话需要去admin端添加
+    virtual-host: spring-boot-rabbitmq
+    #开启消息二次确认,生产者到broker的交换机
+    publisher-confirm-type: correlated
+    #开启消息二次确认，交换机到队列的可靠性投递
+    publisher-returns: true
     template:
-      mandatory: true #为true,则交换机处理消息到路由失败，则会返回给生产者
+      #为true,则交换机处理消息到路由失败，则会返回给生产者
+      mandatory: true
     listener:
       simple:
         #消费端
@@ -20,4 +26,5 @@ spring:
         #限流（海量数据，同时只能过来一条）
         prefetch: 1
       direct:
-        acknowledge-mode: manual #消息手工确认ACK，自动签收auto
+        #消息手工确认ACK，自动签收auto (NONE,AUTO,MANUAL)
+        acknowledge-mode: manual

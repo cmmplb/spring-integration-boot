@@ -1,0 +1,7 @@
+logging:
+  # -----------------------------------
+  # log level(trace < debug < info < warn < error)
+  # -----------------------------------
+  level:
+    root: debug
+    com.cmmplb: debug
