@@ -1,6 +1,6 @@
 redis:
   # cluster type (standalone, sentinel, cluster)
-  cluster-type: standalone
+  cluster-type: sentinel
   # pool type (jedis, lettuce, redisson(目前不支持))
   # spring boot 2.0以上版本默认连接池是lettuce (基于Netty)
   # spring boot 1.5以上版本默认采用的连接池是jedis
