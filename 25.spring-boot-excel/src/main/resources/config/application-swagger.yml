@@ -1,0 +1,6 @@
+# swagger配置
+swagger:
+  # 是否开启swagger
+  enabled: true
+  # swagger会解析的包路径
+  base-package: com.cmmplb

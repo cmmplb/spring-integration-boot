@@ -1,0 +1,28 @@
+# -------------------------------------------------------------------------
+# undertow (默认配置位置：org.springframework.boot.autoconfigure.web.ServerProperties#Undertow)
+# -------------------------------------------------------------------------
+server:
+  undertow:
+    threads:
+      # 非阻塞的任务线程池：默认为CPU核心数量
+      io: 16
+      # 阻塞任务线程池: 默认为 IO线程数 * 8
+      worker: 256
+
+    # 会用于服务器连接的IO操作
+    buffer-size: 1024
+
+    # 是否分配的直接内存(NIO直接分配的堆外内存)
+    direct-buffers: false
+    accesslog:
+      # 启用访问日志
+      enabled: true
+      # 访问日志的格式模式
+      pattern: common
+      # 创建日志文件的目录。可以是绝对的或相对于Tomcat基础目录
+      dir: D:Logs/${spring.application.name}/access/
+      # 访问日志文件名前缀
+      prefix: access_log.
+      # 访问日志文件名后缀
+      suffix: log
+
