@@ -1,7 +1,7 @@
 version: 1.0.0
 services:
   spring-boot-start:
-    image: spring-boot-start:1.0.0
+    image: 1045599379/momo:spring-boot-start-1.0.0
     container_name: spring-boot-start
     restart: always
     ports:
@@ -9,7 +9,7 @@ services:
     environment:
       - COMPOSE_PROJECT_NAME=spring-boot-start
     volumes:
-      - ../log/:/logs/
+      - ./data/:/logs/
     networks:
       - cmmplb
 networks:
