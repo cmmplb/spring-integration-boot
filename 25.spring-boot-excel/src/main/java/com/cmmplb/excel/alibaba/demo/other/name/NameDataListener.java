@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -58,7 +59,7 @@ public class NameDataListener extends AnalysisEventListener<NameData> {
     public void invoke(NameData data, AnalysisContext context) {
         LOGGER.info("解析到一条数据:{}", JSON.toJSONString(data));
         String name = data.getName();
-        Set<String> pinyinBai = RandomUtil.getPinyinBai();
+        Set<String> pinyinBai = new HashSet<>();// RandomUtil.getPinyinBai();
         for (String s : pinyinBai) {
             if (name.length() > s.length()) {
                 String substring = name.substring((name.length() - s.length()));
