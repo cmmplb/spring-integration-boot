@@ -1,0 +1,7 @@
+logging:
+  file.path: D:/Logs/cmm
+  # log level(trace < debug < info < warn < error)
+  level:
+    root: info
+    com.cmmplb: info
+

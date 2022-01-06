@@ -67,14 +67,10 @@
     <!-- 插件 -->
     <build>
         <plugins>
+            <!-- jacoco-maven -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-            </plugin>
-            <!-- spring-boot-maven-plugin -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <!-- docker-maven-plugin -->
             <plugin>
