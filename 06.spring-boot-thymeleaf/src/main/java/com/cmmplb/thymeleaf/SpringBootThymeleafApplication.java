@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author penglibo
- * @createdate 2021-03-20
+ * @date 2021-03-20
  */
 
 @SpringBootApplication

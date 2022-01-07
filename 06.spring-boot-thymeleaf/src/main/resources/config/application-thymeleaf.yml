@@ -1,9 +1,13 @@
 spring:
   thymeleaf:
-    cache: true  # 开启模板缓存（默认值：true）
-    encoding: UTF-8 #模板编码
-    #check-template: true
-    #check-template-location: true #检查模板位置是否正确（默认值:true）
+    # 开启模板缓存（默认值：true）
+    cache: true
+    # 模板编码
+    encoding: UTF-8
+    # 是否在呈现模板之前检查模板是否存在
+    check-template: true
+    # 检查模板位置是否正确（默认值:true）
+    check-template-location: false
     #servlet:
     #  content-type: text/html  #Content-Type的值（默认值：text/html）
     #enabled: true #开启MVC Thymeleaf视图解析（默认值：true）

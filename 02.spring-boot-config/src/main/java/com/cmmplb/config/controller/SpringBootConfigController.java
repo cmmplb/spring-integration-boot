@@ -130,11 +130,11 @@ public class SpringBootConfigController {
      */
     @RequestMapping("/custom/xml")
     public String getConfigCustomXml() throws Exception {
-        Resource resource = new ClassPathResource("custom.xml");
+        Resource resource = new ClassPathResource("static/custom.xml");
         //利用输入流获取XML文件内容
         BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8));
         StringBuilder buffer = new StringBuilder();
-        String line = "";
+        String line;
         while ((line = br.readLine()) != null) {
             buffer.append(line);
         }

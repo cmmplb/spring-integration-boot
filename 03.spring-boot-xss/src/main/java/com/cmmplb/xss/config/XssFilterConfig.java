@@ -1,6 +1,9 @@
 package com.cmmplb.xss.config;
 
 import com.cmmplb.core.beans.DataMap;
+import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.utils.StringUtil;
+import com.cmmplb.xss.config.properties.XssProperties;
 import com.cmmplb.xss.filter.XssFilter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +13,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.DispatcherType;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author penglibo
@@ -31,12 +32,14 @@ public class XssFilterConfig {
         FilterRegistrationBean<XssFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setDispatcherTypes(DispatcherType.REQUEST);
         registrationBean.setFilter(new XssFilter());
-        registrationBean.addUrlPatterns(StringUtils.split(xssProperties.getUrlPatterns(), ","));
-        registrationBean.setInitParameters(new DataMap<String, String>()
-                .set("excludes", xssProperties.getExcludes())
-                .set("enabled", xssProperties.getEnabled())
-                .set("isIncludeRichText", xssProperties.getIsIncludeRichText())
-        );
+        registrationBean.addUrlPatterns(StringUtils.split(xssProperties.getUrlPatterns(), StringConstants.COMMA));
+        DataMap<String, String> param = new DataMap<>();
+        param.set(XssProperties.COL_ENABLED, String.valueOf(xssProperties.getEnabled()));
+        param.set(XssProperties.COL_IS_INCLUDE_RICH_TEXT, String.valueOf(xssProperties.getIsIncludeRichText()));
+        if (StringUtil.isNotEmpty(xssProperties.getExcludes())) {
+            param.set(XssProperties.COL_EXCLUDES, xssProperties.getExcludes());
+        }
+        registrationBean.setInitParameters(param);
         return registrationBean;
     }
 }

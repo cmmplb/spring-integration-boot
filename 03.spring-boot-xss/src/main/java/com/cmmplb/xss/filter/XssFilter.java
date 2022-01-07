@@ -1,7 +1,8 @@
 package com.cmmplb.xss.filter;
 
 import com.cmmplb.core.utils.StringUtil;
-import com.cmmplb.xss.wrapper.XssHttpServletRequestWrapper;
+import com.cmmplb.xss.config.properties.XssProperties;
+import com.cmmplb.xss.wrapper.XssRequestWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
 
@@ -24,9 +25,6 @@ import java.util.regex.Pattern;
 @Slf4j
 public class XssFilter implements Filter {
 
-    public static final String ENABLED = "enabled";
-    public static final String EXCLUDES = "excludes";
-    public static final String IS_INCLUDE_RICH_TEXT = "isIncludeRichText";
     // 是否过滤富文本内容
     private boolean isIncludeRichText = false;
 
@@ -35,11 +33,11 @@ public class XssFilter implements Filter {
     public boolean enabled = false;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         log.info("==========XssFilterInit==========");
-        String strEnabled = filterConfig.getInitParameter(ENABLED);
-        String strExcludes = filterConfig.getInitParameter(EXCLUDES);
-        String isIncludeRichText = filterConfig.getInitParameter(IS_INCLUDE_RICH_TEXT);
+        String strEnabled = filterConfig.getInitParameter(XssProperties.COL_ENABLED);
+        String strExcludes = filterConfig.getInitParameter(XssProperties.COL_EXCLUDES);
+        String isIncludeRichText = filterConfig.getInitParameter(XssProperties.COL_IS_INCLUDE_RICH_TEXT);
         if (StringUtil.isNotBlank(isIncludeRichText)) {
             this.isIncludeRichText = BooleanUtils.toBoolean(isIncludeRichText);
         }
@@ -63,7 +61,7 @@ public class XssFilter implements Filter {
             return;
         }
         // 拦截该url并进行xss过滤
-        filterChain.doFilter(new XssHttpServletRequestWrapper(request, isIncludeRichText), servletResponse);
+        filterChain.doFilter(new XssRequestWrapper(request, isIncludeRichText), servletResponse);
     }
 
     @Override

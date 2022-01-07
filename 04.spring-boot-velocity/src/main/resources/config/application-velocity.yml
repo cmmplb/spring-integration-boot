@@ -3,8 +3,8 @@ spring:
     enabled: true
     cache: false
     charset: UTF-8
-    suffix: .vm
     prefix: /templates/
+    suffix: .vm
     content-type: text/html
     check-template-location: true
     resource-loader-path: /templates

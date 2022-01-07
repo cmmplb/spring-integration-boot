@@ -89,23 +89,8 @@
                 <artifactId>spring-boot-starter-swagger</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco-maven-plugin.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <!-- 父工程依赖 -->
-    <dependencies>
-        <!-- 配置文件处理器 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-    </dependencies>
 
     <!-- plugin -->
     <build>

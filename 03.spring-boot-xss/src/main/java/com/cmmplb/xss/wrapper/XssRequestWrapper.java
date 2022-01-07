@@ -1,5 +1,6 @@
 package com.cmmplb.xss.wrapper;
 
+import com.cmmplb.core.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -16,21 +17,18 @@ import javax.servlet.http.HttpServletRequestWrapper;
  */
 
 @Slf4j
-public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
+public class XssRequestWrapper extends HttpServletRequestWrapper {
 
-    // 是否过滤富文本内容
+    /**
+     * 是否过滤富文本内容
+     */
     private boolean isIncludeRichText;
 
     public static final String CONTENT = "content";
 
     public static final String WITH_HTML = "WithHtml";
 
-    /**
-     * Constructs a request object wrapping the given request.
-     * @param request The request to wrap
-     * @throws IllegalArgumentException if the request is null
-     */
-    public XssHttpServletRequestWrapper(HttpServletRequest request, boolean isIncludeRichText) {
+    public XssRequestWrapper(HttpServletRequest request, boolean isIncludeRichText) {
         super(request);
         this.isIncludeRichText = isIncludeRichText;
     }
@@ -38,13 +36,13 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     /**
      * 将参数名和参数值都做xss过滤
      * 原始的值通过super.getHeaders(name)获取
-     * @param name
-     * @return
+     * @param name 参数
+     * @return 过滤的值
      */
     @Override
     public String getHeader(String name) {
         name = super.getHeader(name);
-        if (StringUtils.isEmpty(name)) {
+        if (StringUtil.isEmpty(name)) {
             return name;
         }
         return Jsoup.clean(name, Safelist.relaxed());
@@ -52,6 +50,8 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
     /**
      * 将参数名和参数值都做xss过滤
+     * @param name 参数
+     * @return 过滤的值
      */
     @Override
     public String getParameter(String name) {
@@ -59,12 +59,17 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
             return super.getParameter(name);
         }
         name = super.getParameter(name);
-        if (StringUtils.isNotBlank(name)) {
+        if (StringUtil.isNotBlank(name)) {
             return name;
         }
         return Jsoup.clean(name, Safelist.relaxed());
     }
 
+    /**
+     * 将参数名和参数值都做xss过滤
+     * @param name 参数
+     * @return 过滤的值
+     */
     @Override
     public String[] getParameterValues(String name) {
         String[] values = super.getParameterValues(name);

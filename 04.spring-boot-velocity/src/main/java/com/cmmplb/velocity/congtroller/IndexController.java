@@ -11,11 +11,12 @@ import java.util.Map;
  * @since jdk 1.8
  */
 
+@SuppressWarnings("SpringMVCViewInspection")
 @Controller
 public class IndexController {
 
     @RequestMapping("/")
-    public String index(Map map){
+    public String index(Map<String, String> map){
         map.put("message", "获取用户信息");
         map.put("name", "张三");
         map.put("age", "24");
