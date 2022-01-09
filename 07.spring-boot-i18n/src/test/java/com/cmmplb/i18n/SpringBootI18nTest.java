@@ -17,4 +17,5 @@ public class SpringBootI18nTest {
     public void contextLoads() {
         System.out.println("test");
     }
+
 }
