@@ -2,6 +2,7 @@
 package com.cmmplb.i18n.utils;
 
 import com.cmmplb.core.utils.SpringUtil;
+import com.cmmplb.i18n.config.MessageSourceConfig;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 
@@ -13,7 +14,7 @@ public class MessageUtils {
     private static MessageSource messageSource;
 
     static {
-        messageSource = SpringUtil.getBean("messageSource");
+        messageSource = SpringUtil.getBean(MessageSourceConfig.MESSAGE_SOURCE);
     }
 
     public static String getMessage(int code) {

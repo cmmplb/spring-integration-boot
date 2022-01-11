@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TableNameHandler;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import com.baomidou.mybatisplus.extension.plugins.inner.*;
-import com.cmmplb.dynamic.datasource.config.resolver.SqlFilterArgumentResolver;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
@@ -13,30 +12,19 @@ import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilde
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author penglibo
  * @date 2021-04-10 17:48:33
  */
 
-@EnableCaching // 开启二级缓存-mybatis-plus版本必须低于2.0.9才可以使用二级缓存
+// 开启二级缓存-mybatis-plus版本必须低于2.0.9才可以使用二级缓存
+@EnableCaching
 @Configuration
 @MapperScan(basePackages = {"com.cmmplb.dynamic.datasource.dao"})
-public class MybatisPlusAutoConfiguration implements WebMvcConfigurer {
-
-    /**
-     * SQL 过滤器避免SQL 注入
-     * @param argumentResolvers
-     */
-    @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new SqlFilterArgumentResolver());
-    }
+public class MybatisPlusAutoConfiguration {
 
     /**
      * mybatis-plus插件配置

@@ -1,7 +1,6 @@
 package com.cmmplb.i18n;
 
 import com.cmmplb.core.utils.SpringApplicationUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**

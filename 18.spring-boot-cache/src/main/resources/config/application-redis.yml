@@ -1,6 +1,6 @@
 redis:
   # cluster type (standalone, sentinel, cluster)
-  cluster-type: sentinel
+  cluster-type: standalone
   # pool type (jedis, lettuce, redisson(目前不支持))
   # spring boot 2.0以上版本默认连接池是lettuce (基于Netty)
   # spring boot 1.5以上版本默认采用的连接池是jedis
@@ -15,13 +15,13 @@ redis:
     # 数据库索引
     database: 0
     # redis主机地址
-    host: 192.168.68.129
+    host: 127.0.0.1
     # redis主机端口
     port: 6379
     # 用户名
     username: cmmplb
     # redis主机密码
-    password: cmmplb
+    password: 123456
 
   # 哨兵
   sentinel:

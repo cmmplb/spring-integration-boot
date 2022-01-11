@@ -1,14 +1,8 @@
 package com.cmmplb.sync;
 
 import com.cmmplb.core.utils.SpringApplicationUtil;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.SpringApplication;
+import com.cmmplb.swagger.annotation.EnableSwagger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.core.env.Environment;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 /**
  * @author penglibo

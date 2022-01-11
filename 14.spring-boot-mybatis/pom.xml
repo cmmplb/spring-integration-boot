@@ -30,7 +30,7 @@
             <groupId>com.cmmplb</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- knife4j模块 -->
+        <!-- swagger模块 -->
         <dependency>
             <groupId>com.cmmplb</groupId>
             <artifactId>spring-boot-starter-swagger</artifactId>
@@ -46,12 +46,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
             <version>${mysql-connector-java.version}</version>
-        </dependency>
-        <!-- druid -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid-spring-boot-starter.version}</version>
         </dependency>
         <!-- mybatis分页插件 -->
         <dependency>

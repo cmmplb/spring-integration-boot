@@ -25,27 +25,25 @@
 
     <!-- 依赖 -->
     <dependencies>
-        <!-- web模块 -->
+        <!-- core公共核心模块 -->
         <dependency>
             <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-core</artifactId>
+        </dependency>
+        <!-- web启动器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--  websocket  -->
+        <!-- websocket -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
-        <!--  thymeleaf模板 -->
+        <!-- thymeleaf模板 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <!-- mysql -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
-            <scope>runtime</scope>
         </dependency>
         <!-- fastjson -->
         <dependency>

@@ -1,5 +1,7 @@
 package com.cmmplb.start.controller;
 
+import com.cmmplb.core.result.Result;
+import com.cmmplb.core.result.ResultUtil;
 import com.cmmplb.core.utils.StringUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     @RequestMapping("/")
-    public String index(String name) {
-        return "hello spring boot " + (StringUtil.isEmpty(name) ? "" : name);
+    public Result<String> index(String name) {
+        return ResultUtil.success("hello spring boot " + (StringUtil.isEmpty(name) ? "" : name));
     }
 }

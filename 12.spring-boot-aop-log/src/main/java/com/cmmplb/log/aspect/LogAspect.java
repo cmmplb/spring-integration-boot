@@ -25,7 +25,8 @@ import java.util.Objects;
 /**
  * @author penglibo
  * @date 2021-04-14 14:51:49
- * @AspectJ支持的5中通知： —@Before：前置通知在方法执行前执行->JoinPoint joinPoint
+ * @AspectJ支持的5中通知：
+ * —@Before：前置通知在方法执行前执行->JoinPoint joinPoint
  * —@After：后置通知，在方法执行后执行->JoinPoint joinPoint
  * —@AfterReturning：返回通知，在方法返回结果之后执行->JoinPoint joinPoint,Object result
  * —@AfterThrowing：异常通知，在方法抛出异常后执行->JoinPoint joinPoint,Exception ex

@@ -25,12 +25,17 @@
 
     <!-- 依赖 -->
     <dependencies>
-        <!-- web模块 -->
+        <!-- core公共核心模块 -->
         <dependency>
             <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-core</artifactId>
+        </dependency>
+        <!-- web启动器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- knife4j模块 -->
+        <!-- swagger模块 -->
         <dependency>
             <groupId>com.cmmplb</groupId>
             <artifactId>spring-boot-starter-swagger</artifactId>

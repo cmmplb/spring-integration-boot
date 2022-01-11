@@ -35,7 +35,6 @@
             <groupId>com.cmmplb</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <!-- elasticsearch -->
         <dependency>
             <!-- 这边匹配的版本是<elasticsearch>7.12.1</elasticsearch> -->

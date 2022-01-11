@@ -1,6 +1,6 @@
 package com.cmmplb.sync.config;
 
-import com.cmmplb.sync.config.properties.ThreadPoolConfigProperties;
+import com.cmmplb.sync.config.properties.ThreadPoolProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -24,27 +24,27 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Slf4j
 @EnableAsync
 @Configuration
-@EnableConfigurationProperties(ThreadPoolConfigProperties.class)
+@EnableConfigurationProperties(ThreadPoolProperties.class)
 public class ThreadPoolConfig {
 
     @Autowired
-    private ThreadPoolConfigProperties threadPoolConfigProperties;
+    private ThreadPoolProperties threadPoolProperties;
 
     /**
      * 自定义多个线程池
      * @return
      */
     @Bean("one")
-    public Executor asyncServiceExecutor_mq_producer(){
+    public Executor one(){
         return getExecutor(Objects.requireNonNull(getThreadPoolMap("one")));
     }
 
     @Bean("two")
-    public Executor asyncServiceExecutor_mq_consumer(){
+    public Executor two(){
         return getExecutor(Objects.requireNonNull(getThreadPoolMap("two")));
     }
 
-    private Executor getExecutor(ThreadPoolConfigProperties.ThreadPoolVo threadPoolVo) {
+    private Executor getExecutor(ThreadPoolProperties.ThreadPoolVo threadPoolVo) {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutorExt();
         executor.setCorePoolSize(threadPoolVo.getCorePoolSize()); // 核心线程数
         executor.setMaxPoolSize(threadPoolVo.getMaxPoolSize()); // 最大线程数
@@ -63,9 +63,9 @@ public class ThreadPoolConfig {
      * 从配置文件中读取线程池配置
      * @return 线程池对象
      */
-    private ThreadPoolConfigProperties.ThreadPoolVo getThreadPoolMap(String threadPoolName) {
-        List<ThreadPoolConfigProperties.ThreadPoolVo> threadPoolVoList = threadPoolConfigProperties.getPool();
-        for (ThreadPoolConfigProperties.ThreadPoolVo threadPoolVo : threadPoolVoList) {
+    private ThreadPoolProperties.ThreadPoolVo getThreadPoolMap(String threadPoolName) {
+        List<ThreadPoolProperties.ThreadPoolVo> threadPoolVoList = threadPoolProperties.getPool();
+        for (ThreadPoolProperties.ThreadPoolVo threadPoolVo : threadPoolVoList) {
             if (threadPoolName.equals(threadPoolVo.getThreadName())) {
                 return threadPoolVo;
             }

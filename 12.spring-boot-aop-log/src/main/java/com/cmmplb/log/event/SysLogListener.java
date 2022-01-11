@@ -18,12 +18,9 @@ public class SysLogListener {
 
     @EventListener(SysLogEvent.class)
     public void saveSysLog(SysLogEvent event) {
-        ThreadContext.executeTask(new Runnable() {
-            @Override
-            public void run() {
-                // 保存系统日志
-                logDao.saveLog((Log) event.getSource());
-            }
+        ThreadContext.executeTask(() -> {
+            // 保存系统日志
+            logDao.saveLog((Log) event.getSource());
         });
     }
 }

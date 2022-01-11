@@ -83,7 +83,7 @@
                 <artifactId>spring-boot-starter-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <!-- knife4j模块 -->
+            <!-- swagger模块 -->
             <dependency>
                 <groupId>com.cmmplb</groupId>
                 <artifactId>spring-boot-starter-swagger</artifactId>

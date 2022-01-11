@@ -16,6 +16,7 @@ CREATE TABLE `sys_log`
     `method`       varchar(256)  DEFAULT NULL COMMENT '请求方法',
     `params`       text COMMENT '请求参数',
     `ip`           varchar(64)   DEFAULT NULL COMMENT 'ip地址',
+    `type`         tinyint(3)    DEFAULT NULL COMMENT '日志类型:0-正常日志;2-异常日志',
     `exc_cause`    varchar(1024) DEFAULT NULL COMMENT '异常原因',
     `exc_desc`     varchar(1024) DEFAULT NULL COMMENT '异常描述',
     `exc_location` varchar(1024) DEFAULT NULL COMMENT '异常位置',

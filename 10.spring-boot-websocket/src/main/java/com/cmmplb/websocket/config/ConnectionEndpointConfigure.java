@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Nonnull;
 import javax.websocket.server.ServerEndpointConfig;
 
 /**
@@ -25,7 +26,7 @@ public class ConnectionEndpointConfigure extends ServerEndpointConfig.Configurat
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(@Nonnull ApplicationContext applicationContext) throws BeansException {
         ConnectionEndpointConfigure.context = applicationContext;
     }
 }

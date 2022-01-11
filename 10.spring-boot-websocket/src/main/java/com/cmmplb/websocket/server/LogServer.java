@@ -21,9 +21,10 @@ import java.util.regex.Pattern;
 
 /**
  * @author plb
- * @createdate 2021-01-06
+ * @date 2021-01-06
  */
 
+@SuppressWarnings("AlibabaAvoidManuallyCreateThread")
 @Component
 @ServerEndpoint(value = "/log/server", configurator = ConnectionEndpointConfigure.class)
 public class LogServer {

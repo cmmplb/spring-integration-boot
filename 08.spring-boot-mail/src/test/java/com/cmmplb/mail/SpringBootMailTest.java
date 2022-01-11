@@ -53,7 +53,6 @@ public class SpringBootMailTest {
 
     /**
      * 发送附件
-     * @throws Exception
      */
     @Test
     public void sendAttachmentsMail() throws Exception {
@@ -75,7 +74,6 @@ public class SpringBootMailTest {
 
     /**
      * 嵌入静态资源
-     * @throws Exception
      */
     @Test
     public void sendInlineMail() throws Exception {
@@ -97,7 +95,6 @@ public class SpringBootMailTest {
 
     /**
      * 嵌入html邮件
-     * @throws Exception
      */
     @Test
     public void sendHtmlMail() throws Exception {
@@ -117,7 +114,6 @@ public class SpringBootMailTest {
 
     /**
      * 模板邮件
-     * @throws Exception
      */
     @Test
     public void sendTemplateMail() throws Exception {

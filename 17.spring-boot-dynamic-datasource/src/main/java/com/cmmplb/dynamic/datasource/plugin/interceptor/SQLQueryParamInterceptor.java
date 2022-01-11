@@ -36,8 +36,9 @@ public class SQLQueryParamInterceptor implements Interceptor {
     @Override
     public Object plugin(Object target) {
         // 调用插件
-        if (target instanceof Executor || target instanceof StatementHandler || target instanceof ParameterHandler)
+        if (target instanceof Executor || target instanceof StatementHandler || target instanceof ParameterHandler) {
             return Plugin.wrap(target, this);
+        }
         return target;
     }
 

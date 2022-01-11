@@ -46,7 +46,7 @@ public class Log implements Serializable {
     private String params;
 
     /**
-     * 日志类型:0-正常日志;2-异常异常
+     * 日志类型:0-正常日志;2-异常日志
      */
     private Byte type;
 
