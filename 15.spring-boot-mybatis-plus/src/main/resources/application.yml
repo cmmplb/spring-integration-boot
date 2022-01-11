@@ -14,7 +14,7 @@ spring.main.allow-bean-definition-overriding: true
 spring.profiles.include:
   - database
   - jackson
-  - mybatis-plus
+  - mybatis_plus
   - redis
   - swagger
   - tomcat
