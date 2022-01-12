@@ -38,26 +38,22 @@
         <dependency>
             <groupId>com.xpand</groupId>
             <artifactId>spring-boot-starter-canal</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
         <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
-            <version>${mysql-connector-java.version}</version>
         </dependency>
         <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
         </dependency>
         <!-- mybatis-plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
     </dependencies>
 </project>

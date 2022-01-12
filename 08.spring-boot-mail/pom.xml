@@ -44,7 +44,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-velocity</artifactId>
-            <version>${spring-boot-starter-velocity.version}</version>
         </dependency>
     </dependencies>
 </project>

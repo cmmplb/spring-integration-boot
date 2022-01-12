@@ -54,7 +54,6 @@
         <dependency>
             <groupId>com.github.whvcse</groupId>
             <artifactId>easy-captcha</artifactId>
-            <version>${easy-captcha.version}</version>
         </dependency>
     </dependencies>
 </project>

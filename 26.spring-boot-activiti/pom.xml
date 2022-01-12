@@ -40,23 +40,21 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
-            <version>${mysql-connector-java.version}</version>
         </dependency>
         <!-- aop -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <!-- security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>${spring-boot-starter-security.version}</version>
         </dependency>
         <!-- activiti -->
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-spring-boot-starter</artifactId>
-            <version>${activiti-spring-boot-starter.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>mybatis</artifactId>
@@ -68,13 +66,11 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid-spring-boot-starter.version}</version>
         </dependency>
         <!-- mybatis-plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
     </dependencies>
 </project>

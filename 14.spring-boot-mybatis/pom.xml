@@ -45,13 +45,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
-            <version>${mysql-connector-java.version}</version>
         </dependency>
         <!-- mybatis分页插件 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>${pagehelper-spring-boot-starter.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -63,7 +61,6 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis-spring-boot-starter.version}</version>
         </dependency>
     </dependencies>
 

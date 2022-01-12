@@ -40,7 +40,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
-            <version>${mysql-connector-java.version}</version>
         </dependency>
         <!-- jdbc -->
         <dependency>

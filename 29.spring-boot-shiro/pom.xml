@@ -49,19 +49,16 @@
         <dependency>
             <groupId>com.github.whvcse</groupId>
             <artifactId>easy-captcha</artifactId>
-            <version>${easy-captcha.version}</version>
         </dependency>
         <!-- shiro-spring-boot -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-starter</artifactId>
-            <version>${shiro-spring-boot-starter.version}</version>
         </dependency>
         <!-- shiro-redis -->
         <dependency>
             <groupId>org.crazycake</groupId>
             <artifactId>shiro-redis</artifactId>
-            <version>${shiro-redis.version}</version>
         </dependency>
         <!-- 整合上面两个-版本没更新 -->
         <!--<dependency>
