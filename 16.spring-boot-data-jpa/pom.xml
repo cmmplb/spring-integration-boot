@@ -72,7 +72,6 @@
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
-                <version>${apt-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>

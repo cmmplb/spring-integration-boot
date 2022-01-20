@@ -1,4 +1,14 @@
 
+````
+可以加到启动脚本杀掉进程
+ps -ef | grep java | grep start | awk '{print $2}' | xargs kill -9
+启动jar包命令
+nohup java -jar XX.jar -Xms128M -Xmx1024M -server.port=80 XX.jar > XX.out 2>&1 &
+​
+#简化版
+nohup java -jar XX.jar  >XX.txt &
+````
+
 ####docker
 
 生成镜像 docker build  -t ImageName:TagName dir（如果没有java镜像，会先下载镜像后生成）

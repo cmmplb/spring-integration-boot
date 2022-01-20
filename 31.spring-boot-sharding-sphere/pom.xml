@@ -52,12 +52,10 @@
         <dependency>
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-            <version>${sharding-jdbc-spring-boot-starter.version}</version>
         </dependency>
         <dependency>
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-namespace</artifactId>
-            <version>${sharding-jdbc-spring-namespace.version}</version>
         </dependency>
         <!--
         <dependency>

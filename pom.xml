@@ -57,9 +57,9 @@
         <module>28.spring-boot-xxl-job</module>
         <module>29.spring-boot-shiro</module>
         <module>30.spring-boot-security</module>
-        <module>50.spring-boot-admin</module>
         <module>31.spring-boot-sharding-sphere</module>
         <module>32.spring-boot-elk</module>
+        <module>50.spring-boot-admin</module>
     </modules>
 
     <!-- 依赖声明 -->
