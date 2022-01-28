@@ -1,6 +1,6 @@
 package com.cmmplb.shiro.config.shiro;
 
-import com.cmmplb.common.redis.service.RedisService;
+import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.config.properties.RedisProperties;
 import com.cmmplb.shiro.config.properties.ShiroProperties;
 import com.cmmplb.shiro.config.shiro.session.CustomSessionDao;

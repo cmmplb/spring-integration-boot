@@ -1,6 +1,6 @@
 package com.cmmplb.mybatis.plus.config;
 
-import com.cmmplb.common.redis.service.RedisService;
+import com.cmmplb.redis.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.cache.Cache;
 import org.springframework.data.redis.connection.RedisServerCommands;

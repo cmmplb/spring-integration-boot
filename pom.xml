@@ -83,6 +83,12 @@
                 <artifactId>spring-boot-starter-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!-- report公共核心模块 -->
+            <dependency>
+                <groupId>com.cmmplb</groupId>
+                <artifactId>spring-boot-starter-report</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!-- swagger模块 -->
             <dependency>
                 <groupId>com.cmmplb</groupId>

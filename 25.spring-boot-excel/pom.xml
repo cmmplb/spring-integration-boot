@@ -23,6 +23,11 @@
 
     <!-- 依赖 -->
     <dependencies>
+        <!-- report模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-report</artifactId>
+        </dependency>
         <!-- web模块 -->
         <dependency>
             <groupId>com.cmmplb</groupId>

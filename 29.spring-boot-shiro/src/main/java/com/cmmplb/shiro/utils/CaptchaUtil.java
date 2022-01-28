@@ -1,8 +1,8 @@
 package com.cmmplb.shiro.utils;
 
-import com.cmmplb.common.redis.service.RedisService;
 import com.cmmplb.core.utils.ServletUtil;
 import com.cmmplb.core.utils.SpringUtil;
+import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.constants.RedisConstants;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;

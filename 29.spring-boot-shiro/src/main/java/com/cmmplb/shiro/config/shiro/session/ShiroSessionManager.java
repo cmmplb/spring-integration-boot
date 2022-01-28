@@ -1,8 +1,8 @@
 package com.cmmplb.shiro.config.shiro.session;
 
-import com.cmmplb.common.redis.service.RedisService;
 import com.cmmplb.core.threads.ThreadContext;
 import com.cmmplb.core.utils.SpringUtil;
+import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.constants.AuthorizationConstants;
 import com.cmmplb.core.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;

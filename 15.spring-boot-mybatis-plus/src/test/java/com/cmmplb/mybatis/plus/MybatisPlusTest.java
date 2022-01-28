@@ -1,7 +1,7 @@
 package com.cmmplb.mybatis.plus;
 
-import com.cmmplb.common.redis.service.RedisService;
 import com.cmmplb.mybatis.plus.dao.UserMapper;
+import com.cmmplb.redis.service.RedisService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,8 +1,8 @@
 package com.cmmplb.shiro.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.common.redis.service.RedisService;
 import com.cmmplb.core.utils.ServletUtil;
+import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.constants.AuthorizationConstants;
 import com.cmmplb.core.exception.CustomException;
 import com.cmmplb.core.result.HttpCodeEnum;

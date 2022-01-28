@@ -15,7 +15,7 @@ import java.util.Date;
  */
 
 @Data
-public class StaffExcelReadData {
+public class ReadData {
 
     /**
      * 员工编号-用名字去匹配,这里需要注意,如果名字重复,会导致只有一个字段读取到数据

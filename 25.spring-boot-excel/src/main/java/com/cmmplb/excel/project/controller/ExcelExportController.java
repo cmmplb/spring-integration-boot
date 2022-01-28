@@ -1,19 +1,22 @@
 package com.cmmplb.excel.project.controller;
 
 import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.excel.project.data.StaffExcelExportData;
-import com.cmmplb.excel.project.utils.ExcelUtil;
 import com.cmmplb.core.utils.RandomUtil;
+import com.cmmplb.excel.project.data.ExportData;
+import com.cmmplb.report.excel.entity.ExportSheet;
+import com.cmmplb.report.excel.utils.ExcelUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author penglibo
@@ -27,36 +30,37 @@ import java.util.*;
 @RequestMapping("/excel/export")
 public class ExcelExportController {
 
-    @Autowired
-    private ExcelUtil<StaffExcelExportData> excelUtil;
-
     @ApiOperation("单sheet页导出")
     @ApiOperationSupport(order = 1)
     @GetMapping("/single")
     public void writeSingleExcel() {
-        List<StaffExcelExportData> list = getList();
+        List<ExportData> list = getList();
         String fileName = "一个Excel文件";
-        String sheetName = "第一个sheet";
-        excelUtil.writeSingleExcel(fileName, sheetName, new StaffExcelExportData(), list);
+        ExcelUtil.writeSingle(fileName, ExportData.class, list);
     }
 
     @ApiOperation("多sheet页导出")
     @ApiOperationSupport(order = 2)
     @GetMapping("/many")
     public void writeManyExcel() {
-        List<StaffExcelExportData> list = getList();
+        List<ExportData> list = getList();
         String fileName = "一个Excel文件";
         String sheetName = "第一个sheet";
-        List<Integer> sheetNos = Arrays.asList(1, 2);
-        excelUtil.writeManyExcel(fileName, sheetName, sheetNos, new StaffExcelExportData(), list);
+        List<ExportSheet<?>> sheetList = new ArrayList<>();
+        ExportSheet<ExportData> importManySheet = new ExportSheet<>();
+        sheetList.add(importManySheet);
+
+        ExportSheet<ExportData> importManySheet1 = new ExportSheet<>();
+        sheetList.add(importManySheet1);
+        ExcelUtil.writeMany(fileName, sheetName, sheetList);
     }
 
-    private List<StaffExcelExportData> getList() {
-        List<StaffExcelExportData> list = new ArrayList<>();
-        StaffExcelExportData data;
+    private List<ExportData> getList() {
+        List<ExportData> list = new ArrayList<>();
+        ExportData data;
         Random random = new Random();
         for (int i = 0; i < 20; i++) {
-            data = new StaffExcelExportData();
+            data = new ExportData();
             data.setNumber(++i + "");
             data.setPost(RandomUtil.getRandomPost());
             data.setDepartment(RandomUtil.getRandomDepartment());
@@ -68,7 +72,7 @@ public class ExcelExportController {
             data.setIdCard(RandomUtil.getRandomCardID());
             data.setPhone(RandomUtil.getRandomPhone());
             data.setEntryYears(random.nextInt(15) + 1);
-            data.setEntryDate(new Date(new Date().getTime() - (data.getEntryYears() * 31536000000L)));
+            data.setEntryDate(new Date(System.currentTimeMillis() - (data.getEntryYears() * 31536000000L)));
             data.setRemark("");
             list.add(data);
         }
