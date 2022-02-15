@@ -2,6 +2,7 @@ package com.cmmplb.shiro.original.config;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import com.cmmplb.core.constants.StringConstants;
 import com.cmmplb.core.utils.MD5Util;
 import com.cmmplb.redis.configuration.properties.RedisProperties;
 import com.cmmplb.redis.service.RedisService;
@@ -12,6 +13,7 @@ import com.cmmplb.shiro.original.config.core.session.CustomSessionDao;
 import com.cmmplb.shiro.original.config.core.session.ShiroSessionIdGenerator;
 import com.cmmplb.shiro.original.config.core.session.ShiroSessionListener;
 import com.cmmplb.shiro.original.config.core.session.ShiroSessionManager;
+import com.cmmplb.web.configuration.properties.ContextProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.codec.Base64;
@@ -24,6 +26,7 @@ import org.apache.shiro.web.servlet.SimpleCookie;
 import org.crazycake.shiro.RedisSentinelManager;
 import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +47,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties({ShiroProperties.class, RedisProperties.class})
+@ConditionalOnProperty(prefix = ShiroProperties.PREFIX, name = ShiroProperties.GENERAL, havingValue = StringConstants.TRUE)
 public class ShiroConfig {
 
     @Autowired

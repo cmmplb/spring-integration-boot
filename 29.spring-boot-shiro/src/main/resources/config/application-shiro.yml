@@ -1,15 +1,25 @@
 shiro:
-  split: true #前后端分离
-  whitelist: #白名单
+  # 前后端分离
+  split: false
+  # 是否使用shiro默认配置
+  general: true
+  # 白名单
+  whitelist:
     - /css/**
     - /js/**
     - /favicon.ico
     - /doc.html
-    - /webjars/**           #swagger相关资源
+    # swagger相关资源
+    - /webjars/**
     - /swagger-ui.html
     - /swagger-resources/**
-    - /v3/api-docs/**       #v2改成v3了
-    - /druid/**             #druid数据源监控页面不拦截
-    - /logout               #配置退出过滤器，其中具体的退出代码Shiro已经替我们实现了
-    - /basic/**             #基础管理里面的接口都放行
-    - /login/do             #放行登录请求
+    # v2改成v3了
+    - /v3/api-docs/**
+    # druid数据源监控页面不拦截
+    - /druid/**
+    # 配置退出过滤器，其中具体的退出代码Shiro已经替我们实现了
+    - /logout
+    # 基础管理里面的接口都放行
+    - /basic/**
+    # 放行登录请求
+    - /login/do

@@ -2,6 +2,7 @@ package com.cmmplb.shiro.custom.config;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import com.cmmplb.core.constants.StringConstants;
 import com.cmmplb.redis.configuration.properties.RedisProperties;
 import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.custom.config.core.DefaultSubjectFactory;
@@ -19,6 +20,7 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.crazycake.shiro.RedisSentinelManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,6 +40,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties({RedisProperties.class, ShiroProperties.class})
+@ConditionalOnProperty(prefix = ShiroProperties.PREFIX, name = ShiroProperties.GENERAL, havingValue = StringConstants.FALSE)
 public class ShiroConfig {
 
     @Autowired
