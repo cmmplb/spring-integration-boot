@@ -1,8 +1,6 @@
 package com.cmmplb.shiro;
 
-import com.cmmplb.shiro.config.properties.ShiroProperties;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -13,12 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ShiroTest {
 
-    @Autowired
-    private ShiroProperties shiroProperties;
-
     @Test
     public void contextLoads() {
-        System.out.println(shiroProperties);
-
     }
 }
