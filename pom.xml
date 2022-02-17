@@ -41,62 +41,27 @@
         <module>12.spring-boot-aop-log</module>
         <module>13.spring-boot-knife4j</module>
         <module>14.spring-boot-mybatis</module>
-        <module>15.spring-boot-mybatis-plus</module>
-        <module>16.spring-boot-data-jpa</module>
-        <module>17.spring-boot-dynamic-datasource</module>
-        <module>18.spring-boot-cache</module>
-        <module>19.spring-boot-mongodb</module>
-        <module>20.spring-boot-rabbitmq</module>
-        <module>21.spring-boot-rocketmq</module>
-        <module>22.spring-boot-kafka</module>
-        <module>23.spring-boot-canal</module>
-        <module>24.spring-boot-elasticsearch</module>
-        <module>25.spring-boot-excel</module>
-        <module>26.spring-boot-activiti</module>
-        <module>27.spring-boot-flyway</module>
-        <module>28.spring-boot-xxl-job</module>
-        <module>29.spring-boot-shiro</module>
-        <module>30.spring-boot-security</module>
-        <module>31.spring-boot-sharding-sphere</module>
-        <module>32.spring-boot-elk</module>
+        <module>15.spring-boot-mybatis-mapper</module>
+        <module>16.spring-boot-mybatis-plus</module>
+        <module>17.spring-boot-data-jpa</module>
+        <module>18.spring-boot-dynamic-datasource</module>
+        <module>19.spring-boot-cache</module>
+        <module>20.spring-boot-mongodb</module>
+        <module>21.spring-boot-rabbitmq</module>
+        <module>22.spring-boot-rocketmq</module>
+        <module>23.spring-boot-kafka</module>
+        <module>24.spring-boot-canal</module>
+        <module>25.spring-boot-elasticsearch</module>
+        <module>26.spring-boot-excel</module>
+        <module>27.spring-boot-activiti</module>
+        <module>28.spring-boot-flyway</module>
+        <module>29.spring-boot-xxl-job</module>
+        <module>30.spring-boot-shiro</module>
+        <module>31.spring-boot-security</module>
+        <module>32.spring-boot-sharding-sphere</module>
+        <module>33.spring-boot-elk</module>
         <module>50.spring-boot-admin</module>
     </modules>
-
-    <!-- 依赖声明 -->
-    <dependencyManagement>
-        <dependencies>
-            <!-- core公共核心模块 -->
-            <dependency>
-                <groupId>com.cmmplb</groupId>
-                <artifactId>spring-boot-starter-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <!-- web模块 -->
-            <dependency>
-                <groupId>com.cmmplb</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <!-- redis模块 -->
-            <dependency>
-                <groupId>com.cmmplb</groupId>
-                <artifactId>spring-boot-starter-redis</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <!-- report公共核心模块 -->
-            <dependency>
-                <groupId>com.cmmplb</groupId>
-                <artifactId>spring-boot-starter-report</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <!-- swagger模块 -->
-            <dependency>
-                <groupId>com.cmmplb</groupId>
-                <artifactId>spring-boot-starter-swagger</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <!-- plugin -->
     <build>
