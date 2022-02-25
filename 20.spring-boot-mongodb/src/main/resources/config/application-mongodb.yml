@@ -1,6 +1,8 @@
 spring:
   data:
     mongodb:
-      host: localhost
+      host: 193.112.252.232
       port: 27017
       database: springboot_mongodb
+      username: root
+      password: cmmplb

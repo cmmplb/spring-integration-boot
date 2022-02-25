@@ -28,15 +28,15 @@
             <groupId>com.cmmplb</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- swagger模块 -->
-        <dependency>
-            <groupId>com.cmmplb</groupId>
-            <artifactId>spring-boot-starter-swagger</artifactId>
-        </dependency>
         <!-- mongodb -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver</artifactId>
+            <version>3.10.1</version><!-- 3.12.10 -->
         </dependency>
     </dependencies>
 </project>
