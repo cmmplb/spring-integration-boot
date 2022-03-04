@@ -20,10 +20,10 @@ import java.util.Date;
 public class User {
 
     /**
-     * id
+     * _id
      */
     @Id
-    private String id;
+    private String _id;
 
     /**
      * 姓名
@@ -45,13 +45,17 @@ public class User {
     /**
      * 描述
      */
-    @Transient
+    @Transient // 不被持久化
     private String description;
+
+    public static final String COLUMN_ID = "id";
 
     public static final String COLUMN_NAME = "name";
 
     public static final String COLUMN_SEX = "sex";
 
     public static final String COLUMN_BIRTHDAY = "birthday";
+
+    public static final String COLUMN_DESCRIPTION = "description";
 
 }

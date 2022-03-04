@@ -36,7 +36,7 @@ public class UserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Result<Boolean> updateById(@PathVariable(value = "id") String id, @RequestBody User user) {
-        user.setId(id);
+        user.set_id(id);
         return ResultUtil.success(userService.updateById(user));
     }
 

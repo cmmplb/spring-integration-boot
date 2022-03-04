@@ -2,6 +2,7 @@ package com.cmmplb.mongodb.service.impl;
 
 import com.cmmplb.core.beans.PageResult;
 import com.cmmplb.core.utils.StringUtil;
+import com.cmmplb.core.utils.UUIDUtil;
 import com.cmmplb.mongodb.dao.UserDao;
 import com.cmmplb.mongodb.dto.UserPageQueryDTO;
 import com.cmmplb.mongodb.entity.User;
@@ -39,7 +40,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean save(User user) {
-        log.info("save:{}", userDao.save(user));
+        user.set_id(UUIDUtil.uuidTrim());
+        userDao.save(user);
         return true;
     }
 
