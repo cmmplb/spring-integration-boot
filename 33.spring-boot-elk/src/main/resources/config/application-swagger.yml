@@ -1,5 +1,0 @@
-swagger:
-  enabled: true
-
-knife4j:
-  enable: true
