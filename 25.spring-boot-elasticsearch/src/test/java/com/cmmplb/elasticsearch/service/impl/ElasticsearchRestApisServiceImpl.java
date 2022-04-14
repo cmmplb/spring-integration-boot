@@ -1,44 +1,38 @@
-package com.cmmplb.elasticsearch;
+package com.cmmplb.elasticsearch.service.impl;
 
 import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.cmmplb.elasticsearch.service.ElasticsearchRestApisService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author penglibo
+ * @date 2022-03-11 11:31:37
+ * @since jdk 1.8
+ */
 
-@SpringBootTest
-public class ElasticsearchTests {
+@Service
+public class ElasticsearchRestApisServiceImpl implements ElasticsearchRestApisService {
 
     private static String addr = "localhost:9200";
-
-    public static void main(String[] args) {
-        // https://blog.csdn.net/qq_34777600/article/details/82142807
-        // <REST Verb> <Node>:<Port>/<Index>/<Type>/<ID>
-        // <REST Verb>：REST风格的语法谓词
-        // <Node>:节点ip
-        // <port>:节点端口号，默认9200
-        // <Index>:索引名
-        // <Type>:文档类型 - 7.0以上只有一个_doc
-        // <ID>:操作对象的ID号
-
-        // checkHealth(); // 检查集群
-        // createIndex(); // 创建索引
-    }
 
     /**
      * 检测集群是否健康。 确保9200端口号可用
      */
-    private static void checkHealth() {
+    @Override
+    public void checkHealth() {
         String health = addr + "/_cat/health?v";
         System.out.println(HttpRequest.get(health).timeout(-1).execute().body());
     }
 
     /**
-     * 创建索引
+     * 创建索引=>REST-APIs方式
      */
-    private static void createIndex() {
+    @Override
+    public void createIndex() {
         // api 地址：https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html
 
         // rest请求创建索引==target 索引名称
@@ -48,10 +42,10 @@ public class ElasticsearchTests {
         // POST /<target>/_create/<_id>
         // 7.0以下有多个类型type，7.0以上只有一个type。叫_doc
         // 即: /索引名称/_doc(类型)/id
-
+        // ***注意id 可以在请求路径后面，不加则自动生成
         // 要自动生成文档 ID，请使用请求格式并省略此参数。POST /<target>/_doc/
         // String createUrl = "localhost:9200/cmmplb/_create/1";
-        String createUrl = addr + "/cmmplb/_doc/?pretty";
+        String createUrl = addr + "/cmmplb/_doc/1?pretty";
         // pretty参数表示返回结果格式美观。
 
         // 其他参数
@@ -76,4 +70,44 @@ public class ElasticsearchTests {
         String result = HttpRequest.post(createUrl).body(JSON.toJSONString(map)).timeout(-1).execute().body();
         System.out.println(result);
     }
+
+    @Override
+    public void get() {
+        // GET <index>/_doc/<_id>
+        // HEAD <index>/_doc/<_id>
+        // GET <index>/_source/<_id>
+        // HEAD <index>/_source/<_id>
+        String getUrl = addr + "/cmmplb/_doc/1?pretty";
+        String result = HttpRequest.get(getUrl).timeout(-1).execute().body();
+        System.out.println(result);
+    }
+
+    @Override
+    public void delete() {
+        // DELETE /<index>/_doc/<_id>
+        String deleteUrl = addr + "/cmmplb/_doc/yRHHd38B3Up-yZTczU-U";
+        HttpRequest.delete(deleteUrl).timeout(-1).execute().body();
+    }
+
+    @Override
+    public void update() {
+        // POST /<index>/_update/<_id>
+        String updateUrl = addr + "/cmmplb/_update/1";
+        // 添加field域
+        Map<String, Object> map1 = new HashMap<>();
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", 1);
+        map.put("title", "啊?");
+        map.put("content", "搜索服务器");
+
+        map1.put("doc",map);
+        System.out.println("============================");
+        System.out.println("============================");
+        System.out.println("============================");
+        System.out.println("============================");
+        System.out.println(HttpRequest.post(updateUrl).body(JSON.toJSONString(map1)).timeout(-1).execute().body());
+    }
+
+
 }

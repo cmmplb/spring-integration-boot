@@ -11,7 +11,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 /**
  * @author plb
- * @data 2020/6/12 9:58
+ * @date 2020/6/12 9:58
  * 全局异常捕获
  */
 

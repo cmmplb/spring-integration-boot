@@ -1,10 +1,19 @@
 package com.cmmplb.start;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,6 +24,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class StartTest {
+
+    @Data
+    @AllArgsConstructor
+    public static class Student {
+
+        private Long id;
+
+        private String name;
+    }
+
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+        // list.add(new Student(1L,"张三"));
+        // list.add(new Student(2L,"李四"));
+        // list.add(new Student(3L,"王二"));
+        // list.add(new Student(4L,"麻子"));
+        Map<Long, List<Student>> studentMap = list.stream().collect(Collectors.groupingBy(Student::getId));
+        System.out.println(studentMap);
+    }
 
     /**
      * 常用注解#
@@ -69,6 +97,18 @@ public class StartTest {
                     assertNotNull(new Object());
                 }
         );
+    }
+
+    @Test
+    public void test() {
+        String json = "[{\\\"controlGe\\\":\\\"1\\\",\\\"controlLe\\\":\\\"1\\\",\\\"controlPatternId\\\":\\\"次数\\\",\\\"rebateTypeCode\\\":\\\"RT02\\\",\\\"promotionId\\\":\\\"M-0000001650\\\",\\\"strategyId\\\":\\\"ZC1\\\",\\\"strategyTypeId\\\":\\\"ZC13\\\",\\\"tpStrategyId\\\":\\\"RT02\\\",\\\"tMonth\\\":\\\"12\\\",\\\"month\\\":\\\"12\\\"},{\\\"controlGe\\\":\\\"-2147483648\\\",\\\"controlLe\\\":\\\"30\\\",\\\"controlPatternId\\\":\\\"天数\\\",\\\"rebateTypeCode\\\":\\\"RT03\\\",\\\"promotionId\\\":\\\"M-0000001734\\\",\\\"strategyId\\\":\\\"ZC1\\\",\\\"strategyTypeId\\\":\\\"ZC11\\\",\\\"tpStrategyId\\\":\\\"RT03\\\",\\\"tMonth\\\":\\\"05\\\",\\\"month\\\":\\\"05\\\"},{\\\"controlGe\\\":\\\"1\\\",\\\"controlLe\\\":\\\"1\\\",\\\"controlPatternId\\\":\\\"次数\\\",\\\"rebateTypeCod\n" +
+                "2022-03-11 16:17:11.710 10298-10344/com.cestbon.marketing.assistant.dev I/console: [LOG][___Connect_-2055230675___]e\\\":\\\"RT01\\\",\\\"promotionId\\\":\\\"M-0000001735\\\",\\\"strategyId\\\":\\\"ZC1\\\",\\\"strategyTypeId\\\":\\\"ZC13\\\",\\\"tpStrategyId\\\":\\\"RT01\\\",\\\"tMonth\\\":\\\"03\\\",\\\"month\\\":\\\"03\\\"},{\\\"controlGe\\\":\\\"-2147483648\\\",\\\"controlLe\\\":\\\"30\\\",\\\"controlPatternId\\\":\\\"天数\\\",\\\"rebateTypeCode\\\":\\\"RT01\\\",\\\"promotionId\\\":\\\"M-0000001616\\\",\\\"strategyId\\\":\\\"ZC1\\\",\\\"strategyTypeId\\\":\\\"ZC11\\\",\\\"tpStrategyId\\\":\\\"RT01\\\",\\\"tMonth\\\":\\\"10\\\",\\\"month\\\":\\\"10\\\"},{\\\"controlGe\\\":\\\"-2147483648\\\",\\\"controlLe\\\":\\\"12\\\",\\\"controlPatternId\\\":\\\"月份\\\",\\\"rebateTypeCode\\\":null,\\\"promotionId\\\":\\\"M-0000001738\\\",\\\"strategyId\\\":\\\"ZC2\\\",\\\"strategyTypeId\\\":\\\"ZC25\\\",\\\"tpStrategyId\\\":\\\"RT01\\\",\\\"tMonth\\\":\\\"07\\\",\\\"month\\\":\\\"07\\\"},{\\\"controlGe\\\":\\\"1\\\",\\\"controlLe\\\":\\\"1\\\",\\\"controlPatternId\\\":\\\"次数\\\",\\\"rebateTypeCode\\\":\\\"RT01\\\",\\\"promotionId\\\":\\\"M-0000001604\\\",\\\"strategyId\\\":\\\"ZC1\\\",\\\"strategyTypeId\\\":\\\"ZC13\\\",\\\"tpStrategyId\\\":\\\"RT01\\\",\\\"tMonth\\\":\\\"11\\\",\\\"month\\\":\\\"11\\\"},{\\\"controlGe\\\":\\\"-2147483648\\\",\\\"controlLe\\\":\\\"1\\\",\\\"controlPatternId\\\":\\\"月份\\\",\\\"rebateTypeCod\n" +
+                "2022-03-11 16:17:11.710 10298-10344/com.cestbon.marketing.assistant.dev I/console: [LOG][___Connect_-2055230675___]e\\\":null,\\\"promotionId\\\":\\\"M-0000001639\\\",\\\"strategyId\\\":\\\"ZC3\\\",\\\"strategyTypeId\\\":\\\"ZC32\\\",\\\"tpStrategyId\\\":\\\"RT02\\\",\\\"tMonth\\\":\\\"11\\\",\\\"month\\\":\\\"11\\\"},{\\\"controlGe\\\":\\\"1\\\",\\\"controlLe\\\":\\\"2147483647\\\",\\\"controlPatternId\\\":\\\"张数\\\",\\\"rebateTypeCode\\\":null,\\\"promotionId\\\":\\\"M-0000001650\\\",\\\"strategyId\\\":\\\"ZC3\\\",\\\"strategyTypeId\\\":\\\"ZC34\\\",\\\"tpStrategyId\\\":\\\"RT02\\\",\\\"tMonth\\\":\\\"12\\\",\\\"month\\\":\\\"12\\\"},{\\\"controlGe\\\":\\\"1\\\",\\\"controlLe\\\":\\\"2147483647\\\",\\\"controlPatternId\\\":\\\"次数\\\",\\\"rebateTypeCode\\\":null,\\\"promotionId\\\":\\\"M-0000001699\\\",\\\"strategyId\\\":\\\"ZC2\\\",\\\"strategyTypeId\\\":\\\"ZC22\\\",\\\"tpStrategyId\\\":\\\"RT01\\\",\\\"tMonth\\\":\\\"12\\\",\\\"month\\\":\\\"12\\\"},{\\\"controlGe\\\":\\\"-2147483648\\\",\\\"controlLe\\\":\\\"3\\\",\\\"controlPatternId\\\":\\\"月份\\\",\\\"rebateTypeCode\\\":null,\\\"promotionId\\\":\\\"M-0000001604\\\",\\\"strategyId\\\":\\\"ZC2\\\",\\\"strategyTypeId\\\":\\\"ZC26\\\",\\\"tpStrategyId\\\":\\\"RT01\\\",\\\"tMonth\\\":\\\"11\\\",\\\"month\\\":\\\"11\\\"}]";
+        json = StringEscapeUtils.unescapeJava(json);
+        System.out.println(json);
+        List<Map<String, Object>> map = JSONObject.parseObject(json, new TypeReference<List<Map<String, Object>>>() {
+        });
+        System.out.println(map);
     }
 
 }

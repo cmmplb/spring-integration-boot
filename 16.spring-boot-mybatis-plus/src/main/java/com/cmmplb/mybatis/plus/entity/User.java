@@ -14,7 +14,7 @@ import java.util.Date;
 
 /**
  * @author plb
- * @data 2020/6/15 11:16
+ * @date 2020/6/15 11:16
  * 用户信息表
  */
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author penglibo
- * @data 2020/09/10 下午 08:54
+ * @date 2020/09/10 下午 08:54
  */
 
 @Slf4j
