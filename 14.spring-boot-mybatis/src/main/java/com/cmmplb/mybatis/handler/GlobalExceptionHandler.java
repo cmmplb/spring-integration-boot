@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
 @RestControllerAdvice
-public class GlobalExceptionHandler<T> extends com.cmmplb.core.handler.GlobalExceptionHandler<T> {
+public class GlobalExceptionHandler<T> extends com.cmmplb.web.handler.GlobalExceptionHandler<T> {
 
     @Override
     public Result<?> exceptionHandler(Exception e) {

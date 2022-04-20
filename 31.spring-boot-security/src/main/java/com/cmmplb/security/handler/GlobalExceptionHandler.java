@@ -7,7 +7,6 @@ import com.cmmplb.core.result.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.client.HttpClientErrorException;
 
 /**
  * @author plb
@@ -17,7 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 @Slf4j
 @RestControllerAdvice
-public class GlobalExceptionHandler<T> extends com.cmmplb.core.handler.GlobalExceptionHandler<T> {
+public class GlobalExceptionHandler<T> extends com.cmmplb.web.handler.GlobalExceptionHandler<T> {
 
     @Override
     public Result<?> exceptionHandler(Exception e) {

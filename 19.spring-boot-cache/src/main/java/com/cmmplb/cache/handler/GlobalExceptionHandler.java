@@ -18,7 +18,7 @@ import java.net.UnknownHostException;
 
 @Slf4j
 @RestControllerAdvice
-public class GlobalExceptionHandler<T> extends com.cmmplb.core.handler.GlobalExceptionHandler<T> {
+public class GlobalExceptionHandler<T> extends com.cmmplb.web.handler.GlobalExceptionHandler<T> {
 
     public static final String USERNAME_PASSWORD = "username-password";
 
