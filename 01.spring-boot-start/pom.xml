@@ -41,15 +41,15 @@
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
         <!-- web容器 -->
-         <dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-             <exclusions>
-                 <exclusion>
-                     <groupId>org.springframework.boot</groupId>
-                     <artifactId>spring-boot-starter-tomcat</artifactId>
-                 </exclusion>
-             </exclusions>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- jetty容器 -->
         <!-- <dependency>
@@ -57,15 +57,4 @@
             <artifactId>spring-boot-starter-jetty</artifactId>
         </dependency> -->
     </dependencies>
-
-    <!-- 插件 -->
-    <build>
-        <plugins>
-            <!-- docker-maven-plugin -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

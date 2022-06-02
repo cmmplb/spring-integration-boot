@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-tiny-fabric-deployment
+  labels:
+    app: mall-tiny-fabric
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-tiny-fabric
+  template:
+    metadata:
+      labels:
+        app: mall-tiny-fabric
+    spec:
+      containers:
+        - name: mall-tiny-fabric
+          # 指定Docker Hub中的镜像地址
+          image: macrodocker/mall-tiny-fabric:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+          env:
+            # 指定数据库连接地址
+            - name: spring.datasource.url
+              value: jdbc:mysql://mysql-service:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+            # 指定日志文件路径
+            - name: logging.path
+              value: /var/logs
+          volumeMounts:
+            - mountPath: /var/logs
+              name: log-volume
+      volumes:
+        - name: log-volume
+          hostPath:
+            path: /home/docker/mydata/app/mall-tiny-fabric/logs
+            type: DirectoryOrCreate

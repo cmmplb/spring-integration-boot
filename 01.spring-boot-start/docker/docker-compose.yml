@@ -16,7 +16,6 @@ networks:
   cmmplb:
     external: true
 
-
 # 报错：ERROR: for spring-boot-start  Cannot start service spring-boot-start:
 #driver failed programming external connectivity on endpoint spring-boot-start
 #(387e89ce3216d44ffc7419aa78f3f0647cef21c8a178ec4f55468d3d548c67e8):

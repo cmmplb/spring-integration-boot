@@ -35,13 +35,8 @@ public class StartTest {
     }
 
     public static void main(String[] args) {
-        List<Student> list = new ArrayList<>();
-        // list.add(new Student(1L,"张三"));
-        // list.add(new Student(2L,"李四"));
-        // list.add(new Student(3L,"王二"));
-        // list.add(new Student(4L,"麻子"));
-        Map<Long, List<Student>> studentMap = list.stream().collect(Collectors.groupingBy(Student::getId));
-        System.out.println(studentMap);
+        System.out.println("1");
+        // \u000d System.out.println("Hello");
     }
 
     /**

@@ -1,0 +1,73 @@
+# Default values for register-server.
+# This is a YAML-formatted file.
+
+# 节点数量
+replicaCount: 1
+namespace: sup-v3
+# 镜像库
+image:
+  repository: "docker.steam.crbeverage.com:80/supv3/crbr-cloud-gateway"
+  pullPolicy: Always
+  version: ${IMAGE_TAG_NEW}
+
+# 暴露端口
+deployment:
+  managementPort: 31001
+
+# 环境变量
+env:
+  open:
+    #APM 配置
+    APM_SERVER: http://apm-server.elastic-system:8200
+    APM_PACKAGE: com.crbr
+    ## apollo配置
+    ENV: uat
+    PROFILE_ACTIVE: uat
+    APP_ID: crbr-cloud-gateway
+    APOLLO_META: http://apollo-service-apollo-configservice.apollo-system:8080
+    ## LOG
+    LOG_CONFIG: /logback-spring.xml
+    LOG_PATH: /nas/logs/crbr-logs/crbr-service-gateway/application/
+    JVM_MEM: "-XX:+AlwaysPreTouch -Xms1024m -Xmx1600m -Dio.netty.leakDetectionLevel=advanced"
+    JVM_GC: "-XX:+UseG1GC -XX:+UseStringDeduplication -XX:InitiatingHeapOccupancyPercent=30 -XX:MaxGCPauseMillis=200 -XX:GCTimeRatio=19 -XX:G1HeapWastePercent=10 -XX:ConcGCThreads=4 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=31 -XX:GCLogFileSize=100M -Xloggc:/nas/logs/crbr-logs/crbr-service-gateway/application/gc-app-name-%t.log"
+
+# 存储
+persistence:
+  enabled: true
+  pvcName: uat-sup-nas-app
+  ## A manually managed Persistent Volume and Claim
+  ## Requires persistence.enabled: true
+  ## If defined, PVC must be created manually before volume will be bound
+  # existingClaim:
+  # subPath:
+
+# service
+service:
+  name: crbr-cloud-gateway
+  enabled: true
+  type: ClusterIP
+  port: 31001
+  labal:
+
+# ingress
+ingress:
+  enabled: false
+  host: ""
+  path: /
+
+# 资源配置
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources,such as Minikube. If you do want to specify resources,uncomment the following
+  # lines,adjust them as necessary,and remove the curly braces after 'resources:'.
+  limits:
+    cpu: 4
+    memory: 4Gi
+  requests:
+    cpu: 100m
+    memory: 4Gi
+http:
+  url: admin:admin@127.0.0.1
+  path: actuator/health
+  scheme: HTTP
