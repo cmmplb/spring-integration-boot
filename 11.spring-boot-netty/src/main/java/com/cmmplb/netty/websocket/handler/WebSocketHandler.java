@@ -40,7 +40,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
     }
 
     // 服务器接收客户端的数据信息
-    // @Override
+    @Override
     // 5.0 核心改变
     // -简化 handler 类型继承关系
     // -channelRead0() → messageReceived()
@@ -62,7 +62,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
         channelGroup.writeAndFlush(new TextWebSocketFrame(message));
     }
 
-    @Override
+    // @Override
     protected void messageReceived(ChannelHandlerContext channelHandlerContext, TextWebSocketFrame textWebSocketFrame) throws Exception {
         System.out.println("服务器收到的数据:" + textWebSocketFrame.text());
     }

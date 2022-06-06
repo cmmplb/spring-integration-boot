@@ -9,9 +9,9 @@ FROM java:8
 ARG workdir=/tmp
 ARG jarName=spring-boot-start.jar
 
-
 # 添加文件到WORKDIR并更改名称为app.jar 当前maven目录生成的文件复制到docker容器的/目录下
-ADD ./maven/${jarName} ../tmp/app.jar
+# 使用assembly参数配置后，jar包会拷贝到docker build目录下
+ADD ./maven/${jarName} ../${workdir}/app.jar
 
 #==============================================================
 #VOLUME ${workdir}:把宿主机的目录（该目录可以通过docker inspect dockerName查看）挂载到容器中的${workdir}这个目录，

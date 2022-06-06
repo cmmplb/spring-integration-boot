@@ -1,7 +1,8 @@
 version: "3"
 services:
   spring-boot-start:
-    image: spring-boot-start:1.0.0
+    #image: 1045599379/cmmplb:spring-boot-start-1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/cmmplb/spring-boot-start:1.0.0
     container_name: spring-boot-start
     restart: always
     ports:
@@ -9,7 +10,7 @@ services:
     environment:
       - COMPOSE_PROJECT_NAME=spring-boot-start
     volumes:
-      - ./data/:/logs/
+      - ./data/:/Users/penglibo/Cmmplb/Logs
     networks:
       - cmmplb
 networks:

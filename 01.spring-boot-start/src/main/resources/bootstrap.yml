@@ -15,6 +15,7 @@ spring.main.allow-bean-definition-overriding: true
 spring.profiles.group:
   local:
     - compression
+    - context
     - jetty
     - logging
     - tomcat

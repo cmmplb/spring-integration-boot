@@ -2,6 +2,7 @@ package com.cmmplb.log.aspect;
 
 import com.cmmplb.core.threads.ThreadContext;
 import com.cmmplb.core.utils.IpUtil;
+import com.cmmplb.core.utils.ServletUtil;
 import com.cmmplb.core.utils.SpringUtil;
 import com.cmmplb.log.annotations.SysLog;
 import com.cmmplb.log.dao.LogDao;
@@ -76,9 +77,8 @@ public class LogAspect {
             }
             log.setParams(params.toString());
         }
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         // 设置IP地址
-        log.setIp(IpUtil.getIpAddr(Objects.requireNonNull(requestAttributes).getRequest()));
+        log.setIp(IpUtil.getIpAddress(ServletUtil.getRequest()));
         // 模拟一个用户名
         log.setUsername("cmmplb");
         log.setCreateTime(new Date());

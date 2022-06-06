@@ -11,6 +11,8 @@ nohup java -jar XX.jar  >XX.txt &
 
 ####docker
 
+docker run -p 80:80 --name start 1045599379/cmmplb:spring-boot-start-1.0.0
+
 生成镜像 docker build  -t ImageName:TagName dir（如果没有java镜像，会先下载镜像后生成）
    
 ````

@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * 5.0:ChannelInboundHandlerAdapter, ChannelOutboundHandlerAdapter, 和 ChannelDuplexHandlerAdapter 弃用了， 被 ChannelHandlerAdapter 取代.
  * 因为现在你无法区分一个 handler是 inbound handler 或者 outbound handler, 所以CombinedChannelDuplexHandler 被 ChannelHandlerAppender取代.
  */
-public class ClientHandler extends ChannelHandlerAdapter/*ChannelInboundHandlerAdapter*/ {
+public class ClientHandler extends /*ChannelHandlerAdapter*/ChannelInboundHandlerAdapter {
 
     private TcpClient client;
 

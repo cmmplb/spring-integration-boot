@@ -10,6 +10,7 @@ import com.cmmplb.netty.socket.enums.CmdEnum;
 import com.cmmplb.netty.socket.factory.BusinessFactory;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
@@ -28,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 因为现在你无法区分一个 handler是 inbound handler 或者 outbound handler, 所以CombinedChannelDuplexHandler 被 ChannelHandlerAppender取代.
  */
 
-public class ServerHandler extends ChannelHandlerAdapter/*ChannelInboundHandlerAdapter*/ {  //
+public class ServerHandler extends /*ChannelHandlerAdapter*/ChannelInboundHandlerAdapter {  //
 
     private static final Logger logger = LoggerFactory.getLogger(ServerHandler.class);
 
