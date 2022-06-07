@@ -7,22 +7,23 @@ if ! [ -x "$(command -v sshpass)" ]; then
 fi
 
 # 镜像名
-IMAGE_NAME='bolingcavalry/probedemo'
+# IMAGE_NAME='1045599379/cmmplb:spring-boot-start-1.0.0'
+IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/cmmplb/spring-boot-start:1.0.0'
 
 # TAG名
-TAG_NAME='0.0.1'
+TAG_NAME='1.0.0'
 
 # 配置了deployment和service的yaml文件名
 DEPLOY_SERVICE_YAML='probedemo.yaml'
 
 # K8S环境的IP地址
-K8S_IP_ADDRESS='192.168.50.135'
+K8S_IP_ADDRESS='127.0.0.1'
 
 # K8S环境的SSH账号
 K8S_SSH_ACCOUNT='root'
 
 # 8S环境的SSH密码
-K8S_SSH_PSWD='888888'
+K8S_SSH_PSWD='root'
 
 # K8S上存放tar和yaml文件的位置
 K8S_FILE_PATH='~/deploy_temp'
