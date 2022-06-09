@@ -10,10 +10,12 @@ function stop()
 	echo '=====停止====='
 	docker-compose -f docker-compose.yml down
 }
+# docker-compose -f docker-compose.yml restart
 function restart()
 {
 	echo '=====重启====='
-	docker-compose -f docker-compose.yml restart
+	docker-compose -f docker-compose.yml down
+	docker-compose -f docker-compose.yml up -d
 }
 case $1 in
 	"start")
