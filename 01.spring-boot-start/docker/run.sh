@@ -3,19 +3,19 @@
 function start()
 {
 	echo '=====运行====='
-	docker-compose -f docker-compose.yml up -d
+	/usr/local/bin/docker-compose -f docker-compose.yml up -d
 }
 function stop()
 {
 	echo '=====停止====='
-	docker-compose -f docker-compose.yml down
+	/usr/local/bin/docker-compose -f docker-compose.yml down
 }
-# docker-compose -f docker-compose.yml restart
+# /usr/local/bin/docker-compose -f docker-compose.yml restart
 function restart()
 {
 	echo '=====重启====='
-	docker-compose -f docker-compose.yml down
-	docker-compose -f docker-compose.yml up -d
+	/usr/local/bin/docker-compose -f docker-compose.yml down
+	/usr/local/bin/docker-compose -f docker-compose.yml up -d
 }
 case $1 in
 	"start")
