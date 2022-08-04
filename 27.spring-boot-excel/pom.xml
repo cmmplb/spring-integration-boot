@@ -11,28 +11,42 @@
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
     <!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。 -->
-    <artifactId>spring-boot-admin</artifactId>
+    <artifactId>spring-boot-excel</artifactId>
     <!-- 项目ID，项目坐标核心元素，项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。 -->
-    <groupId>com.cmmplb.admin</groupId>
+    <groupId>com.cmmplb.excel</groupId>
     <!-- 项目的打包类型：pom、jar、war -->
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <!-- 项目名称 -->
     <name>${project.artifactId}</name>
     <!-- 描述信息 -->
     <description>${project.artifactId}</description>
 
-    <!-- 子模块 -->
-    <modules>
-        <module>spring-boot-admin-server</module>
-        <module>spring-boot-admin-client</module>
-    </modules>
-
     <!-- 依赖 -->
     <dependencies>
-        <!-- 公共web模块 -->
+        <!-- report模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-report</artifactId>
+        </dependency>
+        <!-- web模块 -->
         <dependency>
             <groupId>com.cmmplb</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- swagger模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
+        </dependency>
+        <!-- alibaba.easyexcel -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+        </dependency>
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
         </dependency>
     </dependencies>
 </project>

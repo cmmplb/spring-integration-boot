@@ -19,7 +19,7 @@
     <!-- 项目名称 -->
     <name>${project.artifactId}</name>
     <!-- 描述信息 -->
-    <description>spring-boot-config</description>
+    <description>${project.artifactId}</description>
 
     <!-- 依赖 -->
     <dependencies>

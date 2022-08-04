@@ -4,14 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <!-- 父工程 -->
     <parent>
-        <artifactId>spring-boot-admin</artifactId>
-        <groupId>com.cmmplb.admin</groupId>
+        <artifactId>spring-integration-boot</artifactId>
+        <groupId>com.cmmplb</groupId>
         <version>1.0.0</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
     <!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。 -->
-    <artifactId>spring-boot-admin-server</artifactId>
+    <artifactId>spring-boot-security</artifactId>
+    <!-- 项目ID，项目坐标核心元素，项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。 -->
+    <groupId>com.cmmplb.security</groupId>
     <!-- 项目的打包类型：pom、jar、war -->
     <packaging>jar</packaging>
     <!-- 项目名称 -->
@@ -21,21 +23,35 @@
 
     <!-- 依赖 -->
     <dependencies>
-        <!-- admin-server -->
+        <!-- web模块 -->
         <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- 登录认证 -->
+        <!-- swagger模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
+        </dependency>
+        <!-- redis -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-redis</artifactId>
+        </dependency>
+        <!-- security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!-- 掉线发送邮件通知 -->
+        <!-- freemarker -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <!-- 验证码工具 -->
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
         </dependency>
     </dependencies>
-
 </project>

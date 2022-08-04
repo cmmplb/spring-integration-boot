@@ -1,2 +1,0 @@
-# 执行maven命令构建项目
-mvn clean package -U -DskipTests

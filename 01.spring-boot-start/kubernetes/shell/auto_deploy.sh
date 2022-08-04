@@ -14,7 +14,7 @@ IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/cmmplb/spring-boot-start:1.0.0'
 TAG_NAME='1.0.0'
 
 # 配置了deployment和service的yaml文件名
-DEPLOY_SERVICE_YAML='probedemo.yaml'
+DEPLOY_SERVICE_YAML='springboot-start-service-deployment.yaml'
 
 # K8S环境的IP地址
 K8S_IP_ADDRESS='127.0.0.1'
