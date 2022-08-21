@@ -19,7 +19,7 @@ import javax.servlet.ServletException;
 
 @Slf4j
 @RestControllerAdvice
-public class GlobalExceptionHandler<T> extends com.cmmplb.web.handler.GlobalExceptionHandler<T> {
+public class GlobalExceptionHandler<T> extends com.cmmplb.core.handler.GlobalExceptionHandler<T> {
 
     @Override
     public Result<?> exceptionHandler(Exception e) {
