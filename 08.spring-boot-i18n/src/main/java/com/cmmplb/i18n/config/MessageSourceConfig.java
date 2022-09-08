@@ -8,6 +8,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.lang.NonNull;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -24,7 +25,6 @@ import java.util.Locale;
  * @date 2021-09-14 11:58:58
  * @since jdk 1.8
  */
-
 
 @Configuration
 @EnableConfigurationProperties(MessageSourceProperties.class)
@@ -82,7 +82,7 @@ public class MessageSourceConfig {
     public WebMvcConfigurer localeInterceptor() {
         return new WebMvcConfigurer() {
             @Override
-            public void addInterceptors(InterceptorRegistry registry) {
+            public void addInterceptors(@NonNull InterceptorRegistry registry) {
                 LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
                 localeInterceptor.setParamName(LANG);
                 registry.addInterceptor(localeInterceptor);

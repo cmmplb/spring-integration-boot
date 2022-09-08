@@ -27,7 +27,7 @@ public class I18nValidatedController {
 
     @PostMapping("/params")
     @ApiOperation("参数国际化校验")
-    public Result<DemoDTO>  demoOne(@RequestBody @Validated/*({Insert.class})*/ DemoDTO dto) {
+    public Result<DemoDTO>  demoOne(@RequestBody @Validated DemoDTO dto) {
         return ResultUtil.success(dto);
     }
 

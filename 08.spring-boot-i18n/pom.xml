@@ -26,22 +26,12 @@
         <!-- core公共核心模块 -->
         <dependency>
             <groupId>com.cmmplb</groupId>
-            <artifactId>spring-boot-starter-core</artifactId>
-        </dependency>
-        <!-- web启动器 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- swagger模块 -->
         <dependency>
             <groupId>com.cmmplb</groupId>
             <artifactId>spring-boot-starter-swagger</artifactId>
-        </dependency>
-        <!-- validation -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
     </dependencies>
 </project>
