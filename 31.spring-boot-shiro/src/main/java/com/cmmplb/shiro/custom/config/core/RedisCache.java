@@ -1,7 +1,7 @@
 package com.cmmplb.shiro.custom.config.core;
 
 import com.cmmplb.core.utils.ObjectUtil;
-import com.cmmplb.redis.serializer.JsonRedisSerializer;
+import com.cmmplb.redis.serializer.FastJson2JsonRedisSerializer;
 import com.cmmplb.shiro.general.constants.AuthorizationConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.cache.Cache;
@@ -31,7 +31,7 @@ import java.util.*;
 public class RedisCache<K, V> implements Cache<K, V> {
 
     private RedisSerializer<String> keySerializer = new StringRedisSerializer();
-    private RedisSerializer<Object> valueSerializer = new JsonRedisSerializer<>(Object.class);
+    private RedisSerializer<Object> valueSerializer = new FastJson2JsonRedisSerializer<>(Object.class);
     ;
     private IRedisManager redisManager;
     private String keyPrefix = AuthorizationConstants.UID_PERMISSIONS_CACHE_PREFIX;

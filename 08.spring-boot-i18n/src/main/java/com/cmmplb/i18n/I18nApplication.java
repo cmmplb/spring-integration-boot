@@ -1,6 +1,7 @@
 package com.cmmplb.i18n;
 
 import com.cmmplb.core.utils.SpringApplicationUtil;
+import com.cmmplb.swagger.annotation.EnableSwagger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**

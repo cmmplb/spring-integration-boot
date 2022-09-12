@@ -73,7 +73,7 @@ public class LoginServiceImpl implements LoginService {
         // 设置登录缓存信息
         redisService.set(AuthorizationConstants.AUTH_UID_CACHE_PREFIX + token, user.getId(), AuthorizationConstants.AUTH_CACHE_EXPIRE_SECONDS);
         redisService.set(AuthorizationConstants.AUTH_UID_INFO_PREFIX + user.getId(), JSON.toJSONString(user));
-        redisService.lpush(AuthorizationConstants.UID_TOKENS_CACHE_PREFIX + user.getId(), token);
+        redisService.lPush(AuthorizationConstants.UID_TOKENS_CACHE_PREFIX + user.getId(), token);
 
         // 这里前后端未分离就重定向到首页
         if (!shiroProperties.getSplit()) {
@@ -105,7 +105,7 @@ public class LoginServiceImpl implements LoginService {
             // 设置登录缓存信息
             redisService.set(AuthorizationConstants.AUTH_UID_CACHE_PREFIX + token, user.getId(), AuthorizationConstants.AUTH_CACHE_EXPIRE_SECONDS);
             redisService.set(AuthorizationConstants.AUTH_UID_INFO_PREFIX + user.getId(), JSON.toJSONString(token));
-            redisService.lpush(AuthorizationConstants.UID_TOKENS_CACHE_PREFIX + user.getId(), token);
+            redisService.lPush(AuthorizationConstants.UID_TOKENS_CACHE_PREFIX + user.getId(), token);
 
             // 这里前后端未分离就重定向到首页
             if (!shiroProperties.getSplit()) {

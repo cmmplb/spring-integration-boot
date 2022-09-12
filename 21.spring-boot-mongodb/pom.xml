@@ -28,6 +28,11 @@
             <groupId>com.cmmplb</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- swagger模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
+        </dependency>
         <!-- mongodb -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

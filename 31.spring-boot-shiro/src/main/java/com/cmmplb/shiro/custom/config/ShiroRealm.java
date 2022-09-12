@@ -59,9 +59,9 @@ public class ShiroRealm extends AuthorizingRealm {
             // 异步读取用户多端token
             ThreadContext.executeTask(() -> {
                 // 取出用户最早存入的token
-                String tokenOld = (String) redisService.rpop(AuthorizationConstants.UID_TOKENS_CACHE_PREFIX + uid);
+                String tokenOld = (String) redisService.rPop(AuthorizationConstants.UID_TOKENS_CACHE_PREFIX + uid);
                 if (redisService.hasKey(AuthorizationConstants.AUTH_UID_CACHE_PREFIX + tokenOld)) {
-                    redisService.lpush(AuthorizationConstants.UID_TOKENS_CACHE_PREFIX + uid, tokenOld);
+                    redisService.lPush(AuthorizationConstants.UID_TOKENS_CACHE_PREFIX + uid, tokenOld);
                 }
             });
             Object userInfo = redisService.get(AuthorizationConstants.AUTH_UID_INFO_PREFIX + uid.toString());

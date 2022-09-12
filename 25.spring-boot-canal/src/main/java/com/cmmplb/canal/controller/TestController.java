@@ -1,13 +1,9 @@
 package com.cmmplb.canal.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cmmplb.core.beans.SelectVO;
-import com.cmmplb.core.exception.CustomException;
 import com.cmmplb.core.result.Result;
 import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.core.validator.group.Insert;
-import com.cmmplb.core.validator.group.Update;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
@@ -43,7 +39,7 @@ public class TestController {
     @PostMapping("/save")
     @ApiOperation("添加")
     @ApiOperationSupport(order = 1)
-    public Result<Boolean> saveInfo(@RequestBody @Validated(Insert.class) TestDTO dto) {
+    public Result<Boolean> saveInfo(@RequestBody @Validated TestDTO dto) {
         return ResultUtil.success(testService.saveInfo(dto));
     }
 
@@ -57,7 +53,7 @@ public class TestController {
     @PutMapping("/{id}")
     @ApiOperation("修改")
     @ApiOperationSupport(order = 3)
-    public Result<Boolean> updateInfoById(@PathVariable(value = "id") Long id, @RequestBody @Validated(Update.class) TestDTO dto) {
+    public Result<Boolean> updateInfoById(@PathVariable(value = "id") Long id, @RequestBody @Validated TestDTO dto) {
         dto.setId(id);
         return ResultUtil.success(testService.updateInfoById(dto));
     }

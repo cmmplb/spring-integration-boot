@@ -26,7 +26,7 @@ public class NettyServerConfiguration {
 
     @PostConstruct
     public void init() {
-        new SocketServer(portProperties.getSocket()).start();
+        // new SocketServer(portProperties.getSocket()).start();
         logger.info("启动socket服务器");
         // ... 多个启动
         logger.info("启动webSocket服务器");
