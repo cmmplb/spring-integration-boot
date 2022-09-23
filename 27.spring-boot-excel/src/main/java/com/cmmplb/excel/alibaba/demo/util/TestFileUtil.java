@@ -16,7 +16,7 @@ public class TestFileUtil {
     }
 
     public static String getPath() {
-        String filePath = "D:\\Excel\\";
+        String filePath = "/Users/penglibo/Cmmplb/Excel/";
         // return TestFileUtil.class.getResource("/").getPath();
         File file = new File(filePath);
         if (!file.exists()) {
