@@ -1,6 +1,8 @@
 package com.cmmplb.config.controller;
 
 import com.cmmplb.config.beans.*;
+import com.cmmplb.core.result.Result;
+import com.cmmplb.core.result.ResultUtil;
 import com.cmmplb.core.utils.XmlBuilderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,8 +36,8 @@ public class SpringBootConfigController {
      * @return name-version
      */
     @RequestMapping("/environment")
-    public String getEnvironment() {
-        return environment.getProperty("environment.name") + "-" + environment.getProperty("environment.version");
+    public Result<String> getEnvironment() {
+        return ResultUtil.success(environment.getProperty("environment.name") + "-" + environment.getProperty("environment.version"));
     }
 
     @Value("${project.name}")
@@ -48,8 +50,8 @@ public class SpringBootConfigController {
      * @return name-version
      */
     @RequestMapping("/project/version")
-    public String getProjectVersion() {
-        return projectName + "-" + projectVersion;
+    public Result<String> getProjectVersion() {
+        return ResultUtil.success(projectName + "-" + projectVersion);
     }
 
     // ---------------------------------------------
@@ -62,8 +64,8 @@ public class SpringBootConfigController {
      * @return name-version
      */
     @GetMapping("/bean")
-    public String getBeanConfig() {
-        return configBean.getName() + "-" + configBean.getVersion();
+    public Result<String> getBeanConfig() {
+        return ResultUtil.success(configBean.getName() + "-" + configBean.getVersion());
     }
 
     // ---------------------------------------------
@@ -76,8 +78,8 @@ public class SpringBootConfigController {
      * @return versionList
      */
     @RequestMapping("/version/list")
-    public List<String> getVersionList() {
-        return versionList;
+    public Result<List<String>> getVersionList() {
+        return ResultUtil.success(versionList);
     }
 
     // ---------------------------------------------
@@ -90,8 +92,8 @@ public class SpringBootConfigController {
      * @return name-version
      */
     @RequestMapping("/properties")
-    public String getProperties() {
-        return configProperties.getName() + "-" + configProperties.getVersion();
+    public Result<String> getProperties() {
+        return ResultUtil.success(configProperties.getName() + "-" + configProperties.getVersion());
     }
 
     // ---------------------------------------------
@@ -104,8 +106,8 @@ public class SpringBootConfigController {
      * @return name-version
      */
     @RequestMapping("/custom/properties")
-    public String getCustom() {
-        return configCustom.getName() + "-" + configCustom.getVersion();
+    public Result<String> getCustom() {
+        return ResultUtil.success(configCustom.getName() + "-" + configCustom.getVersion());
     }
 
     // ---------------------------------------------
@@ -118,8 +120,8 @@ public class SpringBootConfigController {
      * @return name-version
      */
     @RequestMapping("/pom")
-    public String getPom() {
-        return pom.getName() + "-" + pom.getVersion();
+    public Result<String> getPom() {
+        return ResultUtil.success(pom.getName() + "-" + pom.getVersion());
     }
 
     // ---------------------------------------------
@@ -129,9 +131,9 @@ public class SpringBootConfigController {
      * @return name-version
      */
     @RequestMapping("/custom/xml")
-    public String getConfigCustomXml() throws Exception {
+    public Result<String> getConfigCustomXml() throws Exception {
         Resource resource = new ClassPathResource("static/custom.xml");
-        //利用输入流获取XML文件内容
+        // 利用输入流获取XML文件内容
         BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8));
         StringBuilder buffer = new StringBuilder();
         String line;
@@ -139,8 +141,8 @@ public class SpringBootConfigController {
             buffer.append(line);
         }
         br.close();
-        //XML转为JAVA对象
+        // XML转为JAVA对象
         ConfigCustomXml configCustomXml = (ConfigCustomXml) XmlBuilderUtil.xmlStrToObject(ConfigCustomXml.class, buffer.toString());
-        return configCustomXml.getName() + "-" + configCustomXml.getVersion();
+        return ResultUtil.success(configCustomXml.getName() + "-" + configCustomXml.getVersion());
     }
 }

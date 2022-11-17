@@ -1,0 +1,24 @@
+{{- if .Values.service.enabled }}
+apiVersion: v1
+# 资源类型:Service
+kind: Service
+# 元数据
+metadata:
+  # 必须,服务名称,devops-service
+  namespace: {{ .Values.namespace }}
+  name: {{ .Values.service.name }}
+  # 标签,indent 缩进字符
+  labels:
+  {{ include "service.labels.standard" . | indent 4 }}
+spec:
+  # ClusterIP分配一个集群内部可访问的固定虚拟IP
+  clusterIP: None
+  # 暴露端口
+  ports:
+    - port: {{ .Values.service.port }}
+      name: {{ .Values.service.name }}
+  selector:
+{{ include "service.labels.standard" . | indent 4 }}
+    project: {{ .Values.namespace }}
+    app: {{ .Values.service.name }}
+{{- end }}

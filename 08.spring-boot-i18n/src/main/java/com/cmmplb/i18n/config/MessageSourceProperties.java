@@ -58,7 +58,7 @@ public class MessageSourceProperties {
         UTF_16LE("UTF-16LE"),
         UTF_16("UTF-16");
 
-        private String charset;
+        private final String charset;
     }
 
     /**
@@ -85,8 +85,8 @@ public class MessageSourceProperties {
         CANADA("en", "CA"),
         CANADA_FRENCH("fr", "CA");
 
-        private String lang;
-        private String country;
+        private final String lang;
+        private final String country;
     }
 
     public static final String PREFIX = "messages";

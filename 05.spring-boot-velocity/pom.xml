@@ -21,6 +21,23 @@
     <!-- 描述信息 -->
     <description>${project.artifactId}</description>
 
+    <!--
+            SpringBoot 1.3.x版本官方支持Velocity
+            SpringBoot 1.4.x版本支持Velocity，但是官方标记为@deprecated
+            SpringBoot 1.5.x版本官方不支持Velocity
+        -->
+    <!--<dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.3.8.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>-->
+
     <!-- 依赖 -->
     <dependencies>
         <!-- web模块 -->

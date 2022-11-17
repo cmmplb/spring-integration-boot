@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Objects;
+
 /**
  * @author penglibo
  * @date 2021-04-14 14:49:20
@@ -21,9 +23,40 @@ public class LogDaoImpl implements LogDao {
 
     @Override
     public void saveLog(Log log) {
-        NamedParameterJdbcTemplate npjt = new NamedParameterJdbcTemplate(this.jdbcTemplate.getDataSource());
-        String sql = "insert into `sys_log` " + "(`time`,`method`,`params`,`ip`,`type`,`exc_cause`,`exc_desc`,`exc_location`,`create_time`) " +
-                "values(:time,:method,:params,:ip,:type,:excCause,:excDesc,:excLocation,:createTime)";
+        NamedParameterJdbcTemplate npjt = new NamedParameterJdbcTemplate(Objects.requireNonNull(this.jdbcTemplate.getDataSource()));
+        String sql = "insert into `sys_log`(" +
+                    " `status`" +
+                    ",`type`" +
+                    ",business_type" +
+                    ",content" +
+                    ",ip" +
+                    ",user_agent" +
+                    ",request_uri" +
+                    ",`method`" +
+                    ",method_name" +
+                    ",params" +
+                    ",`time`" +
+                    ",exc_cause" +
+                    ",exc_desc" +
+                    ",exc_location" +
+                    ",create_time" +
+                ") values (" +
+                    " :status" +
+                    ",:type" +
+                    ",:businessType" +
+                    ",:content" +
+                    ",:ip" +
+                    ",:userAgent" +
+                    ",:requestUri" +
+                    ",:method" +
+                    ",:methodName" +
+                    ",:params" +
+                    ",:time" +
+                    ",:excCause" +
+                    ",:excDesc" +
+                    ",:excLocation" +
+                    ",:createTime" +
+                ")";
         npjt.update(sql, new BeanPropertySqlParameterSource(log));
     }
 }

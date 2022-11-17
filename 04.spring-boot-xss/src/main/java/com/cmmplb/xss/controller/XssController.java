@@ -1,5 +1,8 @@
 package com.cmmplb.xss.controller;
 
+import com.cmmplb.core.result.Result;
+import com.cmmplb.core.result.ResultUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,13 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @since jdk 1.8
  */
 
+@Slf4j
 @RestController
 @RequestMapping("/xss")
 public class XssController {
 
     @GetMapping("/test")
-    public String test(@RequestParam("content") String content) {
-        System.out.println(content);
-        return content;
+    public Result<String> test(@RequestParam("content") String content) {
+        log.info("输入内容: {}", content);
+        return ResultUtil.success(content);
     }
 }

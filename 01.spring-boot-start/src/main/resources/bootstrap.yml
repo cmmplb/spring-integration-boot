@@ -18,6 +18,8 @@ spring.profiles.group:
     - context
     - jetty
     - logging
+    - management
+    - redis
     - tomcat
     - undertow
   sit:

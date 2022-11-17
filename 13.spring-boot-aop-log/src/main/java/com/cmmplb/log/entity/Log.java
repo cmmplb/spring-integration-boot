@@ -21,24 +21,49 @@ public class Log implements Serializable {
     private Integer id;
 
     /**
-     * 操作人
+     * 日志状态:0-正常;1-异常
      */
-    private String username;
+    private Byte status;
 
     /**
-     * 操作描述
+     * 操作类型
      */
-    private String operation;
+    private String type;
 
     /**
-     * 响应时间
+     * 操作内容
      */
-    private Integer time;
+    private String content;
+
+    /**
+     * 业务类型:0-新增;1-删除;2-修改;3-查询;4-导入;5-导出;
+     */
+    private Byte businessType;
+
+    /**
+     * 操作IP地址
+     */
+    private String ip;
+
+    /**
+     * 用户代理
+     */
+    private String userAgent;
+
+    /**
+     * 请求URI
+     */
+    private String requestUri;
+
+    /**
+     * 请求方式
+     */
+    private String method;
 
     /**
      * 请求方法
      */
-    private String method;
+    private String methodName;
 
     /**
      * 请求参数
@@ -46,9 +71,9 @@ public class Log implements Serializable {
     private String params;
 
     /**
-     * 日志类型:0-正常日志;2-异常日志
+     * 执行时间(毫秒)
      */
-    private Byte type;
+    private Long time;
 
     /**
      * 异常原因
@@ -64,11 +89,6 @@ public class Log implements Serializable {
      * 异常位置
      */
     private String excLocation;
-
-    /**
-     * ip地址
-     */
-    private String ip;
 
     /**
      * 创建时间

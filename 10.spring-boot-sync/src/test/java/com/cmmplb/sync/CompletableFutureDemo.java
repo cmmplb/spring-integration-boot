@@ -14,11 +14,17 @@ public class CompletableFutureDemo {
      */
     private static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
 
-    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
-            AVAILABLE_PROCESSORS,  //核心线程数
-            3 * AVAILABLE_PROCESSORS,  //最大线程数
-            3, TimeUnit.SECONDS,  //keepAliveTime
-            new LinkedBlockingDeque<>(20));  //阻塞队列
+    private static final ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(
+            //核心线程数
+            AVAILABLE_PROCESSORS,
+            //最大线程数
+            3 * AVAILABLE_PROCESSORS,
+            //keepAliveTime
+            3,
+            TimeUnit.SECONDS,
+            //阻塞队列
+            new LinkedBlockingDeque<>(20),
+            r -> new Thread(r, "sync-thread-" + r.hashCode()));
 
 
     public static void main(String[] args) throws Exception {
@@ -90,13 +96,13 @@ public class CompletableFutureDemo {
     public static void demo4() {
         Map<String, Object> dataMap = new ConcurrentHashMap<>();
 
-        CompletionService<Map> cs = new ExecutorCompletionService<>(threadPoolExecutor);
+        CompletionService<Map<String, Object>> cs = new ExecutorCompletionService<>(THREAD_POOL_EXECUTOR);
         cs.submit(() -> doSomething1("doSomething1", dataMap));
         cs.submit(() -> doSomething2("doSomething2", dataMap));
         cs.submit(() -> doSomething3("doSomething3", dataMap));
 
         for (int i = 0; i < 3; i++) {
-            Map resultMap = null;
+            Map<String, Object> resultMap = null;
             try {
                 //依次从队列中取任务执行结果
                 resultMap = cs.take().get();
@@ -127,7 +133,7 @@ public class CompletableFutureDemo {
                 dataMap.put("doSomeThingA", "A");
                 return taskId + " is done";
             }
-        }, threadPoolExecutor);
+        }, THREAD_POOL_EXECUTOR);
     }
 
     public static CompletableFuture<String> doSomethingB(String taskId, Map<String, Object> dataMap) {
@@ -142,7 +148,7 @@ public class CompletableFutureDemo {
             dataMap.put("doSomeThingB", "B");
             return taskId + " is done";
 
-        }, threadPoolExecutor);
+        }, THREAD_POOL_EXECUTOR);
     }
 
     public static CompletableFuture<String> doSomethingC(String taskId, Map<String, Object> dataMap) {
@@ -157,7 +163,7 @@ public class CompletableFutureDemo {
             dataMap.put("doSomeThingC", "C");
             return taskId + " is done";
 
-        }, threadPoolExecutor);
+        }, THREAD_POOL_EXECUTOR);
     }
 
 

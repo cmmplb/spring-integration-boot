@@ -25,8 +25,10 @@ public class SyncServiceImpl implements SyncService {
     @Async("one")
     @Override
     public void async() {
+        long start = System.currentTimeMillis();
         sleep();
-        System.out.println("sleep,"+Thread.currentThread().getName());
+        long end = System.currentTimeMillis();
+        System.out.println("sleep," + (end - start) + " ms, " + Thread.currentThread().getName());
     }
 
     @Async("one") // 配置使用自定义线程池

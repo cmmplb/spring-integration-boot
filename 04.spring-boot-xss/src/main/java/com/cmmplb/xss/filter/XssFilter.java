@@ -28,7 +28,7 @@ public class XssFilter implements Filter {
     // 是否过滤富文本内容
     private boolean isIncludeRichText = false;
 
-    private List<String> excludes = new ArrayList<>();
+    private final List<String> excludes = new ArrayList<>();
 
     public boolean enabled = false;
 
@@ -74,7 +74,7 @@ public class XssFilter implements Filter {
             // 如果xss开关关闭了，则所有url都不拦截
             return true;
         }
-        if (excludes == null || excludes.isEmpty()) {
+        if (excludes.isEmpty()) {
             return false;
         }
         for (String pattern : excludes) {

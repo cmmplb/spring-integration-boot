@@ -1,0 +1,16 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: {{ .Values.service.name }}
+spec:
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - backend:
+          serviceName: {{ .Values.service.name }}
+          servicePort: {{ .Values.service.port }}
+        path: {{ .Values.ingress.path }}
+{{- end }}

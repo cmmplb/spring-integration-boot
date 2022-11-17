@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+# 资源类型:Deployment
+kind: Deployment
+# 元数据
+metadata:
+  namespace: {{ .Values.namespace }}
+  # 服务名称
+  name: {{ .Values.service.name }}
+  # 标签,indent 缩进字符
+  labels:
+{{ include "service.labels.standard" . | indent 4 }}
+    project: {{ .Values.namespace }}
+    app: {{ .Values.service.name }}
+
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+  # Pod模板
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+    spec:
+      # 拉取私有镜像配置Secret，没有就创建kubectl create secret docker-registry aliyun-registry --docker-server=registry.cn-hangzhou.aliyuncs.com --docker-username=xxx --docker-password=xxx -n cmmplb
+      # kubectl get secret aliyun-registry -o yaml -n cmmplb
+      imagePullSecrets:
+        - name: aliyun-registry
+      # 容器配置
+      containers:
+        - name: {{ .Values.service.name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.version | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          # 环境变量配置
+          env:
+          {{- range $name, $value := .Values.env.open }}
+          {{- if not (empty $value) }}
+            - name: {{ $name | quote }}
+              value: {{ $value | quote }}
+          {{- end }}
+          {{- end }}
+          # 暴露端口, 可以通过IP:PORT访问
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+{{/*          readinessProbe:*/}}
+{{/*            exec:*/}}
+{{/*              command: ["/bin/sh","-c","curl -s localhost:{{ .Values.deployment.managementPort }}/actuator/health --fail && nc -z localhost {{ .Values.service.port }}"]*/}}
+{{/*            failureThreshold: 3*/}}
+{{/*            initialDelaySeconds: 60*/}}
+{{/*            periodSeconds: 10*/}}
+{{/*            successThreshold: 1*/}}
+{{/*            timeoutSeconds: 10*/}}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+      {{- if .Values.persistence.enabled }}
+      volumes:
+        - name: cmmplb-nas
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.pvcName }}
+      {{- end }}

@@ -19,9 +19,25 @@ public class ThreadPoolProperties {
 
     @Data
     public static class ThreadPoolVo {
+
+        /**
+         * 核心线程数
+         */
         private Integer corePoolSize;
+
+        /**
+         * 最大线程数
+         */
         private Integer maxPoolSize;
+
+        /**
+         * 线程池中的线程的名称前缀
+         */
         private String threadNamePrefix;
+
+        /**
+         * 线程名称
+         */
         private String threadName;
     }
 }

@@ -1,6 +1,7 @@
 package com.cmmplb.websocket.server;
 
 import com.cmmplb.core.utils.ErrorUtil;
+import com.cmmplb.core.utils.LogDirUtil;
 import com.cmmplb.websocket.config.ConnectionEndpointConfigure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,8 +38,8 @@ public class LogServer {
     /**
      * 连接集合
      */
-    private static Map<String, Session> sessionMap = new ConcurrentHashMap<String, Session>();
-    private static Map<String, Integer> lengthMap = new ConcurrentHashMap<String, Integer>();
+    private static final Map<String, Session> SESSION_MAP = new ConcurrentHashMap<String, Session>();
+    private static final Map<String, Integer> LENGTH_MAP = new ConcurrentHashMap<String, Integer>();
 
     /**
      * 连接建立成功调用的方法
@@ -46,8 +47,8 @@ public class LogServer {
     @OnOpen
     public void onOpen(Session session) {
         //添加到集合中
-        sessionMap.put(session.getId(), session);
-        lengthMap.put(session.getId(), 1);//默认从第一行开始
+        SESSION_MAP.put(session.getId(), session);
+        LENGTH_MAP.put(session.getId(), 1);//默认从第一行开始
 
         //获取日志信息
         new Thread(() -> {
@@ -55,17 +56,17 @@ public class LogServer {
             // 复制过来测试
             boolean first = true;
             BufferedReader reader = null;
-            while (sessionMap.get(session.getId()) != null) {
+            while (SESSION_MAP.get(session.getId()) != null) {
                 try {
                     //日志文件，获取最新的
-                    FileReader fileReader = new FileReader("D:/Logs/spring-boot-websocket/info.log");
+                    FileReader fileReader = new FileReader(LogDirUtil.getLogDir() + applicationName + "/info.log");
 
                     //字符流
                     reader = new BufferedReader(fileReader);
                     Object[] lines = reader.lines().toArray();
 
                     //只取从上次之后产生的日志
-                    Object[] copyOfRange = Arrays.copyOfRange(lines, lengthMap.get(session.getId()), lines.length);
+                    Object[] copyOfRange = Arrays.copyOfRange(lines, LENGTH_MAP.get(session.getId()), lines.length);
 
                     //对日志进行着色，更加美观  PS：注意，这里要根据日志生成规则来操作
                     for (int i = 0; i < copyOfRange.length; i++) {
@@ -107,7 +108,7 @@ public class LogServer {
                     }
 
                     //存储最新一行开始
-                    lengthMap.replace(session.getId(), lines.length);
+                    LENGTH_MAP.replace(session.getId(), lines.length);
 
                     //第一次如果太大，截取最新的200行就够了，避免传输的数据太大
                     if (first && copyOfRange.length > 200) {
@@ -145,8 +146,8 @@ public class LogServer {
     @OnClose
     public void onClose(Session session) {
         //从集合中删除
-        sessionMap.remove(session.getId());
-        lengthMap.remove(session.getId());
+        SESSION_MAP.remove(session.getId());
+        LENGTH_MAP.remove(session.getId());
     }
 
     /**

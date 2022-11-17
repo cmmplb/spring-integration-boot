@@ -22,7 +22,7 @@ public class XssRequestWrapper extends HttpServletRequestWrapper {
     /**
      * 是否过滤富文本内容
      */
-    private boolean isIncludeRichText;
+    private final boolean isIncludeRichText;
 
     public static final String CONTENT = "content";
 

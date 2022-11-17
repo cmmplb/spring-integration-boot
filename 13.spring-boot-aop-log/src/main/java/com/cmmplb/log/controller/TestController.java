@@ -1,6 +1,9 @@
 package com.cmmplb.log.controller;
 
-import com.cmmplb.log.annotations.SysLog;
+import com.cmmplb.core.result.Result;
+import com.cmmplb.core.result.ResultUtil;
+import com.cmmplb.log.annotations.Log;
+import com.cmmplb.log.constants.LogConstant;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,27 +17,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-    @SysLog("执行方法一")
     @GetMapping("/one")
-    public void methodOne(String name) {
+    @Log(type = LogConstant.LogOperationTypeEnum.ONE, content = "one", businessType = LogConstant.LogBusinessTypeEnum.SAVE)
+    public Result<Boolean> methodOne(String name) {
+        return ResultUtil.success(true);
     }
 
-    @SysLog("执行方法二")
     @GetMapping("/two")
-    public void methodTwo() throws InterruptedException {
+    @Log(type = LogConstant.LogOperationTypeEnum.TWO, content = "two", businessType = LogConstant.LogBusinessTypeEnum.SAVE)
+    public Result<Boolean> methodTwo() throws InterruptedException {
         Thread.sleep(2000);
+        return ResultUtil.success(true);
     }
 
-    @SysLog("执行方法三")
     @GetMapping("/three")
-    public void methodThree(String name, String age) {
+    @Log(type = LogConstant.LogOperationTypeEnum.THREE, content = "three", businessType = LogConstant.LogBusinessTypeEnum.SAVE)
+    public Result<Boolean> methodThree(String name, String age) {
+        return ResultUtil.success(true);
     }
 
 
-    @SysLog("异常")
     @GetMapping("/ex")
-    public void methodEx(String name, String age) {
+    @Log(type = LogConstant.LogOperationTypeEnum.EX, content = "测试异常", businessType = LogConstant.LogBusinessTypeEnum.SAVE)
+    public Result<Boolean> methodEx(String name, String age) {
         System.out.println("异常");
         System.out.println(1 / 0);
+        return ResultUtil.success(true);
     }
 }

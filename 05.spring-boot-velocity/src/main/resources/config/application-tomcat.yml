@@ -2,8 +2,8 @@ server:
   tomcat:
     # uri编码
     uri-encoding: UTF-8
-    # Tomcat基目录,如果未指定则使用临时目录, core根据系统环境指定。
-    # basedir: D:/Logs/Tomcat/tmp
+    # Tomcat基目录, 如果未指定则使用临时目录, core根据系统环境指定。
+    basedir: ${spring.application.name}
     # 最大工作线程数，默认200
     threads.max: 200
     # 最大连接数：Tomcat同一时间能接受的最大线程数量，需要大于 max-threads + accept-count，默认8192
