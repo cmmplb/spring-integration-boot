@@ -1,8 +1,11 @@
 package com.cmmplb.rabbitmq.config;
 
+import com.cmmplb.core.constants.StringConstants;
 import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import com.cmmplb.redis.configuration.properties.RabbitMqProperties;
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,6 +23,8 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
+// 关闭配置文件配置bean时才开启类的注入
+@ConditionalOnProperty(prefix = RabbitMqProperties.PREFIX, name = RabbitMqProperties.ENABLED, havingValue = StringConstants.FALSE)
 public class DirectConfig {
 
     /**

@@ -3,7 +3,7 @@ swagger:
   # 是否开启swagger
   enabled: true
   # swagger会解析的包路径
-  base-package: com.momo
+  base-package: com.cmmplb
   # 请求头
   header-list:
   # swagger会解析的url规则

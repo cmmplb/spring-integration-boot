@@ -38,10 +38,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <!-- amqp -->
+        <!-- mq模块 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-rabbit-mq</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -65,7 +65,7 @@ public class MailTest {
         helper.setSubject("主题：有附件");
         helper.setText("有附件的邮件");
 
-        FileSystemResource file = new FileSystemResource(new File("src/main/resources/笑死.jpg"));
+        FileSystemResource file = new FileSystemResource(new File("src/main/resources/笑死1.jpg"));
         helper.addAttachment("附件-1.jpg", file);
         helper.addAttachment("附件-2.jpg", file);
 
@@ -86,7 +86,7 @@ public class MailTest {
         helper.setSubject("主题：嵌入静态资源");
         helper.setText("<html><body><img src=\"cid:weixin\" ></body></html>", true);
 
-        FileSystemResource file = new FileSystemResource(new File("src/main/resources/笑死.jpg"));
+        FileSystemResource file = new FileSystemResource(new File("src/main/resources/笑死1.jpg"));
         // 这里需要注意的是addInline函数中资源名称weixin需要与正文中cid:weixin对应起来
         helper.addInline("weixin", file);
 

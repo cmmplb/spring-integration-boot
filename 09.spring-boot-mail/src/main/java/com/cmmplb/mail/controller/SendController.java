@@ -74,10 +74,10 @@ public class SendController {
         messageHelper.setTo("1045599379@qq.com");
         messageHelper.setSubject("主题：有附件");
         messageHelper.setText("有附件的邮件");
-        InputStream inputStream = FileUtil.getInputStream("笑死.jpg");
+        InputStream inputStream = FileUtil.getInputStream("test/笑死1.jpg");
         // 单元测试main文件路径不一样
-        // FileSystemResource file = new FileSystemResource(new File("src/main/resources/笑死.jpg"));
-        FileSystemResource file = new FileSystemResource("src/main/resources/笑死.jpg");
+        // FileSystemResource file = new FileSystemResource(new File("src/main/resources/笑死1.jpg"));
+        // FileSystemResource file = new FileSystemResource("src/main/resources/笑死1.jpg");
         // Passed-in Resource contains an open stream: invalid argument. JavaMail requires an InputStreamSource that creates a fresh stream for every call.
         // 流不匹配会导致报错。通过转换成对应的流即可解决
         // messageHelper.addAttachment("附件-1.jpg", file);
@@ -110,14 +110,14 @@ public class SendController {
         helper.setSubject("主题：嵌入静态资源");
         helper.setText("<html><body><img src=\"cid:weixin\" ></body></html>", true);
 
-        FileSystemResource file = new FileSystemResource(new File("src/main/resources/笑死.jpg"));
+        FileSystemResource file = new FileSystemResource(new File("src/main/resources/笑死1.jpg"));
 
-        // InputStream inputStream = FileUtil.getInputStream("笑死.jpg");
+        // InputStream inputStream = FileUtil.getInputStream("笑死1.jpg");
         // helper.addInline("weixin", new ByteArrayResource(IOUtils.toByteArray(inputStream)));
 
         // 这里需要注意的是addInline函数中资源名称weixin需要与正文中cid:weixin对应起来
         // helper.addInline("weixin", file);
-        helper.addInline("weixin", new File("/Users/penglibo/Cmmplb/Project/Cmmplb/Gitee/spring-integration-boot/09.spring-boot-mail/src/main/resources/笑死.jpg"));
+        helper.addInline("weixin", new File("/Users/penglibo/Cmmplb/Project/Cmmplb/Gitee/spring-integration-boot/09.spring-boot-mail/src/main/resources/笑死1.jpg"));
 
         mailSender.send(mimeMessage);
         return ResultUtil.success(true);

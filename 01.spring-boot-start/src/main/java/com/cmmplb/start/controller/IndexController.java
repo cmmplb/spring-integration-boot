@@ -3,6 +3,7 @@ package com.cmmplb.start.controller;
 import com.cmmplb.core.result.Result;
 import com.cmmplb.core.result.ResultUtil;
 import com.cmmplb.core.utils.StringUtil;
+import com.cmmplb.start.domain.Start;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +28,11 @@ public class IndexController {
         //     System.out.println("name:" + o);
         // }
         return ResultUtil.success(res);
+    }
+
+    @RequestMapping("/start")
+    public Result<Start> start() {
+        return ResultUtil.success(new Start("张三",15));
     }
 
 
