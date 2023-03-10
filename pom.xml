@@ -56,11 +56,12 @@
         <module>27.spring-boot-excel</module>
         <module>28.spring-boot-activiti</module>
         <module>29.spring-boot-flyway</module>
-        <module>30.spring-boot-xxl-job</module>
         <module>31.spring-boot-shiro</module>
         <module>32.spring-boot-security</module>
         <module>33.spring-boot-sharding-sphere</module>
         <module>34.spring-boot-elk</module>
+        <module>35.spring-boot-xxl-job</module>
+        <module>36.spring-boot-quartz</module>
         <module>50.spring-boot-admin</module>
     </modules>
 

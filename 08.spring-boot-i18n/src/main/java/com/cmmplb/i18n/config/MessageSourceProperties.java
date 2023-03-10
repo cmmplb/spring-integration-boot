@@ -89,7 +89,7 @@ public class MessageSourceProperties {
         private final String country;
     }
 
-    public static final String PREFIX = "messages";
+    public static final String PREFIX = "message";
 
     public static final String ENABLED = "enabled";
 

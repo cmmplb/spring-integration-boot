@@ -1,8 +1,8 @@
 package com.cmmplb.rabbitmq.config;
 
 import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.rabbit.mq.configuration.properties.RabbitMqProperties;
 import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
-import com.cmmplb.redis.configuration.properties.RabbitMqProperties;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
