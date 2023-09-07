@@ -7,12 +7,13 @@ import java.io.InputStream;
  * @author penglibo
  * @date 2021-05-22 17:35:19
  * @since jdk 1.8
+ * 官网文档：https://easyexcel.opensource.alibaba.com/
  */
 
 public class TestFileUtil {
 
     public static InputStream getResourcesFileInputStream(String fileName) {
-        return Thread.currentThread().getContextClassLoader().getResourceAsStream("" + fileName);
+        return Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
     }
 
     public static String getPath() {

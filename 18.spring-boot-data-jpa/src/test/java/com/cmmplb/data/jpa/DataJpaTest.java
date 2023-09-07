@@ -9,6 +9,7 @@ import com.querydsl.core.Tuple;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -45,6 +46,12 @@ public class DataJpaTest {
             list.add(accountTag);
         }
         System.out.println(list);
+    }
+
+    @Test
+    public void getPaged4dsl(){
+        Page<Account> page = accountService.getPaged4dsl();
+        System.out.println(page);
     }
 
     @Test

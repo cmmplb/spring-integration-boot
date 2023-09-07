@@ -1,5 +1,5 @@
 # 服务端口
-server.port: @project.port@
+#server.port: @project.port@
 # 路径
 server.servlet.context-path: /
 # 关闭banner

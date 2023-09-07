@@ -7,8 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import javax.annotation.Resource;
 
@@ -30,10 +32,44 @@ public class MybatisTest {
     @Autowired
     private UserMapper userMapper;
 
+    // 使用 Mockito 模拟
+    @MockBean
+    private UserMapper userDao;
+
     @Test
     public void contextLoads() {
         // 测试当前对象id是否注入
         // System.out.println(userService.testCurrentUserId());
+
+        // 定义当调用mock userDao的getUserById()方法，并且参数为3时，就返回id为200、name为I'm mock3的user对象
+        User user1 = new User();
+        user1.setId((long) 200);
+        user1.setName("I'm mock3");
+        Mockito.when(userDao.selectById((long) 3)).thenReturn(user1);
+
+        // 当使用任何整数值调用 userService 的 getUserById() 方法时，就回传一个名字为 I'm mock3 的 user 对象
+        Mockito.when(userService.getById(Mockito.anyLong())).thenReturn(user1);
+
+        // 当调用 userService 的 save() 方法时，不管传进来的 user 是什麽，都回传 100
+        Mockito.when(userService.save(Mockito.any(User.class))).thenReturn(false);
+
+        // 当调用 userService 的 getById() 时的参数是 9 时，抛出一个 RuntimeException
+        Mockito.when(userService.getById((long) 9)).thenThrow(new RuntimeException("mock throw exception"));
+
+        // 调用list方法时抛出异常 RuntimeException
+        Mockito.doThrow(new RuntimeException("mock throw exception")).when(userService).list();
+
+        // 检查调用 userService 的 getById()、且参数为3的次数是否为1次
+        Mockito.verify(userService, Mockito.times(1)).getById(Mockito.eq((long) 3));
+
+        // 使用 Mockito 在 mock 对象时，有一些限制需要遵守
+        // 不能 mock 静态方法
+        // 不能 mock private 方法
+        // 不能 mock final class
+
+        // 返回的会是名字为I'm mock 3的user对象
+        User user2 = userService.getById((long) 4);
+        log.info("user2:{}", user2);
     }
 
     @Test

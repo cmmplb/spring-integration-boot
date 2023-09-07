@@ -4,6 +4,7 @@ import com.cmmplb.core.beans.PageResult;
 import com.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.data.jpa.entity.Account;
 import com.querydsl.core.Tuple;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -27,4 +28,6 @@ public interface AccountService {
      * @return
      */
     List<Tuple> getList4dsl();
+
+    Page<Account> getPaged4dsl();
 }

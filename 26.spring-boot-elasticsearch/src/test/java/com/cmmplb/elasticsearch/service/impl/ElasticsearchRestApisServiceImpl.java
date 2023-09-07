@@ -3,6 +3,7 @@ package com.cmmplb.elasticsearch.service.impl;
 import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
 import com.cmmplb.elasticsearch.service.ElasticsearchRestApisService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -14,10 +15,11 @@ import java.util.Map;
  * @since jdk 1.8
  */
 
+@Slf4j
 @Service
 public class ElasticsearchRestApisServiceImpl implements ElasticsearchRestApisService {
 
-    private static String addr = "localhost:9200";
+    private static final String addr = "localhost:9200";
 
     /**
      * 检测集群是否健康。 确保9200端口号可用
@@ -25,7 +27,7 @@ public class ElasticsearchRestApisServiceImpl implements ElasticsearchRestApisSe
     @Override
     public void checkHealth() {
         String health = addr + "/_cat/health?v";
-        System.out.println(HttpRequest.get(health).timeout(-1).execute().body());
+        log.info("health:{}", HttpRequest.get(health).execute().body());
     }
 
     /**
@@ -68,7 +70,7 @@ public class ElasticsearchRestApisServiceImpl implements ElasticsearchRestApisSe
         map.put("title", "什么是Elasticsearch?");
         map.put("content", "ElasticSearch是一个基于Lucene的搜索服务器");
         String result = HttpRequest.post(createUrl).body(JSON.toJSONString(map)).timeout(-1).execute().body();
-        System.out.println(result);
+        log.info(result);
     }
 
     @Override
@@ -101,7 +103,7 @@ public class ElasticsearchRestApisServiceImpl implements ElasticsearchRestApisSe
         map.put("title", "啊?");
         map.put("content", "搜索服务器");
 
-        map1.put("doc",map);
+        map1.put("doc", map);
         System.out.println("============================");
         System.out.println("============================");
         System.out.println("============================");

@@ -8,6 +8,7 @@ package com.cmmplb.excel.alibaba.demo.export.data;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.*;
+import com.alibaba.excel.enums.poi.FillPatternTypeEnum;
 import lombok.Data;
 import org.apache.poi.ss.usermodel.FillPatternType;
 
@@ -22,7 +23,7 @@ import java.util.List;
  **/
 @Data
 // 头背景设置成红色 IndexedColors.RED.getIndex()
-@HeadStyle(fillPatternType = FillPatternType.NO_FILL, fillForegroundColor = 3)
+@HeadStyle(fillPatternType = FillPatternTypeEnum.NO_FILL, fillForegroundColor = 3)
 // 头字体设置成20
 // @HeadFontStyle(fontHeightInPoints = 20)
 // 内容的背景设置成绿色 IndexedColors.GREEN.getIndex()

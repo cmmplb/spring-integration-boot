@@ -1,7 +1,10 @@
 package com.cmmplb.excel.alibaba.demo.read.read_02_indexOrNameRead;
 
 import com.alibaba.excel.EasyExcel;
+import com.cmmplb.core.utils.FileUtil;
 import com.cmmplb.excel.alibaba.demo.read.data.IndexOrNameData;
+
+import java.io.InputStream;
 
 /**
  * @author penglibo
@@ -20,9 +23,9 @@ public class IndexOrNameRead {
      * <p>3. 直接读即可
      */
     public static void main(String[] args) {
-        String fileName = "src/main/resources/read/demo.xlsx";
+        InputStream inputStream = FileUtil.getInputStream("read/demo.xlsx");
         // 这里默认读取第一个sheet
-        EasyExcel.read(fileName, IndexOrNameData.class, new IndexOrNameDataListener()).sheet().doRead();
+        EasyExcel.read(inputStream, IndexOrNameData.class, new IndexOrNameDataListener()).sheet().doRead();
 
     }
 }

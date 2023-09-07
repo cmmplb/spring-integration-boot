@@ -2,7 +2,7 @@ package com.cmmplb.shiro.custom.config;
 
 import com.alibaba.fastjson.JSON;
 import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.threads.ThreadContext;
+import com.cmmplb.core.utils.ThreadUtil;
 import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.custom.config.core.AuthToken;
 import com.cmmplb.shiro.general.beans.UserBean;
@@ -57,7 +57,7 @@ public class ShiroRealm extends AuthorizingRealm {
         Object uid = redisService.get(tokenUidCacheKey);
         if (null != uid) {
             // 异步读取用户多端token
-            ThreadContext.executeTask(() -> {
+            ThreadUtil.executeTask(() -> {
                 // 取出用户最早存入的token
                 String tokenOld = (String) redisService.rPop(AuthorizationConstants.UID_TOKENS_CACHE_PREFIX + uid);
                 if (redisService.hasKey(AuthorizationConstants.AUTH_UID_CACHE_PREFIX + tokenOld)) {

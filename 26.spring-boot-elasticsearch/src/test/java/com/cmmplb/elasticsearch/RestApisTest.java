@@ -5,9 +5,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
+/**
+ * @author penglibo
+ * @date 2023-08-18 09:27:23
+ * @since jdk 1.8
+ * RestApi方式操作
+ */
 @SpringBootTest
-public class ElasticsearchRestApisTests {
+public class RestApisTest {
 
     @Autowired
     private ElasticsearchRestApisService elasticsearchRestApisService;
@@ -24,15 +29,31 @@ public class ElasticsearchRestApisTests {
     // api 地址：https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html
 
     @Test
-    public void init() {
+    public void checkHealth() {
         // 检查集群
-        // elasticsearchRestApisService.checkHealth();
+        elasticsearchRestApisService.checkHealth();
+    }
+
+    @Test
+    public void createIndex() {
         // 创建索引
-        // elasticsearchRestApisService.createIndex();
+        elasticsearchRestApisService.createIndex();
+    }
+
+    @Test
+    public void get() {
         // 获取
-        // elasticsearchRestApisService.get();
+        elasticsearchRestApisService.get();
+    }
+
+    @Test
+    public void delete() {
         // 删除
-        // elasticsearchRestApisService.delete();
+        elasticsearchRestApisService.delete();
+    }
+
+    @Test
+    public void update() {
         // 更新
         elasticsearchRestApisService.update();
     }

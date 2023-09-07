@@ -34,7 +34,8 @@ public class StartTest {
 
     public static void main(String[] args) {
         System.out.println("1");
-        // \u000d System.out.println("Hello");
+        //
+        System.out.println("Hello");
     }
 
     /**
@@ -47,7 +48,6 @@ public class StartTest {
      * @ParameterizedTest：参数化测试，
      * @ValueSource(ints = {1, 2, 3})：参数化测试提供数据
      */
-
     @Test
     public void contextLoads() {
         System.out.println("test");
@@ -78,15 +78,15 @@ public class StartTest {
     void testAll() {
         assertAll("测试item商品下单",
                 () -> {
-                    //模拟用户余额扣减
+                    // 模拟用户余额扣减
                     assertTrue(1 < 2, "余额不足");
                 },
                 () -> {
-                    //模拟item数据库扣减库存
+                    // 模拟item数据库扣减库存
                     assertTrue(3 < 4);
                 },
                 () -> {
-                    //模拟交易流水落库
+                    // 模拟交易流水落库
                     assertNotNull(new Object());
                 }
         );

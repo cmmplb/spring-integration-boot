@@ -5,12 +5,12 @@ import com.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.data.jpa.dao.AccountDao;
 import com.cmmplb.data.jpa.entity.*;
 import com.cmmplb.data.jpa.service.AccountService;
+import com.querydsl.core.QueryResults;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQuery;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -58,6 +58,33 @@ public class AccountServiceImpl implements AccountService {
         return query.select(account.id,tag.accountId,tag.id,tag.name)
                 .from(account,tag)
                 .where(account.id.eq(tag.accountId)).fetch();
+    }
+
+    @Override
+    public Page<Account> getPaged4dsl() {
+        QueryPageBean queryPageBean = new QueryPageBean();
+        queryPageBean.setSize(10);
+        queryPageBean.setCurrent(1);
+
+        JPAQuery<Account> where = new JPAQuery<>(em)
+                .select(account)
+                .from(account);
+        if (StringUtils.isNotBlank("name")) {
+            where.where(account.name.like("张三"));
+        }
+        Pageable pageable;
+        if (queryPageBean.getCurrent() == 0) { // null
+            pageable = PageRequest.of(0, Integer.MAX_VALUE);
+        } else {
+            int page = queryPageBean.getCurrent() - 1;
+            page = Math.max(page, 0);
+            pageable = PageRequest.of(page, queryPageBean.getSize());
+        }
+        QueryResults<Account> results = where
+                .orderBy(account.createTime.desc())
+                .offset(pageable.getOffset()).limit(pageable.getPageSize())
+                .fetchResults();
+        return new PageImpl<Account>(results.getResults(), pageable, results.getTotal());
     }
 
     @Override

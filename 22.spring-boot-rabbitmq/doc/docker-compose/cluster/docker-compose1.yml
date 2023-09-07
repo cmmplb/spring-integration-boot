@@ -1,0 +1,56 @@
+version: '3.1'
+services:
+  rabbitmq-master:
+    image: bijukunjummen/rabbitmq-server:3.7.0
+    restart: always
+    container_name: rabbitmq-cluster-master
+    hostname: rabbitmq-cluster-master
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    environment:
+      RABBITMQ_DEFAULT_VHOST: "/"
+      RABBITMQ_DEFAULT_USER: "root"
+      RABBITMQ_DEFAULT_PASS: "cmmplb"
+      TZ: Asia/Shanghai
+    volumes:
+      - "./data/rabbitmq:/var/lib/rabbitmq"
+      - "./data/log:/var/log/rabbitmq/log"
+    networks:
+      - cmmplb
+
+  rabbitmq-slave1:
+    image: bijukunjummen/rabbitmq-server:3.7.0
+    container_name: rabbitmq-cluster-slave1
+    hostname: rabbitmq-cluster-slave1
+    ports:
+      - "5674:5672"
+      - "15674:15672"
+    links:
+      - rabbitmq-master
+    environment:
+      - CLUSTERED=true
+      - CLUSTER_WITH=rabbitmq-master
+      - RAM_NODE=true
+    networks:
+      - cmmplb
+
+  rabbitmq-slave2:
+    image: bijukunjummen/rabbitmq-server:3.7.0
+    container_name: rabbitmq-cluster-slave2
+    hostname: rabbitmq-cluster-slave2
+    ports:
+      - "5675:5672"
+      - "15675:15672"
+    links:
+      - rabbitmq-master
+      - rabbitmq-slave1
+    environment:
+      - CLUSTERED=true
+      - CLUSTER_WITH=rabbitmq-master
+    networks:
+      - cmmplb
+
+networks:
+  cmmplb:
+    external: true

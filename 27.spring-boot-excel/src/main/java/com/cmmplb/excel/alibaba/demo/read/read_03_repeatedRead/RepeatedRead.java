@@ -3,8 +3,11 @@ package com.cmmplb.excel.alibaba.demo.read.read_03_repeatedRead;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.read.metadata.ReadSheet;
+import com.cmmplb.core.utils.FileUtil;
 import com.cmmplb.excel.alibaba.demo.read.data.DemoData;
 import com.cmmplb.excel.alibaba.demo.read.read_01_simpleRead.DemoDataListener;
+
+import java.io.InputStream;
 
 /**
  * @author penglibo
@@ -25,22 +28,21 @@ public class RepeatedRead {
      * 3. 直接读即可
      */
     public static void main(String[] args) {
-        String fileName = "src/main/resources/read/demo.xlsx";
+        InputStream inputStream = FileUtil.getInputStream("read/demo.xlsx");
         // 读取全部sheet
         // 这里需要注意 DemoDataListener的doAfterAllAnalysed 会在每个sheet读取完毕后调用一次。然后所有sheet都会往同一个DemoDataListener里面写
-        EasyExcel.read(fileName, DemoData.class, new DemoDataListener()).doReadAll();
+        EasyExcel.read(inputStream, DemoData.class, new DemoDataListener<DemoData>()).doReadAll();
 
         // 读取部分sheet
-        fileName = "src/main/resources/read/demo.xlsx";
         ExcelReader excelReader = null;
         try {
-            excelReader = EasyExcel.read(fileName).build();
+            excelReader = EasyExcel.read(inputStream).build();
 
             // 这里为了简单 所以注册了 同样的head 和Listener 自己使用功能必须不同的Listener
             ReadSheet readSheet1 =
-                    EasyExcel.readSheet(0).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
+                    EasyExcel.readSheet(0).head(DemoData.class).registerReadListener(new DemoDataListener<DemoData>()).build();
             ReadSheet readSheet2 =
-                    EasyExcel.readSheet(1).head(DemoData.class).registerReadListener(new DemoDataListener()).build();
+                    EasyExcel.readSheet(1).head(DemoData.class).registerReadListener(new DemoDataListener<DemoData>()).build();
             // 这里注意 一定要把sheet1 sheet2 一起传进去，不然有个问题就是03版的excel 会读取多次，浪费性能
             excelReader.read(readSheet1, readSheet2);
         } finally {
