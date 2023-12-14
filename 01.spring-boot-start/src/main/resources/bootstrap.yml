@@ -1,5 +1,5 @@
 # 服务端口
-#server.port: @project.port@
+# server.port: @project.port@
 # 路径
 server.servlet.context-path: /
 # 关闭banner
@@ -15,11 +15,9 @@ spring.main.allow-bean-definition-overriding: true
 spring.profiles.group:
   local:
     - compression
-    - context
     - jetty
     - logging
     - management
-    - redis
     - tomcat
     - undertow
   sit:

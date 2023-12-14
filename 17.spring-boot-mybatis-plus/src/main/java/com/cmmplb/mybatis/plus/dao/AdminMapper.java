@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @author penglibo
  * @date 2021-04-02 00:03:34
- * MP 支持不需要 UserMapper.xml
+ * MP 支持不需要 Mapper.xml
  */
 
 @SuppressWarnings({"SqlNoDataSourceInspection", "SqlResolve"})

@@ -50,7 +50,7 @@ public class MybatisTest {
         // 当使用任何整数值调用 userService 的 getUserById() 方法时，就回传一个名字为 I'm mock3 的 user 对象
         Mockito.when(userService.getById(Mockito.anyLong())).thenReturn(user1);
 
-        // 当调用 userService 的 save() 方法时，不管传进来的 user 是什麽，都回传 100
+        // 当调用 userService 的 save() 方法时，不管传进来的 user 是什麽，都回传 false
         Mockito.when(userService.save(Mockito.any(User.class))).thenReturn(false);
 
         // 当调用 userService 的 getById() 时的参数是 9 时，抛出一个 RuntimeException

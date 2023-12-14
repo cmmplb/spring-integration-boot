@@ -80,11 +80,13 @@
 
         }
     };
+
     //发送消息
     function send() {
         var message = document.getElementById('text').value;
         websocket.send(message);
     }
+
     //连接关闭的回调方法
     websocket.onclose = function () {
         console.log("WebSocket连接关闭")

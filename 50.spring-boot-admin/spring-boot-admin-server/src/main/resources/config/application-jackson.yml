@@ -1,7 +1,7 @@
 spring:
   jackson:
     default-property-inclusion: NON_NULL
-    #响应时间-也可以使用注解在实体类上@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH-mm-ss")
+    #响应时间-也可以使用注解在实体类上@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
     serialization:

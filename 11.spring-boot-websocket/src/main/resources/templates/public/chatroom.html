@@ -65,7 +65,8 @@
     </div>
 </div>
 <script>
-    Date.portotype.format = function (fmt) {
+    /* 日期时间格式化*/
+    Date.prototype.format = function(fmt = 'yyyy-MM-dd hh:mm:ss') {
         const o = {
             "M+": this.getMonth() + 1,                 //月份
             "d+": this.getDate(),                    //日

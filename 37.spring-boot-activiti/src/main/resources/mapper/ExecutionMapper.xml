@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmmplb.activiti.dao.ExecutionMapper">
+    <sql id="base_column">
+        <!-- @sql select -->
+        are.ID_                   as id,
+        are.REV_                  as rev,
+        are.PROC_INST_ID_         as procInstId,
+        are.BUSINESS_KEY_         as businessKey,
+        are.PARENT_ID_            as parentId,
+        are.PROC_DEF_ID_          as procDefId,
+        are.SUPER_EXEC_           as superExec,
+        are.ROOT_PROC_INST_ID_    as rootProcInstId,
+        are.ACT_ID_               as actId,
+        are.IS_ACTIVE_            as isActive,
+        are.IS_CONCURRENT_        as isConcurrent,
+        are.IS_SCOPE_             as isScope,
+        are.IS_EVENT_SCOPE_       as isEventScope,
+        are.IS_MI_ROOT_           as isMiRoot,
+        are.SUSPENSION_STATE_     as suspensionState,
+        are.CACHED_ENT_STATE_     as cachedEntState,
+        are.TENANT_ID_            as tenantId,
+        are.NAME_                 as name,
+        are.START_TIME_           as startTime,
+        are.START_USER_ID_        as startUserId,
+        are.LOCK_TIME_            as lockTime,
+        are.IS_COUNT_ENABLED_     as isCountEnabled,
+        are.EVT_SUBSCR_COUNT_     as evtSubscrCount,
+        are.TASK_COUNT_           as taskCount,
+        are.JOB_COUNT_            as jobCount,
+        are.TIMER_JOB_COUNT_      as timerJobCount,
+        are.SUSP_JOB_COUNT_       as suspJobCount,
+        are.DEADLETTER_JOB_COUNT_ as deadLetterJobCount,
+        are.VAR_COUNT_            as varCount,
+        are.ID_LINK_COUNT_        as idLinkCount,
+        are.APP_VERSION_          as appVersion
+        <!-- @sql from `act_ru_execution` are -->
+    </sql>
+
+    <sql id="base_select">
+        select
+        <include refid="base_column"/>
+        from `act_ru_execution` are
+    </sql>
+
+    <select id="selectExecutionProcessByPaged" resultType="com.cmmplb.activiti.entity.Execution">
+        <include refid="base_select"/>
+    </select>
+</mapper>

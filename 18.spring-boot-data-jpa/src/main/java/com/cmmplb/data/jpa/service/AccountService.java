@@ -3,6 +3,7 @@ package com.cmmplb.data.jpa.service;
 import com.cmmplb.core.beans.PageResult;
 import com.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.data.jpa.entity.Account;
+import com.cmmplb.data.jpa.vo.AccountInfoVO;
 import com.querydsl.core.Tuple;
 import org.springframework.data.domain.Page;
 
@@ -27,7 +28,9 @@ public interface AccountService {
      * 使用dsl方式查询
      * @return
      */
-    List<Tuple> getList4dsl();
+    List<Tuple> getList4Dsl();
 
-    Page<Account> getPaged4dsl();
+    Page<Account> getPaged4Dsl();
+
+    AccountInfoVO getInfoById4Dsl(Long id);
 }

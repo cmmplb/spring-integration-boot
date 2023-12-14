@@ -38,8 +38,8 @@ public class Tag implements Serializable {
      * 创建时间
      */
     @ApiModelProperty(value = "创建时间", example = "2021-01-01 12:00:00")
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH-mm-ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     /**
@@ -52,8 +52,8 @@ public class Tag implements Serializable {
      * 更新时间
      */
     @ApiModelProperty(value = "更新时间", example = "2021-01-01 12:00:00")
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH-mm-ss")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     /**

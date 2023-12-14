@@ -4,9 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * @author penglibo
@@ -17,19 +20,34 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Start {
+public class Start implements Serializable {
 
-    @JSONField(name = "startName")
-    @JsonProperty("startName")
+    @JSONField(name = "startName1")
+    @JsonProperty("startName2")
     private String name;
 
     private Integer age;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String json = "{\n" +
                 "\"age\": 15,\n" +
-                "\"startName\": \"张三\"\n" +
+                "\"startName\": \"张三0\",\n" +
+                "\"startName1\": \"张三1\",\n" +
+                "\"startName2\": \"张三2\"\n" +
                 "}";
-        System.out.println(JSON.parseObject(json,new TypeReference<Start>(){}));
+        Start start = JSON.parseObject(json, new TypeReference<Start>() {
+        });
+        System.out.println(JSON.parseObject(json, new TypeReference<Start>() {
+        }));
+        System.out.println(JSON.toJSONString(start));
+
+
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(mapper.writeValueAsString(start));
+
+        // 打印信息
+        // Start(name=张三1, age=15)
+        // {"age":15,"startName1":"张三1"}
+        // {"age":15,"startName2":"张三1"}
     }
 }

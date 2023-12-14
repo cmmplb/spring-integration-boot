@@ -6,6 +6,7 @@ import com.cmmplb.core.result.Result;
 import com.cmmplb.core.result.ResultUtil;
 import com.cmmplb.data.jpa.entity.Account;
 import com.cmmplb.data.jpa.service.AccountService;
+import com.cmmplb.data.jpa.vo.AccountInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,5 +45,8 @@ public class AccountController {
         return ResultUtil.success(accountService.getByPaged(queryPageBean));
     }
 
-
+    @GetMapping(value = "/{id}")
+    public Result<AccountInfoVO> getInfoById(@PathVariable Long id) {
+        return ResultUtil.success(accountService.getInfoById4Dsl(id));
+    }
 }

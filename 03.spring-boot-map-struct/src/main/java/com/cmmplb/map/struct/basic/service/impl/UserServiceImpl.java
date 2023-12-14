@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO getOneMapping() {
         UserDTO dto = userDao.selectDTO();
+
         return UserConvert.INSTANCE.convert(dto);
     }
 

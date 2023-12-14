@@ -2,7 +2,7 @@ package com.cmmplb.security.filter;
 
 import com.cmmplb.core.utils.SpringApplicationUtil;
 import com.cmmplb.security.handler.AuthenticationFailureHandler;
-import com.cmmplb.security.handler.excetion.ValidateCodeException;
+import com.cmmplb.security.handler.exception.ValidateCodeException;
 import com.cmmplb.security.utils.SmsCodeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

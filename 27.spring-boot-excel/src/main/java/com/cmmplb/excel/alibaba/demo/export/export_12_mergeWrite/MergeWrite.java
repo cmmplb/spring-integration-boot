@@ -38,5 +38,6 @@ public class MergeWrite {
         LoopMergeStrategy loopMergeStrategy = new LoopMergeStrategy(2, 0);
         // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
         EasyExcel.write(fileName, DemoData.class).registerWriteHandler(loopMergeStrategy).sheet("模板").doWrite(DemoData.data());
+        EasyExcel.write(fileName, DemoData.class).registerWriteHandler(new MergeStrategyCellWriteHandler()).sheet("模板").doWrite(DemoData.data());
     }
 }

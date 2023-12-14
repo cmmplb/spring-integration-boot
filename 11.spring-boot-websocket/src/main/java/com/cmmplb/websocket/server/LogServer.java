@@ -46,11 +46,11 @@ public class LogServer {
      */
     @OnOpen
     public void onOpen(Session session) {
-        //添加到集合中
+        // 添加到集合中
         SESSION_MAP.put(session.getId(), session);
-        LENGTH_MAP.put(session.getId(), 1);//默认从第一行开始
+        LENGTH_MAP.put(session.getId(), 1);// 默认从第一行开始
 
-        //获取日志信息
+        // 获取日志信息
         new Thread(() -> {
             logger.info("任务开始");
             // 复制过来测试
@@ -58,32 +58,32 @@ public class LogServer {
             BufferedReader reader = null;
             while (SESSION_MAP.get(session.getId()) != null) {
                 try {
-                    //日志文件，获取最新的
-                    FileReader fileReader = new FileReader(LogDirUtil.getLogDir() + applicationName + "/info.log");
+                    // 日志文件，获取最新的
+                    FileReader fileReader = new FileReader(LogDirUtil.getLogDir() + "/" + applicationName + "/info.log");
 
-                    //字符流
+                    // 字符流
                     reader = new BufferedReader(fileReader);
                     Object[] lines = reader.lines().toArray();
 
-                    //只取从上次之后产生的日志
+                    // 只取从上次之后产生的日志
                     Object[] copyOfRange = Arrays.copyOfRange(lines, LENGTH_MAP.get(session.getId()), lines.length);
 
-                    //对日志进行着色，更加美观  PS：注意，这里要根据日志生成规则来操作
+                    // 对日志进行着色，更加美观  PS：注意，这里要根据日志生成规则来操作
                     for (int i = 0; i < copyOfRange.length; i++) {
                         String line = (String) copyOfRange[i];
-                        //先转义
+                        // 先转义
                         line = line.replaceAll("&", "&amp;")
                                 .replaceAll("<", "&lt;")
                                 .replaceAll(">", "&gt;")
                                 .replaceAll("\"", "&quot;");
 
-                        //处理等级
+                        // 处理等级
                         line = line.replace("DEBUG", "<span style='color: blue;'>DEBUG</span>");
                         line = line.replace("INFO", "<span style='color: green;'>INFO</span>");
                         line = line.replace("WARN", "<span style='color: orange;'>WARN</span>");
                         line = line.replace("ERROR", "<span style='color: red;'>ERROR</span>");
 
-                        //处理类名
+                        // 处理类名
                         String[] split = line.split("]");
                         if (split.length >= 2) {
                             String[] split1 = split[1].split("-");
@@ -96,9 +96,9 @@ public class LogServer {
                         Pattern r = Pattern.compile("[\\d+][\\d+][\\d+][\\d+]-[\\d+][\\d+]-[\\d+][\\d+] [\\d+][\\d+]:[\\d+][\\d+]:[\\d+][\\d+]");
                         Matcher m = r.matcher(line);
                         if (m.find()) {
-                            //找到下标
+                            // 找到下标
                             int start = m.start();
-                            //插入
+                            // 插入
                             StringBuilder sb = new StringBuilder(line);
                             sb.insert(start, "<br/><br/>");
                             line = sb.toString();
@@ -107,10 +107,10 @@ public class LogServer {
                         copyOfRange[i] = line;
                     }
 
-                    //存储最新一行开始
+                    // 存储最新一行开始
                     LENGTH_MAP.replace(session.getId(), lines.length);
 
-                    //第一次如果太大，截取最新的200行就够了，避免传输的数据太大
+                    // 第一次如果太大，截取最新的200行就够了，避免传输的数据太大
                     if (first && copyOfRange.length > 200) {
                         copyOfRange = Arrays.copyOfRange(copyOfRange, copyOfRange.length - 200, copyOfRange.length);
                         first = false;
@@ -118,13 +118,13 @@ public class LogServer {
 
                     String result = StringUtils.join(copyOfRange, "<br/>");
 
-                    //发送
+                    // 发送
                     send(session, result);
 
-                    //休眠一秒
+                    // 休眠一秒
                     Thread.sleep(1000);
                 } catch (Exception e) {
-                    //输出到日志文件中
+                    // 输出到日志文件中
                     logger.error(ErrorUtil.errorInfoToString(e));
                 }
             }
@@ -133,7 +133,7 @@ public class LogServer {
                     reader.close();
                 }
             } catch (IOException e) {
-                //输出到日志文件中
+                // 输出到日志文件中
                 logger.error(ErrorUtil.errorInfoToString(e));
             }
             logger.info("任务结束");
@@ -145,7 +145,7 @@ public class LogServer {
      */
     @OnClose
     public void onClose(Session session) {
-        //从集合中删除
+        // 从集合中删除
         SESSION_MAP.remove(session.getId());
         LENGTH_MAP.remove(session.getId());
     }
@@ -155,7 +155,7 @@ public class LogServer {
      */
     @OnError
     public void onError(Session session, Throwable error) {
-        //输出到日志文件中
+        // 输出到日志文件中
         logger.error(ErrorUtil.errorInfoToString(error));
     }
 
@@ -178,7 +178,7 @@ public class LogServer {
         try {
             session.getBasicRemote().sendText(message);
         } catch (Exception e) {
-            //输出到日志文件中
+            // 输出到日志文件中
             logger.error(ErrorUtil.errorInfoToString(e));
         }
     }

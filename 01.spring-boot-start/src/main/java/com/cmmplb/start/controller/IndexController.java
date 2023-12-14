@@ -15,18 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-    // @Autowired
-    // private RedisService redisService;
-
     @RequestMapping("/")
     public Result<String> index(String name) {
         String res = "hello spring boot " + (StringUtil.isEmpty(name) ? "" : name);
-        // Object o = redisService.get("momo");
-        // if (null == o) {
-        //     redisService.set("momo", name);
-        // } else {
-        //     System.out.println("name:" + o);
-        // }
         return ResultUtil.success(res);
     }
 

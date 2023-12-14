@@ -1,7 +1,7 @@
 package com.cmmplb.data.jpa;
 
 import com.cmmplb.core.utils.RandomUtil;
-import com.cmmplb.data.jpa.dao.AccountDao;
+import com.cmmplb.data.jpa.repository.AccountRepository;
 import com.cmmplb.data.jpa.entity.*;
 import com.cmmplb.data.jpa.service.AccountService;
 import com.cmmplb.data.jpa.vo.AccountTagVO;
@@ -27,14 +27,14 @@ import java.util.Random;
 public class DataJpaTest {
 
     @Autowired
-    private AccountDao accountDao;
+    private AccountRepository accountRepository;
 
     @Autowired
     private AccountService accountService;
 
     @Test
-    public void getList4dsl(){
-        List<Tuple> list4dsl = accountService.getList4dsl();
+    public void getList4Dsl() {
+        List<Tuple> list4dsl = accountService.getList4Dsl();
         QTag tag = QTag.tag;
         List<AccountTagVO> list = new ArrayList<>();
         AccountTagVO accountTag;
@@ -43,14 +43,15 @@ public class DataJpaTest {
             accountTag.setAccountId(tuple.get(tag.accountId));
             accountTag.setTagId(tuple.get(tag.id));
             accountTag.setTagName(tuple.get(tag.name));
+            accountTag.setTagName(tuple.get(4, String.class));
             list.add(accountTag);
         }
         System.out.println(list);
     }
 
     @Test
-    public void getPaged4dsl(){
-        Page<Account> page = accountService.getPaged4dsl();
+    public void getPaged4Dsl() {
+        Page<Account> page = accountService.getPaged4Dsl();
         System.out.println(page);
     }
 
@@ -77,7 +78,7 @@ public class DataJpaTest {
             // account.setAddressList(addressList);
             list.add(account);
         }
-        accountDao.saveAll(list);
+        accountRepository.saveAll(list);
         System.out.println("=====================完成===================");
     }
 
@@ -99,8 +100,8 @@ public class DataJpaTest {
             account.setName(RandomUtil.getRandomName());
             account.setPassword(RandomUtil.getRandomString(6));
             account.setCreateTime(new Date());
-            //account.setRoleList(roleList);
-            //role.getAccountList().add(account);
+            // account.setRoleList(roleList);
+            // role.getAccountList().add(account);
             accountList.add(account);
         }
         roleList.add(role);
@@ -112,8 +113,8 @@ public class DataJpaTest {
             account.setName(RandomUtil.getRandomName());
             account.setPassword(RandomUtil.getRandomString(6));
             account.setCreateTime(new Date());
-            //account.setRoleList(roleList);
-            //role.getAccountList().add(account);
+            // account.setRoleList(roleList);
+            // role.getAccountList().add(account);
             accountList.add(account);
         }
         roleList.add(role);
@@ -123,7 +124,7 @@ public class DataJpaTest {
          */
         // 这里是由role维护关系，就保存role
         // roleDao.saveAll(roleList);
-        accountDao.saveAll(accountList); // 这里保存账号会自动保存角色和关系表
+        accountRepository.saveAll(accountList); // 这里保存账号会自动保存角色和关系表
         System.out.println("=====================完成===================");
     }
 
@@ -159,7 +160,7 @@ public class DataJpaTest {
 
         // =====================底层方法查询=============================
         /*List<Account> accountList = accountDao.findByName("水焱暨");
-        *//**
+         *//**
          *  具体规则 see {@link  org.springframework.data.repository.query.parser.PartTree}
          *//*
         System.out.println(accountList);*/

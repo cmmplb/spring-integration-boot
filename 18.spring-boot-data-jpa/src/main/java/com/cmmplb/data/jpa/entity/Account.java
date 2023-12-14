@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author penglibo
@@ -46,6 +44,18 @@ public class Account {
 
     @Column(name = "create_time", nullable = false, columnDefinition = "datetime comment '创建时间'")
     private Date createTime;
+
+    /**
+     * 一级分类id
+     */
+    @Column(name = "category_one_id", nullable = false, length = 20, columnDefinition = "bigint(20) comment '一级分类id'")
+    private Long categoryOneId;
+
+    /**
+     * 二级分类id
+     */
+    @Column(name = "category_two_id", nullable = false, length = 20, columnDefinition = "bigint(20) comment '二级分类id'")
+    private Long categoryTwoId;
 
     /*@OneToMany(*//*cascade = CascadeType.ALL,*//* mappedBy = "account", fetch = FetchType.LAZY)    // 一对多-mappedBy设置关联对象属性名称
     private List<Address> addressList = new ArrayList<>();*/

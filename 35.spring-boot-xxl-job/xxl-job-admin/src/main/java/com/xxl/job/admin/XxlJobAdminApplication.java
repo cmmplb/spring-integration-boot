@@ -1,6 +1,8 @@
 package com.xxl.job.admin;
 
 import com.cmmplb.core.utils.SpringApplicationUtil;
+import com.sun.glass.ui.Application;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
@@ -10,8 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class XxlJobAdminApplication {
 
-	public static void main(String[] args) {
-		SpringApplicationUtil.run(XxlJobAdminApplication.class, args);
-	}
+    public static void main(String[] args) {
+        // SpringApplicationUtil.run(XxlJobAdminApplication.class, args);
+        SpringApplication.run(XxlJobAdminApplication.class, args);
+    }
 
 }

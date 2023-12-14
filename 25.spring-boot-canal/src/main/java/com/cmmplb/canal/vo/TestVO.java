@@ -31,6 +31,6 @@ public class TestVO implements Serializable {
     * 创建时间
     */
     @ApiModelProperty(value = "创建时间", example = "2021-01-01 08:00:00")
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH-mm-ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 }

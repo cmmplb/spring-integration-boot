@@ -3,18 +3,16 @@ package com.cmmplb.data.jpa.service.impl;
 import com.cmmplb.core.beans.PageResult;
 import com.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.data.jpa.dao.AccountDao;
-import com.cmmplb.data.jpa.entity.*;
+import com.cmmplb.data.jpa.repository.AccountRepository;
+import com.cmmplb.data.jpa.entity.Account;
 import com.cmmplb.data.jpa.service.AccountService;
-import com.querydsl.core.QueryResults;
+import com.cmmplb.data.jpa.vo.AccountInfoVO;
 import com.querydsl.core.Tuple;
-import com.querydsl.jpa.impl.JPAQuery;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,67 +27,45 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountDao accountDao;
 
-    @PersistenceContext
-    private EntityManager em;
-
-    private QAccount account = QAccount.account; // compile生成target  Q类
-    private QTag tag = QTag.tag;
+    @Autowired
+    private AccountRepository accountRepository;
 
     @Override
     public boolean save(Account account) {
-        accountDao.save(account);
+        account.setCreateTime(new Date());
+        accountRepository.save(account);
         return true;
     }
 
     @Override
     public boolean deleteById(Long id) {
-        accountDao.deleteById(id);
+        accountRepository.deleteById(id);
         return true;
     }
 
     @Override
     public List<Account> getList() {
-        return accountDao.findAll();
+        return accountRepository.findAll();
     }
 
     @Override
-    public List<Tuple> getList4dsl() {
-        JPAQuery<Tuple> query = new JPAQuery<Tuple>(em);
-        return query.select(account.id,tag.accountId,tag.id,tag.name)
-                .from(account,tag)
-                .where(account.id.eq(tag.accountId)).fetch();
+    public List<Tuple> getList4Dsl() {
+        return accountDao.selectList4Dsl();
     }
 
     @Override
-    public Page<Account> getPaged4dsl() {
-        QueryPageBean queryPageBean = new QueryPageBean();
-        queryPageBean.setSize(10);
-        queryPageBean.setCurrent(1);
+    public Page<Account> getPaged4Dsl() {
+        return accountDao.selectPaged4Dsl();
+    }
 
-        JPAQuery<Account> where = new JPAQuery<>(em)
-                .select(account)
-                .from(account);
-        if (StringUtils.isNotBlank("name")) {
-            where.where(account.name.like("张三"));
-        }
-        Pageable pageable;
-        if (queryPageBean.getCurrent() == 0) { // null
-            pageable = PageRequest.of(0, Integer.MAX_VALUE);
-        } else {
-            int page = queryPageBean.getCurrent() - 1;
-            page = Math.max(page, 0);
-            pageable = PageRequest.of(page, queryPageBean.getSize());
-        }
-        QueryResults<Account> results = where
-                .orderBy(account.createTime.desc())
-                .offset(pageable.getOffset()).limit(pageable.getPageSize())
-                .fetchResults();
-        return new PageImpl<Account>(results.getResults(), pageable, results.getTotal());
+    @Override
+    public AccountInfoVO getInfoById4Dsl(Long id) {
+        return accountDao.selectInfoById4Dsl(id);
     }
 
     @Override
     public PageResult<Account> getByPaged(QueryPageBean queryPageBean) {
-        Page<Account> page = accountDao.findAll(PageRequest.of(queryPageBean.getCurrent(), queryPageBean.getSize(), Sort.Direction.DESC, "id"));
+        Page<Account> page = accountRepository.findAll(PageRequest.of(queryPageBean.getCurrent(), queryPageBean.getSize(), Sort.Direction.DESC, "id"));
         return new PageResult<>(page.getTotalElements(), page.getContent());
     }
 }
