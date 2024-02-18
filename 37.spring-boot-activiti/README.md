@@ -17,7 +17,7 @@
 
 # todo
 
-- 整合bpmn-js进度查看
+- 整合bpmn-js进度查看箭头tiny-svg.js高亮
 - 多人审批
 
 # 项目图片
@@ -68,7 +68,7 @@ https://github.com/LinDaiDai/bpmn-chinese-document/blob/master/directory.md
 
 https://bpmn.io/
 
-- 仓库:
+- 仓库：
 
 https://github.com/bpmn-io/bpmn-js
 

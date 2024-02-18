@@ -37,7 +37,7 @@ public class UserInfoVO implements Serializable {
     private String name;
 
     /**
-     * 用户状态：1-正常；2-禁用；
+     * 用户状态:0-正常;1-禁用
      */
     @ApiModelProperty(value = "用户状态:0-正常;1-禁用", example = "0")
     private Byte status;
