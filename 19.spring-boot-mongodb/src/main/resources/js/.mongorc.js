@@ -1,1 +1,0 @@
-EDITOR = "\"D:\\ProgramFileDev\\Notepad\\notepad++.exe\"";

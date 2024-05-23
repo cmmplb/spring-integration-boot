@@ -1,9 +1,0 @@
-xss:
-  # 是否启用xss过滤,默认false
-  enabled: true
-  # 是否过滤富文本内容
-  is-include-rich-text: true
-  # 需要排除的资源,多个','分割
-  excludes: ''
-  # 拦截规则,多个','分割
-  url-patterns: '/*'
