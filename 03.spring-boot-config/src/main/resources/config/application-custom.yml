@@ -1,0 +1,25 @@
+#Cannot resolve configuration property '' 变黄maven-package一下就好了
+#自定义配置
+project:
+  name: spring-boot-config
+  version: 1.0.0
+
+environment:
+  name: config-environment
+  version: 1.0.0
+
+bean:
+  name: config-bean
+  version: 1.0.0
+
+version:
+  list: 1.0.0,2.0.0,3.0.0 # yml中 - 形式的list子元素 ,@value 读取是有问题的，但是如果list或者map 是以 " , " 则可以使用@value 读取
+
+properties:
+  name: config-properties
+  version: 1.0.0
+
+#读取pom文件信息
+maven.pom:
+  name: @project.name@
+  version: @project.version@

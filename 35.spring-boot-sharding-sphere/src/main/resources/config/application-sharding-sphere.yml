@@ -1,0 +1,67 @@
+spring:
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: master0,master1,slave0,slave1,slave2,slave3
+      master0:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_0?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: cmmplb
+        type: com.alibaba.druid.pool.DruidDataSource
+      master1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_0?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: cmmplb
+        type: com.alibaba.druid.pool.DruidDataSource
+      slave0:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: cmmplb
+        type: com.alibaba.druid.pool.DruidDataSource
+      slave1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_1?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: cmmplb
+        type: com.alibaba.druid.pool.DruidDataSource
+      slave2:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_2?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: cmmplb
+        type: com.alibaba.druid.pool.DruidDataSource
+      slave3:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_2?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: cmmplb
+        type: com.alibaba.druid.pool.DruidDataSource
+
+    sharding:
+      tables:
+        user:
+          # 水平分库
+          database-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: master$->{id % 2}
+          # 数据节点
+          actual-data-nodes: master$->{0..1}.user_$->{0..1}
+          # 水平分表
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: user$->{id % 2}
+      # 主从读写分离，查询走从
+      master-slave-rules:
+        master0:
+          master-data-source-name: master0
+          slave-data-source-names: slave0,slave1
+        master1:
+          master-data-source-name: master1
+          slave-data-source-names: slave2,slave3

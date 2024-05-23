@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- SYSTEM只允许本地访问 -->
+<!-- <!DOCTYPE custom SYSTEM "custom.dtd"> -->
+<!-- 公用外部访问-或者直接去掉->
+<!-<!DOCTYPE 文档根结点 PUBLIC"DTD名称" "DTD文件的URL"> -->
+<!-- <!DOCTYPE custom PUBLIC "custom.dtd" "custom.dtd"> -->
+<custom name="cmmplb" version="1.0.0">
+    <name>custom.xml</name>
+    <version>1.0.0</version>
+</custom>
+

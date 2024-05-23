@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  rabbitmq:
+    #image: rabbitmq:3.8.19-management
+    image: rabbitmq:management-alpine
+    restart: always
+    container_name: rabbitmq-standalone
+    hostname: rabbitmq-standalone
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_VHOST: "/"
+      RABBITMQ_DEFAULT_USER: "root"
+      RABBITMQ_DEFAULT_PASS: "cmmplb"
+      TZ: Asia/Shanghai
+    volumes:
+      - ./data/rabbitmq:/var/lib/rabbitmq
+      # - ./data/log:/var/log/rabbitmq/log
+      #配置文件也可以手动拷贝：docker cp 镜像id:容器文件夹或文件路径 宿主机路径
+      #docker exec -it 镜像id /bin/sh    这种方式进入容器
+      #docker cp 镜像id:/var/log/rabbitmq/log ./data/log
+    networks:
+      - cmmplb
+
+networks:
+  cmmplb:
+    external: true

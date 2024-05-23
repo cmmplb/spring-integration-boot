@@ -2,8 +2,6 @@ package com.cmmplb.start;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -20,17 +18,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @date 2021-03-29 14:10:17
  */
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class StartTest {
-
-    @Data
-    @AllArgsConstructor
-    public static class Student {
-
-        private Long id;
-
-        private String name;
-    }
 
     public static void main(String[] args) {
         System.out.println("1");

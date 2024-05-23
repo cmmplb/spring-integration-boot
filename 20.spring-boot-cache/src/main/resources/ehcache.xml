@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://ehcache.org/ehcache.xsd"
+         updateCheck="false">
+
+    <!-- 磁盘缓存位置 -->
+    <diskStore path="java.io.tmpdir/ehcache"/>
+
+    <!-- 默认缓存配置 -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="3600"
+            timeToLiveSeconds="0"
+            overflowToDisk="false"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"/>
+
+    <!-- 自定义cache配置，可配置多个，users对应缓存管理器cacheNames名称 -->
+    <cache
+            name="users"
+            maxEntriesLocalHeap="2000"
+            eternal="false"
+            timeToIdleSeconds="3600"
+            timeToLiveSeconds="0"
+            overflowToDisk="false"
+            statistics="true"/>
+    <!--
+        name：                                   缓存名称。
+
+        maxEntriesLocalHeap：                    堆内存中最大缓存对象数，0没有限制。
+
+        maxElementsOnDisk：                      硬盘最大缓存个数。
+
+        eternal：                                是否永久有效，如果为true，timeouts将被忽略，element将永不过期。
+
+        timeToIdleSeconds：                      空闲时间（单位：秒），即在指定时间内没有访问，则该缓存会失效，当eternal为false时，
+                                                 这个属性才有效，0为不限制，默认值是0，也就是可闲置时间无穷大。
+
+        timeToLiveSeconds：                      存活时间（单位：秒），即从放入缓存开始计算，在指定时间内缓存会失效，
+                                                 当eternal为false时，这个属性才有效，0为不限制，也就是对象存活时间无穷大。
+
+        overflowToDisk：                         如果内存中数据超过内存限制，是否要缓存到磁盘上。
+
+        maxElementsInMemory：                    在内存中缓存的element的最大数目。
+
+        diskPersistent：                         是否缓存虚拟机重启期数据，默认值为false。
+
+        diskSpoolBufferSizeMB：                  这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区。
+
+        clearOnFlush：                           内存数量最大时是否清除。
+
+        diskExpiryThreadIntervalSeconds：        磁盘失效线程运行时间间隔，默认是120秒。
+
+        statistics：                             是否收集统计信息。如果需要监控缓存使用情况，应该打开这个选项。默认为关闭（统计会影响性能）。
+
+        memoryStoreEvictionPolicy：              当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。
+                                                 默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。
+                                                 Ehcache的三种清空策略：FIFO，first in first out，这个是大家最熟的，先进先出。
+                                                 LFU， Less Frequently Used，就是上面例子中使用的策略，直白一点就是讲一直以来最少被使用的。
+                                                 如上面所讲，缓存的元素有一个hit属性，hit值最小的将会被清出缓存。
+                                                 LRU，Least Recently Used，最近最少使用的，缓存的元素有一个时间戳，当缓存容量满了，
+                                                 而又需要腾出地方来缓存新的元素的时候，那么现有缓存元素中时间戳离当前时间最远的元素将被清出缓存。
+    -->
+</ehcache>

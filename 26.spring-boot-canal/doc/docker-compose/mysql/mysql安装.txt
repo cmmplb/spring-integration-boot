@@ -1,0 +1,8 @@
+如果执行出现 $'\r': command not found 文件
+可能是因为windows与Unix文本编辑器默认格式不同引起的，因此需要进行转换
+# 安装 dos2unix
+yum -y install dos2unix*
+# 转换脚本
+dos2unix run.sh
+
+赋权限

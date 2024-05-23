@@ -1,0 +1,12 @@
+spring:
+  cache:
+    # 指定缓存类型
+    type: ehcache
+    ehcache:
+      config: 'classpath:ehcache.xml'
+    redis:
+      time-to-live: 1h
+
+cache:
+  enabled: true
+  cache-type: ehcache

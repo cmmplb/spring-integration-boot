@@ -1,0 +1,13 @@
+package com.cmmplb.rocketmq;
+
+import com.cmmplb.core.utils.SpringApplicationUtil;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class RocketApplication {
+
+    public static void main(String[] args) {
+        SpringApplicationUtil.run(RocketApplication.class, args);
+    }
+
+}

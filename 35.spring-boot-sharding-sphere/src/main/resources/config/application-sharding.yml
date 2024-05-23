@@ -1,0 +1,69 @@
+sharding:
+  jdbc:
+    datasource:
+      # 数据源 注：这里不能使用下划线_
+      names: ds0,ds1,ds2
+      # 主数据源
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_0?characterEncoding=utf-8
+        username: root
+        password: cmmplb
+      # 从数据源
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_1?characterEncoding=utf-8
+        username: root
+        password: cmmplb
+      # 从数据源
+      ds2:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/sharding_sphere_2?characterEncoding=utf-8
+        username: root
+        password: cmmplb
+    # ============================================================================================
+    # 水平拆分的数据库（表） 配置分库 + 分表策略 行表达式分片策略
+    config:
+      sharding:
+        # 默认数据源
+        # default-data-source-name: ds0
+        # binding-tables: user
+        # broadcast-tables: t_config
+        # 分库策略
+        default-database-strategy:
+          inline:
+            sharding-column: id
+            algorithm-expression: ds$->{id % 2}
+        tables:
+          ######################################  分表策略 ###################################
+          ###  actual-data-nodes                           读取数据分表策略
+          ###  table-strategy.inline.sharding-column       添加数据分表字段(根据字段插入数据到那个表,如：id)
+          ###  --- ds0.user                                代表只查询（未分库分表）
+          ###  --- ds0.user_$->{0..2}                      代表查询ds0库下后缀为0的库到后缀为1的所有表数据
+          ###  --- user_$->{id % 2}                        id % 2 的余等于库后缀,判断数据添加至那个表(取模算法)
+          user:
+            actual-data-nodes: ds$->{0..2}.user_$->{0..1}
+            table-strategy:
+              inline:
+                sharding-column: id
+                algorithm-expression: user_$->{id % 2}
+            # 主键 UUID 18位数 如果是分布式还要进行一个设置 防止主键重复
+            # key-generator-column-name: id
+      ######################### sharding_jdbc读写分离配置 ###################################
+      ### 说明：
+      ###  1、读取数据使用从数据库(slave),多个从数据库算法：round_robin（轮询）和random（随机）
+      ###  2、写入数据使用主数据库(master，添加，修改，删除)
+      ###  3、读写分离配置 master为主，slave为从,多个从数据库逗号分隔
+      ###  4、sharding.jdbc 没有做主从复制,需要自己处理多个数据库之间的同步数据操作
+      # masterslave:
+        # name: dataSource
+        # master-data-source-name: ds0
+        # slave-data-source-names: ds1,ds2
+        # load-balance-algorithm-type: round_robin
+      # 打印执行的数据库
+      props:
+        sql:
+          show: true

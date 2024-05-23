@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>调度管理</title>
+    <!-- 引入vue -->
+    <script src="/js/vue-2.7.15.js"></script>
+    <!-- 引入element ui -->
+    <link rel="stylesheet" href="/integration/element-ui/css/index.css">
+    <script src="/integration/element-ui/js/element-ui.js"></script>
+    <!-- 引入axios -->
+    <script src="/js/axios.js"></script>
+    <!-- 引入公共css样式 -->
+    <link rel="stylesheet" href="/css/common.css">
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+                <template v-for="ele in tabPane">
+                    <el-tab-pane :label="ele.label" :name="ele.name">
+                        <!-- 搜索区域 -->
+                        <el-card class="search" shadow="always">
+                            <!-- 搜索表单区域 -->
+                            <!-- inline 属性可以让表单域变为行内的表单域 -->
+                            <el-form inline :model="searchForm" class="search-form" size="small">
+                                <el-row>
+                                    <el-col :span="4">
+                                        <el-form-item label="关键词">
+                                            <el-input v-model="searchForm.keywords" clearable placeholder="名称">
+                                            </el-input>
+                                        </el-form-item>
+                                    </el-col>
+                                    <el-col :span="6">
+                                        <el-form-item>
+                                            <el-button type="primary" icon="el-icon-search" @click="handlerSearch">查 询
+                                            </el-button>
+                                        </el-form-item>
+                                    </el-col>
+                                </el-row>
+                            </el-form>
+                        </el-card>
+
+                        <el-card class="content" shadow="always">
+                            <!-- 表格 -->
+                            <el-table stripe border v-loading="loading" :data="data" align="center"
+                                style="width: 100%;">
+                                <!-- 表头 -->
+                                <el-table-column label="序号" type="index" width="100" :resizable="false" align="center">
+                                </el-table-column>
+                                <template v-for="(column, index) in columns">
+                                    <el-table-column :key="index" :prop="column.prop" :label="column.label"
+                                        :width="column.width" align="center"
+                                        :show-overflow-tooltip="column.showOverflowTooltip">
+                                    </el-table-column>
+                                </template>
+                            </el-table>
+                        </el-card>
+
+                        <!-- 分页信息 -->
+                        <div class='pagination-container'>
+                            <el-pagination :background="false" :current-page.sync="paginationData.current"
+                                :page-size.sync="paginationData.size" layout="total, sizes, prev, pager, next, jumper"
+                                :page-sizes="[1, 5, 10, 20, 30, 50]" :total="paginationData.total" v-bind="$attrs"
+                                @size-change="handleSizeChange" @current-change="handleCurrentChange">
+                            </el-pagination>
+                        </div>
+                    </el-tab-pane>
+                </template>
+            </el-tabs>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                activeName: "time",
+                tabPane: [
+                    {
+                        label: "定时任务",
+                        name: 'time',
+                    },
+                    {
+                        label: "异步任务",
+                        name: 'async',
+                    },
+                    {
+                        label: "挂起任务",
+                        name: 'pending',
+                    },
+                    {
+                        label: "死亡任务",
+                        name: 'death',
+                    }
+                ],
+                // 列表表头
+                columns: [
+                    {
+                        prop: 'processDefinitionId',
+                        label: '流程定义id',
+                    },
+                    {
+                        prop: 'processInstanceId',
+                        label: '流程实例id',
+                    },
+                    {
+                        prop: 'jobType',
+                        label: '任务类型',
+                        width: 180,
+                    },
+                    {
+                        prop: 'dueDate',
+                        label: '处理日期',
+                    },
+                    {
+                        prop: 'exceptionMessage',
+                        label: '异常原因',
+                    },
+                ],
+                // 列表数据
+                data: [],
+                // 搜索条件
+                searchForm: {
+                    keywords: ""
+                },
+                // 分页参数
+                paginationData: {
+                    size: 10,
+                    current: 1,
+                    total: 0,
+                },
+                // 子节点字段
+                treeProps: {
+                    children: 'children',
+                    hasChildren: 'hasChildren'
+                },
+                // 加载状态
+                loading: false,
+                // 类型:1-定时;2-异步;3-挂起;4-死亡;
+                type: 1,
+            }
+        },
+        mounted() {
+            this.getData();
+        },
+        methods: {
+            // 搜索
+            handlerSearch() {
+                this.getData();
+            },
+            handleClick(tab, event) {
+                if (tab.label === '定时任务') {
+                    this.type = 1;
+                } else if (tab.label === '异步任务') {
+                    this.type = 2;
+                } else if (tab.label === '挂起任务') {
+                    this.type = 3;
+                } else {
+                    this.type = 4;
+                }
+                this.getData();
+            },
+            // 获取列表
+            async getData() {
+                this.loading = true;
+                let res = await axios.post('/management/job/paged/' + this.type, { ...this.searchForm, ...this.paginationData });
+                if (res.data.code === 200 && res.data.data) {
+                    this.data = res.data.data.rows;
+                    this.paginationData.total = res.data.data.total;
+                } else {
+                    this.$message.error(res.data.msg);
+                }
+                this.loading = false;
+            },
+            // 页码切换
+            pagination(data) {
+                this.paginationData = { ...this.paginationData, current: data.current };
+                this.getData();
+            },
+            /**
+             * pageSize 改变时会触发
+             * @param val 每页条数
+             */
+            handleSizeChange(val) {
+                this.pagination({ current: this.paginationData.currentPage, size: val });
+            },
+            /**
+             * currentPage 改变时会触发
+             * @param val 当前页
+             */
+            handleCurrentChange(val) {
+                this.pagination({ current: val, size: this.paginationData.pageSize });
+            },
+        }
+    })
+</script>
+<style>
+    .content {
+        height: 660px;
+    }
+</style>
+
+</html>

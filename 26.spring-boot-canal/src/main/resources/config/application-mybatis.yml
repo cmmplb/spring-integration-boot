@@ -1,0 +1,43 @@
+mybatis-plus:
+  # xml文件扫描路径
+  mapper-locations:
+    - classpath:/mapper/*.xml
+  # 别名包路径
+  typeAliasesPackage: com.cmmplb.canal.entity
+  global-config:
+    banner: false #不显示banner图到控制台
+    db-config:
+      # 配置id生成规则，如果在实体类指定注解配置，那么注解优先配置生效
+      id-type: auto
+      # 表名是否使用驼峰转下划线命名，只对表名生效。默认是ture
+      table-underline: true
+      # 是否逻辑删除的状态:默认0否,1是 =>https://mp.baomidou.com/guide/logic-delete.html
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  # 原生配置
+  configuration:
+    # 是否开启驼峰命名规则，默认为true
+    map-underscore-to-camel-case: true
+    # 使全局的映射器启用或禁用缓存。
+    cache-enabled: false
+    # 查询语句中某些字段值是null的也返回
+    call-setters-on-nulls: true
+    #oracle数据库需配置JdbcType.NULL, 默认是Other
+    jdbc-type-for-null: 'null'
+    #打印sql日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #    cache-enabled: false #使全局的映射器启用或禁用缓存。
+  #    lazy-loading-enabled: true #全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载
+  #    aggressive-lazy-loading: true #当启用时，有延迟加载属性的对象在被调用时将会完全加载任意属性。否则，每种属性将会按需要加载
+  #    multiple-result-sets-enabled: true #是否允许单条sql 返回多个数据集  (取决于驱动的兼容性) default:true
+  #    use-column-label: true #是否可以使用列的别名 (取决于驱动的兼容性) default:true
+  #    use-generated-keys: true #允许JDBC 生成主键。需要驱动器支持。如果设为了true，这个设置将强制使用被生成的主键，有一些驱动器不兼容不过仍然可以执行。  default:false
+  #    auto-mapping-behavior: partial #指定 MyBatis 如何自动映射 数据基表的列 NONE：不隐射\u3000PARTIAL:部分  FULL:全部
+  #    default-executor-type: simple #这是默认的执行类型  （SIMPLE: 简单； REUSE: 执行器可能重复使用prepared statements语句；BATCH: 执行器可以重复执行语句和批量更新）
+  #    local-cache-scope: session #设置本地缓存范围 session:就会有数据的共享  statement:语句范围 (这样就不会有数据的共享 ) defalut:session
+  configuration-properties:
+    # prefix:  #自定义sql中表名带前缀 在自定义sql语句select * from ${prefix}user,编译后的sql语句select * from tr_user
+    blobType: BLOB
+    boolValue: TRUE
+  #导入外部的xml配置,注意：configLocation和configuration不能同时出现
+  #config-location: classpath:mybatis.xml

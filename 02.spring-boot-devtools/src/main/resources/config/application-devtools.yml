@@ -1,0 +1,6 @@
+spring:
+  devtools:
+    restart:
+      enabled: false
+      # 设置不参与热部署的文件或文件夹
+      exclude: static/**,public/**,config/application.yml
