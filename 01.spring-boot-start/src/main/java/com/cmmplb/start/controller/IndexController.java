@@ -3,9 +3,13 @@ package com.cmmplb.start.controller;
 import com.alibaba.fastjson.JSON;
 import com.cmmplb.core.result.Result;
 import com.cmmplb.core.result.ResultUtil;
+import com.cmmplb.core.utils.ServletUtil;
+import com.cmmplb.core.utils.SpringUtil;
 import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.start.domain.Start;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,9 +26,17 @@ import java.util.Map;
 @RestController
 public class IndexController {
 
-    @RequestMapping("/")
+    @RequestMapping("/api")
     public Result<String> index(String name) {
+        log.info("接收请求:{}", ServletUtil.getHeader("name"));
         String res = "hello spring boot " + (StringUtil.isEmpty(name) ? "" : name);
+        return ResultUtil.success(res);
+    }
+
+    @RequestMapping("/api/{name}")
+    public Result<String> id(@PathVariable(value = "name") String name) {
+        String res = "hello spring boot " + (StringUtil.isEmpty(name) ? "" : name);
+        log.info("接收api请求:{}", name);
         return ResultUtil.success(res);
     }
 
@@ -37,7 +49,10 @@ public class IndexController {
 
     @RequestMapping("/start")
     public Result<Start> start() {
-        return ResultUtil.success(new Start("张三", 15));
+        Environment bean = SpringUtil.getBean(Environment.class);
+        String name = bean.getProperty("name");
+        String age = bean.getProperty("age");
+        return ResultUtil.success(new Start(name, age));
     }
 
 

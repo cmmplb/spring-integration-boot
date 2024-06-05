@@ -1,17 +1,16 @@
-package com.cmmplb.start;
+package com.cmmplb.activemq;
 
 import com.cmmplb.core.utils.SpringApplicationUtil;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author penglibo
- * @date 2021-03-20
  */
 
 @SpringBootApplication
-public class StartApplication {
+public class ActivemqApplication {
 
     public static void main(String[] args) {
-        SpringApplicationUtil.run(StartApplication.class, args);
+        SpringApplicationUtil.run(ActivemqApplication.class, args);
     }
 }

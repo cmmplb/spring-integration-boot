@@ -1,0 +1,10 @@
+springdoc:
+  swagger-ui:
+    # 访问路径，默认为/swagger-ui.html
+    path: /
+  custom:
+    enabled: true
+    title: @artifactId@
+#    gateway: http://localhost:@gateway.port@/auth/oauth/token
+    description: description
+    url: token

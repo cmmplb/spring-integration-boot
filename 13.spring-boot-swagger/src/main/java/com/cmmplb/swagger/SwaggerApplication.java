@@ -1,17 +1,18 @@
-package com.cmmplb.start;
+package com.cmmplb.swagger;
 
 import com.cmmplb.core.utils.SpringApplicationUtil;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author penglibo
- * @date 2021-03-20
+ * @date 2021-08-03 09:22:34
+ * @since jdk 1.8
  */
 
 @SpringBootApplication
-public class StartApplication {
+public class SwaggerApplication {
 
     public static void main(String[] args) {
-        SpringApplicationUtil.run(StartApplication.class, args);
+        SpringApplicationUtil.run(SwaggerApplication.class, args);
     }
 }

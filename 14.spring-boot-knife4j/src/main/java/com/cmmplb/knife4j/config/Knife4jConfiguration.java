@@ -60,7 +60,7 @@ public class Knife4jConfiguration {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
                 // .forPaths(PathSelectors.regex("/.*")) // 3.0.0移除，使用operationSelector()
-                .operationSelector(operationContext -> true)
+                // .operationSelector(operationContext -> true)
                 .build();
     }
 
@@ -68,7 +68,7 @@ public class Knife4jConfiguration {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth1())
                 // .forPaths(PathSelectors.regex("/.*")) // 3.0.0移除，使用operationSelector()
-                .operationSelector(operationContext -> true)
+                // .operationSelector(operationContext -> true)
                 .build();
     }
 

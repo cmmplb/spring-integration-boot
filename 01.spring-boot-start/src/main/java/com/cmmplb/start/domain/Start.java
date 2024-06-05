@@ -26,7 +26,7 @@ public class Start implements Serializable {
     @JsonProperty("startName2")
     private String name;
 
-    private Integer age;
+    private String age;
 
     public static void main(String[] args) throws Exception {
         String json = "{\n" +
