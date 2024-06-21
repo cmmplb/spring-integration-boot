@@ -32,4 +32,35 @@ public class IndexController {
         m.addAttribute("accountList", list);
         return "account";
     }
+
+    @RequestMapping("/logout")
+    public String logout(Model model) {
+        // http://localhost/logout
+        // https://ldap.crc.com.cn/idp/authCenter/GLO?redirectToLogin=true&redirectToUrl=http://localhost:80/account&entityId=CEST_DICP
+        String requestUrl = "https://ldap-uat.crc.com.cn/idp/authCenter/GLO";
+        String redirectToUrl = "http://localhost:80/main";
+        String entityId = "CEST_DICP";
+        String locationUrl = String.format("%s?redirectToLogin=true&redirectToUrl=%s&entityId=%s",
+                requestUrl,
+                redirectToUrl,
+                entityId
+        );
+        model.addAttribute("locationUrl", locationUrl);
+        return "logout";
+    }
+
+    @RequestMapping("/main")
+    public String mainHandler(Model model) {
+        model.addAttribute("locationUrl", "http://localhost:80/account");
+        // try {
+            // 重定向
+            // ServletUtil.getResponse().sendRedirect("https://dicp-uat.crbeverage.com/login");
+            // 请求转发
+            // request.setAttribute("msg", "登录失败，用户名或密码错误");
+            // ServletUtil.getRequest().getRequestDispatcher("login.jsp").forward(ServletUtil.getRequest(), ServletUtil.getResponse());
+        // } catch (Exception e) {
+        //     throw new RuntimeException(e);
+        // }
+        return "logout";
+    }
 }

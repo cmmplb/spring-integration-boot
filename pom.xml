@@ -6,14 +6,14 @@
     <parent>
         <artifactId>spring-parent</artifactId>
         <groupId>com.cmmplb</groupId>
-        <version>1.0.0</version>
+        <version>2.0.0</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
     <!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。 -->
     <artifactId>spring-integration-boot</artifactId>
     <!-- 项目版本 -->
-    <version>1.0.0</version>
+    <version>2.0.0</version>
     <!-- 项目的打包类型：pom、jar、war -->
     <packaging>pom</packaging>
     <!-- 项目名称 -->

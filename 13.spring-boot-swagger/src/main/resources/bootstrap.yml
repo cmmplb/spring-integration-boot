@@ -8,6 +8,8 @@ spring.main.banner-mode: off
 spring.profiles.active: @profiles.active@
 # 应用程序名称
 spring.application.name: @project.artifactId@
+# 在SpringBoot2.6之后，Spring MVC 处理程序映射匹配请求路径的默认策略已从 AntPathMatcher 更改为PathPatternParser
+spring.mvc.pathmatch.matching-strategy: ant_path_matcher
 # 覆盖相同名称的bean，spring中默认是true，默认支持名称相同的bean的覆盖。而springboot中的默认值是false
 spring.main.allow-bean-definition-overriding: true
 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/account">账号列表</a>
+<h1 th:text="${requestUrl}"></h1>
+</body>
+<script th:inline="javascript">
+
+    locationUrl();
+
+    // doLogout();
+
+    // 跳转到回调页面
+    function locationUrl() {
+        window.location = [[${locationUrl}]]
+    }
+
+    // 发起退出登录请求
+    function doLogout() {
+        const requestUrl = [[${requestUrl}]];
+        const redirectToUrl = [[${redirectToUrl}]];
+        // js原生发送get请求
+        const xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("get", `${requestUrl}?redirectToLogin=true&redirectToUrl=${redirectToUrl}&entityId=CEST_DICP`)
+        xmlHttp.send();
+        //绑定监听
+        xmlHttp.onreadystatechange = function () {
+            console.log(xmlHttp.responseText)
+        }
+    }
+
+</script>
+</html>

@@ -5,7 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author penglibo
@@ -48,29 +47,53 @@ public class SpringdocProperties {
     private String title = "";
 
     /**
-     * 网关
+     * 版本
      */
-    private String gateway;
+    private String version;
 
     /**
-     * 获取token
+     * 许可
      */
-    private String tokenUrl;
+    private License license;
 
     /**
-     * 作用域
+     * 联系人信息
      */
-    private String scope;
-
-    /**
-     * 服务转发配置
-     */
-    private Map<String, String> services;
+    private Contact contact;
 
     /**
      * 文档扩展描述
      */
     private String description;
+
+    @Data
+    public static class Contact {
+        /**
+         * 联系人
+         **/
+        private String name = "";
+        /**
+         * 联系人url
+         **/
+        private String url = "";
+        /**
+         * 联系人email
+         **/
+        private String email = "";
+    }
+
+    @Data
+    public static class License {
+
+        /**
+         * 许可协议
+         **/
+        private String name = "";
+        /**
+         * 许可协议url
+         **/
+        private String url = "";
+    }
 
     /**
      * 文档扩展url
