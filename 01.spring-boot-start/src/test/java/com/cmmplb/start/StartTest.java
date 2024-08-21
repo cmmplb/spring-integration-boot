@@ -2,12 +2,16 @@ package com.cmmplb.start;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import com.cmmplb.core.utils.DateUtil;
+import com.cmmplb.core.utils.UUIDUtil;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -20,11 +24,58 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class StartTest {
+    
 
     public static void main(String[] args) {
-        System.out.println("1");
-        //
-        System.out.println("Hello");
+        List<String> list = Arrays.asList(
+                "hubowen15",
+                "yangmeiqin8",
+                "xusong19",
+                "zengmeifeng1",
+                "jiangjingting3",
+                "tangjing96",
+                "lixianglian10",
+                "wangqian809",
+                "zhangling188",
+                "zhoushuang23",
+                "longjiali6",
+                "dengdiyuan",
+                "zhangling622",
+                "chenqianqian58",
+                "wushuyin17",
+                "lianqiujuan",
+                "lijunling43",
+                "tengpan",
+                "YANGXIAOLIN9",
+                "DINGYI26",
+                "zhangfeng176",
+                "jiangdongmei31",
+                "yechangqing3",
+                "donglinzhi",
+                "yuanchaofan",
+                "zhangyuling19",
+                "zhangqien",
+                "wuqiuyi8",
+                "lianghuanyan3",
+                "wukeng",
+                "zouyantang1",
+                "wanghan29",
+                "niurouyu",
+                "wangbang2",
+                "zengwenhui11",
+                "weiqin40",
+                "chenmengya22",
+                "zhoujie448",
+                "huangqun",
+                "chenxiuyun",
+                "denglina27",
+                "chenguangying"
+        );
+        for (String s : list) {
+            String sql = "INSERT INTO `platform_sync_distribute_detail` (`id`, `sys_id`, `uid`, `status`, `created_date`, `updated_date`, `created_by`, `updated_by`, `del_flag`, `opt_counter`, `remarks`) VALUES ('" + UUIDUtil.uuidTrim() + "', '永宏BI', '" + s + "', '00', '" + DateUtil.formatDate(new Date(), DateUtil.DATE_TIME_PATTERN) + "', '" + DateUtil.formatDate(new Date(), DateUtil.DATE_TIME_PATTERN) + "', '1', '1', '0', NULL, NULL);";
+            System.out.println(sql);
+        }
+        // fangyuying6,
     }
 
     /**
@@ -94,3 +145,6 @@ public class StartTest {
     }
 
 }
+
+
+

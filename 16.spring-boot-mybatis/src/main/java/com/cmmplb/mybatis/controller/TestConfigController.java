@@ -3,7 +3,6 @@ package com.cmmplb.mybatis.controller;
 import com.cmmplb.core.constants.StringConstants;
 import com.cmmplb.core.result.Result;
 import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.mybatis.annotations.Retry;
 import com.cmmplb.mybatis.entity.User;
 import com.cmmplb.mybatis.service.UserService;
 import com.cmmplb.mybatis.vo.UserInfoVO;

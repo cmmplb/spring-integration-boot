@@ -14,6 +14,7 @@
     <artifactId>spring-integration-boot</artifactId>
     <!-- 项目版本 -->
     <version>1.0.0</version>
+<!--    <version>1.0.0</version>-->
     <!-- 项目的打包类型：pom、jar、war -->
     <packaging>pom</packaging>
     <!-- 项目名称 -->
@@ -24,6 +25,10 @@
     <inceptionYear>2021</inceptionYear>
     <!-- 项目URL地址 -->
     <url>https://gitee.com/cmmplb/spring-integration-boot</url>
+
+    <properties>
+        <revision>1.0.0</revision>
+    </properties>
 
     <!-- 子模块 -->
     <modules>
@@ -68,6 +73,7 @@
         <module>39.spring-boot-xxl-job</module>
         <module>40.spring-boot-quartz</module>
         <module>41.spring-boot-activiti</module>
+        <module>42.spring-boot-camunda</module>
         <module>50.spring-boot-admin</module>
     </modules>
 

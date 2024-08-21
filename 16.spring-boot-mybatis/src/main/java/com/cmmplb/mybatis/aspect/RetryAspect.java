@@ -1,7 +1,7 @@
 package com.cmmplb.mybatis.aspect;
 
-import com.cmmplb.core.exception.LockerException;
-import com.cmmplb.core.exception.RetryException;
+import com.cmmplb.mybatis.handler.exception.LockerException;
+import com.cmmplb.mybatis.handler.exception.RetryException;
 import com.cmmplb.mybatis.plugin.propertise.LockerProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;

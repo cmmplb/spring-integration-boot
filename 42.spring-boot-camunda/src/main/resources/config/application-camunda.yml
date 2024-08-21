@@ -1,0 +1,18 @@
+# camunda登录信息配置
+camunda:
+  bpm:
+    database:
+      type: mysql
+      schema-update: true
+
+    # 自动部署 resources 下的 bpmn文件
+    auto-deployment-enabled: false
+
+    admin-user:
+      # 用户名
+      id: admin
+      # 密码
+      password: 123456
+      firstName: cmmplb
+#    filter:
+#      create: All tasks
