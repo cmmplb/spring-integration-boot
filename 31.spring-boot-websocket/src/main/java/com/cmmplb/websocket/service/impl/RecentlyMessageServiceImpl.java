@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.utils.ListUtil;
 import com.cmmplb.websocket.dao.RecentlyMessageMapper;
 import com.cmmplb.websocket.domain.dto.RecentlyMessagePageQueryDTO;
@@ -35,11 +35,11 @@ public class RecentlyMessageServiceImpl extends ServiceImpl<RecentlyMessageMappe
     @Override
     public PageResult<RecentlyMessageVO> getByPaged(RecentlyMessagePageQueryDTO dto) {
         Long userId = SecurityUtil.getUserId();
-        // 由于使用group by分组后，分组的数据不是最新的，有几种方案：
-        // 1.先查询列表后排序，再分组
-        // 2.使用group by后配合使用any_value(max(column))，这里不使用这个因为id只有发送人id和接收id，根据时间取最新
+        // 由于使用group by分组后, 分组的数据不是最新的, 有几种方案：
+        // 1.先查询列表后排序, 再分组
+        // 2.使用group by后配合使用any_value(max(column)), 这里不使用这个因为id只有发送人id和接收id, 根据时间取最新
         // return getPage(dto, userId);
-        // 3.java分组，排序，手动分页
+        // 3.java分组, 排序, 手动分页
         return getPage2Java(dto, userId);
     }
 
@@ -72,7 +72,7 @@ public class RecentlyMessageServiceImpl extends ServiceImpl<RecentlyMessageMappe
             Set<String> businessIds = list.stream().map(ele -> ele.getBusinessId().replace(ele.getType() + "-", ""))
                     .collect(Collectors.toSet());
             List<MessageRecord> messageRecordList = messageRecordService.list(new LambdaQueryWrapper<MessageRecord>()
-                    .eq(MessageRecord::getStatus, GlobalConstants.NUM_ZERO)
+                    .eq(MessageRecord::getStatus, GlobalConstant.NUM_ZERO)
                     .in(MessageRecord::getSendBusinessId, businessIds)
             );
             Map<Long, List<MessageRecord>> messageRecordMap = messageRecordList.stream().collect(Collectors.groupingBy(MessageRecord::getSendBusinessId));

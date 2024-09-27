@@ -28,7 +28,7 @@ public class ManagementController {
     @Autowired
     private ManagementService managementService;
 
-    @ApiOperation("分页条件查询管理任务")
+    @Operation(summary = "分页条件查询管理任务")
     @PostMapping(value = "/job/paged/{type}")
     @ApiImplicitParam(name = "type", paramType = "query", value = "类型:1-定时;2-异步;3-挂起;4-死亡;", required = true, dataType = "Byte", dataTypeClass = Byte.class, example = "1")
     public Result<PageResult<JobVO>> getJobByPaged(@PathVariable(value = "type") Byte type,

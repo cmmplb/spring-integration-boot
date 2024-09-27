@@ -2,7 +2,7 @@ package com.cmmplb.websocket.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.core.exception.BusinessException;
 import com.cmmplb.core.utils.ConverterUtil;
 import com.cmmplb.core.utils.ServletUtil;
@@ -10,9 +10,10 @@ import com.cmmplb.websocket.convert.AttachmentConvert;
 import com.cmmplb.websocket.dao.AttachmentMapper;
 import com.cmmplb.websocket.domain.entity.Attachment;
 import com.cmmplb.websocket.domain.entity.AttachmentData;
+import com.cmmplb.websocket.domain.vo.AttachmentVO;
 import com.cmmplb.websocket.service.AttachmentDataService;
 import com.cmmplb.websocket.service.AttachmentService;
-import com.cmmplb.websocket.domain.vo.AttachmentVO;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -22,8 +23,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -67,7 +70,7 @@ public class AttchmentServiceImpl extends ServiceImpl<AttachmentMapper, Attachme
                 fileName = md5 + suffixName;
 
                 // 查询资源是否存在
-                int count = attachmentDataService.count(new LambdaQueryWrapper<AttachmentData>().eq(AttachmentData::getMd5, md5));
+                long count = attachmentDataService.count(new LambdaQueryWrapper<AttachmentData>().eq(AttachmentData::getMd5, md5));
                 if (count == 0) {
                     // 保存资源信息
                     AttachmentData attachmentData = new AttachmentData();
@@ -102,7 +105,7 @@ public class AttchmentServiceImpl extends ServiceImpl<AttachmentMapper, Attachme
         try {
             String md5;
             if (fileName.lastIndexOf(".") != -1) {
-                // 根据文件名获取文件前缀名，前缀是md5加密后的文件名
+                // 根据文件名获取文件前缀名, 前缀是md5加密后的文件名
                 md5 = fileName.substring(0, fileName.indexOf("."));
             } else {
                 md5 = fileName;
@@ -114,8 +117,8 @@ public class AttchmentServiceImpl extends ServiceImpl<AttachmentMapper, Attachme
             HttpServletResponse response = ServletUtil.getResponse();
             response.setContentType("application/force-download");
             // 填充文件真实名称
-            response.setHeader(StringConstants.CONTENT_DISPOSITION, StringConstants.ATTACHMENT +
-                    new String(URLEncoder.encode(attachment.getName(), StringConstants.UTF8).getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
+            response.setHeader(StringConstant.CONTENT_DISPOSITION, StringConstant.ATTACHMENT +
+                    new String(URLEncoder.encode(attachment.getName(), StringConstant.UTF8).getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
             byte[] buff = new byte[1024];
 
             // 获取关联的资源信息

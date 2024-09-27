@@ -23,7 +23,7 @@ public interface UserConvert extends Converter<User, UserVO> {
     UserConvert INSTANCE = Mappers.getMapper(UserConvert.class);
 
     /**
-     * 重写添加规则，
+     * 重写添加规则, 
      * @param user user
      * @return vo
      */

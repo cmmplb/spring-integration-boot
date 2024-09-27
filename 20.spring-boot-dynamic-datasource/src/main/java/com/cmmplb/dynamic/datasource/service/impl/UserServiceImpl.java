@@ -27,7 +27,7 @@ import java.util.List;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     /**
-     * 使用DS注解进行切换数据源。
+     * 使用DS注解进行切换数据源. 
      * @param user
      */
     @DS("oracle")
@@ -57,8 +57,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return baseMapper.selectById(id);
     }
 
-    // @DS("user")//如果a是默认数据源则不需要DS注解。
-    @DSTransactional // 本地事务回滚-在最外层的方法添加 @DSTransactional，底下调用的各个类该切数据源就正常使用DS切换数据源即可。
+    // @DS("user")//如果a是默认数据源则不需要DS注解. 
+    @DSTransactional // 本地事务回滚-在最外层的方法添加 @DSTransactional, 底下调用的各个类该切数据源就正常使用DS切换数据源即可. 
     @Override
     public boolean updateInfoById(User user) {
         return baseMapper.updateById(user) > 0;
@@ -80,7 +80,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         log.info("下单用户{}余额为 {},商品总价为{}", userId, amount, totalPrice);
 
         if (amount < totalPrice) {
-            log.warn("用户 {} 余额不足，当前余额:{}", userId, amount);
+            log.warn("用户 {} 余额不足, 当前余额:{}", userId, amount);
             throw new RuntimeException("余额不足");
         }
         log.info("开始扣减用户 {} 余额", userId);

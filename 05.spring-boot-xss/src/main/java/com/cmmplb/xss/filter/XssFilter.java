@@ -3,11 +3,11 @@ package com.cmmplb.xss.filter;
 import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.xss.config.properties.XssProperties;
 import com.cmmplb.xss.wrapper.XssRequestWrapper;
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,7 +71,7 @@ public class XssFilter implements Filter {
 
     private boolean isExcludeUrl(String urlPath) {
         if (!enabled) {
-            // 如果xss开关关闭了，则所有url都不拦截
+            // 如果xss开关关闭了, 则所有url都不拦截
             return true;
         }
         if (excludes.isEmpty()) {

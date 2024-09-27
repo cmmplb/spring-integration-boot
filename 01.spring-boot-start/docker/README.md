@@ -8,7 +8,7 @@ curl  --header "Content-Type: application/json" \
 -H 'Cpm-User-Identity: 053c3aed-8c84-4622-8674-b143d3a6ed09' \
 -H 'Cpm-Client-Type: web' \
 -d '{ "sysIds": [ "aps" ], "uids": [ "ruyi1", "lvxianglong", "liushihui2" ]}'  \
--X POST http://localhost:40013/platform/auth/user/distributeBatch
+-X POST http://localhost:40013/platform/auth/userDetails/distributeBatch
 ````
 
 ````
@@ -16,7 +16,7 @@ curl \
 -H 'Authorization: bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJvcGVuaWQiXSwiZXhwIjoxNzE1Mzk0NTAyLCJqdGkiOiIwNTNjM2FlZC04Yzg0LTQ2MjItODY3NC1iMTQzZDNhNmVkMDkiLCJjbGllbnRfaWQiOiJkaWNwIn0.KeEwRAak5wulRYI9UU92Xd3geClhbKRUBa0Fj58Muzj4kBIPsXiVfJRMXuOw1wdLVeAPca-27Hfqh2tvvxpPHJ6QxmNFm0v5T0N6l57iEu-11Of7SAedbTN0As5BZgtrglVxjXzyvSS3hk50PrzAJCp3kHqVLlChh6rM4gKP2LgrYWKpM9e9f8BXJ19I9ouTOFinnZ-ufYlGHYwZjeQlv9UdA6e5I_4C-AjOorCZMWgzB9anyftPPDB9QH-iso-QglNnrfTieZ5sp0E7voMHHU4qHreIi3FalZ7lCSJzG3QPr40vMc1O6v6gKbiTYycOm1Kags4NNq5sYPaiplJsHw' \
 -H 'Cpm-User-Identity: 053c3aed-8c84-4622-8674-b143d3a6ed09' \
 -H 'Cpm-Client-Type: web' \
-http://localhost:40013/platform/auth/user/distributedLock
+http://localhost:40013/platform/auth/userDetails/distributedLock
 ````
 
 在linux通过BUILD命令构建镜像

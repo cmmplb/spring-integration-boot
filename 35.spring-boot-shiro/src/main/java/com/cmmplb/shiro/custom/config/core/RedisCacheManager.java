@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentMap;
  * @author penglibo
  * @date 2022-02-14 17:58:42
  * @since jdk 1.8
- * 自定义Redis缓存管理，重写keyPrefix，原来的RedisCacheManager会在keyPrefix加上类的全限定名
+ * 自定义Redis缓存管理, 重写keyPrefix, 原来的RedisCacheManager会在keyPrefix加上类的全限定名
  * {@link org.crazycake.shiro.RedisCacheManager}
  */
 

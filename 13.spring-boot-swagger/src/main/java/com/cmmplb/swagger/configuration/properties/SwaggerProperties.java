@@ -149,7 +149,7 @@ public class SwaggerProperties {
     public static class Authorization {
 
         /**
-         * 鉴权策略ID，需要和SecurityReferences ID保持一致，否则无法在请求头部参数渲染
+         * 鉴权策略ID, 需要和SecurityReferences ID保持一致, 否则无法在请求头部参数渲染
          */
         private String name = "";
 

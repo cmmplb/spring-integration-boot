@@ -6,7 +6,7 @@
     <parent>
         <artifactId>spring-integration-boot</artifactId>
         <groupId>com.cmmplb</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
@@ -64,30 +64,10 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
-        <!-- mybatis-plus -->
+        <!-- mybatis-plus-spring-boot3-starter -->
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-        <!-- mybatis分页插件 -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <!-- 和mybatsi-plus依赖冲突 -->
-            <exclusions>
-                <exclusion>
-                    <groupId>org.mybatis</groupId>
-                    <artifactId>mybatis</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.mybatis</groupId>
-                    <artifactId>mybatis-spring</artifactId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jsqlparser</artifactId>
-                    <groupId>com.github.jsqlparser</groupId>
-                </exclusion>
-            </exclusions>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
         </dependency>
         <!-- SQL分析打印插件-(mybatis-plus-3.2.0以上版本移除了PerformanceInterceptor插件,只适用于开发环境,不建议生产环境使用) -->
         <dependency>

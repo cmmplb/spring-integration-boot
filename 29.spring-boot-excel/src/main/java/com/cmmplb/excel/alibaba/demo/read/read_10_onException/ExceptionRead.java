@@ -17,11 +17,11 @@ import java.io.InputStream;
 public class ExceptionRead {
 
     /**
-     * 在转换异常 获取其他异常下会调用本接口。抛出异常则停止读取。如果这里不抛出异常则 继续读取下一行。
+     * 在转换异常 获取其他异常下会调用本接口. 抛出异常则停止读取. 如果这里不抛出异常则 继续读取下一行. 
      */
     public static void main(String[] args) {
         InputStream inputStream = FileUtil.getInputStream("read/demo.xlsx");
-        // 这里 需要指定读用哪个class去读，然后读取第一个sheet
+        // 这里 需要指定读用哪个class去读, 然后读取第一个sheet
         EasyExcel.read(inputStream, ExceptionDemoData.class, new DemoExceptionListener()).sheet().doRead();
     }
 }

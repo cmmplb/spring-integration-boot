@@ -1,6 +1,7 @@
 package com.cmmplb.mybatis.dao;
 
 import com.cmmplb.mybatis.entity.Tag;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

@@ -45,9 +45,9 @@ public class ProcessDefinitionVO {
     private String description;
 
     /**
-     * 版本，从1开始
+     * 版本, 从1开始
      */
-    @ApiModelProperty(value = "版本，从1开始", example = "1")
+    @ApiModelProperty(value = "版本, 从1开始", example = "1")
     private Integer version;
 
     /**

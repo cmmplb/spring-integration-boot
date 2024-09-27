@@ -6,8 +6,8 @@ spring:
     port: 5672
     username: root
     password: cmmplb
-    #相当于db配置=如果不存在的话需要去admin端添加
-    virtual-host: /cmmplb
+    #相当于db配置=如果不存在的话需要去admin端添加，注意没有/，除非admin端创建的有
+    virtual-host: cmmplb
     #开启消息二次确认,生产者到broker的交换机
     publisher-confirm-type: correlated
     #开启消息二次确认，交换机到队列的可靠性投递
@@ -30,7 +30,7 @@ spring:
         acknowledge-mode: manual
 
 rabbitmq:
-  enabled: true
+  enabled: false
   # 队列配置
   queues:
     # ============================简单队列模式==============================

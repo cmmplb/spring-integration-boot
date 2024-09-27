@@ -6,7 +6,7 @@
     <parent>
         <artifactId>spring-integration-boot</artifactId>
         <groupId>com.cmmplb</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
@@ -43,6 +43,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <!-- swagger模块 -->
+        <dependency>
+            <groupId>com.cmmplb</groupId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
         </dependency>
     </dependencies>
 </project>

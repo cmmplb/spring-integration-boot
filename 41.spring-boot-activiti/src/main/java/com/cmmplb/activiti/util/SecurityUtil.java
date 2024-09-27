@@ -10,7 +10,7 @@ import com.cmmplb.core.utils.ServletUtil;
 public class SecurityUtil {
 
     public static Long getUserId() {
-        // 这里为了简化，用户是前端请求头传的用户id，业务中要接入用户逻辑，比如token凭证获取用户信息逻辑
+        // 这里为了简化, 用户是前端请求头传的用户id, 业务中要接入用户逻辑, 比如token凭证获取用户信息逻辑
         String userId = ServletUtil.getHeader("User-Id");
         return Long.parseLong(userId);
     }

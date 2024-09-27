@@ -18,10 +18,10 @@ import java.io.Serializable;
  * @date 2021-09-30 17:34:00
  * @since jdk 1.8
  * SessionDAO定义了从持久层操作session的标准；
- * AbstractSessionDAO提供了SessionDAO的基础实现，如生成会话ID等；
- * CachingSessionDAO提供了对开发者透明的session缓存的功能，只需要设置相应的 CacheManager 即可；
+ * AbstractSessionDAO提供了SessionDAO的基础实现, 如生成会话ID等；
+ * CachingSessionDAO提供了对开发者透明的session缓存的功能, 只需要设置相应的 CacheManager 即可；
  * MemorySessionDAO直接在内存中进行session维护；
- * EnterpriseCacheSessionDAO提供了缓存功能的session维护，默认情况下使用 MapCache 实现，内部使用ConcurrentHashMap保存缓存的会话。
+ * EnterpriseCacheSessionDAO提供了缓存功能的session维护, 默认情况下使用 MapCache 实现, 内部使用ConcurrentHashMap保存缓存的会话. 
  * 默认提供了MemorySessionDAO持久化到内存
  */
 

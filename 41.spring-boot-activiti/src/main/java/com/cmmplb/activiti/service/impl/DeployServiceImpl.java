@@ -116,9 +116,9 @@ public class DeployServiceImpl implements DeployService {
 
     @Override
     public boolean removeById(String deploymentId) {
-        // 删除部署，如果有同时在运行的流程则会抛出异常
+        // 删除部署, 如果有同时在运行的流程则会抛出异常
         // repositoryService.deleteDeployment(deploymentId);
-        // 删除部署，同时及联删除关联的流程
+        // 删除部署, 同时及联删除关联的流程
         repositoryService.deleteDeployment(deploymentId, true);
         return true;
     }
@@ -140,9 +140,9 @@ public class DeployServiceImpl implements DeployService {
     @Override
     public void showProcessChart(String processDefinitionId) {
         BpmnModel bpmnModel = repositoryService.getBpmnModel(processDefinitionId);
-        // activiti7移除了静态方法创建，需要DefaultProcessDiagramGenerator实例。
+        // activiti7移除了静态方法创建, 需要DefaultProcessDiagramGenerator实例. 
         // ProcessDiagramGenerator diagramGenerator = new DefaultProcessDiagramGenerator();
-        // 由于是创建的新实例，这里的DiagramGenerator就不用注入到配置类里面了，当然ActivitiConfiguration配置类也移除了set的方法。
+        // 由于是创建的新实例, 这里的DiagramGenerator就不用注入到配置类里面了, 当然ActivitiConfiguration配置类也移除了set的方法. 
         ProcessDiagramGeneratorImpl diagramGenerator = new ProcessDiagramGeneratorImpl();
         InputStream is = diagramGenerator.generateDiagram(bpmnModel, "宋体", "宋体", "宋体");
         try {
@@ -197,7 +197,7 @@ public class DeployServiceImpl implements DeployService {
     public boolean suspendProcessDefinition(String processDefinitionId, SuspendActivateProcessDefinitionDTO dto) {
         if (StringUtils.isNotEmpty(dto.getActivationDate())) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            // 挂起关联的实例，suspendProcessInstances
+            // 挂起关联的实例, suspendProcessInstances
             try {
                 repositoryService.suspendProcessDefinitionById(processDefinitionId, dto.getActivateProcessInstances(), sdf.parse(dto.getActivationDate()));
             } catch (ParseException e) {

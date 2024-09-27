@@ -2,9 +2,9 @@ package com.cmmplb.excel.alibaba.demo.export.export_20_webDownload;
 
 import com.alibaba.excel.EasyExcel;
 import com.cmmplb.excel.alibaba.demo.export.data.DemoData;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 
@@ -24,11 +24,11 @@ public class WebDownload {
      * <p>
      * 2. 设置返回的 参数
      * <p>
-     * 3. 直接写，这里注意，finish的时候会自动关闭OutputStream,当然你外面再关闭流问题不大
+     * 3. 直接写, 这里注意, finish的时候会自动关闭OutputStream,当然你外面再关闭流问题不大
      */
     @GetMapping("download")
     public void download(HttpServletResponse response) throws IOException {
-        // 这里注意 有同学反应使用swagger 会导致各种问题，请直接用浏览器或者用postman
+        // 这里注意 有同学反应使用swagger 会导致各种问题, 请直接用浏览器或者用postman
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         response.setCharacterEncoding("utf-8");
         // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系

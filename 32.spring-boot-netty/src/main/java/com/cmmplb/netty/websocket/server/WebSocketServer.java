@@ -53,16 +53,16 @@ public class WebSocketServer extends Thread {
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         System.out.println("收到新连接:" + socketChannel.localAddress());
 
-                        // 编解码 http 请求,因为基于http协议，使用http的编解码器
+                        // 编解码 http 请求,因为基于http协议, 使用http的编解码器
                         socketChannel.pipeline().addLast(new HttpServerCodec());
                         // 写文件内容
-                        // 是以块方式写，添加 ChunkedWriteHandler 处理器
+                        // 是以块方式写, 添加 ChunkedWriteHandler 处理器
                         socketChannel.pipeline().addLast(new ChunkedWriteHandler());
                         /**
                          * 聚合解码 HttpRequest/HttpContent/LastHttpContent 到 FullHttpRequest
                          * 保证接收的 Http 请求的完整性
-                         *  http数据传输过程是分段的，HttpObjectAggregator，就是可以将多段聚合
-                         *  当浏览器发送大量数据时，就会发出多次http请求
+                         *  http数据传输过程是分段的, HttpObjectAggregator, 就是可以将多段聚合
+                         *  当浏览器发送大量数据时, 就会发出多次http请求
                          */
                         socketChannel.pipeline().addLast(new HttpObjectAggregator(8192));
                         // 设置链接超时时间
@@ -71,10 +71,10 @@ public class WebSocketServer extends Thread {
                          * 处理其他的 WebSocketFrame
                          * 对于websocket数据是以 帧 形式传递
                          *  浏览器请求时 ws://localhost:7000/hello 其中 hello会与下面的对应
-                         *  WebSocketServerProtocolHandler 核心功能是将http协议升级为ws协议，保持长链接
+                         *  WebSocketServerProtocolHandler 核心功能是将http协议升级为ws协议, 保持长链接
                          */
                         socketChannel.pipeline().addLast(new WebSocketServerProtocolHandler("/ws", "WebSocket", true, 65536 * 10));
-                        // 这个类的代码是模板代码，最核心的就是ch.pipeline().addLast(new MyWebSocketHandler())，
+                        // 这个类的代码是模板代码, 最核心的就是ch.pipeline().addLast(new MyWebSocketHandler()),
                         // 可以根据自己的需求配置即可
                         socketChannel.pipeline().addLast(new WebSocketHandler());
                     }
@@ -83,7 +83,7 @@ public class WebSocketServer extends Thread {
         try {
             // 启动服务器并绑定一个端口并且同步生成一个 ChannelFuture 对象
             sync = serverBootstrap.bind(port).sync();
-            log.info("启动webSocket服务器启动成功，正在监听端口:" + port);
+            log.info("启动webSocket服务器启动成功, 正在监听端口:" + port);
             //对关闭通道进行监听
             sync.channel().closeFuture().sync(); //以异步的方式关闭端口
         } catch (InterruptedException e) {

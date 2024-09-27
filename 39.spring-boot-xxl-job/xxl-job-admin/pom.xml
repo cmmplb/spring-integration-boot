@@ -6,7 +6,7 @@
     <parent>
         <artifactId>spring-boot-xxl-job</artifactId>
         <groupId>com.xxl.job</groupId>
-        <version>1.0.0</version>
+        <version>3.0.0</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
@@ -19,6 +19,10 @@
     <!-- 描述信息 -->
     <description>${project.artifactId}</description>
 
+    <!-- xxl-admin基于springboot2，更换版本 -->
+    <properties>
+        <spring-boot-dependencies.version>2.7.0</spring-boot-dependencies.version>
+    </properties>
     <!-- 依赖 -->
     <dependencies>
         <!--  starter-web：spring-webmvc + autoconfigure + logback + yaml + tomcat  -->

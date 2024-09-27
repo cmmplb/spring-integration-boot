@@ -72,7 +72,7 @@ public class DataJpaTest {
                 address = new Address();
                 address.setName(RandomUtil.getRandomAddress());
                 address.setCreateTime(new Date());
-                // address.setAccount(account); // 这里要注意把账号设置到地址对象里面去，不然不会把外键的accountId保存到表
+                // address.setAccount(account); // 这里要注意把账号设置到地址对象里面去, 不然不会把外键的accountId保存到表
                 addressList.add(address);
             }
             // account.setAddressList(addressList);
@@ -119,10 +119,10 @@ public class DataJpaTest {
         }
         roleList.add(role);
         /**
-         * 当两方都拥有维护中间表的权力时，中间表的联合主键会重复出现两次或报错
+         * 当两方都拥有维护中间表的权力时, 中间表的联合主键会重复出现两次或报错
          * 这时有有一方就需要放弃维护权
          */
-        // 这里是由role维护关系，就保存role
+        // 这里是由role维护关系, 就保存role
         // roleDao.saveAll(roleList);
         accountRepository.saveAll(accountList); // 这里保存账号会自动保存角色和关系表
         System.out.println("=====================完成===================");

@@ -35,7 +35,7 @@ import java.util.Objects;
 @RestController
 public class StencilSetController {
 
-    @ApiOperation("获取配置")
+    @Operation(summary = "获取配置")
     @GetMapping(value = "/editor/stencilset")
     public String getStencilSet() {
         try {

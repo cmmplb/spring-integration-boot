@@ -375,7 +375,7 @@
                 this.getData();
             },
             getUserList() {
-                axios.get('/user/list').then(res => {
+                axios.get('/userDetails/list').then(res => {
                     if (res.data.code === 200 && res.data.data) {
                         const currentUser = JSON.parse(window.localStorage.getItem("currentUser"));
                         res.data.data.map(ele => {

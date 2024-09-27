@@ -9,11 +9,11 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@MapperScan(basePackages = {"com.cmmplb.mybatis.dao"})
+@MapperScan(basePackages = "com.cmmplb.mybatis.dao")
 public class MybatisAutoConfiguration {
 
 //    /**
-//     * 把插件拦截器配置成一个bean就可以了，mybatis-starter会自动加载的。
+//     * 把插件拦截器配置成一个bean就可以了, mybatis-starter会自动加载的. 
 //     * @return SQLQueryParamInterceptor
 //     */
 //    @Bean

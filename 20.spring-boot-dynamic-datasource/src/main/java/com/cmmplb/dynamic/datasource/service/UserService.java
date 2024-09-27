@@ -16,7 +16,7 @@ import java.util.List;
 public interface UserService extends IService<User> {
 
     /**
-     * 添加用户-使用DS注解进行切换数据源。
+     * 添加用户-使用DS注解进行切换数据源. 
      * @param user
      */
     void saveUser(User user);
@@ -40,7 +40,7 @@ public interface UserService extends IService<User> {
      */
     User getById(Long id);
 
-    @DS("user")//如果a是默认数据源则不需要DS注解。
+    @DS("user")//如果a是默认数据源则不需要DS注解. 
     @DSTransactional
     boolean updateInfoById(User user);
 

@@ -27,7 +27,7 @@ unable to create new content in namespace posthog because it is being terminated
 现象：
 
 ##命名空间一直处于Terminating状态
-[ec2-user@eks posthog]$ kubectl get ns -owide
+[ec2-userDetails@eks posthog]$ kubectl get ns -owide
 NAME                       STATUS        AGE
 default                    Active        3d
 kube-node-lease            Active        3d
@@ -36,7 +36,7 @@ kube-system                Active        3d
 posthog                    Terminating   3h23m
 
 ##执行强制删除命令会一直卡住
-[ec2-user@eks posthog]$ kubectl delete ns posthog --grace-period=0 --force
+[ec2-userDetails@eks posthog]$ kubectl delete ns posthog --grace-period=0 --force
 warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
 \namespace "posthog" force deleted
 解决：

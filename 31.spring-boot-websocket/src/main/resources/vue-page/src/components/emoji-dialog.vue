@@ -61,7 +61,7 @@ export default {
     overflow-y: scroll;
     box-shadow: 0 0 5px #ececec;
     /* 是否能选取元素的文本 */
-    user-select: none;
+    userDetails-select: none;
     background-color: white;
 
     img {

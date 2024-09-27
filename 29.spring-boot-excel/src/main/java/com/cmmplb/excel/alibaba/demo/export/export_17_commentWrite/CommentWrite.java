@@ -24,8 +24,8 @@ public class CommentWrite {
      */
     public static void main(String[] args) {
         String fileName = TestFileUtil.getPath() + "commentWrite" + System.currentTimeMillis() + ".xlsx";
-        // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
-        // 这里要注意inMemory 要设置为true，才能支持批注。目前没有好的办法解决 不在内存处理批注。这个需要自己选择。
+        // 这里 需要指定写用哪个class去写, 然后写到第一个sheet, 名字为模板 然后文件流会自动关闭
+        // 这里要注意inMemory 要设置为true, 才能支持批注. 目前没有好的办法解决 不在内存处理批注. 这个需要自己选择. 
         EasyExcel.write(fileName, DemoData.class).inMemory(Boolean.TRUE).registerWriteHandler(new CommentWriteHandler())
                 .sheet("模板").doWrite(DemoData.data());
     }

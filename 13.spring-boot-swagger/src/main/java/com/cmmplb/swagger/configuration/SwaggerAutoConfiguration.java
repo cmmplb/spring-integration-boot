@@ -1,6 +1,6 @@
 package com.cmmplb.swagger.configuration;
 
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.core.exception.ConfigurationException;
 import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.swagger.configuration.properties.SwaggerProperties;
@@ -34,10 +34,10 @@ import java.util.stream.Collectors;
  * @date 2024-05-23 09:40:23
  * @since jdk 1.8
  * 官方文档3.0版本@see {https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md}
- * 禁用方法1：使用注解@Profile({"dev","test"}) 表示在开发或测试环境开启，而在生产关闭。（推荐使用）
+ * 禁用方法1：使用注解@Profile({"dev","test"}) 表示在开发或测试环境开启, 而在生产关闭. （推荐使用）
  * 禁用方法2：使用注解@ConditionalOnProperty(name = "swagger.enable",havingValue = "true")
- * 在测试配置或者开发配置中添加swagger.enable=true即可开启，生产环境不填则默认关闭Swagger
- * matchIfMissing属性：从application.properties中读取某个属性值，如果该值为空，默认值为true
+ * 在测试配置或者开发配置中添加swagger.enable=true即可开启, 生产环境不填则默认关闭Swagger
+ * matchIfMissing属性：从application.properties中读取某个属性值, 如果该值为空, 默认值为true
  * 在spring.factories也配置了
  */
 
@@ -45,12 +45,12 @@ import java.util.stream.Collectors;
 @EnableOpenApi
 @Profile({"local", "dev", "uat"})
 @EnableConfigurationProperties({SwaggerProperties.class})
-@ConditionalOnProperty(prefix = SwaggerProperties.PREFIX, name = SwaggerProperties.ENABLED, havingValue = StringConstants.TRUE)
+@ConditionalOnProperty(prefix = SwaggerProperties.PREFIX, name = SwaggerProperties.ENABLED, havingValue = StringConstant.TRUE)
 public class SwaggerAutoConfiguration {
 
     /**
      * 不显示错误的接口地址->basic-error-controller
-     * 默认的排除路径，排除Spring Boot默认的错误处理路径和端点
+     * 默认的排除路径, 排除Spring Boot默认的错误处理路径和端点
      */
     private static final List<String> DEFAULT_EXCLUDE_PATH = Arrays.asList("/error", "/actuator/**");
     private static final String OAUTH = "oauth";
@@ -99,9 +99,9 @@ public class SwaggerAutoConfiguration {
         } else {
             builder
                     .apis(RequestHandlerSelectors.any())
-                    // 使用正则表达式匹配,约束生成Api文档的路径地址,.代表任意字符串，*代表 0~n个任意字符
+                    // 使用正则表达式匹配,约束生成Api文档的路径地址,.代表任意字符串, *代表 0~n个任意字符
                     // .paths(PathSelectors.regex("/xxx/.*"))
-                    // 加了ApiOperation注解的类，才生成接口文档
+                    // 加了ApiOperation注解的类, 才生成接口文档
                     //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                     // 扫描所有
                     .paths(PathSelectors.any());
@@ -175,7 +175,7 @@ public class SwaggerAutoConfiguration {
     }
 
     /**
-     * 配置默认的全局鉴权策略的开关，通过正则表达式进行匹配；默认匹配所有URL
+     * 配置默认的全局鉴权策略的开关, 通过正则表达式进行匹配；默认匹配所有URL
      * @return SecurityContext
      */
     private static List<SecurityContext> securityContext(SwaggerProperties swaggerProperties) {
@@ -208,6 +208,9 @@ public class SwaggerAutoConfiguration {
         }
     }
 
+    /**
+     * API 页面上半部分展示信息
+     */
     private static ApiInfo apiInfo(SwaggerProperties swaggerProperties) {
         return new ApiInfoBuilder()
                 .title(swaggerProperties.getTitle())

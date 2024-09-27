@@ -38,9 +38,9 @@ public class Consumer {
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
         //订阅主题和 标签（ * 代表所有标签)下信息
         consumer.subscribe(JmsConfig.TOPIC, "*");
-        // //注册消费的监听 并在此监听中消费信息，并返回消费的状态信息
+        // //注册消费的监听 并在此监听中消费信息, 并返回消费的状态信息
         consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
-            // msgs中只收集同一个topic，同一个tag，并且key相同的message
+            // msgs中只收集同一个topic, 同一个tag, 并且key相同的message
             // 会把不同的消息分别放置到不同的队列中
             for (Message msg : msgs) {
                 //消费者获取消息 这里只输出 不做后面逻辑处理

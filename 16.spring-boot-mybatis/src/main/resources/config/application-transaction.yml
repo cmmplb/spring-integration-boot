@@ -1,0 +1,20 @@
+# 事务配置
+transaction:
+  enabled: true
+  # 切入点表达式
+  expression: execution(* com.momo.*.service..*.*(..)) || execution(* com.cmmplb.*.service..*.*(..))
+  # 事务属性只读权限扫描
+  readOnlyList:
+    - "find*"
+    - "get*"
+    - "load*"
+    - "list*"
+    - "select*"
+    - "check*"
+    - "query*"
+  # 事务属性默认权限扫描
+  defaultList:
+    - "insert*"
+    - "delete*"
+    - "update*"
+    - "*"

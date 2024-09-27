@@ -6,15 +6,15 @@
     <parent>
         <artifactId>spring-parent</artifactId>
         <groupId>com.cmmplb</groupId>
-        <version>1.0.0</version>
+        <version>3.0.0</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
     <!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。 -->
     <artifactId>spring-integration-boot</artifactId>
     <!-- 项目版本 -->
-    <version>1.0.0</version>
-<!--    <version>1.0.0</version>-->
+    <version>${revision}</version>
+    <!--    <version>1.0.0</version>-->
     <!-- 项目的打包类型：pom、jar、war -->
     <packaging>pom</packaging>
     <!-- 项目名称 -->
@@ -25,10 +25,6 @@
     <inceptionYear>2021</inceptionYear>
     <!-- 项目URL地址 -->
     <url>https://gitee.com/cmmplb/spring-integration-boot</url>
-
-    <properties>
-        <revision>1.0.0</revision>
-    </properties>
 
     <!-- 子模块 -->
     <modules>
@@ -84,6 +80,23 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--
+               public Result<String> index(String name),解析不了name
+               默认情况下，任何简单值类型（由 BeanUtils#isSimpleProperty 确定）且未由任何其他参数解析器解析的参数
+               都将被视为使用 @RequestParam 注解。
+               如果不使用 spring-boot-starter-parent 作为父工程，那么接口中必须显式声明 @RequestParam("name")
+               LocalVariableTableParameterNameDiscoverer已在  Spring 6.1 中删除。
+               因此，Spring 框架和 Spring 组合框架中的代码不再尝试通过解析字节码来推断参数名称。
+           -->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--            </plugin>-->
+            <!-- 删除build-resource配置的文件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

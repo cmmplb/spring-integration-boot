@@ -4,11 +4,10 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,46 +19,41 @@ import java.util.Date;
  */
 
 @Data
-@Accessors(chain = true) // 使用这个可以让set返回实体，便于链式set
+@Accessors(chain = true) // 使用这个可以让set返回实体, 便于链式set
 @TableName(value = "user_info")
-@ApiModel(value = "UserInfo", description = "用户详情表")
 public class UserInfo implements Serializable {
 
     /**
      * 主键-对应用户信息表id
      */
     @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value = "主键-对应用户信息表id", example = "1")
     private Long id;
 
     /**
      * 头像
      */
     @TableField(value = "icon")
-    @ApiModelProperty(value = "头像")
     private String icon;
 
     /**
      * 创建时间
      */
     @TableField(value = "create_time")
-    @ApiModelProperty(value = "创建时间", example = "2021-01-01 12:00:00")
     private Date createTime;
 
     /**
      * 更新时间
      */
     @TableField(value = "update_time")
-    @ApiModelProperty(value = "更新时间", example = "2021-01-01 12:00:00")
     private Date updateTime;
 
     /**
      * 逻辑删除:0-正常;1-删除
      */
     @TableField(value = "deleted")
-    @ApiModelProperty(value = "逻辑删除:0-正常;1-删除", example = "1")
     private Byte deleted;
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public static final String COL_ID = "id";

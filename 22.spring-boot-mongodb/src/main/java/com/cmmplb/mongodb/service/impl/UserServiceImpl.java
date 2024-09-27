@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateById(User user) {
-        // 修改也是新增，id不为空就是修改，否则就是新增
+        // 修改也是新增, id不为空就是修改, 否则就是新增
         log.info("save:{}", userDao.save(user));
         return true;
     }
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
         }
         query.addCriteria(criteria);
         Sort sort = Sort.by(Sort.Direction.DESC, User.COLUMN_BIRTHDAY);
-        // 当前页从0开始，需要减去1
+        // 当前页从0开始, 需要减去1
         Pageable pageable = PageRequest.of(dto.getCurrent() - 1, dto.getSize()/*, sort*/);
 
         LongSupplier longSupplier = () -> template.count(query, User.class);

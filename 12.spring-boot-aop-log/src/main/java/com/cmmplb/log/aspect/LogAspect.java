@@ -13,7 +13,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
+import org.springframework.core.StandardReflectionParameterNameDiscoverer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
@@ -25,10 +25,10 @@ import java.util.Date;
  * @date 2021-04-14 14:51:49
  * AspectJ支持的5中通知：
  * —@Before：前置通知在方法执行前执行->JoinPoint joinPoint
- * —@After：后置通知，在方法执行后执行->JoinPoint joinPoint
- * —@AfterReturning：返回通知，在方法返回结果之后执行->JoinPoint joinPoint,Object result
- * —@AfterThrowing：异常通知，在方法抛出异常后执行->JoinPoint joinPoint,Exception ex
- * —@Around：环绕通知，围绕着方法执行->ProceedingJoinPoint proceedingJoinPoint
+ * —@After：后置通知, 在方法执行后执行->JoinPoint joinPoint
+ * —@AfterReturning：返回通知, 在方法返回结果之后执行->JoinPoint joinPoint,Object result
+ * —@AfterThrowing：异常通知, 在方法抛出异常后执行->JoinPoint joinPoint,Exception ex
+ * —@Around：环绕通知, 围绕着方法执行->ProceedingJoinPoint proceedingJoinPoint
  */
 
 @Slf4j
@@ -72,7 +72,7 @@ public class LogAspect {
         // 请求的方法参数值
         Object[] args = joinPoint.getArgs();
         // 请求的方法参数名称
-        LocalVariableTableParameterNameDiscoverer u = new LocalVariableTableParameterNameDiscoverer();
+        StandardReflectionParameterNameDiscoverer u = new StandardReflectionParameterNameDiscoverer();
         String[] paramNames = u.getParameterNames(method);
         if (args != null && paramNames != null) {
             StringBuilder params = new StringBuilder();

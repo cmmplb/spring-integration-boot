@@ -2,7 +2,7 @@
   <!-- 左侧菜单 -->
   <div class="aside-container">
     <ul class="nav">
-      <div class="nav-item-top user-avatar nav-link">
+      <div class="nav-item-top userDetails-avatar nav-link">
         <el-dropdown trigger="click" class="navbar-nav-dropdown" :modal-append-to-body="false">
           <img v-if="userInfo.avatar" :src="userInfo.avatar" alt=""/>
           <template v-else>
@@ -32,7 +32,7 @@
       </li>
       <li class="nav-item" @click="handlerNav('addressBook')">
         <a class="nav-link" :style="navActivate === 'addressBook' ? 'color: coral' : ''">
-          <i class="el-icon-user"></i>
+          <i class="el-icon-userDetails"></i>
           <span>通讯录</span>
         </a>
       </li>
@@ -136,19 +136,19 @@
     </el-dialog>
 
     <!-- 切换登陆用户 -->
-    <el-dialog append-to-body class="switch-user-dialog" :title="'当前登陆人：'+ userInfo.name"
+    <el-dialog append-to-body class="switch-userDetails-dialog" :title="'当前登陆人：'+ userInfo.name"
                :visible="userVisible"
                width="300px"
                :before-close="handleUserClose">
       <el-select v-model="userId" ref="select" clearable placeholder="请选择用户">
         <template v-for="(ele,index) in offlineUserOption">
           <el-option :key="index" v-bind:id="ele.id" :label="ele.name" :value="ele.id">
-            <div class="user-item">
-              <img class="user-item-avatar" v-if="ele.avatar" :src="ele.avatar" alt=""/>
+            <div class="userDetails-item">
+              <img class="userDetails-item-avatar" v-if="ele.avatar" :src="ele.avatar" alt=""/>
               <template v-else>
-                <img v-if="ele.sex === 0" src="@/assets/images/avatar/woman.png" class="user-item-avatar" alt=""/>
-                <img v-if="ele.sex === 1" src="@/assets/images/avatar/man.png" class="user-item-avatar" alt=""/>
-                <img v-if="ele.sex === 2" src="@/assets/images/avatar/default.jpg" class="user-item-avatar" alt=""/>
+                <img v-if="ele.sex === 0" src="@/assets/images/avatar/woman.png" class="userDetails-item-avatar" alt=""/>
+                <img v-if="ele.sex === 1" src="@/assets/images/avatar/man.png" class="userDetails-item-avatar" alt=""/>
+                <img v-if="ele.sex === 2" src="@/assets/images/avatar/default.jpg" class="userDetails-item-avatar" alt=""/>
               </template>
               <div>{{ ele.name }}</div>
             </div>z
@@ -167,7 +167,7 @@
 
 import {mapGetters} from "vuex";
 import {VueCropper} from "vue-cropper";
-import {getInfo, updateAvatar} from "@/api/sys/user";
+import {getInfo, updateAvatar} from "@/api/sys/userDetails";
 import {upload} from "@/api/sys/attachment";
 
 export default {
@@ -258,7 +258,7 @@ export default {
             // 刷新用户信息
             getInfo().then(res => {
               if (res.data.code === 200 && res.data.data) {
-                this.$store.dispatch("user/setUserInfo", res.data.data);
+                this.$store.dispatch("userDetails/setUserInfo", res.data.data);
               } else {
                 this.$message.error(res.data.msg);
               }
@@ -419,7 +419,7 @@ export default {
       this.offlineUserOption.map(ele => {
         if (this.userId === ele.id) {
           this.userId = undefined;
-          this.$store.dispatch("user/setUserInfo", ele);
+          this.$store.dispatch("userDetails/setUserInfo", ele);
           this.$store.dispatch("message/delRecentlyMessageActivate");
           this.$store.dispatch("message/delRecentlyMessageMap");
           this.$store.dispatch("message/delMessageMap");
@@ -448,7 +448,7 @@ export default {
     display: flex;
     flex-direction: column;
 
-    .user-avatar {
+    .userDetails-avatar {
       img {
         //margin-right: 20px;
         //display: block;
@@ -502,7 +502,7 @@ export default {
       font-size: 14px;
     }
 
-    .user-avatar {
+    .userDetails-avatar {
       img {
         margin-right: 20px;
         display: block;
@@ -574,18 +574,18 @@ export default {
 }
 
 /* 切换用户 */
-.switch-user-dialog {
+.switch-userDetails-dialog {
   .el-select {
     margin-left: 40px;
   }
 }
 
 /* 切换用户下拉选项 */
-.user-item {
+.userDetails-item {
   display: flex;
   align-items: center;
 
-  .user-item-avatar {
+  .userDetails-item-avatar {
     width: 20px !important;
     height: 20px !important;
     margin-right: 15px;

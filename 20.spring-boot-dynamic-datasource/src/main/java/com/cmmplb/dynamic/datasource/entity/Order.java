@@ -4,23 +4,22 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
-* @author penglibo
-* @date 2021-08-06 10:47:06
-* @since jdk 1.8
-*/
+ * @author penglibo
+ * @date 2021-08-06 10:47:06
+ * @since jdk 1.8
+ */
 
 /**
  * 订单表
  */
-@ApiModel(value = "com-cmmplb-dynamic-datasource-entity-Order")
+@Schema(name = "Order", description = "订单表")
 @Data
 @TableName(value = "`order`")
 public class Order implements Serializable {
@@ -28,49 +27,49 @@ public class Order implements Serializable {
      * 主键id
      */
     @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value = "主键id")
+    @Schema(name = "id", description = "主键id", example = "1")
     private Long id;
 
     /**
      * 用户id
      */
     @TableField(value = "user_id")
-    @ApiModelProperty(value = "用户id")
+    @Schema(name = "userId", description = "用户id")
     private Long userId;
 
     /**
      * 商品id
      */
     @TableField(value = "goods_id")
-    @ApiModelProperty(value = "商品id")
+    @Schema(name = "goodsId", description = "商品id")
     private Long goodsId;
 
     /**
      * 商品金额
      */
     @TableField(value = "amount")
-    @ApiModelProperty(value = "商品金额")
+    @Schema(name = "amount", description = "商品金额")
     private Integer amount;
 
     /**
      * 商品订单状态:1-未支付;2-已支付
      */
     @TableField(value = "`status`")
-    @ApiModelProperty(value = "商品订单状态:1-未支付;2-已支付")
+    @Schema(name = "status", description = "商品订单状态:1-未支付;2-已支付")
     private Byte status;
 
     /**
      * 创建时间
      */
     @TableField(value = "create_time")
-    @ApiModelProperty(value = "创建时间")
+    @Schema(name = "createTime", description = "创建时间")
     private Date createTime;
 
     /**
      * 更新时间
      */
     @TableField(value = "update_time")
-    @ApiModelProperty(value = "更新时间")
+    @Schema(name = "updateTime", description = "更新时间")
     private Date updateTime;
 
     private static final long serialVersionUID = 1L;

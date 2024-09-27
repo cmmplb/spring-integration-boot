@@ -35,30 +35,30 @@
         u.`update_time`,
         u.`version`,
         u.`deleted`
-        <!-- @sql from `user` u -->
+        <!-- @sql from `userDetails` u -->
     </sql>
 
     <sql id="base_select">
         select
         <include refid="base_column"/>
-        from `user` u
+        from `userDetails` u
     </sql>
 
     <!-- 如果一条语句每次都需要最新的数据，就意味着每次都需要从数据库中查询数据，可以把这个属性设置为false -->
     <select id="selectByPaged" resultType="com.cmmplb.mybatis.plus.entity.User" useCache="false">
         select
         <include refid="base_column"/>
-        from `user` u
+        from `userDetails` u
     </select>
 
     <select id="getByPagedTotal" resultType="java.lang.Long">
         select count(1)
-        from `user`
+        from `userDetails`
     </select>
 
     <select id="getByList" resultType="com.cmmplb.mybatis.plus.entity.User">
         select *
-        from `user`
+        from `userDetails`
         limit #{start},#{size}
     </select>
 
@@ -109,7 +109,7 @@
         ,t.`update_by`   `tag_update_by`
         ,t.`update_time` `tag_update_time`
         ,t.`deleted`     `tag_deleted`
-        from `user` u
+        from `userDetails` u
         left join `user_tag` ut on u.`id` = ut.`user_id`
         left join `tag` t on t.`id` = ut.`tag_id` and t.`deleted` = 0
         where u.`id` = #{id}

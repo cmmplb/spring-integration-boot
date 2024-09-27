@@ -27,14 +27,14 @@ import java.util.Map;
 public class IntegrationCellWriteHandler implements CellWriteHandler {
 
     /**
-     * key-对应表头列索引，从0开始
+     * key-对应表头列索引, 从0开始
      * value-批注内容
      */
     private final Map<Integer, String> commentMap;
 
     /**
-     * key-对应表头列索引，从0开始
-     * value-内容格式索引，对应：{@link com.alibaba.excel.constant.BuiltinFormats}
+     * key-对应表头列索引, 从0开始
+     * value-内容格式索引, 对应：{@link com.alibaba.excel.constant.BuiltinFormats}
      * 自定义设置列数据格式(这个用于导出时有数据的单元格设置格式-没有数据的单元格依旧是常规)
      */
     private final Map<Integer, DataFormatData> dataFormatMap;

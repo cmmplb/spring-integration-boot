@@ -79,7 +79,7 @@ public class KafkaConsumerConfig {
         factory.setConsumerFactory(consumerFactory());
         // ------- 消息过滤配置 --------
         // factory.setRecordFilterStrategy(
-        //         r -> r.value().contains("fuck") // 包含则不接受消息。
+        //         r -> r.value().contains("fuck") // 包含则不接受消息. 
         // );
         return factory;
     }

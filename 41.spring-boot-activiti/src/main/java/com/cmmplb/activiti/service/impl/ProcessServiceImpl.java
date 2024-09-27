@@ -86,7 +86,7 @@ public class ProcessServiceImpl implements ProcessService {
         Set<String> userIds = new HashSet<>();
         for (ProcessInstance processInstance : processList) {
             // processInstanceIds.add(processInstance.getId());
-            // 表示流程实例的执行树的根的Id。如果此执行是进程实例,则和id相同
+            // 表示流程实例的执行树的根的Id. 如果此执行是进程实例,则和id相同
             processInstanceIds.add(processInstance.getProcessInstanceId());
             userIds.add(processInstance.getStartUserId());
         }
@@ -150,7 +150,7 @@ public class ProcessServiceImpl implements ProcessService {
     public void showProcessInstanceProgressChart(String processInstanceId) {
         try {
 
-            // 获取流程中已经执行的节点，按照执行先后顺序排序
+            // 获取流程中已经执行的节点, 按照执行先后顺序排序
             List<HistoricActivityInstance> historicActivityInstances = historyService.createHistoricActivityInstanceQuery()
                     .processInstanceId(processInstanceId)
                     .orderByHistoricActivityInstanceStartTime().asc().list();
@@ -170,11 +170,11 @@ public class ProcessServiceImpl implements ProcessService {
             // 当前激活的流程节点
             Set<String> activityIds = runtimeService.createExecutionQuery().processInstanceId(historicProcessInstance.getId()).list()
                     .stream().map(org.activiti.engine.runtime.Execution::getActivityId).collect(Collectors.toSet());
-            // activiti7移除了静态方法创建，需要DefaultProcessDiagramGenerator实例
+            // activiti7移除了静态方法创建, 需要DefaultProcessDiagramGenerator实例
             // ProcessDiagramGenerator diagramGenerator = new DefaultProcessDiagramGenerator();
-            // 由于是创建的新实例，这里的DiagramGenerator就不用注入到配置类里面了，当然ActivitiConfiguration配置类也移除了set的方法。
+            // 由于是创建的新实例, 这里的DiagramGenerator就不用注入到配置类里面了, 当然ActivitiConfiguration配置类也移除了set的方法. 
             ProcessDiagramGeneratorImpl diagramGenerator = new ProcessDiagramGeneratorImpl();
-            // 使用默认配置获得流程图表生成器，并生成追踪图片字符流
+            // 使用默认配置获得流程图表生成器, 并生成追踪图片字符流
             InputStream is = diagramGenerator.generateDiagram(bpmnModel,
                     highLightedActivitiIds,
                     highLightedFlowIds,

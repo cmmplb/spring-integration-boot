@@ -16,9 +16,9 @@ import java.util.List;
 public class DynamicHeadWrite {
 
     /**
-     * 动态头，实时生成头写入
+     * 动态头, 实时生成头写入
      * <p>
-     * 思路是这样子的，先创建List<String>头格式的sheet仅仅写入头,然后通过table 不写入头的方式 去写入数据
+     * 思路是这样子的, 先创建List<String>头格式的sheet仅仅写入头,然后通过table 不写入头的方式 去写入数据
      *
      * <p>
      * 1. 创建excel对应的实体对象 参照{@link DemoData}

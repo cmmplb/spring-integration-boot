@@ -27,7 +27,7 @@ public class WebsocketInterceptor implements HandshakeInterceptor {
                                    @NonNull Map<String, Object> attributes) {
         log.info("握手开始");
         Map<String, String> paramMap = MapObjectUtil.urlParams2Map(request.getURI().getQuery());
-        // 将路径请求参数保存到attributes，在ChatTextWebSocketHandler中session.getAttributes()获取
+        // 将路径请求参数保存到attributes, 在ChatTextWebSocketHandler中session.getAttributes()获取
         if (!CollectionUtils.isEmpty(paramMap)) {
             attributes.putAll(paramMap);
         }

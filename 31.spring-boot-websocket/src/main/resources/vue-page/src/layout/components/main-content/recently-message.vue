@@ -1,6 +1,6 @@
 <template>
   <!-- 最近消息列表 -->
-  <div class="content-user-list-container">
+  <div class="content-userDetails-list-container">
     <div class="topping bdr">
       <el-input class="topping-search" v-model="searchForm.keywords" prefix-icon="el-icon-search" clearable
                 placeholder="搜索"></el-input>
@@ -8,14 +8,14 @@
     <template v-if="recentlyMessageMap && recentlyMessageMap.size > 0">
       <!-- el-scrollbar 必须指定高度 -->
       <el-scrollbar class="content-scrollbar bdr">
-        <ul class="user-list" v-infinite-scroll="handleScrollBottom">
+        <ul class="userDetails-list" v-infinite-scroll="handleScrollBottom">
           <!-- 倒序 Array.from(recentlyMessageMap.values()).reverse() -->
           <li v-for="(ele,key) in recentlyMessageMap.values()" v-bind:key="key"
               @click="handlerMessageUser(ele)"
               :style="recentlyMessageActivate.businessId === ele.businessId ? 'color: #FFA500FF; background-color: #FFA5002A;' : ''"
-              class="user-message flex bdb">
+              class="userDetails-message flex bdb">
             <img :src="ele.avatar" class="avatar" alt="">
-            <div class="user-message-info">
+            <div class="userDetails-message-info">
               <div class="header">
                 <span class="name">{{ ele.name }}</span>
                 <span class="create-time"> {{ ele.recentlyTime }}</span>
@@ -137,7 +137,7 @@ export default {
 <style scoped lang='scss'>
 
 /* 用户消息列表 */
-.content-user-list-container {
+.content-userDetails-list-container {
   display: flex;
   /*  默认情况下，项目都排在一条线（又称“轴线”）上。如果一条轴线排不下，flex-wrap:wrap 该样式用于设置换行 */
   flex-wrap: wrap;
@@ -175,13 +175,13 @@ export default {
     /* 动态计算盒子的高度总高度-nav-bar的高度-搜索栏的高度 */
     //height: calc(100% - 80px);
 
-    .user-list {
+    .userDetails-list {
       display: flex;
       /* 设置主轴的方向 */
       flex-direction: column;
 
       /* 每个用户消息样式 */
-      .user-message {
+      .userDetails-message {
         position: relative;
         align-items: center;
         padding: 20px;
@@ -197,7 +197,7 @@ export default {
         }
 
 
-        .user-message-info {
+        .userDetails-message-info {
           width: 77%;
           flex: 1;
 

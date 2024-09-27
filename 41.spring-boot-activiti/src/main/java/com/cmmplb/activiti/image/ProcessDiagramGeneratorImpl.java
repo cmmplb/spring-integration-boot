@@ -125,10 +125,10 @@ public class ProcessDiagramGeneratorImpl extends DefaultProcessDiagramGenerator 
             // }
 
             // Draw highlighted activities
-            // historicActivityInstance里取得的list中，最后一个节点就是当前节点，前面的节点都是已完成的节点
+            // historicActivityInstance里取得的list中, 最后一个节点就是当前节点, 前面的节点都是已完成的节点
             if (highLightedActivities.contains(flowNode.getId())) {
                 if (!CollectionUtils.isEmpty(currIds) && currIds.contains(flowNode.getId()) && !(flowNode instanceof Gateway)) {
-                    // 非结束节点，并且是当前节点
+                    // 非结束节点, 并且是当前节点
                     drawHighLight((flowNode instanceof StartEvent), processDiagramCanvas, bpmnModel.getGraphicInfo(flowNode.getId()), colors[1]);
                 } else {
                     // 普通节点
@@ -221,7 +221,7 @@ public class ProcessDiagramGeneratorImpl extends DefaultProcessDiagramGenerator 
                                                                    String labelFontName,
                                                                    String annotationFontName) {
 
-        // 我们需要计算最大值，以了解图像整体的大小
+        // 我们需要计算最大值, 以了解图像整体的大小
         double minX = Double.MAX_VALUE;
         double maxX = 0;
         double minY = Double.MAX_VALUE;

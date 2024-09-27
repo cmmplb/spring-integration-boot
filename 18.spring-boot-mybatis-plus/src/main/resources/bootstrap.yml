@@ -14,7 +14,6 @@ spring.main.allow-bean-definition-overriding: true
 spring.profiles.include:
   - database
   - jackson
-  - knife4j
   - mybatis_plus
   - redis
   - swagger

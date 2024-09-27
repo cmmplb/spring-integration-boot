@@ -24,7 +24,7 @@ public class SimpleFill {
 
         // 方案1 根据对象填充
         String fileName = TestFileUtil.getPath() + "simpleFill" + System.currentTimeMillis() + ".xlsx";
-        // 这里 会填充到第一个sheet， 然后文件流会自动关闭
+        // 这里 会填充到第一个sheet,  然后文件流会自动关闭
         FillData fillData = new FillData();
         fillData.setName("张三");
         fillData.setNumber(5.2);
@@ -33,7 +33,7 @@ public class SimpleFill {
         // 方案2 根据Map填充
         fileName = TestFileUtil.getPath() + "simpleFill" + System.currentTimeMillis() + ".xlsx";
         inputStream = FileUtil.getInputStream("fill/simple.xlsx");
-        // 这里 会填充到第一个sheet， 然后文件流会自动关闭
+        // 这里 会填充到第一个sheet,  然后文件流会自动关闭
         Map<String, Object> map = MapUtils.newHashMap();
         map.put("name", "张三");
         map.put("number", 5.2);

@@ -5,7 +5,9 @@
     <title>Insert title here</title>
 </head>
 <body>
-${message}
+<h1>
+    ${message}
+</h1>
 ${name}
 ${age}
 </body>

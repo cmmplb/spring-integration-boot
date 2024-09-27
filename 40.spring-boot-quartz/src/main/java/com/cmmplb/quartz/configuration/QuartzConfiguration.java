@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
  * @author penglibo
  * @date 2023-02-09 14:45:38
  * @since jdk 1.8
- * RAMJobStore，就是将任务相关信息保存在内存里，应用重启后，定时任务信息将会丢失。
+ * RAMJobStore, 就是将任务相关信息保存在内存里, 应用重启后, 定时任务信息将会丢失. 
  */
 
 @Configuration

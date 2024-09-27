@@ -31,7 +31,7 @@ public class LeaveApplyController {
     @Autowired
     private LeaveApplyService leaveApplyService;
 
-    @ApiOperation("添加请假申请")
+    @Operation(summary = "添加请假申请")
     @PostMapping(value = "/save")
     public Result<Boolean> save(@RequestBody LeaveApplyDTO dto) {
         boolean save;

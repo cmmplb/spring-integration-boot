@@ -13,19 +13,19 @@ import java.util.List;
 public interface AdvancedUserDao {
 
     /**
-     * 模拟数据库，查询一个
+     * 模拟数据库, 查询一个
      * @return user
      */
     User selectOne();
 
     /**
-     * 模拟数据库，查询DTO
+     * 模拟数据库, 查询DTO
      * @return user
      */
     UserDTO selectDTO();
 
     /**
-     * 模拟数据库，查询列表
+     * 模拟数据库, 查询列表
      * @return users
      */
     List<User> selectList();

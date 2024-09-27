@@ -32,7 +32,7 @@ public class EvectionApplyController {
     @Autowired
     private EvectionApplyService evectionApplyService;
 
-    @ApiOperation("添加出差申请")
+    @Operation(summary = "添加出差申请")
     @PostMapping(value = "/save")
     public Result<Boolean> save(@RequestBody EvectionApplyDTO dto) {
         boolean save;

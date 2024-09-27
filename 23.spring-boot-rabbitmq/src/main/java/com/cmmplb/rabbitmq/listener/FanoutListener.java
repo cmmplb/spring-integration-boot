@@ -28,7 +28,7 @@ public class FanoutListener {
     }
 
     /**
-     * 创建的第二个监听，同样能接收到消息
+     * 创建的第二个监听, 同样能接收到消息
      */
     @RabbitListener(queues = RabbitMqConstants.TWO_FANOUT_QUEUE)
     public void listenTwo(String body, Message message, Channel channel) throws IOException {

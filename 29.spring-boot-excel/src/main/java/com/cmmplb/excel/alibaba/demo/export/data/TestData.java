@@ -22,8 +22,8 @@ import java.util.List;
  * @date 2021-05-22 17:31:23
  * @since jdk 1.8
  * 物料模版
- * 默认是全部实体字段都会参与读写，不管你是否加了@ExcelProperty注解
- * 或者在类的最上面加入@ExcelIgnoreUnannotated注解，加入这个注解后只有加了@ExcelProperty才会参与读写。
+ * 默认是全部实体字段都会参与读写, 不管你是否加了@ExcelProperty注解
+ * 或者在类的最上面加入@ExcelIgnoreUnannotated注解, 加入这个注解后只有加了@ExcelProperty才会参与读写. 
  */
 
 @Data
@@ -37,7 +37,7 @@ import java.util.List;
 @ColumnWidth(18)
 // 内容行高
 @ContentRowHeight(20)
-// 内容的背景色，居中
+// 内容的背景色, 居中
 @ContentStyle(
         fillPatternType = FillPatternTypeEnum.NO_FILL, // 不填充
         horizontalAlignment = HorizontalAlignmentEnum.CENTER, // 水平居中
@@ -170,7 +170,7 @@ public class TestData {
         data.setCycle(new BigDecimal("1000"));
         data.setUnitName("套");
         data.setScene("仓库");
-        data.setReference("42cm*42cm*90cm，货盘（HIPS）/工艺（注塑）/立柱（PVC挤塑）单色丝印货盘印刷，广告画面为胶印附3MM雪弗板");
+        data.setReference("42cm*42cm*90cm, 货盘（HIPS）/工艺（注塑）/立柱（PVC挤塑）单色丝印货盘印刷, 广告画面为胶印附3MM雪弗板");
         data.setWeight(new BigDecimal("200"));
         data.setVolume(new BigDecimal("100"));
         data.setDate(new Date());

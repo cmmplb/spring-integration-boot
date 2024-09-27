@@ -25,7 +25,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author penglibo
  * @date 2021-06-28 13:08:38
  * @since jdk 1.8
- * 5.0:ChannelInboundHandlerAdapter, ChannelOutboundHandlerAdapter, 和 ChannelDuplexHandlerAdapter 弃用了， 被 ChannelHandlerAdapter 取代.
+ * 5.0:ChannelInboundHandlerAdapter, ChannelOutboundHandlerAdapter, 和 ChannelDuplexHandlerAdapter 弃用了,  被 ChannelHandlerAdapter 取代.
  * 因为现在你无法区分一个 handler是 inbound handler 或者 outbound handler, 所以CombinedChannelDuplexHandler 被 ChannelHandlerAppender取代.
  */
 
@@ -33,9 +33,9 @@ public class ServerHandler extends /*ChannelHandlerAdapter*/ChannelInboundHandle
 
     private static final Logger logger = LoggerFactory.getLogger(ServerHandler.class);
 
-    // 在这个类里面我们首先建立了一个channelGroup，
-    // 每当有客户端连接的时候，就添加到channelGroup里面，
-    // 我们可以发送消息给固定的人，也可以群发消息。
+    // 在这个类里面我们首先建立了一个channelGroup,
+    // 每当有客户端连接的时候, 就添加到channelGroup里面,
+    // 我们可以发送消息给固定的人, 也可以群发消息. 
     public static ChannelGroup channelGroup;
 
     // KEY是设备号,value是连接的设备通道
@@ -47,13 +47,13 @@ public class ServerHandler extends /*ChannelHandlerAdapter*/ChannelInboundHandle
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("与客户端建立连接，通道开启！");
+        System.out.println("与客户端建立连接, 通道开启！");
         channelGroup.add(ctx.channel());
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("与客户端断开连接，通道关闭！");
+        System.out.println("与客户端断开连接, 通道关闭！");
         channelGroup.remove(ctx.channel());
         for (Iterator<String> iterator = deviceMap.keySet().iterator(); iterator.hasNext(); ) {
             String key = iterator.next();

@@ -1,19 +1,18 @@
 package com.cmmplb.xss.wrapper;
 
 import com.cmmplb.core.utils.StringUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
  * @author penglibo
  * @date 2021-09-10 16:02:29
  * @since jdk 1.8
- * Jsoup过滤http请求，防止Xss攻击
+ * Jsoup过滤http请求, 防止Xss攻击
  */
 
 @Slf4j

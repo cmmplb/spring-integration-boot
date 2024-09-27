@@ -21,9 +21,9 @@ public class Knife4jTest {
      * @BeforeEach：在每个单元测试方法执行前都执行一遍
      * @BeforeAll：在每个单元测试方法执行前执行一遍（只执行一次）
      * @DisplayName("商品入库测试")：用于指定单元测试的名称
-     * @Disabled：当前单元测试置为无效，即单元测试时跳过该测试
-     * @RepeatedTest(n)：重复性测试，即执行n次
-     * @ParameterizedTest：参数化测试，
+     * @Disabled：当前单元测试置为无效, 即单元测试时跳过该测试
+     * @RepeatedTest(n)：重复性测试, 即执行n次
+     * @ParameterizedTest：参数化测试, 
      * @ValueSource(ints = {1, 2, 3})：参数化测试提供数据
      */
 

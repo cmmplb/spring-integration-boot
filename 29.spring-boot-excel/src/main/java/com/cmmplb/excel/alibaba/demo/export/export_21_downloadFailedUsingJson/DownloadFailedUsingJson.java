@@ -3,9 +3,9 @@ package com.cmmplb.excel.alibaba.demo.export.export_21_downloadFailedUsingJson;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.fastjson.JSON;
 import com.cmmplb.excel.alibaba.demo.export.data.DemoData;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class DownloadFailedUsingJson {
      */
     @GetMapping("downloadFailedUsingJson")
     public void downloadFailedUsingJson(HttpServletResponse response) throws IOException {
-        // 这里注意 有同学反应使用swagger 会导致各种问题，请直接用浏览器或者用postman
+        // 这里注意 有同学反应使用swagger 会导致各种问题, 请直接用浏览器或者用postman
         try {
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.setCharacterEncoding("utf-8");

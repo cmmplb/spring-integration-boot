@@ -1,6 +1,6 @@
 package com.cmmplb.mongodb;
 
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.utils.DateUtil;
 import com.cmmplb.core.utils.MapObjectUtil;
 import com.cmmplb.core.utils.UUIDUtil;
@@ -36,13 +36,13 @@ public class MongoDBTest {
     private MongoCollection<Document> user;
 
     /**
-     * 在Junit5中，@Before和@After注解被@BeforeEach和@AfterEach所替代。
+     * 在Junit5中, @Before和@After注解被@BeforeEach和@AfterEach所替代. 
      */
     @BeforeEach
     public void init() {
-        // 创建MongoDB的链接客户端,用户名为：root，密码为：cmmplb，数据库为：admin,集合为：spit
-        // MongoClient mongoClient = MongoClients.create("mongodb://root:cmmplb@193.112.252.232:27017/?authSource=admin");
-        client = MongoClients.create();
+        // 创建MongoDB的链接客户端,用户名为：root, 密码为：cmmplb, 数据库为：admin,集合为：spit
+        MongoClient mongoClient = MongoClients.create("mongodb://root:cmmplb@193.112.252.232:27017/?authSource=admin");
+        // client = MongoClients.create();
         // 获取对应的数据库
         MongoDatabase commentdb = client.getDatabase("cmmplb");
         // 获取对应的文档集合
@@ -60,7 +60,7 @@ public class MongoDBTest {
         User user = new User();
         user.set_id(UUIDUtil.uuidTrim());
         user.setName("张三");
-        user.setSex(GlobalConstants.NUM_ONE);
+        user.setSex(GlobalConstant.NUM_ONE);
         user.setBirthday(new Date());
         user.setDescription("描述");
 
@@ -91,12 +91,12 @@ public class MongoDBTest {
     public void findAll() {
         // 查询该集合中的所有文档
         FindIterable<Document> documents = user.find();
-        // 遍历文档数据，打印出nickname的值
+        // 遍历文档数据, 打印出nickname的值
         for (Document document : documents) {
             System.out.println("=======================");
             System.out.println(document.getLong(User.COLUMN_ID));
             System.out.println(document.getString(User.COLUMN_NAME));
-            System.out.println(GlobalConstants.NUM_ZERO == Byte.parseByte(document.get(User.COLUMN_SEX).toString()) ? "女" : "男");
+            System.out.println(GlobalConstant.NUM_ZERO == Byte.parseByte(document.get(User.COLUMN_SEX).toString()) ? "女" : "男");
             System.out.println(DateUtil.formatDate(document.getDate(User.COLUMN_BIRTHDAY), DateUtil.FORMAT_DATE_YYYY_MM_DD_HH_MM_SS));
             System.out.println(document.getString(User.COLUMN_DESCRIPTION));
             System.out.println("=======================");

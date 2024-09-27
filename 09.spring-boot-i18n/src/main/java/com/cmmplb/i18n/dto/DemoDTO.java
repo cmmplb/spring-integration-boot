@@ -1,9 +1,8 @@
 package com.cmmplb.i18n.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
-import javax.validation.constraints.NotBlank;
 
 /**
  * @author penglibo
@@ -12,21 +11,22 @@ import javax.validation.constraints.NotBlank;
  */
 
 @Data
+@Schema(name = "DemoDTO", description = "DemoDTO")
 public class DemoDTO {
 
-    @ApiModelProperty(value = "主键id")
+    @Schema(name = "id", description = "主键id")
     // @Null(message = "新增时id必须为空", groups = {Insert.class})
     // @NotNull(message = "更新时id不能为空", groups = {Update.class})
     private String id;
 
     @NotBlank(message = "{vo.user}")
-    @ApiModelProperty(value = "姓名", example = "张飞")
+    @Schema(name = "name", description = "姓名", example = "张飞")
     private String name;
 
-    @ApiModelProperty(value = "邮箱")
+    @Schema(name = "email", description = "邮箱", example = "@163.com")
     private String email;
 
-    @ApiModelProperty(value = "订单信息")
+    @Schema(name = "orderDateDTO", description = "订单信息")
     private OrderDate orderDate;
 
     //more...

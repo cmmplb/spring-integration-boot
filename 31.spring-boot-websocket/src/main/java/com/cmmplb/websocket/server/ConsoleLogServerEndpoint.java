@@ -3,12 +3,12 @@ package com.cmmplb.websocket.server;
 import com.cmmplb.core.utils.ErrorUtil;
 import com.cmmplb.core.utils.LogDirUtil;
 import com.cmmplb.core.utils.PatternUtil;
+import jakarta.websocket.*;
+import jakarta.websocket.server.ServerEndpoint;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.util.StringUtils;
 
-import javax.websocket.*;
-import javax.websocket.server.ServerEndpoint;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.util.regex.Matcher;
  * @author plb
  * @date 2021-01-06
  * Websocket基于tomcat实现
- * Component默认是单例模式的，但spring还是会为每个websocket连接初始化一个端点bean
+ * Component默认是单例模式的, 但spring还是会为每个websocket连接初始化一个端点bean
  * 注意的点：aop代理会导致as it is not annotated with @ServerEndpoint
  */
 
@@ -57,7 +57,7 @@ public class ConsoleLogServerEndpoint {
             BufferedReader reader = null;
             while (SESSION_MAP.get(session.getId()) != null) {
                 try {
-                    // 日志文件，获取最新的
+                    // 日志文件, 获取最新的
                     FileReader fileReader = new FileReader(LogDirUtil.getLogDir() + "/" + applicationName + "/info.log");
                     reader = new BufferedReader(fileReader);
                     Object[] lines = reader.lines().toArray();
@@ -65,7 +65,7 @@ public class ConsoleLogServerEndpoint {
                     // 只取从上次之后产生的日志
                     Object[] copyOfRange = Arrays.copyOfRange(lines, LENGTH_MAP.get(session.getId()), lines.length);
 
-                    // 对日志进行着色，更加美观  PS：注意，这里要根据日志生成规则来操作
+                    // 对日志进行着色, 更加美观  PS：注意, 这里要根据日志生成规则来操作
                     for (int i = 0; i < copyOfRange.length; i++) {
                         String line = (String) copyOfRange[i];
                         // 先转义
@@ -102,7 +102,7 @@ public class ConsoleLogServerEndpoint {
                     // 存储最新一行开始
                     LENGTH_MAP.replace(session.getId(), lines.length);
 
-                    // 第一次如果太大，截取最新的200行就够了，避免传输的数据太大
+                    // 第一次如果太大, 截取最新的200行就够了, 避免传输的数据太大
                     if (first && copyOfRange.length > 200) {
                         copyOfRange = Arrays.copyOfRange(copyOfRange, copyOfRange.length - 200, copyOfRange.length);
                         first = false;
@@ -163,7 +163,7 @@ public class ConsoleLogServerEndpoint {
     }
 
     /**
-     * 封装一个send方法，发送消息到前端
+     * 封装一个send方法, 发送消息到前端
      */
     private void send(Session session, String message) {
         try {

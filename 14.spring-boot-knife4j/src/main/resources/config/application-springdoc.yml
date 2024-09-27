@@ -1,0 +1,23 @@
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    # 自定义swagger前端请求路径，输入http：127.0.0.1:8080/swagger-ui.html会自动重定向到swagger页面
+    path: /swagger-ui.html
+    # 该参数是swagger默认的排序规则，如果设置为alpha，那么Knife4j提供的按照order排序的增强规则不生效，alpha:按照字母顺序排序，
+    # 使用增强order属性排序扩展规则`x-order`进行排序，或者不设置该参数
+    # 类排序
+    tags-sorter: order
+    # 方法排序
+    operations-sorter: order
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.cmmplb.knife4j
+    - group: system
+      display-name: "系统接口文档"
+      paths-to-match: '/**'
+      packages-to-scan: com.cmmplb.knife4j
+  # 请求参数中包含其他对象，默认为false，将展开对象属性，设置为true，只显示对象名称
+  default-flat-param-object: false

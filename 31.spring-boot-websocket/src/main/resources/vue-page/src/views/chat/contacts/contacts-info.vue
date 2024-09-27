@@ -1,7 +1,7 @@
 <template>
   <!-- 用户信息 -->
-  <div class="user-info-container">
-    <div class="user-info">
+  <div class="userDetails-info-container">
+    <div class="userDetails-info">
       <div class="header">
         <img :src="contactsInfo.avatar" class="avatar" alt="">
         <div class="header-info">
@@ -72,7 +72,7 @@ import {getInfoById} from "@/api/chat/contacts";
 import {mapGetters} from "vuex";
 
 export default {
-  name: "user-info-container",
+  name: "userDetails-info-container",
   components: {},
   props: {},
   data() {
@@ -118,14 +118,14 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.user-info-container {
+.userDetails-info-container {
   display: flex;
   flex: 1;
   /* 设置主轴的方向 */
   flex-direction: column;
   justify-content: space-between;
 
-  .user-info {
+  .userDetails-info {
     padding: 20px;
     margin: 30px 0 0 100px;
     width: 500px;

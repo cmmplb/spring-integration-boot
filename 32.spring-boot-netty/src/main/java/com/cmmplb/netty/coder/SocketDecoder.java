@@ -22,7 +22,7 @@ public class SocketDecoder extends ByteToMessageDecoder {
 
     private static final Logger logger = LoggerFactory.getLogger(SocketDecoder.class);
 
-    // 每个通信包以11单字节+消息体字节，双方必须根据头部数据长度，定义为一包完整的消息包
+    // 每个通信包以11单字节+消息体字节, 双方必须根据头部数据长度, 定义为一包完整的消息包
 
     // 消息头字节大小：消息标识4字节+版本号1字节+数据类型1字节+数据长度4字节=11字节
     private static final int HEAD_LENGTH = 11;
@@ -59,9 +59,9 @@ public class SocketDecoder extends ByteToMessageDecoder {
                 ctx.close();
                 return;
             }
-            if (buf.readableBytes() < dataLength) {//如果可读数据小于数据长度，判断不是一个完整的数据
-                // 数据包不完整，等待下一个数据包
-                logger.info("数据包不完整，等待下一个数据包");
+            if (buf.readableBytes() < dataLength) {//如果可读数据小于数据长度, 判断不是一个完整的数据
+                // 数据包不完整, 等待下一个数据包
+                logger.info("数据包不完整, 等待下一个数据包");
                 buf.resetReaderIndex(); //还原指针位置
                 return;
             }

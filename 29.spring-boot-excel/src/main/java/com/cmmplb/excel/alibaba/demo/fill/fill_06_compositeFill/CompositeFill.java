@@ -41,7 +41,7 @@ public class CompositeFill {
         try (ExcelWriter excelWriter = EasyExcel.write(fileName).withTemplate(inputStream).build()) {
             WriteSheet writeSheet = EasyExcel.writerSheet().build();
             FillConfig fillConfig = FillConfig.builder().direction(WriteDirectionEnum.HORIZONTAL).build();
-            // 如果有多个list 模板上必须有{前缀.} 这里的前缀就是 data1，然后多个list必须用 FillWrapper包裹
+            // 如果有多个list 模板上必须有{前缀.} 这里的前缀就是 data1, 然后多个list必须用 FillWrapper包裹
             excelWriter.fill(new FillWrapper("data1", FillData.data()), fillConfig, writeSheet);
             excelWriter.fill(new FillWrapper("data1", FillData.data()), fillConfig, writeSheet);
             excelWriter.fill(new FillWrapper("data2", FillData.data()), writeSheet);

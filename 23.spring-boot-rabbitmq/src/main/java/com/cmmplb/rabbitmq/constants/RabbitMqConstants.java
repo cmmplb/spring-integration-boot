@@ -66,17 +66,17 @@ public interface RabbitMqConstants {
      * 订阅模型-Topic-通配符-routingKey
      */
     String ONE_TOPIC_ROUTING_KEY = "*.a.*";
-    String TWO_TOPIC_ROUTING_KEY = "*.*.b"; // #表示0个或若干个关键字，*表示一个关键字
+    String TWO_TOPIC_ROUTING_KEY = "*.*.b"; // #表示0个或若干个关键字, *表示一个关键字
     String THREE_TOPIC_ROUTING_KEY = "c.#";
 
 
     // -----------------------------死信队列模式-----------------------------------------
     /**
-     * 死信队列-将消息拒绝消费消息(丢失消息)给死信队列或者发送消息到一个没有消费者的普通队列中，过期时间达到后死信队列会接收到消息
+     * 死信队列-将消息拒绝消费消息(丢失消息)给死信队列或者发送消息到一个没有消费者的普通队列中, 过期时间达到后死信队列会接收到消息
      */
     String DEAD_QUEUE = "dead_queue";
     /**
-     * 普通队列，绑定死信交换机
+     * 普通队列, 绑定死信交换机
      */
     String COMMON_QUEUE = "common_queue";
     /**
@@ -96,9 +96,9 @@ public interface RabbitMqConstants {
      */
     String COMMON_ROUTING_KEY = "common.#";
     /**
-     * 过期时间，单位毫秒
+     * 过期时间, 单位毫秒
      */
-    Integer MESSAGE_TTL_TIME = 1000 * 3;
+    Integer MESSAGE_TTL_TIME = 1000 * 10;
 
 
 }

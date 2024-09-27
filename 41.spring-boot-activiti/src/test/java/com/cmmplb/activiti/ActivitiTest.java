@@ -75,7 +75,7 @@ public class ActivitiTest {
         System.out.println("当前活动的id:" + processInstance.getActivityId());
 
         System.out.println("================================================");
-        // 启动 key 标识的流程定义，并指定 流程定义中的两个参数：assignee0和assignee1
+        // 启动 key 标识的流程定义, 并指定 流程定义中的两个参数：assignee0和assignee1
         processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey, map);
         log.info("流程实例的内容：{}", processInstance.getProcessDefinitionName());
         System.out.println("流程启动成功：" + processInstance);

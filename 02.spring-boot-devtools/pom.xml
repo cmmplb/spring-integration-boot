@@ -6,7 +6,7 @@
     <parent>
         <artifactId>spring-integration-boot</artifactId>
         <groupId>com.cmmplb</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
@@ -41,10 +41,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!-- 如果没有该项配置，devtools没有作用 -->
-                    <fork>true</fork>
-                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -16,13 +16,13 @@
         u.`update_time`,
         u.`version`,
         u.`deleted`
-        <!-- @sql from `user` u -->
+        <!-- @sql from `userDetails` u -->
     </sql>
 
     <sql id="base_select">
         select
         <include refid="base_column"/>
-        from `user` u
+        from `userDetails` u
     </sql>
 
     <select id="selectList" resultType="com.cmmplb.cache.domain.entity.User">
@@ -30,19 +30,19 @@
     </select>
 
     <insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
-        insert into `user` (`tenant_id`, `name`, `sex`, `mobile`, `status`, `create_time`, `update_time`,
+        insert into `userDetails` (`tenant_id`, `name`, `sex`, `mobile`, `status`, `create_time`, `update_time`,
                             `deleted`)
         values (#{tenantId}, #{name}, #{sex}, #{mobile}, 1, current_date(), current_date(), 0)
     </insert>
 
     <delete id="deleteById">
         delete
-        from `user`
+        from `userDetails`
         where `id` = #{id}
     </delete>
 
     <update id="updateById">
-        update `user`
+        update `userDetails`
         <set>
             `update_time` = now(),
             <if test="tenantId != null">

@@ -1,15 +1,15 @@
-DROP DATABASE IF EXISTS `spring_integration`;
+DROP DATABASE IF EXISTS `spring_boot_mybatis`;
 
-CREATE DATABASE `spring_integration` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `spring_boot_mybatis` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-USE `spring_integration`;
+USE `spring_boot_mybatis`;
 
 /*用户信息表*/
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`
+DROP TABLE IF EXISTS `userDetails`;
+CREATE TABLE `userDetails`
 (
     `id`          bigint     NOT NULL AUTO_INCREMENT COMMENT '主键',
     `tenant_id`   bigint(20) NOT NULL DEFAULT '0' COMMENT '租户id',
@@ -26,7 +26,7 @@ CREATE TABLE `user`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4 COMMENT ='用户信息表';
 
-INSERT INTO `user` (`tenant_id`,
+INSERT INTO `userDetails` (`tenant_id`,
                     `name`,
                     `sex`,
                     `mobile`,

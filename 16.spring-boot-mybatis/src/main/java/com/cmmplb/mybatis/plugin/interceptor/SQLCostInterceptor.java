@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import static com.cmmplb.core.constants.StringConstants.*;
+import static com.cmmplb.core.constants.StringConstant.*;
 
 /**
  * @author penglibo
@@ -45,7 +45,7 @@ public class SQLCostInterceptor implements Interceptor {
         } finally {
             String build = ""
                     + STR_N + "===================================================================================================================="
-                    + STR_N + PatternUtil.replaceStrBlank(boundSql.getSql()) + STR_N + "sql耗时:" + LEFT + (System.currentTimeMillis() - startTime) + "ms" + RIGHT
+                    + STR_N + PatternUtil.replaceStrBlank(boundSql.getSql()) + STR_N + "sql耗时:" + LEFT_SQUARE_BRACKET + (System.currentTimeMillis() - startTime) + "ms" + RIGHT_SQUARE_BRACKET
                     + STR_N + "====================================================================================================================";
             log.info(build);
         }
@@ -77,7 +77,7 @@ public class SQLCostInterceptor implements Interceptor {
             Object parameterObject = boundSql.getParameterObject();
             List<ParameterMapping> parameterMappingList = boundSql.getParameterMappings();
 
-            // 格式化Sql语句，去除换行符，替换参数
+            // 格式化Sql语句, 去除换行符, 替换参数
             sql = formatSql(sql, parameterObject, parameterMappingList);
 
             System.out.println("SQL：[" + sql + "]执行耗时[" + sqlCost + "ms]");
@@ -94,18 +94,18 @@ public class SQLCostInterceptor implements Interceptor {
         // 美化sql
         sql = beautifySql(sql);
 
-        // 不传参数的场景，直接把Sql美化一下返回出去
+        // 不传参数的场景, 直接把Sql美化一下返回出去
         if (parameterObject == null || parameterMappingList == null || parameterMappingList.size() == 0) {
             return sql;
         }
 
-        // 定义一个没有替换过占位符的sql，用于出异常时返回
+        // 定义一个没有替换过占位符的sql, 用于出异常时返回
         String sqlWithoutReplacePlaceholder = sql;
 
         try {
             Class<?> parameterObjectClass = parameterObject.getClass();
 
-            // 如果参数是StrictMap且Value类型为Collection，获取key="list"的属性，这里主要是为了处理<foreach>循环时传入List这种参数的占位符替换
+            // 如果参数是StrictMap且Value类型为Collection, 获取key="list"的属性, 这里主要是为了处理<foreach>循环时传入List这种参数的占位符替换
             // 例如select * from xxx where id in <foreach collection="list">...</foreach>
             if (isStrictMap(parameterObjectClass)) {
                 DefaultSqlSession.StrictMap<Collection<?>> strictMap = (DefaultSqlSession.StrictMap<Collection<?>>) parameterObject;
@@ -114,16 +114,16 @@ public class SQLCostInterceptor implements Interceptor {
                     sql = handleListParameter(sql, strictMap.get("list"));
                 }
             } else if (isMap(parameterObjectClass)) {
-                // 如果参数是Map则直接强转，通过map.get(key)方法获取真正的属性值
+                // 如果参数是Map则直接强转, 通过map.get(key)方法获取真正的属性值
                 // 这里主要是为了处理<insert>、<delete>、<update>、<select>时传入parameterType为map的场景
                 Map<?, ?> paramMap = (Map<?, ?>) parameterObject;
                 sql = handleMapParameter(sql, paramMap, parameterMappingList);
             } else {
-                // 通用场景，比如传的是一个自定义的对象或者八种基本数据类型之一或者String
+                // 通用场景, 比如传的是一个自定义的对象或者八种基本数据类型之一或者String
                 sql = handleCommonParameter(sql, parameterMappingList, parameterObjectClass, parameterObject);
             }
         } catch (Exception e) {
-            // 占位符替换过程中出现异常，则返回没有替换过占位符但是格式美化过的sql，这样至少保证sql语句比BoundSql中的sql更好看
+            // 占位符替换过程中出现异常, 则返回没有替换过占位符但是格式美化过的sql, 这样至少保证sql语句比BoundSql中的sql更好看
             return sqlWithoutReplacePlaceholder;
         }
 
@@ -149,7 +149,7 @@ public class SQLCostInterceptor implements Interceptor {
                 Class<?> objClass = obj.getClass();
 
                 // 只处理基本数据类型、基本数据类型的包装类、String这三种
-                // 如果是复合类型也是可以的，不过复杂点且这种场景较少，写代码的时候要判断一下要拿到的是复合类型中的哪个属性
+                // 如果是复合类型也是可以的, 不过复杂点且这种场景较少, 写代码的时候要判断一下要拿到的是复合类型中的哪个属性
                 if (isPrimitiveOrPrimitiveWrapper(objClass)) {
                     value = obj.toString();
                 } else if (objClass.isAssignableFrom(String.class)) {
@@ -190,14 +190,14 @@ public class SQLCostInterceptor implements Interceptor {
                                          Object parameterObject) throws Exception {
         for (ParameterMapping parameterMapping : parameterMappingList) {
             String propertyValue = null;
-            // 基本数据类型或者基本数据类型的包装类，直接toString即可获取其真正的参数值，其余直接取paramterMapping中的property属性即可
+            // 基本数据类型或者基本数据类型的包装类, 直接toString即可获取其真正的参数值, 其余直接取paramterMapping中的property属性即可
             if (isPrimitiveOrPrimitiveWrapper(parameterObjectClass)) {
                 propertyValue = parameterObject.toString();
             } else {
                 String propertyName = parameterMapping.getProperty();
 
                 Field field = parameterObjectClass.getDeclaredField(propertyName);
-                // 要获取Field中的属性值，这里必须将私有属性的accessible设置为true
+                // 要获取Field中的属性值, 这里必须将私有属性的accessible设置为true
                 field.setAccessible(true);
                 propertyValue = String.valueOf(field.get(parameterObject));
                 if (parameterMapping.getJavaType().isAssignableFrom(String.class)) {

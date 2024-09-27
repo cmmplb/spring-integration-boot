@@ -67,12 +67,12 @@ public class DropDown {
     private Integer childrenIndex;
 
     /**
-     * 是否忽略空值-默认不忽略，为空就提示
+     * 是否忽略空值-默认不忽略, 为空就提示
      */
     private Boolean emptyCellAllowed = false;
 
     /**
-     * 单元格右侧是否显示下拉框，默认为true
+     * 单元格右侧是否显示下拉框, 默认为true
      */
     private Boolean suppressDropDownArrow = true;
 

@@ -138,8 +138,8 @@ public class RedisUtil {
     }
 
     /**
-     * 如果为空就set值，并返回1
-     * 如果存在(不为空)不进行操作，并返回0
+     * 如果为空就set值, 并返回1
+     * 如果存在(不为空)不进行操作, 并返回0
      * @param key     key
      * @param timeout 秒
      * @param value   秒
@@ -356,7 +356,7 @@ public class RedisUtil {
     /**
      * 通过索引 获取list中的值
      * @param key   键
-     * @param index 索引  index>=0时， 0 表头，1 第二个元素，依次类推；index<0时，-1，表尾，-2倒数第二个元素，依次类推
+     * @param index 索引  index>=0时,  0 表头, 1 第二个元素, 依次类推；index<0时, -1, 表尾, -2倒数第二个元素, 依次类推
      * @return Object
      */
     public Object lGetIndex(String key, long index) {

@@ -16,7 +16,7 @@ public class HeaderRead {
 
     public static void main(String[] args) {
         InputStream inputStream = FileUtil.getInputStream("read/demo.xlsx");
-        // 这里 需要指定读用哪个class去读，然后读取第一个sheet
+        // 这里 需要指定读用哪个class去读, 然后读取第一个sheet
         EasyExcel.read(inputStream, DemoData.class, new DemoHeadDataListener()).sheet().doRead();
     }
 }

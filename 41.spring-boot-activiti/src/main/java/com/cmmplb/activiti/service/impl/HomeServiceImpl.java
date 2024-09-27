@@ -11,7 +11,7 @@ import com.cmmplb.activiti.service.HomeService;
 import com.cmmplb.activiti.service.LeaveApplyService;
 import com.cmmplb.activiti.vo.ApplyStatisticsVO;
 import com.cmmplb.activiti.vo.ItemCountVO;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.utils.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +49,8 @@ public class HomeServiceImpl implements HomeService {
     public ItemCountVO getItemCount() {
         ItemCountVO vo = new ItemCountVO();
         // 流程状态:0-进行中;1-已完成;2-已驳回;3-已撤销;
-        int incompleteCount = applyService.count(new LambdaQueryWrapper<Apply>().eq(Apply::getStatus, GlobalConstants.NUM_ZERO));
-        int completedCount = applyService.count(new LambdaQueryWrapper<Apply>().eq(Apply::getStatus, GlobalConstants.NUM_ONE));
+        int incompleteCount = applyService.count(new LambdaQueryWrapper<Apply>().eq(Apply::getStatus, GlobalConstant.NUM_ZERO));
+        int completedCount = applyService.count(new LambdaQueryWrapper<Apply>().eq(Apply::getStatus, GlobalConstant.NUM_ONE));
         int leaveCount = leaveApplyService.count();
         int evectionCount = evectionApplyService.count();
         vo.setIncompleteCount(incompleteCount);
@@ -84,8 +84,8 @@ public class HomeServiceImpl implements HomeService {
                 Byte key = entry.getKey();
                 data = new ApplyStatisticsVO.ApplyStatisticsData();
                 // 类型:1-请假;2-出差;3...
-                String name = key.equals(GlobalConstants.NUM_ONE) ? "请假申请" : "出差申请";
-                if (key.equals(GlobalConstants.NUM_ONE)) {
+                String name = key.equals(GlobalConstant.NUM_ONE) ? "请假申请" : "出差申请";
+                if (key.equals(GlobalConstant.NUM_ONE)) {
                     nameList.add(name);
                     data.setName(name);
                 } else {

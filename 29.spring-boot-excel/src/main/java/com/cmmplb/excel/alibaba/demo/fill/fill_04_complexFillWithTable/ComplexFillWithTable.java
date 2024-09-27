@@ -28,13 +28,13 @@ public class ComplexFillWithTable {
     /**
      * 数据量大的复杂填充
      * <p>
-     * 这里的解决方案是 确保模板list为最后一行，然后再拼接table.还有03版没救，只能刚正面加内存。
+     * 这里的解决方案是 确保模板list为最后一行, 然后再拼接table.还有03版没救, 只能刚正面加内存. 
      * @since 2.1.1
      */
     public static void main(String[] args) {
         // 模板注意 用{} 来表示你要用的变量 如果本来就有"{","}" 特殊字符 用"\{","\}"代替
         // {} 代表普通变量 {.} 代表是list的变量
-        // 这里模板 删除了list以后的数据，也就是统计的这一行
+        // 这里模板 删除了list以后的数据, 也就是统计的这一行
         InputStream inputStream = FileUtil.getInputStream("fill/complexFillWithTable.xlsx");
 
         String fileName = TestFileUtil.getPath() + "complexFillWithTable" + System.currentTimeMillis() + ".xlsx";
@@ -63,8 +63,8 @@ public class ComplexFillWithTable {
             totalList.add("统计:1000");
             // 这里是write 别和fill 搞错了
             excelWriter.write(totalListList, writeSheet);
-            // 总体上写法比较复杂 但是也没有想到好的版本 异步的去写入excel 不支持行的删除和移动，也不支持备注这种的写入，所以也排除了可以
-            // 新建一个 然后一点点复制过来的方案，最后导致list需要新增行的时候，后面的列的数据没法后移，后续会继续想想解决方案
+            // 总体上写法比较复杂 但是也没有想到好的版本 异步的去写入excel 不支持行的删除和移动, 也不支持备注这种的写入, 所以也排除了可以
+            // 新建一个 然后一点点复制过来的方案, 最后导致list需要新增行的时候, 后面的列的数据没法后移, 后续会继续想想解决方案
         }
     }
 }

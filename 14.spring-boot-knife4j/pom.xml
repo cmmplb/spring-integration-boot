@@ -6,7 +6,7 @@
     <parent>
         <artifactId>spring-integration-boot</artifactId>
         <groupId>com.cmmplb</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
@@ -28,21 +28,9 @@
             <groupId>com.cmmplb</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- swagger-annotations -->
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-        </dependency>
-        <!-- knife4j接口文档 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-boot-starter</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>swagger-annotations</artifactId>
-                    <groupId>io.swagger</groupId>
-                </exclusion>
-            </exclusions>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -13,7 +13,7 @@ import org.apache.poi.ss.usermodel.Hyperlink;
  * @author penglibo
  * @date 2021-05-24 16:17:54
  * @since jdk 1.8
- * 自定义拦截器。对第一行第一列的头超链接到:https://github.com/alibaba/easyexcel
+ * 自定义拦截器. 对第一行第一列的头超链接到:https://github.com/alibaba/easyexcel
  */
 
 @Slf4j
@@ -23,7 +23,7 @@ public class CustomCellWriteHandler implements CellWriteHandler {
     public void afterCellDispose(CellWriteHandlerContext context) {
         Cell cell = context.getCell();
         // 这里可以对cell进行任何操作
-        log.info("第{}行，第{}列写入完成。", cell.getRowIndex(), cell.getColumnIndex());
+        log.info("第{}行, 第{}列写入完成. ", cell.getRowIndex(), cell.getColumnIndex());
         if (BooleanUtils.isTrue(context.getHead()) && cell.getColumnIndex() == 0) {
             CreationHelper createHelper = context.getWriteSheetHolder().getSheet().getWorkbook().getCreationHelper();
             Hyperlink hyperlink = createHelper.createHyperlink(HyperlinkType.URL);

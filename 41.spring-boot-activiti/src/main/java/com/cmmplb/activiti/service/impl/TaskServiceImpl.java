@@ -14,7 +14,7 @@ import com.cmmplb.activiti.vo.CompletedTaskVO;
 import com.cmmplb.activiti.vo.IncompleteTaskVO;
 import com.cmmplb.activiti.vo.UserInfoVO;
 import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.exception.CustomException;
 import com.cmmplb.core.utils.ListUtil;
 import com.sun.tools.javadoc.Start;
@@ -80,9 +80,9 @@ public class TaskServiceImpl implements TaskService {
         }
         if (null != dto.getType()) {
             // 类型:1-请假;2-出差;3...
-            if (dto.getType().equals(GlobalConstants.NUM_ONE)) {
+            if (dto.getType().equals(GlobalConstant.NUM_ONE)) {
                 taskQuery.processDefinitionKey(KeyConstant.LEAVE_APPLY_PROCESS_DEFINITION_KEY);
-            } else if (dto.getType().equals(GlobalConstants.NUM_TWO)) {
+            } else if (dto.getType().equals(GlobalConstant.NUM_TWO)) {
                 taskQuery.processDefinitionKey(KeyConstant.EVECTION_APPLY_PROCESS_DEFINITION_KEY);
             }
         }
@@ -130,7 +130,7 @@ public class TaskServiceImpl implements TaskService {
                     vo.setAssigneeId(task.getAssignee());
                     vo.setBusinessKey(processInstance.getBusinessKey());
                     // 类型多的话要抽取
-                    vo.setType(processInstance.getBusinessKey().contains(KeyConstant.LEAVE_APPLY_PROCESS_DEFINITION_KEY) ? GlobalConstants.NUM_ONE : GlobalConstants.NUM_TWO);
+                    vo.setType(processInstance.getBusinessKey().contains(KeyConstant.LEAVE_APPLY_PROCESS_DEFINITION_KEY) ? GlobalConstant.NUM_ONE : GlobalConstant.NUM_TWO);
                     vo.setProcessDefinitionName(processInstance.getProcessDefinitionName());
                     vo.setStartUserId(processInstance.getStartUserId());
                     if (!CollectionUtils.isEmpty(userMap)) {
@@ -161,9 +161,9 @@ public class TaskServiceImpl implements TaskService {
         HistoricProcessInstanceQuery processInstanceQuery = historyService.createHistoricProcessInstanceQuery();
         if (null != dto.getType()) {
             // 类型:1-请假;2-出差;3...
-            if (dto.getType().equals(GlobalConstants.NUM_ONE)) {
+            if (dto.getType().equals(GlobalConstant.NUM_ONE)) {
                 processInstanceQuery.processDefinitionKey(KeyConstant.LEAVE_APPLY_PROCESS_DEFINITION_KEY);
-            } else if (dto.getType().equals(GlobalConstants.NUM_TWO)) {
+            } else if (dto.getType().equals(GlobalConstant.NUM_TWO)) {
                 processInstanceQuery.processDefinitionKey(KeyConstant.EVECTION_APPLY_PROCESS_DEFINITION_KEY);
             }
         }
@@ -204,7 +204,7 @@ public class TaskServiceImpl implements TaskService {
                     vo.setApplyId(Long.parseLong(id));
                     vo.setBusinessKey(processInstance.getBusinessKey());
                     // 类型多的话要抽取
-                    vo.setType(processInstance.getBusinessKey().contains(KeyConstant.LEAVE_APPLY_PROCESS_DEFINITION_KEY) ? GlobalConstants.NUM_ONE : GlobalConstants.NUM_TWO);
+                    vo.setType(processInstance.getBusinessKey().contains(KeyConstant.LEAVE_APPLY_PROCESS_DEFINITION_KEY) ? GlobalConstant.NUM_ONE : GlobalConstant.NUM_TWO);
                     vo.setProcessDefinitionName(processInstance.getProcessDefinitionName());
                     vo.setStartTime(instance.getStartTime());
                     vo.setStartUserId(processInstance.getStartUserId());
@@ -224,10 +224,10 @@ public class TaskServiceImpl implements TaskService {
     public boolean handleTask(HandleTaskDTO dto) {
         Task task = taskService.createTaskQuery().taskId(dto.getId()).singleResult();
 
-        // 如果当前任务没有指派人，需要先使用 claim() 方法领取任务
+        // 如果当前任务没有指派人, 需要先使用 claim() 方法领取任务
         // taskService.claim(id, "李四");
 
-        // 如果设置为null，归还组任务,该 任务没有负责人
+        // 如果设置为null, 归还组任务,该 任务没有负责人
         // taskService.setAssignee(taskId, null);
 
         // 将此任务交给其它候选人办理该 任务
@@ -238,15 +238,15 @@ public class TaskServiceImpl implements TaskService {
             taskService.addComment(dto.getId(), task.getProcessInstanceId(), dto.getComment());
         } catch (ActivitiException e) {
             if (e.getMessage().contains("Cannot add a comment to a suspended task")) {
-                throw new CustomException("流程已挂起，不可操作。");
+                throw new CustomException("流程已挂起, 不可操作. ");
             }
             throw new CustomException(e.getMessage());
         }
-        // 查看评论表act_hi_comment,查看act_ru_task表，可以看到任务流转：
+        // 查看评论表act_hi_comment,查看act_ru_task表, 可以看到任务流转：
         // 传入通过和驳回的状态参数
         HashMap<String, Object> variables = new HashMap<>();
         variables.put("status", dto.getStatus());
-        // 如果有指派人，直接完成任务
+        // 如果有指派人, 直接完成任务
         taskService.complete(dto.getId(), variables);
         // 流程处理
         processEnded(dto.getStatus(), task.getBusinessKey(), task.getProcessInstanceId());
@@ -288,17 +288,17 @@ public class TaskServiceImpl implements TaskService {
             applyService.updateById(applyUp);
 
             // 更新业务表状态
-            if (apply.getType().equals(GlobalConstants.NUM_ONE)) {
+            if (apply.getType().equals(GlobalConstant.NUM_ONE)) {
                 // 请假
                 upLeaveStatus(apply.getBusinessId(), status);
-            } else if (apply.getType().equals(GlobalConstants.NUM_TWO)) {
+            } else if (apply.getType().equals(GlobalConstant.NUM_TWO)) {
                 // 出差
                 upEvectionStatus(apply.getBusinessId(), status);
             }
             // more
         }
-        // 完成最后一个任务的审批后，会更新历史流程实例的完成时间act_hi_procinst，DURATION_字段
-        // ru相关表数据都会清空，流程结束
+        // 完成最后一个任务的审批后, 会更新历史流程实例的完成时间act_hi_procinst, DURATION_字段
+        // ru相关表数据都会清空, 流程结束
     }
 
     private void upEvectionStatus(Long evectionId, Byte status) {

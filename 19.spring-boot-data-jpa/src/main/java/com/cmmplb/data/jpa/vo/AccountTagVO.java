@@ -2,8 +2,6 @@ package com.cmmplb.data.jpa.vo;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-
 /**
  * @author penglibo
  * @date 2021-09-16 15:11:04

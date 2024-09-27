@@ -15,8 +15,8 @@ import java.util.List;
  * @author penglibo
  * @date 2021-05-22 17:31:23
  * @since jdk 1.8
- * 默认是全部实体字段都会参与读写，不管你是否加了@ExcelProperty注解
- * 或者在类的最上面加入@ExcelIgnoreUnannotated注解，加入这个注解后只有加了@ExcelProperty才会参与读写。
+ * 默认是全部实体字段都会参与读写, 不管你是否加了@ExcelProperty注解
+ * 或者在类的最上面加入@ExcelIgnoreUnannotated注解, 加入这个注解后只有加了@ExcelProperty才会参与读写. 
  */
 
 @Data

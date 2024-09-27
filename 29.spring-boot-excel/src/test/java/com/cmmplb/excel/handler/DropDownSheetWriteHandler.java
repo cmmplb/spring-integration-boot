@@ -107,7 +107,7 @@ public class DropDownSheetWriteHandler implements SheetWriteHandler {
                         if (CollUtil.isEmpty(childrenList)) {
                             continue;
                         }
-                        // 从第一行第一列开始写入，每一列写入子集数据
+                        // 从第一行第一列开始写入, 每一列写入子集数据
                         ExcelUtil.createDropdownElement(tmpChildrenSheet, childrenList, tmpChildrenColumnIndex);
                         if (childrenList.size() >= LIMITATION) {
                             tmpChildrenSheet = ExcelUtil.createTmpSheet(book, null, CHILDREN_SHEET);

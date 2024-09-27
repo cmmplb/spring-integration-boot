@@ -3,7 +3,7 @@ package com.cmmplb.data.jpa.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 /**
@@ -12,7 +12,7 @@ import java.util.Date;
  * @since jdk 1.8
  */
 
-// @Data // 👆 此处不能用Data注解，因为和用户类相互引用，使用Data注解会重写equals等方法，如果两个类都用Data注解会报错
+// @Data // 👆 此处不能用Data注解, 因为和用户类相互引用, 使用Data注解会重写equals等方法, 如果两个类都用Data注解会报错
 @Entity
 @Getter
 @Setter

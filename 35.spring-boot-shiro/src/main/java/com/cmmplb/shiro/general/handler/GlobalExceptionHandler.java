@@ -3,13 +3,12 @@ package com.cmmplb.shiro.general.handler;
 import com.cmmplb.core.result.HttpCodeEnum;
 import com.cmmplb.core.result.Result;
 import com.cmmplb.core.result.ResultUtil;
+import jakarta.servlet.ServletException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.session.ExpiredSessionException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import javax.servlet.ServletException;
 
 /**
  * @author penglibo

@@ -2,7 +2,7 @@ package com.cmmplb.shiro.original.config;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.core.utils.MD5Util;
 import com.cmmplb.redis.configuration.properties.RedisProperties;
 import com.cmmplb.redis.service.RedisService;
@@ -13,9 +13,9 @@ import com.cmmplb.shiro.original.config.core.session.CustomSessionDao;
 import com.cmmplb.shiro.original.config.core.session.ShiroSessionIdGenerator;
 import com.cmmplb.shiro.original.config.core.session.ShiroSessionListener;
 import com.cmmplb.shiro.original.config.core.session.ShiroSessionManager;
+import jakarta.servlet.Filter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SessionsSecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -30,11 +30,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.Filter;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author penglibo
@@ -46,7 +42,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties({ShiroProperties.class, RedisProperties.class})
-@ConditionalOnProperty(prefix = ShiroProperties.PREFIX, name = ShiroProperties.GENERAL, havingValue = StringConstants.TRUE)
+@ConditionalOnProperty(prefix = ShiroProperties.PREFIX, name = ShiroProperties.GENERAL, havingValue = StringConstant.TRUE)
 public class ShiroConfig {
 
     @Autowired
@@ -75,7 +71,7 @@ public class ShiroConfig {
         }
         shiroFilterFactoryBean.setUnauthorizedUrl("/basic/unauthorized"); // 未授权url
 
-        // anon-放行，authc-需要认证，注意的是filterChain基于短路机制，即最先匹配原则，如：
+        // anon-放行, authc-需要认证, 注意的是filterChain基于短路机制, 即最先匹配原则, 如：
         //  /user/**=anon
         //  /user/aa=authc 永远不会执行
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
@@ -99,11 +95,11 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/druid/**", "anon");  // druid数据源监控页面不拦截
 
         // ==================放行接口请求==================
-        filterChainDefinitionMap.put("/logout", "logout"); // 配置退出过滤器，其中具体的退出代码Shiro已经替我们实现了
+        filterChainDefinitionMap.put("/logout", "logout"); // 配置退出过滤器, 其中具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/basic/**", "anon"); // 基础管理里面的接口都放行
         filterChainDefinitionMap.put("/login/do", "anon"); // 放行登录请求
 
-        // 除上以外所有url都必须认证通过才可以访问，未通过认证自动访问LoginUrl
+        // 除上以外所有url都必须认证通过才可以访问, 未通过认证自动访问LoginUrl
         filterChainDefinitionMap.put("/**", "authc");
         // **************************注意这里,如果要使用过滤器需要添加拦截规则**************************
         // filterChainDefinitionMap.put("/**", "authenticationFilter");
@@ -128,7 +124,7 @@ public class ShiroConfig {
      */
     @Bean
     public SessionsSecurityManager securityManager() {
-        // 配置SecurityManager，并注入shiroRealm
+        // 配置SecurityManager, 并注入shiroRealm
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(shiroRealm()); // 自定义Realm验证
         // securityManager.setCacheManager(cacheManager()); // 自定义Cache实现
@@ -240,7 +236,7 @@ public class ShiroConfig {
     }
 
     /**
-     * 自定义SessionDAO-上面的RedisSessionDAO存储的session过期时间设置有问题。
+     * 自定义SessionDAO-上面的RedisSessionDAO存储的session过期时间设置有问题. 
      */
     @Bean
     public CustomSessionDao customSessionDao() {
@@ -267,7 +263,7 @@ public class ShiroConfig {
         CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
         cookieRememberMeManager.setCookie(rememberMeCookie());
         // rememberMe cookie加密的密钥
-        cookieRememberMeManager.setCipherKey(Base64.decode("4AvVhmFLUs0KTA3Kprsdag=="));
+        cookieRememberMeManager.setCipherKey(Base64.getDecoder().decode("4AvVhmFLUs0KTA3Kprsdag=="));
         return cookieRememberMeManager;
     }
 
@@ -275,9 +271,9 @@ public class ShiroConfig {
      * cookie对象
      */
     public SimpleCookie rememberMeCookie() {
-        // 设置cookie名称，对应login.html页面的<input type="checkbox" name="rememberMe"/>
+        // 设置cookie名称, 对应login.html页面的<input type="checkbox" name="rememberMe"/>
         SimpleCookie cookie = new SimpleCookie("rememberMe");
-        // 设置cookie的过期时间，单位为秒，这里为一天
+        // 设置cookie的过期时间, 单位为秒, 这里为一天
         cookie.setMaxAge(86400);
         return cookie;
     }

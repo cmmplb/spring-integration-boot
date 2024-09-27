@@ -23,7 +23,7 @@ public class SmsCodeUtil {
     public static String create(String phone) {
         //生成验证码
         String code = RandomUtil.getRandomNumString(4);
-        // 这里写死一个1234难得每次改勒。
+        // 这里写死一个1234难得每次改勒. 
         code = "1234";
 
         log.info("短信验证码：" + code);

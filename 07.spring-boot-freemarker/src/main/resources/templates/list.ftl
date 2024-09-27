@@ -30,11 +30,11 @@
         <th>Age</th>
         <th>Phone</th>
     </tr>
-    <#list users as user>
+    <#list users as userDetails>
         <tr>
-            <td>${user.name}</td>
-            <td>${user.age}</td>
-            <td>${user.phone}</td>
+            <td>${userDetails.username}</td>
+            <td>${userDetails.age}</td>
+            <td>${userDetails.phone}</td>
         </tr>
     </#list>
 </table>

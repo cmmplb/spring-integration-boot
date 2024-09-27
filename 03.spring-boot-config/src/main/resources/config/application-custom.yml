@@ -20,6 +20,6 @@ properties:
   version: 1.0.0
 
 #读取pom文件信息
-maven.pom:
-  name: @project.name@
-  version: @project.version@
+#maven.pom:
+  #name: @project.name@
+  #version: @project.version@

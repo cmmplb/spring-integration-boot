@@ -3,11 +3,11 @@ package com.cmmplb.shiro.general.controller;
 import com.cmmplb.core.result.Result;
 import com.cmmplb.core.result.ResultUtil;
 import com.cmmplb.shiro.general.utils.ShiroUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 /**

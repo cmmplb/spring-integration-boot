@@ -2,7 +2,7 @@ package com.cmmplb.shiro.custom.config;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.redis.configuration.properties.RedisProperties;
 import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.custom.config.core.DefaultSubjectFactory;
@@ -10,6 +10,7 @@ import com.cmmplb.shiro.custom.config.core.RedisCacheManager;
 import com.cmmplb.shiro.general.constants.AuthorizationConstants;
 import com.cmmplb.shiro.general.filter.AuthFilter;
 import com.cmmplb.shiro.general.properties.ShiroProperties;
+import jakarta.servlet.Filter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
@@ -25,7 +26,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -40,7 +40,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties({RedisProperties.class, ShiroProperties.class})
-@ConditionalOnProperty(prefix = ShiroProperties.PREFIX, name = ShiroProperties.GENERAL, havingValue = StringConstants.FALSE)
+@ConditionalOnProperty(prefix = ShiroProperties.PREFIX, name = ShiroProperties.GENERAL, havingValue = StringConstant.FALSE)
 public class ShiroConfig {
 
     @Autowired
@@ -79,12 +79,12 @@ public class ShiroConfig {
      */
     @Bean
     public SecurityManager securityManager() {
-        // 配置SecurityManager，并注入shiroRealm
+        // 配置SecurityManager, 并注入shiroRealm
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         // 自定义Realm验证
         securityManager.setRealm(shiroRealm());
         // 自定义Cache实现
-        securityManager.setCacheManager(cacheManager());
+        // securityManager.setCacheManager(cacheManager());
         securityManager.setSubjectFactory(subjectFactory());
         securityManager.setSubjectDAO(subjectDAO());
         return securityManager;

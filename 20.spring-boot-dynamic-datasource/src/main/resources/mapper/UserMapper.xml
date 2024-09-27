@@ -3,7 +3,7 @@
 <mapper namespace="com.cmmplb.dynamic.datasource.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.cmmplb.dynamic.datasource.entity.User">
     <!-- @mbg.generated -->
-    <!-- @Table `user` -->
+    <!-- @Table `userDetails` -->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="amount" jdbcType="INTEGER" property="amount" />

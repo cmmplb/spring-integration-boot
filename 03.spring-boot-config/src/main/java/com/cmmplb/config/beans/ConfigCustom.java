@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Data
-@Component // 如果不想放入容器，就在引用的地方添加@EnableConfigurationProperties(ConfigCustom.class)
+@Component // 如果不想放入容器, 就在引用的地方添加@EnableConfigurationProperties(ConfigCustom.class)
 @ConfigurationProperties(prefix = "custom") // 去除配置文件的前缀
 @PropertySource("classpath:static/custom.properties")
 public class ConfigCustom {

@@ -1,8 +1,8 @@
 package com.cmmplb.cache.service.impl;
 
 import com.cmmplb.cache.utils.RedisUtil;
+import com.cmmplb.core.utils.SpringUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.stereotype.Service;
@@ -19,9 +19,6 @@ import java.nio.charset.StandardCharsets;
 @Service
 public class RedisMessageListenerImpl implements MessageListener {
 
-    @Autowired
-    private RedisUtil redisUtil;
-
     public static final String REDIS_LISTENER_CHANNEL_MESSAGE = "redis";
 
     public static final String REDIS_CHANNEL_MESSAGE = "user-*";
@@ -34,6 +31,7 @@ public class RedisMessageListenerImpl implements MessageListener {
     }
 
     public boolean sendMessage() {
+        RedisUtil redisUtil = SpringUtil.getBean(RedisUtil.class);
         redisUtil.convertAndSend(REDIS_LISTENER_CHANNEL_MESSAGE, "发送消息1");
         redisUtil.convertAndSend("user-1", "发送消1息2");
         return true;

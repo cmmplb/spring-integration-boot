@@ -12,5 +12,5 @@ public interface HttpConstants {
     String ACCOUNT_LOCKED = "账号被锁定";
     String AUTHENTICATION = "用户信息不存在";
     String LOGIN_FAIL = "登录失败";
-    String SESSION_INVALID = "session已失效，请重新认证";
+    String SESSION_INVALID = "session已失效, 请重新认证";
 }

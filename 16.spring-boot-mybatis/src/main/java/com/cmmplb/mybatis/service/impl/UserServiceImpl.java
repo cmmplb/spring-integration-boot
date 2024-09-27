@@ -6,6 +6,7 @@ import com.cmmplb.mybatis.dao.UserMapper;
 import com.cmmplb.mybatis.entity.User;
 import com.cmmplb.mybatis.service.UserService;
 import com.cmmplb.mybatis.vo.UserInfoVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import java.util.List;
  * @date 2021-04-02 00:02:06
  */
 
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -34,7 +36,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateById(User user) {
-        return userMapper.updateById(user) > 0;
+        boolean b = userMapper.updateById(user) > 0;
+        log.info("修改用户信息:{}", b);
+        System.out.println(1 / 0);
+        return b;
     }
 
     @Override

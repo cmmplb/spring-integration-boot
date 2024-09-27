@@ -297,7 +297,7 @@ assignee 这个变量是 activiti 的一个流程变量，
 
 ![1577503804336](assets/1577503804336.png)
 
- user 也是 activiti 的一个流程变量， user.assignee 表示通过调用 user 的 getter 方法获取值。 
+ userDetails 也是 activiti 的一个流程变量， userDetails.assignee 表示通过调用 userDetails 的 getter 方法获取值。 
 
 ###### 2）UEL-method 方式
 

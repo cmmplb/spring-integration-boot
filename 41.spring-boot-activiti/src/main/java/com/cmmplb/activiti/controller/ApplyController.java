@@ -29,34 +29,34 @@ public class ApplyController {
     @Autowired
     private ApplyService applyService;
 
-    @ApiOperation("分页条件查询列表")
+    @Operation(summary = "分页条件查询列表")
     @PostMapping(value = "/paged")
     public Result<PageResult<ApplyVO>> getByPaged(@RequestBody ApplyDTO dto) {
         return ResultUtil.success(applyService.getByPaged(dto));
     }
 
-    @ApiOperation("详情")
+    @Operation(summary = "详情")
     @GetMapping(value = "/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "申请id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<ApplyDetailsVO> getApplyDetailsById(@PathVariable(value = "id") Long id) {
         return ResultUtil.success(applyService.getApplyDetailsById(id));
     }
 
-    @ApiOperation("查看申请进度流程图")
+    @Operation(summary = "查看申请进度流程图")
     @ApiImplicitParam(name = "id", paramType = "query", value = "申请id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     @GetMapping(value = {"/show/{id}"})
     public void showProgressChart(@PathVariable(value = "id") Long id) {
         applyService.showProgressChart(id);
     }
 
-    @ApiOperation("撤销申请")
+    @Operation(summary = "撤销申请")
     @DeleteMapping(value = "/cancel/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "申请id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<Boolean> cancelApply(@PathVariable(value = "id") Long id) {
         return ResultUtil.success(applyService.cancelApply(id));
     }
 
-    @ApiOperation("根据id删除")
+    @Operation(summary = "根据id删除")
     @DeleteMapping(value = "/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "申请id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<Boolean> deleteById(@PathVariable(value = "id") Long id) {

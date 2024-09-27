@@ -34,7 +34,7 @@ public class UserBean {
     private String username;
 
     /**
-     * 角色名称，多个“，”隔开
+     * 角色名称, 多个“, ”隔开
      */
     private String roleNames;
 

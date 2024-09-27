@@ -50,7 +50,7 @@ public class TcpClient extends Thread {
             @Override
             public void operationComplete(ChannelFuture channelFuture) throws Exception {
                 if (!channelFuture.isSuccess()) {
-                    System.out.println("接近开关服务器连接失败，正在重试");
+                    System.out.println("接近开关服务器连接失败, 正在重试");
                     final EventLoop loop = channelFuture.channel().eventLoop();
                     loop.schedule(new Runnable() {
                         @Override

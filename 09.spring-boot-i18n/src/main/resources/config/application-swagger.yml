@@ -2,22 +2,22 @@
 swagger:
   # 是否开启swagger
   enabled: true
-  # swagger会解析的包路径
-  base-package: com.momo
-  # 请求头
-  header-list:
-  # swagger会解析的url规则
-  base-path:
-  # 在basePath基础上需要排除的url规则
-  exclude-path:
+  # swagger会解析的包路径集合
+  packages-to-scan:
+  # 排除的包路径
+  packages-to-exclude:
+  # swagger会解析的url规则集合
+  paths-to-match:
+  # 在basePath基础上需要排除的url规则集合
+  paths-to-exclude:
   # 分组名称
-  group-name: momo
+  group-name: spring-boot-i18n
   # 标题
-  title: Swagger API
+  title: @project.artifactId@ Swagger API
   # 描述
   description: description
   # 版本
-  version: 1.0.0
+  version: @project.version@
   # 许可证
   license: license
   # 许可证URL
@@ -34,18 +34,15 @@ swagger:
     email: email
   # 全局统一鉴权配置
   authorization:
-    # 鉴权策略ID，需要和SecurityReferences ID保持一致，否则无法在请求头部参数渲染
-    name: momo_assess_token
-    # 需要开启鉴权URL的正则
-    auth-regex: ^.*$
     # 认证类型-默认关闭-开启在左侧菜单显示认证
     # none-无认证
     # param-param模式-需要配置parameterList
+    # 简化模式和授权码模式需要配置回调地址：http://host:port/webjars/oauth/oauth2.html
     # implicit-简化模式
     # authorization_code-授权码模式
     # password-oauth2-密码模式
     # client_credentials-oauth2-客户端模式
-    type: none
+    type: NONE
     parameter-list:
       # 简单模式参数
       - # 参数key
@@ -60,17 +57,15 @@ swagger:
         parameterName: Bear
         # 参数类型：query,header,path,cookie,form,formData,body
         parameterType: header
-    client:
-      client-id: momo_cloud
-      client-secret: 123456
-      # 简化/授权码模式认证url:http://xxx/xxx/oauth/authorize
-      url: http://localhost:@gateway.port@/auth/oauth/authorize
-    # 权限认证调用服务的 Api,如：http://xxx/xxx/login
-    token-url-list:
-      - http://localhost:@gateway.port@/auth/oauth/token
+    # 认证url
+    authorization-url: http://localhost:10000/auth/oauth/authorize
+    # 权限认证调用服务api
+    token-url: http://localhost:10000/auth/oauth/token
+    # 刷新令牌url
+    refresh-url: http://localhost:10000/auth/oauth/token
     # 鉴权作用域列表
     authorization-scope-list:
       # 作用域名称
-      - scope: server
+      - scope: username
         # 作用域描述
-        description: server all
+        description: 获取用户信息

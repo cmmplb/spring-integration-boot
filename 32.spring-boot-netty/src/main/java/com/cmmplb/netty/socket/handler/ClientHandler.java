@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @author penglibo
  * @date 2021-07-17 17:50:57
  * @since jdk 1.8
- * 5.0:ChannelInboundHandlerAdapter, ChannelOutboundHandlerAdapter, 和 ChannelDuplexHandlerAdapter 弃用了， 被 ChannelHandlerAdapter 取代.
+ * 5.0:ChannelInboundHandlerAdapter, ChannelOutboundHandlerAdapter, 和 ChannelDuplexHandlerAdapter 弃用了,  被 ChannelHandlerAdapter 取代.
  * 因为现在你无法区分一个 handler是 inbound handler 或者 outbound handler, 所以CombinedChannelDuplexHandler 被 ChannelHandlerAppender取代.
  */
 public class ClientHandler extends /*ChannelHandlerAdapter*/ChannelInboundHandlerAdapter {
@@ -38,16 +38,16 @@ public class ClientHandler extends /*ChannelHandlerAdapter*/ChannelInboundHandle
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("接近开关与服务端建立连接，通道开启！");
+        System.out.println("接近开关与服务端建立连接, 通道开启！");
         channelGroup.add(ctx.channel());
-        // 通道建立成功，发送消息
+        // 通道建立成功, 发送消息
         //System.out.println("发送消息");
         //SendMessage.sendMessage("FE 02 00 00 00 01 AD C5");
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("接近开关与服务端断开连接，通道关闭！");
+        System.out.println("接近开关与服务端断开连接, 通道关闭！");
         channelGroup.remove(ctx.channel());
         // 实现断线重连
         final EventLoop eventLoop = ctx.channel().eventLoop();

@@ -123,11 +123,11 @@ public class RedisConfigProperties {
          */
         private long maxWait = -1L;
         /**
-         * 从pool中获取连接时, 是否校验连接有效性(影响性能，生产环境不建议开启)
+         * 从pool中获取连接时, 是否校验连接有效性(影响性能, 生产环境不建议开启)
          */
         private boolean testOnBorrow = false;
         /**
-         * 返还到pool中连接时, 是否校验连接有效性(影响性能，生产环境不建议开启)
+         * 返还到pool中连接时, 是否校验连接有效性(影响性能, 生产环境不建议开启)
          */
         private boolean testOnReturn = false;
         /**

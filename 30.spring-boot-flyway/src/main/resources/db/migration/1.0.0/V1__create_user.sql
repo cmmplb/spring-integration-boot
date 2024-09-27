@@ -1,6 +1,6 @@
 /*用户信息表*/
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`
+DROP TABLE IF EXISTS `userDetails`;
+CREATE TABLE `userDetails`
 (
     `id`          bigint     NOT NULL AUTO_INCREMENT COMMENT '主键',
     `tenant_id`   bigint(20) NOT NULL DEFAULT '0' COMMENT '租户id',

@@ -1,4 +1,13 @@
 spring:
   flyway:
-    baseline-description: 描述  #描述
-    locations: classpath:/db/migration  #配置Flyway要加载的SQL脚本位置
+    # 历史表
+    baseline-on-migrate: true
+    # 默认1，从0开始可以规避版本1不执行问题
+    baseline-version: 0
+    # 避免数据被意外清空
+    clean-disabled: false
+    # 描述
+    baseline-description: 描述
+    # 配置Flyway要加载的SQL脚本位置集合，默认"classpath:db/migration"
+    locations:
+      - classpath:/db/migration

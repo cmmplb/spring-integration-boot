@@ -3,15 +3,16 @@ package com.cmmplb.mybatis.plus.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.core.result.Result;
 import com.cmmplb.core.result.ResultUtil;
 import com.cmmplb.mybatis.plus.entity.User;
 import com.cmmplb.mybatis.plus.service.UserService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,9 +28,12 @@ import java.util.Map;
  * @date 2021-04-12 14:36:09
  */
 
-@Api(tags = "用户管理-lambda查询方式")
+@Tag(name = "用户管理-lambda查询方式")
 @Slf4j
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+// @ApiSupport > @ApiSort > @Api  -  排序的规则是倒序
+@ApiSort(2)
+// 作者,方法名上ApiOperationSupport.author没有则取类名声明的作者
+@ApiSupport(order = 2, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/lambda/user")
 public class LambdaUserController {
@@ -37,7 +41,7 @@ public class LambdaUserController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value = "lambda查询列表")
+    @Operation(summary = "lambda查询列表", description = "lambda查询列表")
     @ApiOperationSupport(order = 1)
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Result<Map<String, Object>> list() {
@@ -50,7 +54,7 @@ public class LambdaUserController {
         return ResultUtil.success(res);
     }
 
-    @ApiOperation(value = "lambda更新")
+    @Operation(summary = "lambda更新")
     @ApiOperationSupport(order = 2)
     @Transactional(rollbackFor = Exception.class)
     @RequestMapping(value = "/update", method = RequestMethod.PUT)

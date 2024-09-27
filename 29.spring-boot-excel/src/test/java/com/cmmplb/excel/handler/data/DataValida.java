@@ -17,12 +17,12 @@ import java.util.List;
 public class DataValida {
 
     /**
-     * 校验类型，对应：{@link DataValidationConstraint.ValidationType}
+     * 校验类型, 对应：{@link DataValidationConstraint.ValidationType}
      */
     private Integer validationType = DataValidationConstraint.ValidationType.ANY;
 
     /**
-     * 操作类型，对应：{@link DataValidationConstraint.OperatorType}
+     * 操作类型, 对应：{@link DataValidationConstraint.OperatorType}
      * List下拉类型为空
      */
     private Integer operatorType;
@@ -48,7 +48,7 @@ public class DataValida {
     private String dateFormat = "yyyy-MM-dd HH:mm:ss";
 
     /**
-     * 是否忽略空值-默认不忽略，为空就提示
+     * 是否忽略空值-默认不忽略, 为空就提示
      */
     private Boolean emptyCellAllowed = false;
 

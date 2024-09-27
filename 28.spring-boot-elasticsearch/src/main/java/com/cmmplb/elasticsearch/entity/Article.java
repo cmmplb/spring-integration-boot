@@ -30,7 +30,7 @@ public class Article {
     @Field(type = FieldType.Keyword)
     private String title;
 
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
+    // @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String content;
 
     @Field(type = FieldType.Integer)

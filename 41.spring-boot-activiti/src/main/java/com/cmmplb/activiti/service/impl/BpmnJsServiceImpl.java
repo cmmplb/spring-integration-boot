@@ -87,7 +87,7 @@ public class BpmnJsServiceImpl implements BpmnJsService {
                 vo.setModelId(model.getId());
                 vo.setName(model.getName());
                 JsonNode jsonNode = objectMapper.readTree(modelData);
-                // bpmn-js适配Activiti-Modeler，把资源转换为xml
+                // bpmn-js适配Activiti-Modeler, 把资源转换为xml
                 BpmnModel bpmnModel = (new BpmnJsonConverter()).convertToBpmnModel(jsonNode);
                 byte[] xmlBytes = (new BpmnXMLConverter()).convertToXML(bpmnModel, "UTF-8");
                 vo.setXml(new String(xmlBytes, StandardCharsets.UTF_8));
@@ -181,7 +181,7 @@ public class BpmnJsServiceImpl implements BpmnJsService {
         try {
             // 定义businessKey,一般为流程实例key与实际业务数据的结合
             String businessKey = apply.getDefKey() + ":" + apply.getId();
-            // 如果流程结束(驳回)，当前流程实例为空
+            // 如果流程结束(驳回), 当前流程实例为空
             ProcessInstance process = runtimeService.createProcessInstanceQuery()
                     .processDefinitionKey(apply.getDefKey())
                     .processInstanceBusinessKey(businessKey)
@@ -192,9 +192,9 @@ public class BpmnJsServiceImpl implements BpmnJsService {
             if (null == processInstance) {
                 throw new BusinessException("流程信息不存在");
             }
-            // 获取流程中已经执行的节点，按照执行先后顺序排序
+            // 获取流程中已经执行的节点, 按照执行先后顺序排序
             List<HistoricActivityInstance> historicActivityInstances = historyService.createHistoricActivityInstanceQuery()
-                    // 这里，如果流程结束的话，process会为空，所以查询历史流程，这样也能看到结束的流程进度信息。
+                    // 这里, 如果流程结束的话, process会为空, 所以查询历史流程, 这样也能看到结束的流程进度信息. 
                     .processInstanceId(null == process ? processInstance.getId() : process.getId())
                     .orderByHistoricActivityInstanceStartTime().asc().list();
             BpmnModel bpmnModel = repositoryService.getBpmnModel(processInstance.getProcessDefinitionId());

@@ -35,7 +35,7 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
         log.info("商品编号为 {} 的库存为{},订单商品数量为{}", goodsId, count, byCount);
 
         if (count < byCount) {
-            log.warn("商品编号为{} 库存不足，当前库存:{}", goodsId, count);
+            log.warn("商品编号为{} 库存不足, 当前库存:{}", goodsId, count);
             throw new RuntimeException("库存不足");
         }
         log.info("开始扣减商品编号为 {} 库存,单价商品价格为{}", goodsId, goodDb.getAmount());

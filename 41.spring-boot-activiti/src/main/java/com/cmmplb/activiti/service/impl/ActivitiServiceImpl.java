@@ -54,14 +54,14 @@ public class ActivitiServiceImpl implements ActivitiService {
     @Override
     public String deployProcessDefinition() {
         // ===============单个文件部署方式===============
-        // 流程的部署，是把我们所创建的流程定义文件与数据库的表关联起来
+        // 流程的部署, 是把我们所创建的流程定义文件与数据库的表关联起来
         Deployment deploy = this.repositoryService.createDeployment()
                 .name("请假申请")
                 .category("日常") // 设置流程类型
                 .key("leave-apply-key")
                 .addClasspathResource("processes/leave-apply.bpmn20.xml")
                 .deploy();
-        // ===============压缩包部署方式，定义zip输入流===============
+        // ===============压缩包部署方式, 定义zip输入流===============
         // InputStream inputStream = this
         //         .getClass()
         //         .getClassLoader()
@@ -73,11 +73,11 @@ public class ActivitiServiceImpl implements ActivitiService {
         //         .deploy();
 
         log.info("同时会在act_ge_bytearray ,act_re_deployment ,act_re_procdef这3个表中插入相关信息");
-        // act_re_deployment和act_re_procdef一对多关系，一次部署在流程部署表生成一条记录，
-        // 但一次部署可以部署多个流程定义，每个流程定义在流程定义表生成一条记录。
-        // 每一个流程定义在act_ge_bytearray会存在两个资源记录，bpmn和png。
+        // act_re_deployment和act_re_procdef一对多关系, 一次部署在流程部署表生成一条记录, 
+        // 但一次部署可以部署多个流程定义, 每个流程定义在流程定义表生成一条记录. 
+        // 每一个流程定义在act_ge_bytearray会存在两个资源记录, bpmn和png. 
 
-        // 建议：一次部署一个流程，这样部署表和流程定义表是一对一有关系，方便读取流程部署及流程定义信息。
+        // 建议：一次部署一个流程, 这样部署表和流程定义表是一对一有关系, 方便读取流程部署及流程定义信息. 
         return "部署流程定义成功：" + deploy.getName();
     }
 
@@ -107,7 +107,7 @@ public class ActivitiServiceImpl implements ActivitiService {
 
     @Override
     public String startProcess(String processDefinitionId) {
-        // 启动 key 标识的流程定义，并指定 流程定义中的参数：assignee0和assignee1、2
+        // 启动 key 标识的流程定义, 并指定 流程定义中的参数：assignee0和assignee1、2
         Map<String, Object> map = new HashMap<>();
         map.put("assignee0", "张三");
         map.put("assignee1", "李四");
@@ -124,20 +124,20 @@ public class ActivitiServiceImpl implements ActivitiService {
         int businessId = RandomUtil.getNum(1, 1000000);
         String businessKey = processDefinitionKey + ":" + businessId;
 
-        // 设置启动流程的人,这个会在act_ru_execution当前执行表中START_USER_ID_字段显示,这个表可以看做是比Task记录的节点更详细的表,会记录所有的节点，而且它主要用于子流程
+        // 设置启动流程的人,这个会在act_ru_execution当前执行表中START_USER_ID_字段显示,这个表可以看做是比Task记录的节点更详细的表,会记录所有的节点, 而且它主要用于子流程
         Authentication.setAuthenticatedUserId("老八");
 
-        // 通过流程定义ID启动，这个ID就是act_re_procdef的主键ID 例如Leave:1:4
+        // 通过流程定义ID启动, 这个ID就是act_re_procdef的主键ID 例如Leave:1:4
         // ProcessInstance processInstance = runtimeService.startProcessInstanceById(id);
-        // 通过流程定义的Key启动，这个Key是在我们画流程图的时候输入的ID
+        // 通过流程定义的Key启动, 这个Key是在我们画流程图的时候输入的ID
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey, businessKey, map);
 
         // ru运行时、hi历史数据
-        // act_ru_task任务表，该表中新增了一条记录，为创建申请，负责人ASSIGNEE_为张三
-        // act_ru_execution当前执行表，新增两条记录，为子流程
+        // act_ru_task任务表, 该表中新增了一条记录, 为创建申请, 负责人ASSIGNEE_为张三
+        // act_ru_execution当前执行表, 新增两条记录, 为子流程
         // act_hi_taskinst历史任务流程实例表,保存的内容大体跟ru_task一致
-        // act_hi_procinst历史流程实例表，用于查询流程的详细信息，比如启动时间，启动人，结束时间等等
-        // act_hi_actinst流程活动实例表 这个表从存储的内容来说和act_ru_execution比较像，它会把流程所有已经流转过的节点都记录下来
+        // act_hi_procinst历史流程实例表, 用于查询流程的详细信息, 比如启动时间, 启动人, 结束时间等等
+        // act_hi_actinst流程活动实例表 这个表从存储的内容来说和act_ru_execution比较像, 它会把流程所有已经流转过的节点都记录下来
         return "流程实例的内容：" + processInstance.getProcessDefinitionName();
     }
 
@@ -168,10 +168,10 @@ public class ActivitiServiceImpl implements ActivitiService {
     public String handleTask(String taskId) {
         Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
 
-        // 如果当前任务没有指派人，需要先使用 claim() 方法领取任务
+        // 如果当前任务没有指派人, 需要先使用 claim() 方法领取任务
         // taskService.claim(id, "李四");
 
-        // 如果设置为null，归还组任务,该 任务没有负责人
+        // 如果设置为null, 归还组任务,该 任务没有负责人
         // taskService.setAssignee(taskId, null);
 
         // 将此任务交给其它候选人办理该 任务
@@ -179,8 +179,8 @@ public class ActivitiServiceImpl implements ActivitiService {
 
         // 添加评论
         taskService.addComment(taskId, task.getProcessInstanceId(), "同意");
-        // 查看评论表act_hi_comment,查看act_ru_task表，可以看到任务流转：
-        // 如果有指派人，直接完成任务
+        // 查看评论表act_hi_comment,查看act_ru_task表, 可以看到任务流转：
+        // 如果有指派人, 直接完成任务
         taskService.complete(taskId);
 
         String processInstanceId = task.getProcessInstanceId();
@@ -195,8 +195,8 @@ public class ActivitiServiceImpl implements ActivitiService {
             log.info("taskResult流程结束");
         }
 
-        // 完成最后一个任务的审批后，会更新历史流程实例的完成时间act_hi_procinst，DURATION_字段
-        // ru相关表数据都会清空，流程结束
+        // 完成最后一个任务的审批后, 会更新历史流程实例的完成时间act_hi_procinst, DURATION_字段
+        // ru相关表数据都会清空, 流程结束
         return task.getName();
     }
 
@@ -208,7 +208,7 @@ public class ActivitiServiceImpl implements ActivitiService {
             repositoryService.activateProcessDefinitionById(processDefinitionId);
         } else {
             log.info("暂停");
-            //  如果是暂停，可以执行激活操作 ,参数1 ：流程定义id ，参数2：是否激活，参数3：激活时间
+            //  如果是暂停, 可以执行激活操作 ,参数1 ：流程定义id , 参数2：是否激活, 参数3：激活时间
             repositoryService.suspendProcessDefinitionById(processDefinitionId);
         }
         try {
@@ -250,7 +250,7 @@ public class ActivitiServiceImpl implements ActivitiService {
 
     @Override
     public List<ProcessHistoricVO> getHistoryProcessList() {
-        // 在 API 中，可以查询所有 5 个历史记录实体：
+        // 在 API 中, 可以查询所有 5 个历史记录实体：
         // historyService.createHistoricTaskInstanceQuery();
         // historyService.createHistoricActivityInstanceQuery();
         // historyService.createHistoricDetailQuery();
@@ -315,15 +315,15 @@ public class ActivitiServiceImpl implements ActivitiService {
     public Boolean deleteDeployment(String deploymentId) {
         /**
          * 说明：
-         * 1)使用repositoryService删除流程定义，历史表信息不会被删除
-         * 2)如果该流程定义下没有正在运行的流程，则可以用普通删除。
-         * 如果该流程定义下存在已经运行的流程，使用普通删除报错，可用级联删除方法将流程及相关记录全部删除。
-         * 先删除没有完成流程节点，最后就可以完全删除流程定义信息
+         * 1)使用repositoryService删除流程定义, 历史表信息不会被删除
+         * 2)如果该流程定义下没有正在运行的流程, 则可以用普通删除. 
+         * 如果该流程定义下存在已经运行的流程, 使用普通删除报错, 可用级联删除方法将流程及相关记录全部删除. 
+         * 先删除没有完成流程节点, 最后就可以完全删除流程定义信息
          * 项目开发中级联删除操作一般只开放给超级管理员使用.
          */
-        // 删除流程定义，如果该流程定义已有流程实例启动则删除时出错
+        // 删除流程定义, 如果该流程定义已有流程实例启动则删除时出错
         repositoryService.deleteDeployment(deploymentId);
-        // 设置true级联删除流程定义，即使该流程有流程实例启动也可以删除，设置为false非级别删除方式，如果流程
+        // 设置true级联删除流程定义, 即使该流程有流程实例启动也可以删除, 设置为false非级别删除方式, 如果流程
         // repositoryService.deleteDeployment(deploymentId, true);
         return true;
     }

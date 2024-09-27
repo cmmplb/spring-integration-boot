@@ -27,28 +27,28 @@ public class BpmnJsController {
     @Autowired
     private BpmnJsService bpmnJsService;
 
-    @ApiOperation("获取模型流程设计")
+    @Operation(summary = "获取模型流程设计")
     @GetMapping(value = "/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "模型id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<BpmnInfoVO> getBpmnInfo(@PathVariable(value = "id") String id) {
         return ResultUtil.success(bpmnJsService.getBpmnInfo(id));
     }
 
-    @ApiOperation("保存流程设计")
+    @Operation(summary = "保存流程设计")
     @PutMapping(value = "/save/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "模型id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<Boolean> saveDesign(@PathVariable(value = "id") String id, ModelBpmnDTO dto) {
         return ResultUtil.success(bpmnJsService.saveDesign(id, dto));
     }
 
-    @ApiOperation("查看流程图")
+    @Operation(summary = "查看流程图")
     @GetMapping(value = "/show/model/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "流程定义id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<String> showFlowChart(@PathVariable(value = "id") String id) {
         return ResultUtil.success(bpmnJsService.showFlowChart(id));
     }
 
-    @ApiOperation("查看申请进度流程图")
+    @Operation(summary = "查看申请进度流程图")
     @ApiImplicitParam(name = "id", paramType = "query", value = "申请id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     @GetMapping(value = {"/show/{applyId}"})
     public Result<BpmnProgressVO> showProgressChart(@PathVariable(value = "applyId") Long applyId) {

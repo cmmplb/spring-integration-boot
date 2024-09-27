@@ -1,0 +1,12 @@
+security:
+  # 是否开启安全认证
+  enabled: true
+  # 白名单
+  white-list:
+    # 放行登录页面路径, 手机号登录路径, 自定义登录路径
+    login: /login,/mobile/login,/authentication/login
+    # 获取图形验证码, 获取短信验证码, 登录失败处理
+    base: /basic/graph/code,/basic/sms/code,/basic/failure
+    # 静态资源
+    css: /css/bootstrap@4.0.0.css,/css/signin.css
+    static: /favicon.ico

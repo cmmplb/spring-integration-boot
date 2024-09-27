@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since jdk 1.8
  */
 
-@SpringBootApplication// (exclude = DruidDataSourceAutoConfigure.class) // 排除原生Druid的快速配置类。-动态数据源v3.3.3及以上版本不用排除了。
+@SpringBootApplication// (exclude = DruidDataSourceAutoConfigure.class) // 排除原生Druid的快速配置类. -动态数据源v3.3.3及以上版本不用排除了. 
 public class DynamicDatasourceApplication {
 
     public static void main(String[] args) {

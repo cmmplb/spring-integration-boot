@@ -1,6 +1,6 @@
 package com.cmmplb.websocket.domain.vo;
 
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.utils.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -75,13 +75,13 @@ public class RecentlyMessageVO implements Serializable {
 
     public String getTime() {
         if (null != sendTime) {
-            return DateUtil.dateFormat(sendTime, GlobalConstants.NUM_TWO);
+            return DateUtil.dateFormat(sendTime, GlobalConstant.NUM_TWO);
         }
         return time;
     }
 
     public String getRecentlyTime() {
-        return DateUtil.dateFormat(sendTime, GlobalConstants.NUM_THREE);
+        return DateUtil.dateFormat(sendTime, GlobalConstant.NUM_THREE);
     }
 
 }

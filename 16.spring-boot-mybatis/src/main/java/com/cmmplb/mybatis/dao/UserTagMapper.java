@@ -1,6 +1,7 @@
 package com.cmmplb.mybatis.dao;
 
 import com.cmmplb.mybatis.entity.UserTag;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
 * @date 2021-08-22 09:29:20
 * @since jdk 1.8
 */
-    
+
 public interface UserTagMapper {
 
     /**

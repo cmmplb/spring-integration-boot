@@ -1,6 +1,6 @@
 package com.cmmplb.mybatis;
 
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.core.utils.SpringApplicationUtil;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,7 +14,7 @@ public class MybatisApplication {
 
     static {
         // 解决清空空闲60秒以上的连接的警告-WARN c.a.druid.pool.DruidAbstractDataSource   : discard long time none received connection
-        System.setProperty(StringConstants.DRUID_MYSQL_USE_PING_METHOD, StringConstants.FALSE);
+        System.setProperty(StringConstant.DRUID_MYSQL_USE_PING_METHOD, StringConstant.FALSE);
     }
 
     public static void main(String[] args) {

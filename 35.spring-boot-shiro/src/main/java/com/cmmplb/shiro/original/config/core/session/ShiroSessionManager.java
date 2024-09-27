@@ -2,13 +2,13 @@ package com.cmmplb.shiro.original.config.core.session;
 
 import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.shiro.general.constants.AuthorizationConstants;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
 /**
@@ -27,7 +27,7 @@ public class ShiroSessionManager extends DefaultWebSessionManager {
     }
 
     /**
-     * 重写获取sessionId规则，从请求头获取
+     * 重写获取sessionId规则, 从请求头获取
      */
     @Override
     protected Serializable getSessionId(ServletRequest request, ServletResponse response) {
@@ -39,7 +39,7 @@ public class ShiroSessionManager extends DefaultWebSessionManager {
         //获取请求头中的数据
         String token = req.getHeader(AuthorizationConstants.AUTHORIZATION);
         if (StringUtil.isEmpty(token)) {
-            //如果没有携带，生成新的sessionId
+            //如果没有携带, 生成新的sessionId
             // return super.getSessionId(request, response); // 父类是通过org.apache.shiro.web.servlet.SimpleCookie#readValue读取默认cookie的JSESSIONID
             //禁用cookie、sessionk
             return null;

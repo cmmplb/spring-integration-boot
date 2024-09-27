@@ -43,4 +43,6 @@ public interface UserService {
      * @return 用户信息
      */
     User getById(Long id);
+
+    User getInfoById(Long id);
 }

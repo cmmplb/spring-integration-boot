@@ -41,17 +41,17 @@ public class ActivitiUtil {
 
         FlowNode currentFlowNode = null;
         FlowNode targetFlowNode = null;
-        // 遍历已完成的活动实例，从每个实例的outgoingFlows中找到已执行的
+        // 遍历已完成的活动实例, 从每个实例的outgoingFlows中找到已执行的
         for (HistoricActivityInstance currentActivityInstance : finishedActivityInstances) {
             // 获得当前活动对应的节点信息及outgoingFlows信息
             currentFlowNode = (FlowNode) bpmnModel.getMainProcess().getFlowElement(currentActivityInstance.getActivityId(), true);
             List<SequenceFlow> sequenceFlows = currentFlowNode.getOutgoingFlows();
 
             /**
-             * 遍历outgoingFlows并找到已已流转的 满足如下条件认为已已流转： 1.当前节点是并行网关或兼容网关，则通过outgoingFlows能够在历史活动中找到的全部节点均为已流转 2.当前节点是以上两种类型之外的，通过outgoingFlows查找到的时间最早的流转节点视为有效流转
+             * 遍历outgoingFlows并找到已已流转的 满足如下条件认为已已流转： 1.当前节点是并行网关或兼容网关, 则通过outgoingFlows能够在历史活动中找到的全部节点均为已流转 2.当前节点是以上两种类型之外的, 通过outgoingFlows查找到的时间最早的流转节点视为有效流转
              */
             if ("parallelGateway".equals(currentActivityInstance.getActivityType()) || "inclusiveGateway".equals(currentActivityInstance.getActivityType())) {
-                // 遍历历史活动节点，找到匹配流程目标节点的
+                // 遍历历史活动节点, 找到匹配流程目标节点的
                 for (SequenceFlow sequenceFlow : sequenceFlows) {
                     targetFlowNode = (FlowNode) bpmnModel.getMainProcess().getFlowElement(sequenceFlow.getTargetRef(), true);
                     if (historicActivityNodes.contains(targetFlowNode)) {
@@ -72,7 +72,7 @@ public class ActivitiUtil {
                 }
 
                 if (!CollectionUtils.isEmpty(tempMapList)) {
-                    // 遍历匹配的集合，取得开始时间最早的一个
+                    // 遍历匹配的集合, 取得开始时间最早的一个
                     long earliestStamp = 0L;
                     String highLightedFlowId = null;
                     for (Map<String, Object> map : tempMapList) {

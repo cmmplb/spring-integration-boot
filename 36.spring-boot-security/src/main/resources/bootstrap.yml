@@ -12,8 +12,11 @@ spring.main.allow-bean-definition-overriding: true
 # =====================================================================================
 # 引用配置文件
 spring.profiles.include:
-  - freemarker
+  - database
   - jackson
+  - logging
+  - mybatis_plus
   - redis
+  - security
   - swagger
   - tomcat

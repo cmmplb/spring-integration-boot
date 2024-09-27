@@ -1,0 +1,67 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.ehcache.org/v3"
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <!-- 持久化路径, 定义磁盘缓存位置  -->
+    <persistence directory="/Users/penglibo/Downloads/Ehcache3"/>
+
+    <!-- 缓存模版,未填写缓存名时使用的默认缓存，同时也可被继承 -->
+    <cache-template name="default">
+        <key-type>java.lang.String</key-type>
+        <value-type>java.lang.Object</value-type>
+        <expiry>
+            <!-- 单位默认为秒当用秒作单位时,可以不填-->
+            <ttl unit="seconds">600</ttl>
+        </expiry>
+        <resources>
+            <!--堆内内存可以放64个条目，超出部分堆外128MB-->
+            <heap unit="MB">64</heap>
+            <offheap unit="MB">128</offheap>
+        </resources>
+    </cache-template>
+
+    <!-- 自定义模版 -->
+    <cache-template name="oneHourTemplate">
+        <!--        <key-type>java.lang.String</key-type>-->
+        <!--        <value-type>java.lang.String</value-type>-->
+        <expiry>
+            <!-- 单位默认为秒当用秒作单位时,可以不填-->
+            <ttl unit="hours">1</ttl>
+        </expiry>
+        <resources>
+            <!-- 单位默认为entries当用entries作单位时,可以不填-->
+            <heap>100</heap>
+            <offheap unit="MB">5</offheap>
+            <!-- persistent 默认为false可以不填-->
+            <disk unit="MB">1024</disk>
+        </resources>
+    </cache-template>
+
+    <!--实际的缓存区间，继承了default缓存模板，但覆盖了缓存的过期时间-->
+    <cache alias="sample" uses-template="default">
+        <expiry>
+            <ttl unit="hours">1</ttl>
+        </expiry>
+    </cache>
+
+    <!-- 缓存列表: 自定义缓存配置 -->
+    <!-- 不过期 -->
+    <cache alias="EXPIRE_NONE" uses-template="default"/>
+    <!-- 24小时过期 -->
+    <cache alias="EXPIRE_24_HOURS" uses-template="default">
+        <expiry>
+            <ttl unit="hours">24</ttl>
+        </expiry>
+    </cache>
+    <!-- 30分钟过期 -->
+    <cache alias="EXPIRE_30_MINUTES" uses-template="default">
+        <expiry>
+            <ttl unit="minutes">30</ttl>
+        </expiry>
+    </cache>
+    <cache alias="userInfo" uses-template="oneHourTemplate">
+        <key-type>java.lang.String</key-type>
+        <value-type>com.cmmplb.cache.domain.entity.User</value-type>
+    </cache>
+
+</config>

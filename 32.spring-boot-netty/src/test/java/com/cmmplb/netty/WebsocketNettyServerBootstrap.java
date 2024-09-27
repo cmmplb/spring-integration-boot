@@ -19,7 +19,7 @@ public class WebsocketNettyServerBootstrap {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
-            //创建服务器端的启动对象，配置参数
+            //创建服务器端的启动对象, 配置参数
             ServerBootstrap bootstrap = new ServerBootstrap();
             //设置两个线程组
             bootstrap.group(bossGroup, workerGroup)
@@ -36,23 +36,23 @@ public class WebsocketNettyServerBootstrap {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
                             /**
-                             * 因为基于http协议，使用http的编解码器
+                             * 因为基于http协议, 使用http的编解码器
                              */
                             pipeline.addLast(new HttpServerCodec());
 
                             /**
-                             * 是以块方式写，添加 ChunkedWriteHandler 处理器
+                             * 是以块方式写, 添加 ChunkedWriteHandler 处理器
                              */
                             pipeline.addLast(new ChunkedWriteHandler());
                             /**
-                             * http数据传输过程是分段的，HttpObjectAggregator，就是可以将多段聚合
-                             * 当浏览器发送大量数据时，就会发出多次http请求
+                             * http数据传输过程是分段的, HttpObjectAggregator, 就是可以将多段聚合
+                             * 当浏览器发送大量数据时, 就会发出多次http请求
                              */
                             pipeline.addLast(new HttpObjectAggregator(8192));
                             /**
                              * 对于websocket数据是以 帧 形式传递
                              *  浏览器请求时 ws://localhost:7000/hello 其中 hello会与下面的对应
-                             *  WebSocketServerProtocolHandler 核心功能是将http协议升级为ws协议，保持长链接
+                             *  WebSocketServerProtocolHandler 核心功能是将http协议升级为ws协议, 保持长链接
                              */
                             pipeline.addLast(new WebSocketServerProtocolHandler("/hello"));
 

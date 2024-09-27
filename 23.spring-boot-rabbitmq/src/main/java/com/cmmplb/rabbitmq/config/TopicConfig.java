@@ -1,6 +1,6 @@
 package com.cmmplb.rabbitmq.config;
 
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.rabbit.mq.configuration.properties.RabbitMqProperties;
 import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
 import org.springframework.amqp.core.Binding;
@@ -16,8 +16,8 @@ import org.springframework.context.annotation.Configuration;
  * @date 2021-05-26 17:47:07
  * @since jdk 1.8
  * 订阅模型-Topic (主题模式)
- * topic类型的Exchange与Direct相比，都是可以根据RoutingKey把消息路由到不同的队列。只不过Topic类型Exchange可以让队列在绑定Routing key 的时候使用通配符！
- * RoutingKey 一般都是有一个或多个单词组成，多个单词之间以”.”分割，例如： user.insert
+ * topic类型的Exchange与Direct相比, 都是可以根据RoutingKey把消息路由到不同的队列. 只不过Topic类型Exchange可以让队列在绑定Routing key 的时候使用通配符！
+ * RoutingKey 一般都是有一个或多个单词组成, 多个单词之间以”.”分割, 例如： user.insert
  * 通配符规则	例:
  * #：匹配一个或多个词	person.#：能够匹配person.insert.save 或者 person.insert
  * *：匹配不多不少恰好1个词	person.*：只能匹配person.insert
@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 // 关闭配置文件配置bean时才开启类的注入
-@ConditionalOnProperty(prefix = RabbitMqProperties.PREFIX, name = RabbitMqProperties.ENABLED, havingValue = StringConstants.FALSE)
+@ConditionalOnProperty(prefix = RabbitMqProperties.PREFIX, name = RabbitMqProperties.ENABLED, havingValue = StringConstant.FALSE)
 public class TopicConfig {
 
     /**
@@ -80,6 +80,6 @@ public class TopicConfig {
      */
     @Bean
     public Binding bindingTopicThree() {
-        return BindingBuilder.bind(TwoTopicQueue()).to(topicExchange()).with(RabbitMqConstants.THREE_TOPIC_ROUTING_KEY);//#表示0个或若干个关键字，*表示一个关键字
+        return BindingBuilder.bind(TwoTopicQueue()).to(topicExchange()).with(RabbitMqConstants.THREE_TOPIC_ROUTING_KEY);//#表示0个或若干个关键字, *表示一个关键字
     }
 }

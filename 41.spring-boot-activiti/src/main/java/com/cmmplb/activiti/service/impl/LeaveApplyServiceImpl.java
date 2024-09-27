@@ -14,7 +14,7 @@ import com.cmmplb.activiti.service.LeaveApplyService;
 import com.cmmplb.activiti.util.SecurityUtil;
 import com.cmmplb.activiti.vo.LeaveApplyDetailsVO;
 import com.cmmplb.activiti.vo.LeaveApplyVO;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.exception.CustomException;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.RepositoryService;
@@ -62,9 +62,9 @@ public class LeaveApplyServiceImpl extends ServiceImpl<LeaveApplyMapper, LeaveAp
     @Override
     public boolean save(LeaveApplyDTO dto) {
         LeaveApply leaveApply = new LeaveApply();
-        // 这里不整合认证授权，从前端切换用户用来快速测试
+        // 这里不整合认证授权, 从前端切换用户用来快速测试
         leaveApply.setUserId(SecurityUtil.getUserId());
-        leaveApply.setStatus(GlobalConstants.NUM_ZERO);
+        leaveApply.setStatus(GlobalConstant.NUM_ZERO);
         leaveApply.setReason(dto.getReason());
         leaveApply.setCreateTime(new Date());
         leaveApply.setUpdateTime(new Date());
@@ -93,15 +93,15 @@ public class LeaveApplyServiceImpl extends ServiceImpl<LeaveApplyMapper, LeaveAp
             throw new CustomException("流程定义信息不存在");
         }
         if (processDefinition.isSuspended()) {
-            throw new CustomException("流程已挂起，暂时无法申请");
+            throw new CustomException("流程已挂起, 暂时无法申请");
         }
         // 添加事项申请信息
         Apply apply = new Apply();
         apply.setTitle(dto.getTitle());
         apply.setUserId(SecurityUtil.getUserId());
-        apply.setType(GlobalConstants.NUM_ONE);
+        apply.setType(GlobalConstant.NUM_ONE);
         apply.setBusinessId(leaveApply.getId());
-        apply.setStatus(GlobalConstants.NUM_ZERO);
+        apply.setStatus(GlobalConstant.NUM_ZERO);
         apply.setDefKey(processDefinition.getKey());
         apply.setApplyTime(dto.getApplyTime());
         apply.setCreateTime(new Date());
@@ -113,8 +113,8 @@ public class LeaveApplyServiceImpl extends ServiceImpl<LeaveApplyMapper, LeaveAp
 
         // 发起请假流程
         HashMap<String, Object> variables = new HashMap<>();
-        // 这里直接指定流程的负责人，其他情况也可以在完成任务的时候设置或者转让负责人
-        // 这里存的用户id，第一个申请的任务由本人完成
+        // 这里直接指定流程的负责人, 其他情况也可以在完成任务的时候设置或者转让负责人
+        // 这里存的用户id, 第一个申请的任务由本人完成
         variables.put("assignee0", 2);
         variables.put("assignee1", 3);
         variables.put("assignee2", 1);

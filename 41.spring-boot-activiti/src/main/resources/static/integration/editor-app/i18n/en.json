@@ -91,7 +91,7 @@
     "PROPERTY.ASSIGNMENT.IDM.NO_CANDIDATE_USERS" : "No candidate users selected...",
     "PROPERTY.ASSIGNMENT.IDM.NO_CANDIDATE_GROUPS" : "No candidate groups selected...",
     "PROPERTY.ASSIGNMENT.IDM.DROPDOWN.INITIATOR" : "Assigned to process initiator",
-    "PROPERTY.ASSIGNMENT.IDM.DROPDOWN.USER" : "Assigned to single user",
+    "PROPERTY.ASSIGNMENT.IDM.DROPDOWN.USER" : "Assigned to single userDetails",
     "PROPERTY.ASSIGNMENT.IDM.DROPDOWN.USERS" : "Candidate users",
     "PROPERTY.ASSIGNMENT.IDM.DROPDOWN.GROUPS" : "Candidate groups",
     "PROPERTY.ASSIGNMENT.EMAIL.HELP" : "Type an email address and press Enter to continue",

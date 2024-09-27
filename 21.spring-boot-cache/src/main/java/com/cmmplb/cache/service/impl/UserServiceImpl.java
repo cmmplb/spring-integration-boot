@@ -3,10 +3,7 @@ package com.cmmplb.cache.service.impl;
 import com.cmmplb.cache.domain.entity.User;
 import com.cmmplb.cache.mapper.UserMapper;
 import com.cmmplb.cache.service.UserService;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -50,8 +47,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     // cacheNames对应缓存管理器名称
-    @Cacheable(cacheNames = "users", key = "'UserInfo'+#id", sync = true)
+    @Cacheable(cacheNames = "userInfo", key = "'UserInfo'+#id", sync = true)
     public User getById(Long id) {
+        return userMapper.selectById(id);
+    }
+
+    @Override
+    public User getInfoById(Long id) {
         return userMapper.selectById(id);
     }
 

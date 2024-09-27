@@ -1,7 +1,7 @@
 package com.cmmplb.kafka.controller;
 
 
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.kafka.service.ProducerService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @Api(tags = "kafka演示")
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/kafka")
 public class KafkaController {
@@ -27,7 +27,7 @@ public class KafkaController {
     @Autowired
     private ProducerService producerService;
 
-    @ApiOperation("简单消息")
+    @Operation(summary = "简单消息")
     @ApiOperationSupport(order = 1)
     @GetMapping("/send")
     public void send2SimpleMessage() {
@@ -36,7 +36,7 @@ public class KafkaController {
         producerService.send2SimpleMessage(message);
     }
 
-    @ApiOperation("复杂消息")
+    @Operation(summary = "复杂消息")
     @ApiOperationSupport(order = 2)
     @GetMapping("/map")
     public void send2EntityMessage() {

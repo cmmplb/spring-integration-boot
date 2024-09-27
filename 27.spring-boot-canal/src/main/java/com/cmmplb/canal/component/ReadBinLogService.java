@@ -70,7 +70,7 @@ public class ReadBinLogService implements ApplicationRunner {
      */
     private void analysis(List<CanalEntry.Entry> entries) {
         for (CanalEntry.Entry entry : entries) {
-            // 只解析mysql事务的操作，其他的不解析
+            // 只解析mysql事务的操作, 其他的不解析
             if (entry.getEntryType() == CanalEntry.EntryType.TRANSACTIONBEGIN) {
                 continue;
             }

@@ -5,20 +5,20 @@ import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.security.handler.AuthenticationFailureHandler;
 import com.cmmplb.security.handler.exception.ValidateCodeException;
 import com.cmmplb.security.utils.CaptchaUtil;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
 import org.springframework.lang.NonNull;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
  * @author penglibo
- * @date 2021-08-30 17:35:43
+ * @date 2024-09-10 09:03:15
  * @since jdk 1.8
  * 图形验证码过滤
  */
@@ -28,8 +28,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, @NonNull HttpServletResponse httpServletResponse, @NonNull FilterChain filterChain) throws ServletException, IOException {
-        log.info("------------doFilterInternal------------");
-        if (StringUtil.equalsIgnoreCase(SpringApplicationUtil.path + SmsCodeAuthenticationFilter.LOGIN, httpServletRequest.getRequestURI())
+        if (StringUtil.equalsIgnoreCase(SpringApplicationUtil.path + "/login", httpServletRequest.getRequestURI())
                 && StringUtil.equalsIgnoreCase(httpServletRequest.getMethod(), HttpMethod.POST.name())) {
             try {
                 validateCode(httpServletRequest);
@@ -50,7 +49,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
         if (!CaptchaUtil.validate(uuid, graphCode)) {
             throw new ValidateCodeException("图形验证码不正确！");
         }
-        CaptchaUtil.delete(uuid); // 校验成功删除
+        // 校验成功删除
+        CaptchaUtil.delete(uuid);
     }
 
 }

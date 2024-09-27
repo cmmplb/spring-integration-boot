@@ -35,7 +35,7 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * 基于allOf，并行处理多个任务，等待所有任务执行完毕后返回
+     * 基于allOf, 并行处理多个任务, 等待所有任务执行完毕后返回
      */
     public static void demo3(){
         //用于整体接收各个任务的返回值
@@ -59,7 +59,7 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * 基于thenCompose，第一个任务执行完后，第二个任务使用第一个任务的返回作为参数
+     * 基于thenCompose, 第一个任务执行完后, 第二个任务使用第一个任务的返回作为参数
      */
     public static void demo1() throws Exception {
         Map<String, Object> dataMap = new ConcurrentHashMap<>();
@@ -73,7 +73,7 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * 基于thenCombine，当两个任务都完成后，使用两者的结果作为参数再执行一个异步任务
+     * 基于thenCombine, 当两个任务都完成后, 使用两者的结果作为参数再执行一个异步任务
      */
     public static void demo2() throws Exception {
         Map<String, Object> dataMap = new ConcurrentHashMap<>();
@@ -90,8 +90,8 @@ public class CompletableFutureDemo {
     /**
      * 使用CompletionService批量异步处理
      *
-     * CompletionService 能够让异步任务的执行结果有序化，先执行完的先进入阻塞队列，
-     * 利用这个特性，你可以轻松实现后续处理的有序性，避免无谓的等待
+     * CompletionService 能够让异步任务的执行结果有序化, 先执行完的先进入阻塞队列,
+     * 利用这个特性, 你可以轻松实现后续处理的有序性, 避免无谓的等待
      */
     public static void demo4() {
         Map<String, Object> dataMap = new ConcurrentHashMap<>();

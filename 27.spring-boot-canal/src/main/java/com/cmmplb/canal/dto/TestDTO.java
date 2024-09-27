@@ -1,11 +1,9 @@
 package com.cmmplb.canal.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
-import javax.validation.constraints.*;
 
 
 /**
@@ -16,15 +14,15 @@ import javax.validation.constraints.*;
  */
 
 @Data
-@ApiModel(value = "TestDTO", description = "信息参数")
+@Schema(name = "TestDTO", description = "信息参数")
 public class TestDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "", example = "1", hidden = true)
+    @Schema(name = "id", description = "主键id", example = "1")
     private Long id;
 
-    @ApiModelProperty(value = "", example = "String")
+    @Schema(description = "名称")
     private String name;
 
 

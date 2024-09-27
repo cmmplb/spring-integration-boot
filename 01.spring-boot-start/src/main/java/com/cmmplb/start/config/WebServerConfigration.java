@@ -1,6 +1,6 @@
 package com.cmmplb.start.config;
 
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import io.undertow.server.DefaultByteBufferPool;
 import io.undertow.websockets.jsr.WebSocketDeploymentInfo;
 import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
@@ -27,7 +27,7 @@ public class WebServerConfigration {
         return (WebServerFactoryCustomizer<UndertowServletWebServerFactory>) factory -> factory.addDeploymentInfoCustomizers(deploymentInfo -> {
             WebSocketDeploymentInfo webSocketDeploymentInfo = new WebSocketDeploymentInfo();
             webSocketDeploymentInfo.setBuffers(new DefaultByteBufferPool(false, 1024));
-            deploymentInfo.addServletContextAttribute(StringConstants.IO_UNDERTOW_WEBSOCKETS_JSR_WEBSOCKET_DEPLOYMENT_INFO, webSocketDeploymentInfo);
+            deploymentInfo.addServletContextAttribute(StringConstant.IO_UNDERTOW_WEBSOCKETS_JSR_WEBSOCKET_DEPLOYMENT_INFO, webSocketDeploymentInfo);
         });
     }
 }

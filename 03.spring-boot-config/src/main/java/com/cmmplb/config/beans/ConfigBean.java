@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Data
-@Component // 如果不想放入容器，就在引用的地方添加@EnableConfigurationProperties(ConfigBean.class)
+@Component // 如果不想放入容器, 就在引用的地方添加@EnableConfigurationProperties(ConfigBean.class)
 @ConfigurationProperties(prefix = "bean") // 去前缀
 public class ConfigBean {
 

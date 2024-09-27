@@ -46,14 +46,14 @@ public class IntegrationSheetWriteHandler implements SheetWriteHandler {
     private static final int LIMITATION = 1000;
 
     /**
-     * key-对应表头列索引，从0开始
-     * value-内容格式索引，对应：{@link com.alibaba.excel.constant.BuiltinFormats}
+     * key-对应表头列索引, 从0开始
+     * value-内容格式索引, 对应：{@link com.alibaba.excel.constant.BuiltinFormats}
      * 自定义设置列数据格式(这个用于导出时没有数据的单元格设置格式)
      */
     private Map<Integer, DataFormatData> dataFormatMap;
 
     /**
-     * key-对应表头列索引，从0开始
+     * key-对应表头列索引, 从0开始
      * value-具体下拉列表
      * 填充字段规则校验
      */
@@ -168,7 +168,7 @@ public class IntegrationSheetWriteHandler implements SheetWriteHandler {
                         if (CollUtil.isEmpty(childrenList)) {
                             continue;
                         }
-                        // 从第一行第一列开始写入，每一列写入子集数据
+                        // 从第一行第一列开始写入, 每一列写入子集数据
                         ExcelUtil.createDropdownElement(tmpChildrenSheet, childrenList, tmpChildrenColumnIndex);
                         if (childrenList.size() >= LIMITATION) {
                             tmpChildrenSheet = ExcelUtil.createTmpSheet(book, null, CHILDREN_SHEET);

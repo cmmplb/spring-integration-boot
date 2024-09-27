@@ -16,16 +16,14 @@ import java.util.Map;
  * @date 2021-08-06 14:20:20
  * @since jdk 1.8
  * 自定义切面方式切换数据源
- * 使用这个方式，原注解方式并不会失效。
- * 注意：不要在同一个切面同时使用注解又使用自定义切面。
+ * 使用这个方式, 原注解方式并不会失效. 
+ * 注意：不要在同一个切面同时使用注解又使用自定义切面. 
  */
 
 @Configuration
 public class AspectConfig {
 
-    // 实现com.cmmplb.dynamic.datasource包service下所有类的add和update,delete开头的方法使用master数据源，select使用slave数据源。
-
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    // 实现com.cmmplb.dynamic.datasource包service下所有类的add和update,delete开头的方法使用master数据源, select使用slave数据源. 
     @Bean
     public DynamicDatasourceNamedInterceptor dsAdvice(DsProcessor dsProcessor) {
         DynamicDatasourceNamedInterceptor interceptor = new DynamicDatasourceNamedInterceptor(dsProcessor);

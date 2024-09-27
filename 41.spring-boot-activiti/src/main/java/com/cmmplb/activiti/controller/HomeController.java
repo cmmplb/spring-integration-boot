@@ -32,13 +32,13 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
 
-    @ApiOperation("获取事项数量")
+    @Operation(summary = "获取事项数量")
     @GetMapping(value = "/item/count")
     public Result<ItemCountVO> getItemCount() {
         return ResultUtil.success(homeService.getItemCount());
     }
 
-    @ApiOperation("获取申请统计信息")
+    @Operation(summary = "获取申请统计信息")
     @GetMapping(value = "/apply/statistics/{type}")
     @ApiImplicitParam(name = "type", paramType = "query", value = "统计类型:1-24小时;2-近30天;", required = true, dataType = "Integer", dataTypeClass = Integer.class, example = "1")
     public Result<ApplyStatisticsVO> getApplyStatistics(@PathVariable(value = "type") Integer type) {

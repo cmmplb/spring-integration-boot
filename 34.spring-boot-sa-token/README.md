@@ -75,10 +75,10 @@ public class StpInterfaceImpl implements StpInterface {
         // 本 list 仅做模拟，实际项目中要根据具体业务逻辑来查询权限
         List<String> list = new ArrayList<String>();    
         list.add("101");
-        list.add("user.add");
-        list.add("user.update");
-        list.add("user.get");
-        // list.add("user.delete");
+        list.add("userDetails.add");
+        list.add("userDetails.update");
+        list.add("userDetails.get");
+        // list.add("userDetails.delete");
         list.add("art.*");
         return list;
     }
@@ -108,16 +108,16 @@ public class StpInterfaceImpl implements StpInterface {
 StpUtil.getPermissionList();
 
 // 判断：当前账号是否含有指定权限, 返回 true 或 false
-StpUtil.hasPermission("user.add");        
+StpUtil.hasPermission("userDetails.add");        
 
 // 校验：当前账号是否含有指定权限, 如果验证未通过，则抛出异常: NotPermissionException 
-StpUtil.checkPermission("user.add");        
+StpUtil.checkPermission("userDetails.add");        
 
 // 校验：当前账号是否含有指定权限 [指定多个，必须全部验证通过]
-StpUtil.checkPermissionAnd("user.add", "user.delete", "user.get");        
+StpUtil.checkPermissionAnd("userDetails.add", "userDetails.delete", "userDetails.get");        
 
 // 校验：当前账号是否含有指定权限 [指定多个，只要其一验证通过即可]
-StpUtil.checkPermissionOr("user.add", "user.delete", "user.get");
+StpUtil.checkPermissionOr("userDetails.add", "userDetails.delete", "userDetails.get");
 ````
 
 **角色校验**
@@ -167,8 +167,8 @@ StpUtil.hasPermission("goods.add");      // false
 
 // 当拥有 *.delete 权限时
 StpUtil.hasPermission("art.delete");      // true
-StpUtil.hasPermission("user.delete");     // true
-StpUtil.hasPermission("user.update");     // false
+StpUtil.hasPermission("userDetails.delete");     // true
+StpUtil.hasPermission("userDetails.update");     // false
 
 // 当拥有 *.js 权限时
 StpUtil.hasPermission("index.js");        // true
@@ -203,7 +203,7 @@ StpUtil.kickoutByTokenValue("token");      // 将指定 Token 踢下线
 
 - @SaCheckLogin: 登录校验 —— 只有登录之后才能进入该方法。
 - @SaCheckRole("admin"): 角色校验 —— 必须具有指定角色标识才能进入该方法。
-- @SaCheckPermission("user:add"): 权限校验 —— 必须具有指定权限才能进入该方法。
+- @SaCheckPermission("userDetails:add"): 权限校验 —— 必须具有指定权限才能进入该方法。
 - @SaCheckSafe: 二级认证校验 —— 必须二级认证之后才能进入该方法。
 - @SaCheckHttpBasic: HttpBasic校验 —— 只有通过 HttpBasic 认证后才能进入该方法。
 - @SaCheckHttpDigest: HttpDigest校验 —— 只有通过 HttpDigest 认证后才能进入该方法。
@@ -248,7 +248,7 @@ public String add() {
 }
 
 // 权限校验：必须具有指定权限才能进入该方法 
-@SaCheckPermission("user-add")        
+@SaCheckPermission("userDetails-add")        
 @RequestMapping("add")
 public String add() {
     return "用户增加";
@@ -293,7 +293,7 @@ SaMode.OR，标注一组权限，会话只要具有其一即可通过校验。
 ````
 // 注解式鉴权：只要具有其中一个权限即可通过校验 
 @RequestMapping("atJurOr")
-@SaCheckPermission(value = {"user-add", "user-all", "user-delete"}, mode = SaMode.OR)        
+@SaCheckPermission(value = {"userDetails-add", "userDetails-all", "userDetails-delete"}, mode = SaMode.OR)        
 public SaResult atJurOr() {
     return SaResult.data("用户信息");
 }
@@ -308,7 +308,7 @@ public SaResult atJurOr() {
 ````
 // 角色权限双重 “or校验”：具备指定权限或者指定角色即可通过校验
 @RequestMapping("userAdd")
-@SaCheckPermission(value = "user.add", orRole = "admin")        
+@SaCheckPermission(value = "userDetails.add", orRole = "admin")        
 public SaResult userAdd() {
     return SaResult.data("用户信息");
 }
@@ -347,7 +347,7 @@ public class TestController {
 @SaCheckOr(
         login = @SaCheckLogin,
         role = @SaCheckRole("admin"),
-        permission = @SaCheckPermission("user.add"),
+        permission = @SaCheckPermission("userDetails.add"),
         safe = @SaCheckSafe("update-password"),
         httpBasic = @SaCheckHttpBasic(account = "sa:123456"),
         disable = @SaCheckDisable("submit-orders")
@@ -363,10 +363,10 @@ public SaResult test() {
 每一项属性都可以写成数组形式，例如：
 
 ````
-// 当前客户端只要有 [ login 账号登录] 或者 [user 账号登录] 其一，就可以通过验证进入方法。
-//         注意：`type = "login"` 和 `type = "user"` 是多账号模式章节的扩展属性，此处你可以先略过这个知识点。
+// 当前客户端只要有 [ login 账号登录] 或者 [userDetails 账号登录] 其一，就可以通过验证进入方法。
+//         注意：`type = "login"` 和 `type = "userDetails"` 是多账号模式章节的扩展属性，此处你可以先略过这个知识点。
 @SaCheckOr(
-    login = { @SaCheckLogin(type = "login"), @SaCheckLogin(type = "user") }
+    login = { @SaCheckLogin(type = "login"), @SaCheckLogin(type = "userDetails") }
 )
 @RequestMapping("test")
 public SaResult test() {
@@ -384,7 +384,7 @@ public SaResult test() {
 // 当你在一个方法上写多个注解鉴权时，其默认就是要满足所有注解规则后，才可以进入方法，只要有一个不满足，就会抛出异常
 @SaCheckLogin
 @SaCheckRole("admin")
-@SaCheckPermission("user.add")
+@SaCheckPermission("userDetails.add")
 @RequestMapping("test")
 public SaResult test() {
     // ...
@@ -405,7 +405,7 @@ public class SaTokenConfigure implements WebMvcConfigurer {
         // 注册 Sa-Token 拦截器，校验规则为 StpUtil.checkLogin() 登录校验。
         registry.addInterceptor(new SaInterceptor(handle -> StpUtil.checkLogin()))
                 .addPathPatterns("/**")
-                .excludePathPatterns("/user/doLogin"); 
+                .excludePathPatterns("/userDetails/doLogin"); 
     }
 }
 
@@ -427,11 +427,11 @@ public class SaTokenConfigure implements WebMvcConfigurer {
             // 指定一条 match 规则
             SaRouter
                 .match("/**")    // 拦截的 path 列表，可以写多个 */
-                .notMatch("/user/doLogin")        // 排除掉的 path 列表，可以写多个 
+                .notMatch("/userDetails/doLogin")        // 排除掉的 path 列表，可以写多个 
                 .check(r -> StpUtil.checkLogin());        // 要执行的校验动作，可以写完整的 lambda 表达式
                 
             // 根据路由划分模块，不同模块不同鉴权 
-            SaRouter.match("/user/**", r -> StpUtil.checkPermission("user"));
+            SaRouter.match("/userDetails/**", r -> StpUtil.checkPermission("userDetails"));
             SaRouter.match("/admin/**", r -> StpUtil.checkPermission("admin"));
             SaRouter.match("/goods/**", r -> StpUtil.checkPermission("goods"));
             SaRouter.match("/orders/**", r -> StpUtil.checkPermission("orders"));
@@ -452,11 +452,11 @@ Token-Session: 指的是框架为每个 token 分配的 Session
 Custom-Session: 指的是以一个 特定的值 作为SessionId，来分配的 Session
 
 ````
-// 在登录时缓存 user 对象 
-StpUtil.getSession().set("user", user);
+// 在登录时缓存 userDetails 对象 
+StpUtil.getSession().set("userDetails", userDetails);
 
-// 然后我们就可以在任意处使用这个 user 对象
-SysUser user = (SysUser) StpUtil.getSession().get("user");
+// 然后我们就可以在任意处使用这个 userDetails 对象
+SysUser userDetails = (SysUser) StpUtil.getSession().get("userDetails");
 
 ````
 

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public interface ElasticsearchRestApisService {
 
     /**
-     * 检测集群是否健康。 确保9200端口号可用
+     * 检测集群是否健康.  确保9200端口号可用
      */
     void checkHealth();
 

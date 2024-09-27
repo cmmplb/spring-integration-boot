@@ -1,7 +1,7 @@
 package com.cmmplb.activiti.vo;
 
 import com.cmmplb.activiti.constant.KeyConstant;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.utils.StringUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;

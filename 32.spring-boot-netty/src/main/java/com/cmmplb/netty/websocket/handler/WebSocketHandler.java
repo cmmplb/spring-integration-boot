@@ -17,9 +17,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
-    // 在这个类里面我们首先建立了一个channelGroup，
-    // 每当有客户端连接的时候，就添加到channelGroup里面，
-    // 我们可以发送消息给固定的人，也可以群发消息。
+    // 在这个类里面我们首先建立了一个channelGroup,
+    // 每当有客户端连接的时候, 就添加到channelGroup里面,
+    // 我们可以发送消息给固定的人, 也可以群发消息. 
     public static ChannelGroup channelGroup;
 
     static {
@@ -29,7 +29,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
     // 客户端与服务器建立连接的时候触发
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("与客户端建立连接，通道开启！");
+        System.out.println("与客户端建立连接, 通道开启！");
         System.out.println(channelGroup);
         // 添加到channelGroup通道组
         channelGroup.add(ctx.channel());
@@ -37,7 +37,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 
 
     /**
-     * 当web客户端连接后，触发方法
+     * 当web客户端连接后, 触发方法
      * @param ctx
      * @throws Exception
      */
@@ -64,7 +64,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
     // 客户端与服务器关闭连接的时候触发
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("与客户端断开连接，通道关闭！");
+        System.out.println("与客户端断开连接, 通道关闭！");
         channelGroup.remove(ctx.channel());
     }
 
@@ -96,9 +96,9 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
         ctx.channel().writeAndFlush(new TextWebSocketFrame(message));
     }
 
-    // 发送群消息，此时其他客户端也能收到群消息
+    // 发送群消息, 此时其他客户端也能收到群消息
     private void sendAllMessage() {
-        String message = "我是服务器，这里发送的是群消息";
+        String message = "我是服务器, 这里发送的是群消息";
         channelGroup.writeAndFlush(new TextWebSocketFrame(message));
     }
 

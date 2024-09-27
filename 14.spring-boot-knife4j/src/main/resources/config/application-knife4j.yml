@@ -1,47 +1,72 @@
 knife4j:
-  # 开启增强配置
+  # 开启增强配置，默认false，自2.0.6版本后,只需要在配置文件中配置knife4j.enable=true即可不在使用注解@EnableKnife4j
   enable: true
-  # 开启生产环境屏蔽
-  #production: true
-  setting:
-    #禁用调试-文档页面就没调试按钮了
-    enableDebug: true
-    #禁用搜索框
-    enableSearch: true
-    #禁用OpenApi结构显示
-    enableOpenApi: true
-    # 对于调试中的请求参数是否缓存进行开启配置，该参数默认为true - 后端配置-前台也可以在文档管理里面配置
-    enableRequestCache: true
-    # 是否启用Host
-    enableHost: false
-    # 启用Host后地址，例如：http://192.168.0.111:8080
-    enableHostText: ""
-    # 自定义Swagger Models名称
-    enableSwaggerModels: true
-    swaggerModelName: 我是自定义的Model名称
-    #自定义主页内容
-    enableHomeCustom: true
-    homeCustomLocation: classpath:markdown/home.md
-    #自定义Footer
-    enableFooter: false
-    enableFooterCustom: true
-    footerCustomContent: cmmplb
+  # 是否开启默认跨域，默认false，该功能配合自定义Host使用
+  cors: false
+  # 是否生产环境屏蔽
+  production: false
   #开启Swagger的Basic认证功能,默认是false
   basic:
     enable: false
     # Basic认证用户名
     username: admin
     # Basic认证密码-不配置默认账号admin/123321
+    # com.github.xiaoymin.knife4j.core.conf.GlobalConstants
     password: 123321
-  #开启更多文档
+  # 分组文档集合
   documents:
-    -
+    - # 所属分组
       group: 1.2.x
+      # 类似于接口中的tag,对于自定义文档的分组
       name: 测试自定义标题分组
-      # 某一个文件夹下所有的.md文件
+      # markdown文件路径,可以是一个文件夹(classpath:markdowns/*)，也可以是单个文件(classpath:md/sign.md)
       locations: classpath:markdown/*
-    -
-      group: 1.2.x
+    - group: 1.2.x
       name: 接口签名
-      # 某一个文件夹下单个.md文件
       locations: classpath:markdown/5.md
+  # 前端Ui的个性化配置属性
+  setting:
+    # 调试Tab是否显示AfterScript功能,默认开启
+    enable-after-script: true
+    # Ui默认显示语言,目前主要有两种:中文(zh-CN)、英文(en-US)
+    language: zh-CN
+    # 是否显示界面中SwaggerModel功能
+    enable-swagger-models: true
+    # 重命名SwaggerModel名称,默认Swagger Models
+    swagger-model-name: "Swagger Models"
+    # 是否显示界面中"文档管理"功能
+    enable-document-manage: true
+    # 是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
+    enable-reload-cache-parameter: true
+    # 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
+    enable-version: true
+    # 是否开启请求参数缓存
+    enable-request-cache: true
+    # 针对RequestMapping的接口请求类型,在不指定参数类型的情况下,如果不过滤,默认会显示7个类型的接口地址参数,如果开启此配置,默认展示一个Post类型的接口地址
+    enable-filter-multipart-apis: true
+    # 具体接口的过滤类型
+    enable-filter-multipart-api-method-type: GET
+    # 是否启用Host
+    enable-host: false
+    # HOST地址
+    enable-host-text: ""
+    # 是否开启自定义主页内容
+    enable-home-custom: true
+    # 主页内容Markdown文件路径
+    home-custom-location: classpath:markdown/home.md
+    # 是否禁用Ui界面中的搜索框
+    enable-search: false
+    # 是否显示Footer
+    enable-footer: true
+    # 是否开启自定义Footer
+    enable-footer-custom: true
+    # 自定义Footer内容
+    footer-custom-content: "test"
+    # 是否开启动态参数调试功能,在输入参数时会自动添加一行输入框,用户可以在此输入自定义参数
+    enable-dynamic-parameter: false
+    # 启用调试-文档页面就没调试按钮了
+    enable-debug: true
+    # 显示OpenAPI规范
+    enable-open-api: true
+    # 显示服务分组
+    enable-group: true

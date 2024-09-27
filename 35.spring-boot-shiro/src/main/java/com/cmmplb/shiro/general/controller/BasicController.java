@@ -31,7 +31,7 @@ public class BasicController {
     @GetMapping("/sms/code")
     public Result<String> getSmsCode(String phone) {
         // 发送短信验证码...
-        return ResultUtil.success(SmsCodeUtil.create(phone)); // 这里难得看控制台了，直接返回用来测试看验证码了
+        return ResultUtil.success(SmsCodeUtil.create(phone)); // 这里难得看控制台了, 直接返回用来测试看验证码了
     }
 
     @PostMapping("/failure")

@@ -39,7 +39,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * @value: 在redis中 保存缓存在以user命名的集合中
-     * @key :   user集合中的关键字，注意字符串要以单引号括住  '',变量前缀加#号，如#userId
+     * @key :   user集合中的关键字, 注意字符串要以单引号括住  '',变量前缀加#号, 如#userId
      */
     @Override
     @Cacheable(value = "user", key = "'getTestOneMany2SubQuery'")

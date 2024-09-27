@@ -23,6 +23,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import org.springframework.data.redis.listener.Topic;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.util.StringUtils;
 
@@ -56,14 +57,15 @@ public class RedisConfiguration {
     public RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory connectionFactory) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
+
+        // 订阅名称叫cache的通道, 类似 Redis 中的subscribe命令
+        ChannelTopic channelTopic = new ChannelTopic(RedisMessageListenerImpl.REDIS_LISTENER_CHANNEL_MESSAGE);
+        // 订阅名称以 'user-' 开头的全部通道, 类似 Redis 的 pSubscribe 命令
+        PatternTopic patternTopic = new PatternTopic(RedisMessageListenerImpl.REDIS_CHANNEL_MESSAGE);
         // 指定多个通配符
-        container.addMessageListener(redisMessageService, Arrays.asList(
-                // 订阅名称叫cache的通道, 类似 Redis 中的subscribe命令
-                new ChannelTopic(RedisMessageListenerImpl.REDIS_LISTENER_CHANNEL_MESSAGE),
-                // 订阅名称以 'user-' 开头的全部通道, 类似 Redis 的 pSubscribe 命令
-                new PatternTopic(RedisMessageListenerImpl.REDIS_CHANNEL_MESSAGE))
-        );
-        // 添加其他配置，如线程池大小等
+        List<Topic> list = Arrays.asList(channelTopic, patternTopic);
+        container.addMessageListener(redisMessageService, list);
+        // 添加其他配置, 如线程池大小等
         return container;
     }
 

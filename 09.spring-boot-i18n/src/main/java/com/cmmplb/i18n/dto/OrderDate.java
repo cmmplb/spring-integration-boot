@@ -1,6 +1,6 @@
 package com.cmmplb.i18n.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -10,8 +10,9 @@ import lombok.Data;
  */
 
 @Data
+@Schema(name = "OrderDate", description = "OrderDate")
 public class OrderDate {
 
-    @ApiModelProperty(value = "主键id")
+    @Schema(name = "id", description = "主键id")
     private String id;
 }

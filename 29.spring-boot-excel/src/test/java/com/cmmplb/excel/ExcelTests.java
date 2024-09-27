@@ -107,7 +107,7 @@ public class ExcelTests {
     //     DataValida dataValida = new DataValida();
     //     dataValida.setValidationType(DataValidationConstraint.ValidationType.LIST);
     //     dataValida.setDataList(unitNameList);
-    //     dataValida.setError(new Error("提示", "您输入的值未在备选列表中，请从列表中选择一项单位数据"));
+    //     dataValida.setError(new Error("提示", "您输入的值未在备选列表中, 请从列表中选择一项单位数据"));
     //     dataValida.setPrompt(new Prompt("请从列表中选择一项单位数据", "单位不能为空"));
     //     datalist.add(dataValida);
     //     map3.put(2, datalist);

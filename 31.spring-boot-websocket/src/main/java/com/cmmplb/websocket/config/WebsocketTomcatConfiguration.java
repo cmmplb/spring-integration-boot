@@ -17,8 +17,8 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 public class WebsocketTomcatConfiguration {
 
     /**
-     * 扫描并注册所有携带@ServerEndpoint注解的实例。 @ServerEndpoint("/websocket")
-     * 如果使用外部容器，不是直接使用springboot的内置容器，则无需提供ServerEndpointExporter。
+     * 扫描并注册所有携带@ServerEndpoint注解的实例.  @ServerEndpoint("/websocket")
+     * 如果使用外部容器, 不是直接使用springboot的内置容器, 则无需提供ServerEndpointExporter. 
      */
     @Bean
     public ServerEndpointExporter serverEndpointExporter() {

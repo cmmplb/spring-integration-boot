@@ -23,7 +23,7 @@ public interface ProcessDiagramGenerator extends org.activiti.image.ProcessDiagr
      * @param activityFontName
      * @param labelFontName
      * @param annotationFontName
-     * @param colors                流程图颜色定义，这里固定写死的，[0]new Color(0, 205, 0)-绿色-已经运行后的流程;[1]new Color(255, 0, 0)-红色-当前正在执行的流程;
+     * @param colors                流程图颜色定义, 这里固定写死的, [0]new Color(0, 205, 0)-绿色-已经运行后的流程;[1]new Color(255, 0, 0)-红色-当前正在执行的流程;
      * @param activityIds           当前激活的节点
      * @return
      */

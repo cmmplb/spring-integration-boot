@@ -26,7 +26,7 @@ import java.util.Properties;
         @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class})})
 public class MasterSlaveAutoRoutingInterceptor implements Interceptor {
 
-    // 默认主库名称master,从库名称slave。
+    // 默认主库名称master,从库名称slave. 
     private static final String MASTER = "master";
 
     private static final String SLAVE = "slave";

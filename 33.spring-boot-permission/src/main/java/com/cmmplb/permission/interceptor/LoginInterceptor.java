@@ -62,7 +62,7 @@
 //         }
 //
 //         /**
-//          * 2. 通过token获取用户信息，并将用户信息绑定到当前上下文，并重设token有效期
+//          * 2. 通过token获取用户信息, 并将用户信息绑定到当前上下文, 并重设token有效期
 //          */
 //         String token = rc.getToken();
 //         if (null != token) {
@@ -135,7 +135,7 @@
 //
 //         Long uid = rc.getUid();
 //         if (null == uid && null == withoutLogin) {
-//             // 用户未登录，校验登录权限和接口访问权限
+//             // 用户未登录, 校验登录权限和接口访问权限
 //             throw new CustomException(HttpCodeEnum.USERNAME_OR_PASSWORD_ERR);
 //         }
 //

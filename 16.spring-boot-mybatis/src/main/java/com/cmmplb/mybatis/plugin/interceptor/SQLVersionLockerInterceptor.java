@@ -7,9 +7,9 @@ package com.cmmplb.mybatis.plugin.interceptor;
  * 乐观锁：数据版本插件
  */
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.exception.LockerException;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.core.utils.PatternUtil;
+import com.cmmplb.mybatis.handler.exception.LockerException;
 import com.cmmplb.mybatis.plugin.propertise.LockerProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.binding.MapperMethod;
@@ -42,9 +42,9 @@ import java.util.regex.Pattern;
 @Slf4j
 @Component
 @Intercepts({
-        @Signature(type = StatementHandler.class, method = StringConstants.PREPARE, args = {Connection.class, Integer.class}),
-        @Signature(type = ParameterHandler.class, method = StringConstants.SET_PARAMETERS, args = {PreparedStatement.class}),
-        @Signature(type = Executor.class, method = StringConstants.UPDATE, args = {MappedStatement.class, Object.class})
+        @Signature(type = StatementHandler.class, method = StringConstant.PREPARE, args = {Connection.class, Integer.class}),
+        @Signature(type = ParameterHandler.class, method = StringConstant.SET_PARAMETERS, args = {PreparedStatement.class}),
+        @Signature(type = Executor.class, method = StringConstant.UPDATE, args = {MappedStatement.class, Object.class})
 })
 @EnableConfigurationProperties(LockerProperties.class)
 public class SQLVersionLockerInterceptor implements Interceptor {
@@ -56,7 +56,7 @@ public class SQLVersionLockerInterceptor implements Interceptor {
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object intercept(Invocation invocation) throws Throwable {
         String interceptMethod = invocation.getMethod().getName();
-        if (StringConstants.PREPARE.equals(interceptMethod)) {
+        if (StringConstant.PREPARE.equals(interceptMethod)) {
 
             StatementHandler routingHandler = (StatementHandler) processTarget(invocation.getTarget());
             MetaObject routingMeta = SystemMetaObject.forObject(routingHandler);
@@ -69,7 +69,7 @@ public class SQLVersionLockerInterceptor implements Interceptor {
             String builder = originalSql + " AND " + lockerProperties.getColumn() + " = ?";
             mo.setValue("boundSql.sql", builder);
 
-        } else if (StringConstants.SET_PARAMETERS.equals(interceptMethod)) {
+        } else if (StringConstant.SET_PARAMETERS.equals(interceptMethod)) {
 
             ParameterHandler handler = (ParameterHandler) processTarget(invocation.getTarget());
             MetaObject mo = SystemMetaObject.forObject(handler);
@@ -103,11 +103,11 @@ public class SQLVersionLockerInterceptor implements Interceptor {
                 PreparedStatement ps = (PreparedStatement) invocation.getArgs()[0];
                 typeHandler.setParameter(ps, versionLocation, value, jdbcType);
             } catch (TypeException | SQLException e) {
-                throw new TypeException("设置参数“版本”失败，原因： " + e, e);
+                throw new TypeException("设置参数“版本”失败, 原因： " + e, e);
             }
 
             if (!Objects.equals(Objects.requireNonNull(value).getClass(), Long.class) && Objects.equals(value.getClass(), long.class) && log.isDebugEnabled()) {
-                log.error("属性类型错误，版本属性的类型必须是Long或long");
+                log.error("属性类型错误, 版本属性的类型必须是Long或long");
             }
 
             // increase version
@@ -128,7 +128,7 @@ public class SQLVersionLockerInterceptor implements Interceptor {
                 String paramJson = param.toString();
                 if (result == 0) {
                     // "\\s*|\t|\r|\n"
-                    throw new LockerException("[触发乐观锁，更新失败], 失败SQL:" + PatternUtil.replaceStrBlank(sql) + ", 参数: " + paramJson);
+                    throw new LockerException("[触发乐观锁, 更新失败], 失败SQL:" + PatternUtil.replaceStrBlank(sql) + ", 参数: " + paramJson);
                 }
                 return result;
             }
@@ -137,7 +137,7 @@ public class SQLVersionLockerInterceptor implements Interceptor {
     }
 
     /**
-     * Plugin.wrap 方法会自动判断拦截器的签名和被拦截对象的接口是否匹配，只有匹配的情况下才会使用动态代理拦截目标对象.
+     * Plugin.wrap 方法会自动判断拦截器的签名和被拦截对象的接口是否匹配, 只有匹配的情况下才会使用动态代理拦截目标对象.
      * @param target 被拦截的对象
      * @return 代理对象
      */

@@ -380,10 +380,10 @@ public class SecurityUtil {
      private UserDetailsService userDetailsService;
  
     public void logInAs(String username) {
-     UserDetails user = userDetailsService.loadUserByUsername(username);
+     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-     if (user == null) {
-         throw new IllegalStateException("User " + username + " doesn't exist, please provide a valid user");
+     if (userDetails == null) {
+         throw new IllegalStateException("User " + username + " doesn't exist, please provide a valid userDetails");
      }
      logger.info("> Logged in as: " + username);
 
@@ -392,19 +392,19 @@ public class SecurityUtil {
                      new Authentication() {
                          @Override
                          public Collection<? extends GrantedAuthority> getAuthorities() {
-                             return user.getAuthorities();
+                             return userDetails.getAuthorities();
                          }
                          @Override
                          public Object getCredentials() {
-                             return user.getPassword();
+                             return userDetails.getPassword();
                          }
                          @Override
                          public Object getDetails() {
-                             return user;
+                             return userDetails;
                          }
                          @Override
                          public Object getPrincipal() {
-                             return user;
+                             return userDetails;
                          }
                          @Override
                          public boolean isAuthenticated() {
@@ -414,7 +414,7 @@ public class SecurityUtil {
                          public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException { }
                          @Override
                          public String getName() {
-                             return user.getUsername();
+                             return userDetails.getUsername();
                          }
      }));
      org.activiti.engine.impl.identity.Authentication.setAuthenticatedUserId(username);
@@ -465,10 +465,10 @@ public class DemoApplicationConfiguration {
                  {"admin", "password", "ROLE_ACTIVITI_ADMIN"},
          };
 
-         for (String[] user : usersGroupsAndRoles) {
-             List<String> authoritiesStrings = Arrays.asList(Arrays.copyOfRange(user, 2, user.length));
-             logger.info("> Registering new user: " + user[0] + " with the following Authorities[" + authoritiesStrings + "]");
-             inMemoryUserDetailsManager.createUser(new User(user[0], passwordEncoder().encode(user[1]),
+         for (String[] userDetails : usersGroupsAndRoles) {
+             List<String> authoritiesStrings = Arrays.asList(Arrays.copyOfRange(userDetails, 2, userDetails.length));
+             logger.info("> Registering new userDetails: " + userDetails[0] + " with the following Authorities[" + authoritiesStrings + "]");
+             inMemoryUserDetailsManager.createUser(new User(userDetails[0], passwordEncoder().encode(userDetails[1]),
                      authoritiesStrings.stream().map(s -> new SimpleGrantedAuthority(s)).collect(Collectors.toList())));
          }
 

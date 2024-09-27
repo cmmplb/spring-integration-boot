@@ -23,7 +23,7 @@ public class MessageSourceProperties {
     private boolean enabled = false;
 
     /**
-     * 消息包的编码，默认：UTF-8
+     * 消息包的编码, 默认：UTF-8
      */
     private Encoding encoding = Encoding.UTF_8;
 
@@ -33,7 +33,7 @@ public class MessageSourceProperties {
     private String basename = "i18n/messages,i18n/validations";
 
     /**
-     * 加载资源文件的时间，-1：永不过期，默认：-1
+     * 加载资源文件的时间, -1：永不过期, 默认：-1
      */
     private Integer cacheSeconds = -1;
 

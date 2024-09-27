@@ -1,7 +1,7 @@
 package com.cmmplb.shiro.custom.config;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.utils.ThreadUtil;
 import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.custom.config.core.AuthToken;
@@ -41,8 +41,8 @@ public class ShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         String username = ShiroUtil.getUser().getUsername();
         LoginServiceImpl loginService = new LoginServiceImpl();
-        info.addRoles(loginService.getAuthorization(username, GlobalConstants.NUM_ZERO));
-        info.addStringPermissions(loginService.getAuthorization(username, GlobalConstants.NUM_ONE));
+        info.addRoles(loginService.getAuthorization(username, GlobalConstant.NUM_ZERO));
+        info.addStringPermissions(loginService.getAuthorization(username, GlobalConstant.NUM_ONE));
         return info;
     }
 
@@ -71,7 +71,7 @@ public class ShiroRealm extends AuthorizingRealm {
                 if (null != userBean) {
                     redisService.expire(tokenUidCacheKey, AuthorizationConstants.AUTH_CACHE_EXPIRE_SECONDS);
                     return new SimpleAuthenticationInfo(
-                            // 缓存principal，后续可通过SecurityUtils.getSubject().getPrincipal()获取
+                            // 缓存principal, 后续可通过SecurityUtils.getSubject().getPrincipal()获取
                             userBean,
                             token,
                             userBean.getUsername()
@@ -83,7 +83,7 @@ public class ShiroRealm extends AuthorizingRealm {
     }
 
     /**
-     * 必须重写此方法，不然Shiro会报错
+     * 必须重写此方法, 不然Shiro会报错
      * org.apache.shiro.authc.pam.UnsupportedTokenException: Realm [com.cmmplb.shiro.config.ShiroRealm@83829d]
      * does not support authentication token [com.cmmplb.shiro.general.filter.AuthFilter$1@3b562275].
      * Please ensure that the appropriate Realm implementation is configured correctly or that the realm accepts

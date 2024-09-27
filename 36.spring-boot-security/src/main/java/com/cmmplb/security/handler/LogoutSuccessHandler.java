@@ -1,28 +1,36 @@
 package com.cmmplb.security.handler;
 
+import com.alibaba.fastjson.JSON;
+import com.cmmplb.core.constants.StringConstant;
+import com.cmmplb.core.result.ResultUtil;
 import com.cmmplb.core.utils.SpringApplicationUtil;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
  * @author penglibo
- * @date 2021-09-19 23:20:24
+ * @date 2024-09-03 09:49:10
  * @since jdk 1.8
  * 退出登录处理
  */
 
+@Slf4j
 public class LogoutSuccessHandler implements org.springframework.security.web.authentication.logout.LogoutSuccessHandler {
 
     @Override
-    public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        // httpServletResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
-        // httpServletResponse.setContentType("application/json;charset=utf-8");
-        // httpServletResponse.getWriter().write("退出成功，请重新登录");
-        httpServletResponse.sendRedirect(SpringApplicationUtil.path); // 退出之后跳转到登录页
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        log.info("===退出登录处理===:{}", request.getRequestURI());
+        response.setStatus(HttpStatus.OK.value());
+        response.setContentType(StringConstant.APPLICATION_JSON_UTF_8);
+        response.getWriter().write(JSON.toJSONString(ResultUtil.success()));
+        // 退出之后跳转到登录页
+        response.sendRedirect(SpringApplicationUtil.path + "/login");
     }
 }
+

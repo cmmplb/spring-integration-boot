@@ -15,7 +15,7 @@ public class NoModelRead {
 
     public static void main(String[] args) {
         InputStream inputStream = FileUtil.getInputStream("read/demo.xlsx");
-        // 这里只要，然后读取第一个sheet 同步读取会自动finish
+        // 这里只要, 然后读取第一个sheet 同步读取会自动finish
         EasyExcel.read(inputStream, new NoModelDataListener()).sheet().doRead();
     }
 }

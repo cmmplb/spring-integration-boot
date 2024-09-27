@@ -6,7 +6,7 @@
     <parent>
         <artifactId>spring-integration-boot</artifactId>
         <groupId>com.cmmplb</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
@@ -23,10 +23,10 @@
 
     <!-- 依赖 -->
     <dependencies>
-        <!-- web模块 -->
+        <!-- core模块 -->
         <dependency>
             <groupId>com.cmmplb</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-core</artifactId>
         </dependency>
         <!-- websocket -->
         <dependency>

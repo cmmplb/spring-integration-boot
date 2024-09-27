@@ -1,6 +1,7 @@
 package com.cmmplb.i18n.config;
 
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
+import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -17,7 +18,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
-import javax.validation.Validator;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -27,9 +27,9 @@ import java.util.Locale;
  * @since jdk 1.8
  */
 
-// @Configuration
+@Configuration
 @EnableConfigurationProperties(MessageSourceProperties.class)
-@ConditionalOnProperty(prefix = MessageSourceProperties.PREFIX, name = MessageSourceProperties.ENABLED, havingValue = StringConstants.TRUE)
+@ConditionalOnProperty(prefix = MessageSourceProperties.PREFIX, name = MessageSourceProperties.ENABLED, havingValue = StringConstant.TRUE)
 public class MessageSourceConfig {
 
     private final static String LANG = "lang";
@@ -49,7 +49,7 @@ public class MessageSourceConfig {
     }
 
     /**
-     * 默认解析器 其中locale表示默认语言,当请求中未包含语种信息，则设置默认语种
+     * 默认解析器 其中locale表示默认语言,当请求中未包含语种信息, 则设置默认语种
      */
     @Bean
     public LocaleResolver localeResolver() {
@@ -77,7 +77,7 @@ public class MessageSourceConfig {
 
     /**
      * 默认拦截器 其中lang表示切换语言的参数名
-     * 拦截请求，获取请求参数lang种包含的语种信息并重新注册语种信息
+     * 拦截请求, 获取请求参数lang种包含的语种信息并重新注册语种信息
      */
     @Bean
     public WebMvcConfigurer localeInterceptor() {
@@ -92,7 +92,9 @@ public class MessageSourceConfig {
     }
 
     /**
-     * 自定义国际化文件存放路径
+     * 自定义国际化文件存放路径,这个需要单独放到具体服务中, 配置到模块中会读取当前classPath目录下的多语言文件
+     * 无法读取到引入依赖的模块,这里采用全局异常, 解析@NotBlank(message="{validate}")参数中的validate,
+     * 单独调用MessageUtil.getMessage(validate)来响应, 所以这个bean在跨模块中会失效
      * @return Validator
      */
     @Bean

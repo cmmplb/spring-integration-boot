@@ -1,7 +1,7 @@
 <template>
   <!-- 用户信息 -->
-  <div class="user-info-container">
-    <div class="user-info">
+  <div class="userDetails-info-container">
+    <div class="userDetails-info">
       <div class="header">
         <img src="ele.avatar" class="avatar" alt="">
         <div class="action">
@@ -60,7 +60,7 @@
 <script>
 
 export default {
-  name: "user-info-container",
+  name: "userDetails-info-container",
   components: {},
   props: {
     userId: {

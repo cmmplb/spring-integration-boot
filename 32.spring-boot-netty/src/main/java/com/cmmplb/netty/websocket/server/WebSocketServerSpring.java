@@ -58,7 +58,7 @@ package com.cmmplb.netty.websocket.server;//package com.cmmplb.netty.websocket.s
 //                        socketChannel.pipeline().addLast(new HttpObjectAggregator(8192));
 //                        // 处理其他的 WebSocketFrame
 //                        socketChannel.pipeline().addLast(new WebSocketServerProtocolHandler("/ws", "WebSocket", true, 65536 * 10));
-//                        // 这个类的代码是模板代码，最核心的就是ch.pipeline().addLast(new MyWebSocketHandler())，
+//                        // 这个类的代码是模板代码, 最核心的就是ch.pipeline().addLast(new MyWebSocketHandler()), 
 //                        // 可以根据自己的需求配置即可
 //                        socketChannel.pipeline().addLast(new WebSocketHandler());
 //                    }
@@ -66,7 +66,7 @@ package com.cmmplb.netty.websocket.server;//package com.cmmplb.netty.websocket.s
 //        ChannelFuture sync = null; // 服务器异步创建绑定
 //        try {
 //            sync = serverBootstrap.bind(portProperties.getWebSocket()).sync();
-//            log.info("启动webSocket服务器启动成功，正在监听端口:" + portProperties.getWebSocket());
+//            log.info("启动webSocket服务器启动成功, 正在监听端口:" + portProperties.getWebSocket());
 //            sync.channel().closeFuture().sync(); //以异步的方式关闭端口
 //        } catch (InterruptedException e) {
 //            log.info("启动出现异常：" + e);

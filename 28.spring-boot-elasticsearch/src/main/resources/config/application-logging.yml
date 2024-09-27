@@ -3,5 +3,5 @@ logging:
   # log level(trace < debug < info < warn < error)
   # -----------------------------------
   level:
-    root: debug
+    root: info
     com.cmmplb: debug

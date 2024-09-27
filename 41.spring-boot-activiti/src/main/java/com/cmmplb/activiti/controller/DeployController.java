@@ -31,26 +31,26 @@ public class DeployController {
     @Autowired
     private DeployService deployService;
 
-    @ApiOperation("分页条件查询列表")
+    @Operation(summary = "分页条件查询列表")
     @PostMapping(value = "/paged")
     public Result<PageResult<ProcessDefinitionVO>> getByPaged(@RequestBody QueryPageBean queryPageBean) {
         return ResultUtil.success(deployService.getByPaged(queryPageBean));
     }
 
-    @ApiOperation("上传部署流程文件")
+    @Operation(summary = "上传部署流程文件")
     @PostMapping(value = "/upload")
     public Result<Boolean> upload(@RequestPart(value = "files") MultipartFile[] files) {
         return ResultUtil.success(deployService.upload(files));
     }
 
-    @ApiOperation("删除")
+    @Operation(summary = "删除")
     @DeleteMapping(value = "/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "部署id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<Boolean> removeById(@PathVariable(value = "id") String id) {
         return ResultUtil.success(deployService.removeById(id));
     }
 
-    @ApiOperation("查看工作流定义")
+    @Operation(summary = "查看工作流定义")
     @GetMapping(value = "/show/process/{id}/{resource}")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", paramType = "query", value = "部署id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1"),
@@ -60,28 +60,28 @@ public class DeployController {
         deployService.showProcessDefinition(id, resource);
     }
 
-    @ApiOperation("查看流程图")
+    @Operation(summary = "查看流程图")
     @GetMapping(value = "/show/model/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "流程定义id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public void showFlowChart(@PathVariable(value = "id") String id) {
         deployService.showProcessChart(id);
     }
 
-    @ApiOperation("将流程定义转为模型")
+    @Operation(summary = "将流程定义转为模型")
     @PostMapping(value = "/exchange/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "流程定义id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<Boolean> exchangeProcessToModel(@PathVariable(value = "id") String id) {
         return ResultUtil.success(deployService.exchangeProcessToModel(id));
     }
 
-    @ApiOperation("挂起流程定义")
+    @Operation(summary = "挂起流程定义")
     @PostMapping(value = "/suspend/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "流程定义id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<Boolean> suspendProcessDefinition(@PathVariable(value = "id") String id, @RequestBody SuspendActivateProcessDefinitionDTO dto) {
         return ResultUtil.success(deployService.suspendProcessDefinition(id, dto));
     }
 
-    @ApiOperation("激活流程定义")
+    @Operation(summary = "激活流程定义")
     @PostMapping(value = "/activate/{id}")
     @ApiImplicitParam(name = "id", paramType = "query", value = "流程定义id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
     public Result<Boolean> activateProcessDefinition(@PathVariable(value = "id") String id, @RequestBody SuspendActivateProcessDefinitionDTO dto) {

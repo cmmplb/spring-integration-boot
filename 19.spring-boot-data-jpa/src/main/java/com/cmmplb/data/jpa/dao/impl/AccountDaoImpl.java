@@ -16,6 +16,8 @@ import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,8 +25,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
@@ -106,13 +106,13 @@ public class AccountDaoImpl implements AccountDao {
 
         JPAQuery<AccountInfoVO> query = new JPAQuery<>(em);
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-        // 联查两张相同表qAccount1，qAccount2
+        // 联查两张相同表qAccount1, qAccount2
         JPQLQuery<String> subQuery = JPAExpressions.select(qAccount1.name.as("accountName")).from(qAccount1);
 
         JPAQuery<AccountInfoVO> select;
         // *************使用bean投影嵌套子查询*************失败
         // select = query.select(
-        //         // bean投影，可以自动装箱到对象里面，对应字段取别名
+        //         // bean投影, 可以自动装箱到对象里面, 对应字段取别名
         //         Projections.bean(AccountInfoVO.class
         //                 , account.id
         //                 , account.name
@@ -127,8 +127,8 @@ public class AccountDaoImpl implements AccountDao {
 
         // *************使用fields投影嵌套子查询*************失败
         // select = query.select(
-        //         // fields投影可以自动装箱到对象里面，对应字段取别名
-        //         // ，构造器方式可以映射
+        //         // fields投影可以自动装箱到对象里面, 对应字段取别名
+        //         // , 构造器方式可以映射
         //         Projections.fields(AccountInfoVO.class
         //                 , account.id
         //                 , account.name
@@ -144,8 +144,8 @@ public class AccountDaoImpl implements AccountDao {
 
         // *************使用构造器投影嵌套子查询*************成功
         select = query.select(
-                // 构造器投影,这种构造器方式，只支持对数值和String类型的映射处理，当你定义了Date等等类型，需要在构造函数转换string为对象类型
-                // 可以自动装箱到对象里面，对应字段取别名
+                // 构造器投影,这种构造器方式, 只支持对数值和String类型的映射处理, 当你定义了Date等等类型, 需要在构造函数转换string为对象类型
+                // 可以自动装箱到对象里面, 对应字段取别名
                 Projections.constructor(AccountInfoVO.class
                         , account.id
                         , account.name
@@ -175,8 +175,8 @@ public class AccountDaoImpl implements AccountDao {
         // *************使用Tuple嵌套子查询*************成功
         // JPAQuery<Tuple> jpaQuery = new JPAQuery<>(em);
         // jpaQuery.select(
-        //         // fields投影可以自动装箱到对象里面，对应字段取别名
-        //         // ，构造器方式可以映射
+        //         // fields投影可以自动装箱到对象里面, 对应字段取别名
+        //         // , 构造器方式可以映射
         //         account.id
         //         , account.name
         //         , account.password
@@ -184,7 +184,7 @@ public class AccountDaoImpl implements AccountDao {
         //         , tag.id.as("tagId")
         //         , tag.name.as("tagName")
         //         , stringTemplate.as("formatCreateTime")
-        //         // 嵌套子查询,使用Tuple嵌套子查询没报错，使用上面那种映射关系就报错了。
+        //         // 嵌套子查询,使用Tuple嵌套子查询没报错, 使用上面那种映射关系就报错了. 
         //         , (subQuery)
         // );
         // jpaQuery.from(account).leftJoin(tag).on(tag.accountId.eq(account.id));

@@ -20,7 +20,7 @@ import com.cmmplb.activiti.service.LeaveApplyService;
 import com.cmmplb.activiti.util.ActivitiUtil;
 import com.cmmplb.activiti.vo.*;
 import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.exception.CustomException;
 import com.cmmplb.core.result.ResultUtil;
 import com.cmmplb.core.utils.ServletUtil;
@@ -92,7 +92,7 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
         Apply applyUp = new Apply();
         applyUp.setId(id);
         // 流程状态:0-进行中;1-已完成;2-已驳回;3-已撤销;
-        applyUp.setStatus(GlobalConstants.NUM_THREE);
+        applyUp.setStatus(GlobalConstant.NUM_THREE);
         // 删除流程信息
         String businessKey = apply.getDefKey() + ":" + apply.getId();
         deleteProcessInstance(apply.getDefKey(), businessKey);
@@ -107,7 +107,7 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
         }
         int i = baseMapper.deleteById(id);
         // 类型:1-请假;2-出差;3...
-        if (apply.getType().equals(GlobalConstants.NUM_ONE)) {
+        if (apply.getType().equals(GlobalConstant.NUM_ONE)) {
             // 删除关联的请假申请信息
             LeaveApply leaveApply = leaveApplyService.getById(apply.getBusinessId());
             if (null == leaveApply) {
@@ -117,7 +117,7 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
 
             // 删除请假关联的日期信息
             leaveApplyDateService.remove(new LambdaQueryWrapper<LeaveApplyDate>().eq(LeaveApplyDate::getLeaveApplyId, apply.getBusinessId()));
-        } else if (apply.getType().equals(GlobalConstants.NUM_TWO)) {
+        } else if (apply.getType().equals(GlobalConstant.NUM_TWO)) {
             // 删除关联的请假申请信息
             EvectionApply evectionApply = evectionApplyService.getById(apply.getBusinessId());
             if (null == evectionApply) {
@@ -144,10 +144,10 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
     public ApplyDetailsVO getApplyDetailsById(Long id) {
         ApplyDetailsVO vo = baseMapper.selectDetailsById(id);
         // 类型:1-请假;2-出差;3...
-        if (vo.getType().equals(GlobalConstants.NUM_ONE)) {
+        if (vo.getType().equals(GlobalConstant.NUM_ONE)) {
             LeaveApplyDetailsVO leaveApply = leaveApplyService.getDetailsById(vo.getBusinessId());
             vo.setLeaveApplyDetails(leaveApply);
-        } else if (vo.getType().equals(GlobalConstants.NUM_TWO)) {
+        } else if (vo.getType().equals(GlobalConstant.NUM_TWO)) {
             EvectionApplyDetailsVO evectionApply = evectionApplyService.getDetailsById(vo.getBusinessId());
             vo.setEvectionApplyDetails(evectionApply);
         }
@@ -164,7 +164,7 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
         try {
             // 定义businessKey,一般为流程实例key与实际业务数据的结合
             String businessKey = apply.getDefKey() + ":" + apply.getId();
-            // 如果流程结束(驳回)，当前流程实例为空
+            // 如果流程结束(驳回), 当前流程实例为空
             ProcessInstance process = runtimeService.createProcessInstanceQuery()
                     .processDefinitionKey(apply.getDefKey())
                     .processInstanceBusinessKey(businessKey)
@@ -176,9 +176,9 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
                 log.error("流程信息不存在");
                 return;
             }
-            // 获取流程中已经执行的节点，按照执行先后顺序排序
+            // 获取流程中已经执行的节点, 按照执行先后顺序排序
             List<HistoricActivityInstance> historicActivityInstances = historyService.createHistoricActivityInstanceQuery()
-                    // 这里，如果流程结束的话，process会为空，所以查询历史流程，这样也能看到结束的流程进度信息。
+                    // 这里, 如果流程结束的话, process会为空, 所以查询历史流程, 这样也能看到结束的流程进度信息. 
                     .processInstanceId(null == process ? processInstance.getId() : process.getId())
                     .orderByHistoricActivityInstanceStartTime().asc().list();
             BpmnModel bpmnModel = repositoryService.getBpmnModel(processInstance.getProcessDefinitionId());
@@ -192,11 +192,11 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
 
             Set<String> activityIds = runtimeService.createExecutionQuery().processInstanceId(processInstance.getId()).list()
                     .stream().map(org.activiti.engine.runtime.Execution::getActivityId).collect(Collectors.toSet());
-            // activiti7移除了静态方法创建，需要DefaultProcessDiagramGenerator实例
+            // activiti7移除了静态方法创建, 需要DefaultProcessDiagramGenerator实例
             // ProcessDiagramGenerator diagramGenerator = new DefaultProcessDiagramGenerator();
-            // 由于是创建的新实例，这里的DiagramGenerator就不用注入到配置类里面了，当然ActivitiConfiguration配置类也移除了set的方法。
+            // 由于是创建的新实例, 这里的DiagramGenerator就不用注入到配置类里面了, 当然ActivitiConfiguration配置类也移除了set的方法. 
             ProcessDiagramGeneratorImpl diagramGenerator = new ProcessDiagramGeneratorImpl();
-            // 使用默认配置获得流程图表生成器，并生成追踪图片字符流
+            // 使用默认配置获得流程图表生成器, 并生成追踪图片字符流
             InputStream is = diagramGenerator.generateDiagram(bpmnModel,
                     highLightedActivitiIds,
                     highLightedFlowIds,
@@ -233,7 +233,7 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
                 .processInstanceBusinessKey(businessKey)
                 .singleResult();
         // 流程实例的当前任务act_ru_task会被删除
-        // 流程历史act_hi_taskinst不会被删除，并且流程历史的状态置为finished完成。
+        // 流程历史act_hi_taskinst不会被删除, 并且流程历史的状态置为finished完成. 
         if (process != null) {
             runtimeService.deleteProcessInstance(process.getId(), "删除请假流程信息");
         }

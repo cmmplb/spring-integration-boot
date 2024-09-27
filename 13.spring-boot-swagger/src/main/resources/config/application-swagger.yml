@@ -1,3 +1,21 @@
+# Failed to start bean 'documentationPluginsBootstrapper'
+# 从Spring Boot 2.6开始，默认的匹配策略已经改为PathPatternParser
+# AntPathMatcher：这种策略支持通配符如*（匹配任意字符序列）和**（匹配任意深度的目录结构）
+#    例如，/api/users/**可以匹配到/api/users/123或/api/users/profile等任何以/api/users/开头的路径。
+# PathPatternParser：更高效的路径匹配策略
+# 特点和改进：
+# 主要特性
+# 1、性能提升：PathPatternParser经过优化，通常比AntPathMatcher更快，尤其是在处理大量路由规则时，这归功于其内部更高效的数据结构和算法。
+# 2、更丰富的匹配模式：
+#       支持命名捕获组（Named Captures），允许直接通过名称引用匹配的部分，而不仅仅是位置序号。
+#       提供了更精细的控制选项，如忽略大小写匹配、严格模式匹配等。
+#       支持更复杂的路径模式，包括精确匹配、通配符匹配、以及正则表达式风格的匹配规则。
+# 3、路径段匹配：它以路径段（path segment）为单位进行匹配，而非简单的字符串比较，这使得匹配逻辑更加清晰和高效。
+# 4、路径参数增强：除了基本的路径变量匹配外，还支持更复杂的路径参数模式，例如可选参数、重复参数模式等。
+# 5、更直观的错误报告：当路径不匹配时，它可以提供更详细的错误信息，帮助开发者快速定位问题。
+
+spring.mvc.pathmatch.matching-strategy: ant_path_matcher
+
 # swagger配置
 swagger:
   # 是否开启swagger
@@ -17,7 +35,7 @@ swagger:
   # 描述
   description: description
   # 版本
-  version: @project.varsion@
+  version: @project.version@
   # 许可证
   license: license
   # 许可证URL

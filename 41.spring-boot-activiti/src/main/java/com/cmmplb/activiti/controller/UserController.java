@@ -29,7 +29,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation("获取用户列表")
+    @Operation(summary = "获取用户列表")
     @GetMapping(value = "/list")
     public Result<List<UserInfoVO>> getList() {
         return ResultUtil.success(userService.getList());

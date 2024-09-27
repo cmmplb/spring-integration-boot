@@ -20,7 +20,7 @@ public class IndexController {
     @RequestMapping("/devtools")
     public Result<String> index(String name) {
 
-        String res = "hello spring boot" + (StringUtil.isEmpty(name) ? "" : name);
+        String res = "hello spring boot-lisi" + (StringUtil.isEmpty(name) ? "" : name);
         return ResultUtil.success(res);
     }
 }

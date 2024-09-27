@@ -82,9 +82,8 @@ public class MybatisPlusAutoConfiguration implements WebMvcConfigurer {
          * 动态表名
          */
         DynamicTableNameInnerInterceptor dynamicTableNameInnerInterceptor = new DynamicTableNameInnerInterceptor();
+        // 低版本配置
         HashMap<String, TableNameHandler> map = new HashMap<String, TableNameHandler>(2) {
-            private static final long serialVersionUID = 6367364676663301512L;
-
             {
                 /*添加表名规则*/
                 /*put("user", (sql, tableName) -> {
@@ -97,11 +96,20 @@ public class MybatisPlusAutoConfiguration implements WebMvcConfigurer {
                 });*/
             }
         };
-        dynamicTableNameInnerInterceptor.setTableNameHandlerMap(map);
+        // 高版本配置
+        TableNameHandler tableNameHandler = new TableNameHandler() {
+            @Override
+            public String dynamicTableName(String sql, String tableName) {
+                /*添加表名规则*/
+                // 这里可以更新tableName
+                return tableName;
+            }
+        };
+        dynamicTableNameInnerInterceptor.setTableNameHandler(tableNameHandler);
         interceptor.addInnerInterceptor(dynamicTableNameInnerInterceptor);
 
         /*
-         * -分页拦截器- 如果是不同类型的库，请不要指定DbType，其会自动判断。
+         * -分页拦截器- 如果是不同类型的库, 请不要指定DbType, 其会自动判断.
          * -对于单一数据库类型来说,都建议配置该值,避免每次分页都去抓取数据库类型
          * -新的分页插件,一缓和二缓遵循mybatis的规则,需要设置 MybatisConfiguration#useDeprecatedExecutor = false
          *  避免缓存出现问题(该属性会在旧插件移除后一同移除)
@@ -145,36 +153,4 @@ public class MybatisPlusAutoConfiguration implements WebMvcConfigurer {
          */
         return builder -> builder.featuresToEnable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
     }
-
-    /*@Bean
-    public ConfigurationCustomizer configurationCustomizer() {
-        return configuration -> configuration.setUseDeprecatedExecutor(false);
-    }*/
-
-    /**
-     * mybatis-plus分页插件 v-3.4.0以上版本移除了
-     * @return
-     */
-    /*@Bean
-    public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor page = new PaginationInterceptor();
-        page.setDialectType("mysql");
-        // 设置sql的limit为无限制，默认是500
-        page.setLimit(-1);
-        return page;
-    }*/
-
-    /**
-     * mybatis-plus SQL执行效率插件【生产环境可以关闭】-mybatis-plus-3.2.0以上版本移除了
-     */
-    /*@Bean
-    @Profile({"dev", "sit"})// 设置 dev test prod环境开启
-    public PerformanceInterceptor performanceInterceptor() {
-        PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
-        // maxTime 指的是 sql 最大执行时长
-        performanceInterceptor.setMaxTime(5000);
-        //SQL是否格式化 默认false
-        performanceInterceptor.setFormat(true);
-        return new PerformanceInterceptor();
-    }*/
 }

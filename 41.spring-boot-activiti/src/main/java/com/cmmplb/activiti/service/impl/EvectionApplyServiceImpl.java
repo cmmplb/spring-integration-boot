@@ -10,7 +10,7 @@ import com.cmmplb.activiti.service.ApplyService;
 import com.cmmplb.activiti.service.EvectionApplyService;
 import com.cmmplb.activiti.util.SecurityUtil;
 import com.cmmplb.activiti.vo.EvectionApplyDetailsVO;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.exception.CustomException;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.RepositoryService;
@@ -52,9 +52,9 @@ public class EvectionApplyServiceImpl extends ServiceImpl<EvectionApplyMapper, E
     @Override
     public boolean save(EvectionApplyDTO dto) {
         EvectionApply evectionApply = new EvectionApply();
-        // 这里不整合认证授权，从前端切换用户用来快速测试
+        // 这里不整合认证授权, 从前端切换用户用来快速测试
         evectionApply.setUserId(SecurityUtil.getUserId());
-        evectionApply.setStatus(GlobalConstants.NUM_ZERO);
+        evectionApply.setStatus(GlobalConstant.NUM_ZERO);
         evectionApply.setReason(dto.getReason());
         evectionApply.setStartTime(dto.getStartTime());
         evectionApply.setEndTime(dto.getEndTime());
@@ -68,15 +68,15 @@ public class EvectionApplyServiceImpl extends ServiceImpl<EvectionApplyMapper, E
             throw new CustomException("流程定义信息不存在");
         }
         if (processDefinition.isSuspended()) {
-            throw new CustomException("流程已挂起，暂时无法申请");
+            throw new CustomException("流程已挂起, 暂时无法申请");
         }
         // 添加事项申请信息
         Apply apply = new Apply();
         apply.setTitle(dto.getTitle());
         apply.setUserId(SecurityUtil.getUserId());
-        apply.setType(GlobalConstants.NUM_TWO);
+        apply.setType(GlobalConstant.NUM_TWO);
         apply.setBusinessId(evectionApply.getId());
-        apply.setStatus(GlobalConstants.NUM_ZERO);
+        apply.setStatus(GlobalConstant.NUM_ZERO);
         apply.setApplyTime(dto.getApplyTime());
         apply.setDefKey(processDefinition.getKey());
         apply.setCreateTime(new Date());
@@ -88,8 +88,8 @@ public class EvectionApplyServiceImpl extends ServiceImpl<EvectionApplyMapper, E
 
         // 发起请假流程
         HashMap<String, Object> variables = new HashMap<>();
-        // 这里直接指定流程的负责人，其他情况也可以在完成任务的时候设置或者转让负责人
-        // 这里存的用户id，第一个申请的任务由本人完成
+        // 这里直接指定流程的负责人, 其他情况也可以在完成任务的时候设置或者转让负责人
+        // 这里存的用户id, 第一个申请的任务由本人完成
         variables.put("assignee0", SecurityUtil.getUserId().toString());
         variables.put("assignee1", 3);
         variables.put("assignee2", 1);

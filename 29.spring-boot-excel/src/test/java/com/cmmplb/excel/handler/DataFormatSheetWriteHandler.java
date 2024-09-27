@@ -23,8 +23,8 @@ import java.util.Map;
 public class DataFormatSheetWriteHandler implements SheetWriteHandler {
 
     /**
-     * key-对应表头列索引，从0开始
-     * value-内容格式索引，对应：{@link com.alibaba.excel.constant.BuiltinFormats}
+     * key-对应表头列索引, 从0开始
+     * value-内容格式索引, 对应：{@link com.alibaba.excel.constant.BuiltinFormats}
      */
     private final Map<Integer, DataFormatData> dataFormatMap;
 

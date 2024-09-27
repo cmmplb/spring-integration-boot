@@ -6,7 +6,7 @@
     <parent>
         <artifactId>spring-boot-xxl-job</artifactId>
         <groupId>com.xxl.job</groupId>
-        <version>1.0.0</version>
+        <version>3.0.0</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>

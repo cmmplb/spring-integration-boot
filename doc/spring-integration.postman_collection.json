@@ -425,12 +425,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/save",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/save",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"save"
 											]
 										}
@@ -443,12 +443,12 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/6",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/6",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"6"
 											]
 										}
@@ -477,12 +477,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/1",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/1",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"1"
 											]
 										}
@@ -495,12 +495,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/list",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/list",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"list"
 											]
 										}
@@ -513,12 +513,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/1",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/1",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"1"
 											]
 										}
@@ -531,12 +531,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/paged",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/paged",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"paged"
 											]
 										}
@@ -570,12 +570,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/info/save",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/info/save",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"info",
 												"save"
 											]
@@ -589,12 +589,12 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/info/3",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/info/3",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"info",
 												"3"
 											]
@@ -624,12 +624,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/info/1",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/info/1",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"info",
 												"1"
 											]
@@ -643,12 +643,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/info/list",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/info/list",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"info",
 												"list"
 											]
@@ -662,12 +662,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/info/1",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/info/1",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"info",
 												"1"
 											]
@@ -699,12 +699,12 @@
 											]
 										},
 										"url": {
-											"raw": "{{base-url}}{{mybatis}}/user/info/paged",
+											"raw": "{{base-url}}{{mybatis}}/userDetails/info/paged",
 											"host": [
 												"{{base-url}}{{mybatis}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"info",
 												"paged"
 											]
@@ -866,13 +866,13 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/lambda/user/list",
+											"raw": "{{base-url}}{{mybatis-plus}}/lambda/userDetails/list",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
 												"lambda",
-												"user",
+												"userDetails",
 												"list"
 											]
 										}
@@ -885,13 +885,13 @@
 										"method": "PUT",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/lambda/user/update",
+											"raw": "{{base-url}}{{mybatis-plus}}/lambda/userDetails/update",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
 												"lambda",
-												"user",
+												"userDetails",
 												"update"
 											]
 										}
@@ -918,12 +918,12 @@
 											"raw": "{\n    \"createTime\": \"<dateTime>\",\n    \"deleted\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"mobile\": \"<string>\",\n    \"name\": \"<string>\",\n    \"sex\": \"<string>\",\n    \"status\": \"<string>\",\n    \"updateTime\": \"<dateTime>\",\n    \"version\": \"<integer>\"\n}"
 										},
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/user/save",
+											"raw": "{{base-url}}{{mybatis-plus}}/userDetails/save",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"save"
 											]
 										}
@@ -945,12 +945,12 @@
 											"raw": "[\n    {\n        \"createTime\": \"<dateTime>\",\n        \"deleted\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"mobile\": \"<string>\",\n        \"name\": \"<string>\",\n        \"sex\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updateTime\": \"<dateTime>\",\n        \"version\": \"<integer>\"\n    },\n    {\n        \"createTime\": \"<dateTime>\",\n        \"deleted\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"mobile\": \"<string>\",\n        \"name\": \"<string>\",\n        \"sex\": \"<string>\",\n        \"status\": \"<string>\",\n        \"updateTime\": \"<dateTime>\",\n        \"version\": \"<integer>\"\n    }\n]"
 										},
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/user/save/batch",
+											"raw": "{{base-url}}{{mybatis-plus}}/userDetails/save/batch",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"save",
 												"batch"
 											]
@@ -964,12 +964,12 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/user/:id?id=<long>",
+											"raw": "{{base-url}}{{mybatis-plus}}/userDetails/:id?id=<long>",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												":id"
 											],
 											"query": [
@@ -995,12 +995,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/user/1",
+											"raw": "{{base-url}}{{mybatis-plus}}/userDetails/1",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"1"
 											]
 										}
@@ -1013,12 +1013,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/user/list",
+											"raw": "{{base-url}}{{mybatis-plus}}/userDetails/list",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"list"
 											]
 										}
@@ -1040,12 +1040,12 @@
 											"raw": "{\n    \"createTime\": \"<dateTime>\",\n    \"deleted\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"mobile\": \"<string>\",\n    \"name\": \"<string>\",\n    \"sex\": \"<string>\",\n    \"status\": \"<string>\",\n    \"updateTime\": \"<dateTime>\",\n    \"version\": \"<integer>\"\n}"
 										},
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/user/:id?id=<long>",
+											"raw": "{{base-url}}{{mybatis-plus}}/userDetails/:id?id=<long>",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												":id"
 											],
 											"query": [
@@ -1071,12 +1071,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/user/paged",
+											"raw": "{{base-url}}{{mybatis-plus}}/userDetails/paged",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"paged"
 											],
 											"query": [
@@ -1106,12 +1106,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/user/one/many/sub/query/1",
+											"raw": "{{base-url}}{{mybatis-plus}}/userDetails/one/many/sub/query/1",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"one",
 												"many",
 												"sub",
@@ -1145,12 +1145,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mybatis-plus}}/user/one/many/field/mapping/1",
+											"raw": "{{base-url}}{{mybatis-plus}}/userDetails/one/many/field/mapping/1",
 											"host": [
 												"{{base-url}}{{mybatis-plus}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"one",
 												"many",
 												"field",
@@ -1191,12 +1191,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base-url}}{{dynamic-datasource}}/user/list",
+									"raw": "{{base-url}}{{dynamic-datasource}}/userDetails/list",
 									"host": [
 										"{{base-url}}{{dynamic-datasource}}"
 									],
 									"path": [
-										"user",
+										"userDetails",
 										"list"
 									]
 								}
@@ -1214,12 +1214,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base-url}}{{dynamic-datasource}}/user/list",
+									"raw": "{{base-url}}{{dynamic-datasource}}/userDetails/list",
 									"host": [
 										"{{base-url}}{{dynamic-datasource}}"
 									],
 									"path": [
-										"user",
+										"userDetails",
 										"list"
 									]
 								}
@@ -1249,9 +1249,9 @@
 											}
 										},
 										"url": {
-											"raw": "{{base-url}}{{cache}}user/save",
+											"raw": "{{base-url}}{{cache}}userDetails/save",
 											"host": [
-												"{{base-url}}{{cache}}user"
+												"{{base-url}}{{cache}}userDetails"
 											],
 											"path": [
 												"save"
@@ -1266,9 +1266,9 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{cache}}user/4",
+											"raw": "{{base-url}}{{cache}}userDetails/4",
 											"host": [
-												"{{base-url}}{{cache}}user"
+												"{{base-url}}{{cache}}userDetails"
 											],
 											"path": [
 												"4"
@@ -1292,9 +1292,9 @@
 											}
 										},
 										"url": {
-											"raw": "{{base-url}}{{cache}}user/3",
+											"raw": "{{base-url}}{{cache}}userDetails/3",
 											"host": [
-												"{{base-url}}{{cache}}user"
+												"{{base-url}}{{cache}}userDetails"
 											],
 											"path": [
 												"3"
@@ -1309,9 +1309,9 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{cache}}user/list",
+											"raw": "{{base-url}}{{cache}}userDetails/list",
 											"host": [
-												"{{base-url}}{{cache}}user"
+												"{{base-url}}{{cache}}userDetails"
 											],
 											"path": [
 												"list"
@@ -1326,9 +1326,9 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{cache}}user/3",
+											"raw": "{{base-url}}{{cache}}userDetails/3",
 											"host": [
-												"{{base-url}}{{cache}}user"
+												"{{base-url}}{{cache}}userDetails"
 											],
 											"path": [
 												"3"
@@ -1386,9 +1386,9 @@
 											}
 										},
 										"url": {
-											"raw": "{{base-url}}{{mongodb}}user/save",
+											"raw": "{{base-url}}{{mongodb}}userDetails/save",
 											"host": [
-												"{{base-url}}{{mongodb}}user"
+												"{{base-url}}{{mongodb}}userDetails"
 											],
 											"path": [
 												"save"
@@ -1403,9 +1403,9 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mongodb}}user/61400ce0d7fce2311b2e75bd",
+											"raw": "{{base-url}}{{mongodb}}userDetails/61400ce0d7fce2311b2e75bd",
 											"host": [
-												"{{base-url}}{{mongodb}}user"
+												"{{base-url}}{{mongodb}}userDetails"
 											],
 											"path": [
 												"61400ce0d7fce2311b2e75bd"
@@ -1429,9 +1429,9 @@
 											}
 										},
 										"url": {
-											"raw": "{{base-url}}{{mongodb}}user/61400b2dd7fce2311b2e75bc",
+											"raw": "{{base-url}}{{mongodb}}userDetails/61400b2dd7fce2311b2e75bc",
 											"host": [
-												"{{base-url}}{{mongodb}}user"
+												"{{base-url}}{{mongodb}}userDetails"
 											],
 											"path": [
 												"61400b2dd7fce2311b2e75bc"
@@ -1446,9 +1446,9 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mongodb}}user/list",
+											"raw": "{{base-url}}{{mongodb}}userDetails/list",
 											"host": [
-												"{{base-url}}{{mongodb}}user"
+												"{{base-url}}{{mongodb}}userDetails"
 											],
 											"path": [
 												"list"
@@ -1481,9 +1481,9 @@
 											]
 										},
 										"url": {
-											"raw": "{{base-url}}{{mongodb}}user/condition",
+											"raw": "{{base-url}}{{mongodb}}userDetails/condition",
 											"host": [
-												"{{base-url}}{{mongodb}}user"
+												"{{base-url}}{{mongodb}}userDetails"
 											],
 											"path": [
 												"condition"
@@ -1498,9 +1498,9 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{mongodb}}user/61400b2dd7fce2311b2e75bc",
+											"raw": "{{base-url}}{{mongodb}}userDetails/61400b2dd7fce2311b2e75bc",
 											"host": [
-												"{{base-url}}{{mongodb}}user"
+												"{{base-url}}{{mongodb}}userDetails"
 											],
 											"path": [
 												"61400b2dd7fce2311b2e75bc"
@@ -1522,9 +1522,9 @@
 											"formdata": []
 										},
 										"url": {
-											"raw": "{{base-url}}{{mongodb}}user/page",
+											"raw": "{{base-url}}{{mongodb}}userDetails/page",
 											"host": [
-												"{{base-url}}{{mongodb}}user"
+												"{{base-url}}{{mongodb}}userDetails"
 											],
 											"path": [
 												"page"
@@ -2011,13 +2011,13 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{shiro}}/annotation/user",
+											"raw": "{{base-url}}{{shiro}}/annotation/userDetails",
 											"host": [
 												"{{base-url}}{{shiro}}"
 											],
 											"path": [
 												"annotation",
-												"user"
+												"userDetails"
 											]
 										}
 									},
@@ -2408,12 +2408,12 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{base-url}}{{security}}/user/info",
+											"raw": "{{base-url}}{{security}}/userDetails/info",
 											"host": [
 												"{{base-url}}{{security}}"
 											],
 											"path": [
-												"user",
+												"userDetails",
 												"info"
 											]
 										}

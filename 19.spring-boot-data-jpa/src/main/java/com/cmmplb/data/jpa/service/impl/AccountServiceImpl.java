@@ -65,7 +65,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public PageResult<Account> getByPaged(QueryPageBean queryPageBean) {
-        Page<Account> page = accountRepository.findAll(PageRequest.of(queryPageBean.getCurrent(), queryPageBean.getSize(), Sort.Direction.DESC, "id"));
+        // PageRequest第一页的pageNumber是0
+        Page<Account> page = accountRepository.findAll(PageRequest.of(queryPageBean.getCurrent() - 1, queryPageBean.getSize(), Sort.Direction.DESC, "id"));
         return new PageResult<>(page.getTotalElements(), page.getContent());
     }
 }

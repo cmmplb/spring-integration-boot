@@ -4,23 +4,22 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
-* @author penglibo
-* @date 2021-08-06 10:47:06
-* @since jdk 1.8
-*/
+ * @author penglibo
+ * @date 2021-08-06 10:47:06
+ * @since jdk 1.8
+ */
 
 /**
  * 用户表
  */
-@ApiModel(value = "com-cmmplb-dynamic-datasource-entity-User")
+@Schema(name = "User", description = "用户表")
 @Data
 @TableName(value = "`user`")
 public class User implements Serializable {
@@ -29,35 +28,35 @@ public class User implements Serializable {
      * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value = "主键")
+    @Schema(name = "id", description = "主键id", example = "1")
     private Long id;
 
     /**
      * 用户名
      */
     @TableField(value = "`name`")
-    @ApiModelProperty(value = "用户名")
+    @Schema(name = "name", description = "用户名", example = "小明", requiredMode = Schema.RequiredMode.REQUIRED)
     private String name;
 
     /**
      * 用户余额
      */
     @TableField(value = "amount")
-    @ApiModelProperty(value = "用户余额")
+    @Schema(name = "amount", description = "用户余额")
     private Integer amount;
 
     /**
      * 创建时间
      */
     @TableField(value = "create_time")
-    @ApiModelProperty(value = "创建时间")
+    @Schema(name = "createTime", description = "创建时间")
     private Date createTime;
 
     /**
      * 更新时间
      */
     @TableField(value = "update_time")
-    @ApiModelProperty(value = "更新时间")
+    @Schema(name = "updateTime", description = "更新时间")
     private Date updateTime;
 
     private static final long serialVersionUID = 1L;

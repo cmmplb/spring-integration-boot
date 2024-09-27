@@ -2,9 +2,13 @@ package com.cmmplb.security.handler.exception;
 
 import org.springframework.security.core.AuthenticationException;
 
-public class ValidateCodeException extends AuthenticationException {
+/**
+ * @author penglibo
+ * @date 2024-09-10 09:04:25
+ * @since jdk 1.8
+ */
 
-    private static final long serialVersionUID = 2272155535583332928L;
+public class ValidateCodeException extends AuthenticationException {
 
     public ValidateCodeException(String message) {
         super(message);

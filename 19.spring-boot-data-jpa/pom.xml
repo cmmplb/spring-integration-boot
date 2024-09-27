@@ -6,7 +6,7 @@
     <parent>
         <artifactId>spring-integration-boot</artifactId>
         <groupId>com.cmmplb</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
@@ -44,15 +44,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!--  Spring Data JPA -> Persist data in SQL stores with Java Persistence API using Spring Data and Hibernate.  -->
+        <!--  querydsl  -->
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
+            <classifier>jakarta</classifier>
         </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
             <scope>provided</scope>
+            <optional>true</optional>
+            <classifier>jakarta</classifier>
         </dependency>
         <!-- MapStruct -->
         <dependency>
@@ -68,7 +71,7 @@
     <!-- 插件 -->
     <build>
         <plugins>
-            <!--  querydsl apt plugin  -->
+            <!--  querydsl apt plugin, 编译生成QEntity的类  -->
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
@@ -87,6 +90,7 @@
                     <dependency>
                         <groupId>com.querydsl</groupId>
                         <artifactId>querydsl-apt</artifactId>
+                        <classifier>jakarta</classifier>
                         <version>${querydsl.version}</version>
                     </dependency>
                 </dependencies>

@@ -29,7 +29,7 @@ public class MergeStrategyCellWriteHandler implements CellWriteHandler {
         if (relativeRowIndex == 0) {
             return;
         }
-        // 获取当前行下标，上一行下标，上一行对象，上一列对象
+        // 获取当前行下标, 上一行下标, 上一行对象, 上一列对象
         Sheet sheet = cell.getSheet();
         int rowIndex = cell.getRowIndex();
         int rowIndexPrev = rowIndex - 1;

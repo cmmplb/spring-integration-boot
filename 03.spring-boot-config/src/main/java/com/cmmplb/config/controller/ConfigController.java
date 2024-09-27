@@ -3,7 +3,7 @@ package com.cmmplb.config.controller;
 import com.cmmplb.config.beans.*;
 import com.cmmplb.core.result.Result;
 import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.core.utils.XmlBuilderUtil;
+import com.cmmplb.core.utils.XmlUtils;
 import com.cmmplb.core.utils.YmlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -142,6 +142,12 @@ public class ConfigController {
      */
     @RequestMapping("/custom/xml")
     public Result<String> getConfigCustomXml() throws Exception {
+        // 高版本没有com.sun.xml.internal.bind.v2.ContextFactory导致报错
+        // <dependency>
+        //     <groupId>com.sun.xml.bind</groupId>
+        //     <artifactId>jaxb-impl</artifactId>
+        //     <version>2.3.3</version>
+        // </dependency>
         Resource resource = new ClassPathResource("static/custom.xml");
         // 利用输入流获取XML文件内容
         BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8));
@@ -152,7 +158,7 @@ public class ConfigController {
         }
         br.close();
         // XML转为JAVA对象
-        ConfigCustomXml configCustomXml = (ConfigCustomXml) XmlBuilderUtil.xmlStrToObject(ConfigCustomXml.class, buffer.toString());
+        ConfigCustomXml configCustomXml = (ConfigCustomXml) XmlUtils.xmlStrToObject(ConfigCustomXml.class, buffer.toString());
         return ResultUtil.success(configCustomXml.getName() + "-" + configCustomXml.getVersion());
     }
 }

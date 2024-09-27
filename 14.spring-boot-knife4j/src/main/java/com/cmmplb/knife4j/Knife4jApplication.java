@@ -1,6 +1,7 @@
 package com.cmmplb.knife4j;
 
 import com.cmmplb.core.utils.SpringApplicationUtil;
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since jdk 1.8
  */
 
+@EnableKnife4j
 @SpringBootApplication
 public class Knife4jApplication {
 

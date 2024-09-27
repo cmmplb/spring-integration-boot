@@ -1,5 +1,6 @@
 package com.cmmplb.mail;
 
+import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -15,7 +16,6 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import javax.annotation.Resource;
-import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.StringWriter;
 import java.util.HashMap;

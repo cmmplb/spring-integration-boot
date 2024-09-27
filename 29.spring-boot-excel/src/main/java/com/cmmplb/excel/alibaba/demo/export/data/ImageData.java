@@ -26,7 +26,7 @@ public class ImageData {
     private InputStream inputStream;
 
     /**
-     * 如果string类型 必须指定转换器，string默认转换成string
+     * 如果string类型 必须指定转换器, string默认转换成string
      */
     @ExcelProperty(converter = StringImageConverter.class)
     private String string;

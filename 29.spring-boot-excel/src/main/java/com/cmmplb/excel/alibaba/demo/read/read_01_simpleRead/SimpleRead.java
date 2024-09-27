@@ -30,7 +30,7 @@ public class SimpleRead {
     /**
      * 最简单的读
      * <p>1. 创建excel对应的实体对象 参照{@link DemoData}
-     * <p>2. 由于默认一行行的读取excel，所以需要创建excel一行一行的回调监听器，参照{@link DemoDataListener}
+     * <p>2. 由于默认一行行的读取excel, 所以需要创建excel一行一行的回调监听器, 参照{@link DemoDataListener}
      * <p>3. 直接读即可
      */
     public static void main(String[] args) throws Exception {
@@ -62,7 +62,7 @@ public class SimpleRead {
         // 写法2：
         // 匿名内部类 不用额外写一个DemoDataListener
         InputStream inputStream = FileUtil.getInputStream("read/demo.xlsx");
-        // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
+        // 这里 需要指定读用哪个class去读, 然后读取第一个sheet 文件流会自动关闭
         EasyExcel.read(inputStream, DemoData.class, new ReadListener<DemoData>() {
             /**
              * 单次缓存的数据量
@@ -92,17 +92,17 @@ public class SimpleRead {
              * 加上存储数据库
              */
             private void saveData() {
-                log.info("{}条数据，开始存储数据库！", cachedDataList.size());
+                log.info("{}条数据, 开始存储数据库！", cachedDataList.size());
                 log.info("存储数据库成功！");
             }
         }).sheet().doRead();
     }
 
     private static void method3() {
-        // 有个很重要的点 DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
+        // 有个很重要的点 DemoDataListener 不能被spring管理, 要每次读取excel都要new,然后里面用到spring可以构造方法传进去
         // 写法3：
         InputStream inputStream = FileUtil.getInputStream("read/demo.xlsx");
-        // 这里 需要指定读用哪个class去读，然后读取第一个sheet 文件流会自动关闭
+        // 这里 需要指定读用哪个class去读, 然后读取第一个sheet 文件流会自动关闭
         EasyExcel.read(inputStream, DemoData.class, new DemoDataListener<DemoData>()).sheet().doRead();
     }
 
@@ -116,7 +116,7 @@ public class SimpleRead {
             excelReader.read(readSheet);
         } finally {
             if (excelReader != null) {
-                // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
+                // 这里千万别忘记关闭, 读的时候会创建临时文件, 到时磁盘会崩的
                 excelReader.finish();
             }
         }

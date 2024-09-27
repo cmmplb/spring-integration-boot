@@ -6,9 +6,9 @@ import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.general.constants.RedisConstants;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**

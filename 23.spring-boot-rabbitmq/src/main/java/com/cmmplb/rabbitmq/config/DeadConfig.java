@@ -1,6 +1,6 @@
 package com.cmmplb.rabbitmq.config;
 
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.rabbit.mq.configuration.properties.RabbitMqProperties;
 import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
 import org.springframework.amqp.core.*;
@@ -17,12 +17,12 @@ import java.util.Map;
  * @date 2021-06-19 15:24:19
  * @since jdk 1.8
  * 死信队列模式配置
- * 将消息拒绝消费消息(丢失消息)给死信队列或者发送消息到一个没有消费者的普通队列中，过期时间达到后死信队列会接收到消息
+ * 将消息拒绝消费消息(丢失消息)给死信队列或者发送消息到一个没有消费者的普通队列中, 过期时间达到后死信队列会接收到消息
  */
 
 @Configuration
 // 关闭配置文件配置bean时才开启类的注入
-@ConditionalOnProperty(prefix = RabbitMqProperties.PREFIX, name = RabbitMqProperties.ENABLED, havingValue = StringConstants.FALSE)
+@ConditionalOnProperty(prefix = RabbitMqProperties.PREFIX, name = RabbitMqProperties.ENABLED, havingValue = StringConstant.FALSE)
 public class DeadConfig {
 
     /**
@@ -32,11 +32,11 @@ public class DeadConfig {
     @Bean
     public Queue commonQueue() {
         Map<String, Object> args = new HashMap<>(3);
-        //消息过期后，进入到死信交换机
+        //消息过期后, 进入到死信交换机
         args.put("x-dead-letter-exchange", RabbitMqConstants.DEAD_EXCHANGE);
-        //消息过期后，进入到死信交换机的路由key
+        //消息过期后, 进入到死信交换机的路由key
         args.put("x-dead-letter-routing-key", RabbitMqConstants.DEAD_ROUTING_KEY);
-        //过期时间，单位毫秒
+        //过期时间, 单位毫秒
         args.put("x-message-ttl", RabbitMqConstants.MESSAGE_TTL_TIME);
         return new Queue(RabbitMqConstants.COMMON_QUEUE, true, false, false, args);
         //return QueueBuilder.durable(GlobalConstants.COMMON_QUEUE).withArguments(args).build();

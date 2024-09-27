@@ -189,7 +189,7 @@ public class ModelServiceImpl implements ModelService {
 
         } catch (Exception e) {
             e.printStackTrace();
-            throw new CustomException("流程图不合规范，请重新设计");
+            throw new CustomException("流程图不合规范, 请重新设计");
         }
         return true;
     }

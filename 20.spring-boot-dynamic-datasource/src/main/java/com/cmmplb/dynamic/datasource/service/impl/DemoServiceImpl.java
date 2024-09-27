@@ -55,7 +55,7 @@ public class DemoServiceImpl implements DemoService {
         order.setUpdateTime(new Date());
         orderService.save(order);
 
-        log.info("订单一阶段生成，等待扣库存付款中");
+        log.info("订单一阶段生成, 等待扣库存付款中");
 
         int totalPrice = goodsService.reduceStock(goodsId, count);
 

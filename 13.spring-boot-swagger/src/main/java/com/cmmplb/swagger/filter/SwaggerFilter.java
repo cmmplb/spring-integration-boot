@@ -3,11 +3,10 @@ package com.cmmplb.swagger.filter;
 import com.cmmplb.core.utils.SpringProfileUtil;
 import com.cmmplb.core.utils.SpringUtil;
 import com.cmmplb.swagger.configuration.properties.SwaggerProperties;
-import org.springframework.context.annotation.Configuration;
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.core.env.Environment;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -23,10 +22,10 @@ import java.util.regex.Pattern;
 
 // @Bean搭配使用
 // @ConditionalOnBean有则注入；
-// @ConditionalOnMissBean没有则注入，再注册相同类型的Bean就会失败；
-// @Conditional条件满足则注入。
+// @ConditionalOnMissBean没有则注入, 再注册相同类型的Bean就会失败；
+// @Conditional条件满足则注入. 
 
-@Configuration
+// @Configuration
 public class SwaggerFilter implements Filter {
 
     protected static List<Pattern> urlFilters = null;

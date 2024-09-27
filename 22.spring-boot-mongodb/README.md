@@ -3,6 +3,8 @@ https://mrbird.cc/MongoDB-shell.html
 
 ###Mongo DB下载地址：https://www.mongodb.com/download
 
+https://www.mongodb.com/try/download/community
+
 ####bin目录配置到系统环境，创建一个数据库保存目录，比如D:\MongoDB，然后打开命令窗口输入如下命令启动MongoDB服务：
 
 ````

@@ -10,13 +10,17 @@ spring:
       # validate ：每次加载hibernate时，会校验数据与数据库的字段类型是否相同，字段不同会报错。
     hibernate.ddl-auto: update
     #在建表的时候，将默认的存储引擎切换为 InnoDB
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #org.hibernate.dialect.MySQL5Dialect
+    # org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl 打印 HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+    # org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter.determineDatabaseDialectClass， Hibernate 6.2+ aligned 会根据database自定选择
+    # org.hibernate.dialect.MySQL5InnoDBDialect #org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.MySQLDialect
     open-in-view: false
     hibernate:
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl #指定jpa的自动表生成策略，驼峰自动映射为下划线格式
         #physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-        enable_lazy_load_no_trans: true #关闭懒加载
+    #properties:
+    #  hibernate:
+        # dialect: org.hibernate.dialect.MySQL5Dialect
+        # dialect: org.hibernate.dialect.MySQLDialect
+    #    enable_lazy_load_no_trans: true #关闭懒加载

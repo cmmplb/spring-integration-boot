@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.websocket.dao.MessageRecordMapper;
 import com.cmmplb.websocket.domain.dto.MessageRecordPageQueryDTO;
 import com.cmmplb.websocket.domain.entity.MessageRecord;
@@ -36,7 +36,7 @@ public class MessageRecordServiceImpl extends ServiceImpl<MessageRecordMapper, M
         String[] split = dto.getBusinessId().split("-");
         byte type = Byte.parseByte(split[0]);
         Long businessId = Long.parseLong(split[1]);
-        if (type == GlobalConstants.NUM_ONE) {
+        if (type == GlobalConstant.NUM_ONE) {
             // 获取用户消息
             page = baseMapper.selectUserMessageRecordByPaged(new Page<>(dto.getCurrent(), dto.getSize()), userId, businessId);
 
@@ -56,7 +56,7 @@ public class MessageRecordServiceImpl extends ServiceImpl<MessageRecordMapper, M
         if (null != messageRecord) {
             MessageRecord messageRecordUp = new MessageRecord();
             messageRecordUp.setId(messageRecord.getId());
-            messageRecordUp.setStatus(GlobalConstants.NUM_ONE);
+            messageRecordUp.setStatus(GlobalConstant.NUM_ONE);
             messageRecordUp.setUpdateTime(new Date());
             messageRecordUp.setUpdateBy(SecurityUtil.getUserId());
             baseMapper.updateById(messageRecordUp);
@@ -74,14 +74,14 @@ public class MessageRecordServiceImpl extends ServiceImpl<MessageRecordMapper, M
         List<MessageRecord> list = baseMapper.selectList(new LambdaQueryWrapper<MessageRecord>()
                 .eq(MessageRecord::getType, Byte.parseByte(split[0]))
                 .eq(MessageRecord::getSendBusinessId, Long.parseLong(split[1]))
-                .eq(MessageRecord::getStatus, GlobalConstants.NUM_ZERO)
+                .eq(MessageRecord::getStatus, GlobalConstant.NUM_ZERO)
         );
         if (!CollectionUtils.isEmpty(list)) {
             List<MessageRecord> listUp = new ArrayList<>();
             for (MessageRecord messageRecord : list) {
                 MessageRecord messageRecordUp = new MessageRecord();
                 messageRecordUp.setId(messageRecord.getId());
-                messageRecordUp.setStatus(GlobalConstants.NUM_ONE);
+                messageRecordUp.setStatus(GlobalConstant.NUM_ONE);
                 messageRecordUp.setUpdateTime(new Date());
                 messageRecordUp.setUpdateBy(SecurityUtil.getUserId());
                 listUp.add(messageRecordUp);

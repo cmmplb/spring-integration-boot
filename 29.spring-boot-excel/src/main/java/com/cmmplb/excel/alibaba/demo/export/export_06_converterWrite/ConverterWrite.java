@@ -21,7 +21,7 @@ public class ConverterWrite {
      */
     public static void main(String[] args) {
         String fileName = TestFileUtil.getPath() + "converterWrite" + System.currentTimeMillis() + ".xlsx";
-        // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
+        // 这里 需要指定写用哪个class去写, 然后写到第一个sheet, 名字为模板 然后文件流会自动关闭
         EasyExcel.write(fileName, ConverterData.class).sheet("模板").doWrite(ConverterData.data());
     }
 }

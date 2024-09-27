@@ -6,7 +6,7 @@
     <parent>
         <artifactId>spring-integration-boot</artifactId>
         <groupId>com.cmmplb</groupId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
@@ -35,10 +35,15 @@
         </dependency>
         <!-- elasticsearch -->
         <dependency>
-            <!-- 这边匹配的版本是<elasticsearch>7.12.1</elasticsearch> -->
+            <!-- 这边匹配的版本是	<elasticsearch-java>8.13.4</elasticsearch-java> -->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
+       <!-- <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>7.17.23</version>
+        </dependency>-->
         <!-- swagger -->
         <dependency>
             <groupId>com.cmmplb</groupId>

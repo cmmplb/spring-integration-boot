@@ -24,19 +24,19 @@ public class AnnotationController {
     }
 
     @GetMapping("/guest")
-    @RequiresUser // 表示当前Subject没有身份验证或通过记住我登录过，即是游客身份。
+    @RequiresUser // 表示当前Subject没有身份验证或通过记住我登录过, 即是游客身份. 
     public Result<String> requiresGuest() {
         return ResultUtil.success();
     }
 
     @GetMapping("/authentication")
-    @RequiresAuthentication // 表示当前Subject已经通过login进行了身份验证；即Subject.isAuthenticated()返回true。
+    @RequiresAuthentication // 表示当前Subject已经通过login进行了身份验证；即Subject.isAuthenticated()返回true. 
     public Result<String> requiresAuthentication() {
         return ResultUtil.success();
     }
 
     @GetMapping("/user")
-    @RequiresUser // 表示当前Subject已经身份验证或者通过记住我登录的。
+    @RequiresUser // 表示当前Subject已经身份验证或者通过记住我登录的. 
     public Result<String> requiresUser() {
         return ResultUtil.success();
     }

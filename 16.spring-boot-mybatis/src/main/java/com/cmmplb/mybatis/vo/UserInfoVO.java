@@ -3,7 +3,7 @@ package com.cmmplb.mybatis.vo;
 import com.cmmplb.mybatis.entity.Tag;
 import com.cmmplb.mybatis.entity.UserInfo;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,49 +25,49 @@ public class UserInfoVO implements Serializable {
     /**
      * 用户详情
      */
-    @ApiModelProperty(value = "UserInfo")
+    @Schema(description = "UserInfo")
     private UserInfo userInfo;
 
     /**
      * 用户标签集合
      */
-    @ApiModelProperty(value = "用户标签集合")
+    @Schema(description = "用户标签集合")
     private List<Tag> tagList;
 
     /**
      * 主键
      */
-    @ApiModelProperty(value = "主键", example = "1")
+    @Schema(description = "主键")
     private Long id;
 
     /**
      * 用户名
      */
-    @ApiModelProperty(value = "用户名", example = "小明", required = true)
+    @Schema(description = "用户名")
     private String name;
 
     /**
      * 性别
      */
-    @ApiModelProperty(value = "性别:0-女;1-男", example = "1", required = true)
+    @Schema(description = "性别:0-女;1-男")
     private Byte sex;
 
     /**
      * 手机号
      */
-    @ApiModelProperty(value = "手机号", example = "19999999999", required = true)
+    @Schema(description = "手机号")
     private String mobile;
 
     /**
      * 用户状态:0-正常;1-禁用
      */
-    @ApiModelProperty(value = "用户状态:0-正常;1-禁用", example = "0")
+    @Schema(description = "用户状态:0-正常;1-禁用")
     private Byte status;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(value = "创建时间", example = "2021-01-01 12:00:00")
+    @Schema(description = "创建时间")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;

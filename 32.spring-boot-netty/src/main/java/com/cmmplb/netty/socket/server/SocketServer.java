@@ -30,7 +30,7 @@ public class SocketServer extends Thread {
 
     public void init() {
         log.info("正在启动socket服务器……");
-        //服务端要建立两个group，一个负责接收客户端的连接，一个负责处理数据传输
+        //服务端要建立两个group, 一个负责接收客户端的连接, 一个负责处理数据传输
         //连接处理group
         NioEventLoopGroup boss = new NioEventLoopGroup();//主线程组
         //事件处理group
@@ -44,7 +44,7 @@ public class SocketServer extends Thread {
             //有数据立即发送
             bootstrap.childOption(ChannelOption.TCP_NODELAY, true);
             //保持长连接
-            bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);//ChannelOption对象设置TCP套接字的参数，非必须步骤
+            bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);//ChannelOption对象设置TCP套接字的参数, 非必须步骤
 
             bootstrap.channel(NioServerSocketChannel.class);//配置为NIO的socket通道
 
@@ -52,25 +52,25 @@ public class SocketServer extends Thread {
             bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
                 // 增加任务处理
                 protected void initChannel(SocketChannel ch) throws Exception {//绑定通道参数
-                    ch.pipeline().addLast("logging", new LoggingHandler("DEBUG"));//设置log监听器，并且日志级别为debug，方便观察运行流程
+                    ch.pipeline().addLast("logging", new LoggingHandler("DEBUG"));//设置log监听器, 并且日志级别为debug, 方便观察运行流程
                     //使用了netty自带的编码器和解码器
                     ch.pipeline().addLast(new SocketDecoder());
                     ch.pipeline().addLast(new SocketEncoder());
-                    //心跳检测，读超时，写超时，读写超时
+                    //心跳检测, 读超时, 写超时, 读写超时
                     ch.pipeline().addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
-                    ch.pipeline().addLast("handler", new ServerHandler());//业务处理类，最终的消息会在这个handler中进行业务处理
+                    ch.pipeline().addLast("handler", new ServerHandler());//业务处理类, 最终的消息会在这个handler中进行业务处理
                 }
             });
 
-            ChannelFuture future = bootstrap.bind(port).sync();//使用了Future来启动线程，并绑定了端口
-            log.info("启动socket服务器启动成功，正在监听端口:" + port);
+            ChannelFuture future = bootstrap.bind(port).sync();//使用了Future来启动线程, 并绑定了端口
+            log.info("启动socket服务器启动成功, 正在监听端口:" + port);
             future.channel().closeFuture().sync();//以异步的方式关闭端口
 
         } catch (InterruptedException e) {
             log.info("启动出现异常：" + e);
         } finally {
             work.shutdownGracefully();
-            boss.shutdownGracefully();//出现异常后，关闭线程组
+            boss.shutdownGracefully();//出现异常后, 关闭线程组
             log.info("socket服务器已经关闭");
         }
 

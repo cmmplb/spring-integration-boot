@@ -20,7 +20,7 @@ application:
 name: {{ .Values.nameOverride }} datasource:
 url: jdbc:mysql://{{ .Values.config.mysql.server
 }}/cnp-order?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
-driver-class-name: com.mysql.cj.jdbc.Driver username: {{ .Values.config.mysql.user }} password: {{
+driver-class-name: com.mysql.cj.jdbc.Driver username: {{ .Values.config.mysql.userDetails }} password: {{
 .Values.config.mysql.password }} deployment.yaml
 
 apiVersion: apps/v1 kind: Deployment metadata:
@@ -59,7 +59,7 @@ app: cnp-order
 
 config:
 mysql:
-server: {ip} user: root password: root 调试校验 我们可以在myChart/同级目录，使用命令：
+server: {ip} userDetails: root password: root 调试校验 我们可以在myChart/同级目录，使用命令：
 ````
 $ Helm lint myChart/ 进行语法校验，若我们使用上述的所有配置，执行后结果如图1-10所示：
 

@@ -18,7 +18,7 @@
 
     <!-- 自定义cache配置，可配置多个，users对应缓存管理器cacheNames名称 -->
     <cache
-            name="users"
+            name="userInfo"
             maxEntriesLocalHeap="2000"
             eternal="false"
             timeToIdleSeconds="3600"

@@ -21,7 +21,7 @@ public class RestApisTest {
     // <REST Verb> <Node>:<Port>/<Index>/<Type>/<ID>
     // <REST Verb>：REST风格的语法谓词
     // <Node>:节点ip
-    // <port>:节点端口号，默认9200
+    // <port>:节点端口号, 默认9200
     // <Index>:索引名
     // <Type>:文档类型 - 7.0以上只有一个_doc
     // <ID>:操作对象的ID号

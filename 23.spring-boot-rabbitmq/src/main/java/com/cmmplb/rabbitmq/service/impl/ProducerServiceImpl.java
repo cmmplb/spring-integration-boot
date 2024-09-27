@@ -31,8 +31,8 @@ public class ProducerServiceImpl implements ProducerService {
 
     @Override
     public void send2FanoutQueue(String message) {
-        // 指定交换机-将消息发送到交换机，由交换机来发消息给消费者
-        rabbitTemplate.convertAndSend(RabbitMqConstants.FANOUT_EXCHANGE, "", message); // 需要设置第二个参数,否则第一个交换机的参数就变成routingKey了。
+        // 指定交换机-将消息发送到交换机, 由交换机来发消息给消费者
+        rabbitTemplate.convertAndSend(RabbitMqConstants.FANOUT_EXCHANGE, "", message); // 需要设置第二个参数,否则第一个交换机的参数就变成routingKey了. 
     }
 
     @Override
@@ -48,12 +48,12 @@ public class ProducerServiceImpl implements ProducerService {
     @Override
     public void send2DeadQueue(String routingKey, String message) {
         // 两种方式：
-        // 1、可以发送到有消费者的队列，拒绝消费
+        // 1、可以发送到有消费者的队列, 拒绝消费
         // rabbitTemplate.convertAndSend(GlobalConstants.COMMON_EXCHANGE, routingKey, message);
-        // 2、发送到没有消费者的队列，设置队列过期时间-需要注释掉消费者-com.cmmplb.rabbitmq.listener.DeadListener.commonListener
+        // 2、发送到没有消费者的队列, 设置队列过期时间-需要注释掉消费者-com.cmmplb.rabbitmq.listener.DeadListener.commonListener
         rabbitTemplate.convertAndSend(RabbitMqConstants.COMMON_QUEUE, message, m -> {
             MessageProperties messageProperties = m.getMessageProperties();
-            //为每条消息设定过期时间
+            //为每条消息设定过期时间,10m秒以后消息过期
             messageProperties.setExpiration(RabbitMqConstants.MESSAGE_TTL_TIME + "");
             return m;
         });

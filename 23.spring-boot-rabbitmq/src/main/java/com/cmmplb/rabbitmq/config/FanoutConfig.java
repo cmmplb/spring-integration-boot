@@ -1,6 +1,6 @@
 package com.cmmplb.rabbitmq.config;
 
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import com.cmmplb.rabbit.mq.configuration.properties.RabbitMqProperties;
 import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
 import org.springframework.amqp.core.Binding;
@@ -19,15 +19,15 @@ import org.springframework.context.annotation.Configuration;
  * 1.可以有多个消费者
  * 2.每个消费者有自己的队列
  * 3.每个队列都要绑定到Exchange（交换机）
- * 4.生产者发送的消息，只能发送到交换机，交换机来决定要发给哪个队列，生产者无法决定。
+ * 4.生产者发送的消息, 只能发送到交换机, 交换机来决定要发给哪个队列, 生产者无法决定. 
  * 5.交换机把消息发送给绑定过的所有队列
- * 6.队列的消费者都能拿到消息。实现一条消息被多个消费者消费
+ * 6.队列的消费者都能拿到消息. 实现一条消息被多个消费者消费
  * -- 两个队列--两个队列绑定交换机--一个交换机--
  */
 
 @Configuration
 // 关闭配置文件配置bean时才开启类的注入
-@ConditionalOnProperty(prefix = RabbitMqProperties.PREFIX, name = RabbitMqProperties.ENABLED, havingValue = StringConstants.FALSE)
+@ConditionalOnProperty(prefix = RabbitMqProperties.PREFIX, name = RabbitMqProperties.ENABLED, havingValue = StringConstant.FALSE)
 public class FanoutConfig {
 
     /**

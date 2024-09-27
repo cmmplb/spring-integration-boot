@@ -1,7 +1,7 @@
 package com.cmmplb.mybatis.plus.plugin.interceptor;
 
 
-import com.cmmplb.core.constants.StringConstants;
+import com.cmmplb.core.constants.StringConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.CachingExecutor;
@@ -31,7 +31,7 @@ import java.util.Properties;
 
 @Slf4j
 @Component
-@Intercepts({@Signature(method = StringConstants.QUERY, type = Executor.class, args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class})})
+@Intercepts({@Signature(method = StringConstant.QUERY, type = Executor.class, args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class})})
 public class SQLQueryParamInterceptor implements Interceptor {
 
     @Override
@@ -58,7 +58,7 @@ public class SQLQueryParamInterceptor implements Interceptor {
             log.info("target:StatementHandler");
         }
         if (target instanceof CachingExecutor) {
-            // 拦截 Executor 的 createCacheKey 方法，pageHelper插件会拦截 query 方法，调用此方法，提前将参数设置到参数集合中
+            // 拦截 Executor 的 createCacheKey 方法, pageHelper插件会拦截 query 方法, 调用此方法, 提前将参数设置到参数集合中
             log.info("target:CachingExecutor");
         }
         Map<String, Object> map = null;
@@ -75,7 +75,7 @@ public class SQLQueryParamInterceptor implements Interceptor {
             map = new HashMap<>();
         }
         map.put("currentUserId", 999);
-        // args[1] = map; // todo:这里有问题，单个参数无法传递，需要修改
+        // args[1] = map; // todo:这里有问题, 单个参数无法传递, 需要修改
         return invocation.proceed();
     }
 

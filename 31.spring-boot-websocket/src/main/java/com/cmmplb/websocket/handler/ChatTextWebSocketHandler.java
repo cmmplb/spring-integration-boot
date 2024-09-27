@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.websocket.domain.dto.MessageDTO;
 import com.cmmplb.websocket.domain.entity.MessageRecord;
@@ -85,7 +85,7 @@ public class ChatTextWebSocketHandler extends TextWebSocketHandler {
         log.info("handleTextMessage");
         String payload = message.getPayload();
         log.info("收到客户端消息：{}", payload);
-        // 空串前台已处理，后台也校验一遍
+        // 空串前台已处理, 后台也校验一遍
         if (StringUtil.isEmpty(payload.trim())) {
             return;
         }
@@ -95,11 +95,11 @@ public class ChatTextWebSocketHandler extends TextWebSocketHandler {
         MessageDTO msg = JSONObject.parseObject(payload, new TypeReference<MessageDTO>() {
         });
         // 心跳检测
-        if (msg.getType().equals(GlobalConstants.NUM_ONE)) {
+        if (msg.getType().equals(GlobalConstant.NUM_ONE)) {
             heartbeat(userId);
             return;
         }
-        // todo:这里可以做一个临时存储，数据量到达n条或者用户断开连接以后才保存，避免每次发送都调用数据库保存
+        // todo:这里可以做一个临时存储, 数据量到达n条或者用户断开连接以后才保存, 避免每次发送都调用数据库保存
         // 保存消息记录
         MessageRecord messageRecord = new MessageRecord();
         messageRecord.setType(msg.getMessage().getType());
@@ -180,7 +180,7 @@ public class ChatTextWebSocketHandler extends TextWebSocketHandler {
     public void heartbeat(Long userId) throws IOException {
         if (!CollectionUtils.isEmpty(SESSION_MAP)) {
             WebSocketSession webSocketSession = SESSION_MAP.get(userId);
-            TextMessage msg = new TextMessage(JSON.toJSONString(new MessageDTO(GlobalConstants.NUM_ONE)));
+            TextMessage msg = new TextMessage(JSON.toJSONString(new MessageDTO(GlobalConstant.NUM_ONE)));
             if (null != webSocketSession) {
                 webSocketSession.sendMessage(msg);
             }
@@ -197,7 +197,7 @@ public class ChatTextWebSocketHandler extends TextWebSocketHandler {
     public static void read(Long userId, Byte type, Long businessId, String uuid) {
         if (!CollectionUtils.isEmpty(SESSION_MAP)) {
             WebSocketSession webSocketSession = SESSION_MAP.get(userId);
-            MessageDTO messageDTO = new MessageDTO(GlobalConstants.NUM_THREE, new MessageDTO.Message(uuid, type + "-" + businessId));
+            MessageDTO messageDTO = new MessageDTO(GlobalConstant.NUM_THREE, new MessageDTO.Message(uuid, type + "-" + businessId));
             TextMessage msg = new TextMessage(JSON.toJSONString(messageDTO));
             if (null != webSocketSession) {
                 try {
@@ -217,7 +217,7 @@ public class ChatTextWebSocketHandler extends TextWebSocketHandler {
     public static void readBusiness(Long userId, String businessId) {
         if (!CollectionUtils.isEmpty(SESSION_MAP)) {
             WebSocketSession webSocketSession = SESSION_MAP.get(userId);
-            MessageDTO messageDTO = new MessageDTO(GlobalConstants.NUM_FOUR, new MessageDTO.Message(businessId));
+            MessageDTO messageDTO = new MessageDTO(GlobalConstant.NUM_FOUR, new MessageDTO.Message(businessId));
             TextMessage msg = new TextMessage(JSON.toJSONString(messageDTO));
             if (null != webSocketSession) {
                 try {

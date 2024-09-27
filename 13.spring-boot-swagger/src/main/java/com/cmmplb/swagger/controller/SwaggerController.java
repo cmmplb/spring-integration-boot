@@ -6,7 +6,7 @@ import com.cmmplb.swagger.dto.SwaggerDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 public class SwaggerController {
 
     @GetMapping("/one/{id}")
-    @ApiOperation("one")
+    @Operation(summary = "one")
     @ApiImplicitParams(
             @ApiImplicitParam(name = "id", value = "id", required = true, dataTypeClass = Integer.class)
     )
@@ -30,7 +30,7 @@ public class SwaggerController {
     }
 
     @PostMapping("/two")
-    @ApiOperation("two")
+    @Operation(summary = "two")
     public Result<SwaggerDTO> one(@RequestBody SwaggerDTO dto) {
         return ResultUtil.success(dto);
     }

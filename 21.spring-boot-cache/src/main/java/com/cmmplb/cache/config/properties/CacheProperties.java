@@ -19,7 +19,7 @@ public class CacheProperties {
     private boolean enabled = false;
 
     /**
-     * 缓存类型，由于springboot2.5版本没有cache2k整合，单独创个类型
+     * 缓存类型, 由于springboot2.5版本没有cache2k整合, 单独创个类型
      */
     private CacheType cacheType;
 

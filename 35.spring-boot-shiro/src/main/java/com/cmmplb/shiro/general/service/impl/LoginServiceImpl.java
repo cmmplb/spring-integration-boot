@@ -1,7 +1,7 @@
 package com.cmmplb.shiro.general.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.core.constants.GlobalConstants;
+import com.cmmplb.core.constants.GlobalConstant;
 import com.cmmplb.core.exception.CustomException;
 import com.cmmplb.core.result.HttpCodeEnum;
 import com.cmmplb.core.utils.MD5Util;
@@ -66,7 +66,7 @@ public class LoginServiceImpl implements LoginService {
         if (!MD5Util.encode(password).equals(user.getPassword())) {
             throw new CustomException(HttpConstants.INCORRECT_CREDENTIALS);
         }
-        if (user.getStatus().equals(GlobalConstants.NUM_ONE)) {
+        if (user.getStatus().equals(GlobalConstant.NUM_ONE)) {
             throw new CustomException(HttpConstants.ACCOUNT_LOCKED);
         }
 
@@ -144,9 +144,9 @@ public class LoginServiceImpl implements LoginService {
     public User loadByUsername(String username) {
         switch (username) {
             case "admin":
-                return new User(1L, username, "19999999999", MD5Util.encode("123456"), GlobalConstants.NUM_ZERO);
+                return new User(1L, username, "19999999999", MD5Util.encode("123456"), GlobalConstant.NUM_ZERO);
             case "user":
-                return new User(2L, username, "18888888888", MD5Util.encode("123456"), GlobalConstants.NUM_ZERO);
+                return new User(2L, username, "18888888888", MD5Util.encode("123456"), GlobalConstant.NUM_ZERO);
             default:
                 return null;
         }
@@ -162,7 +162,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Set<String> getAuthorization(String username, Byte type) {
         Set<String> authorizations = new HashSet<>();
-        if (type.equals(GlobalConstants.NUM_ZERO)) {
+        if (type.equals(GlobalConstant.NUM_ZERO)) {
             // 添加角色
             switch (username) {
                 case "admin":

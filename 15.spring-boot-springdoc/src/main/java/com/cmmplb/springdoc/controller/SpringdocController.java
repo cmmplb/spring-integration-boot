@@ -37,7 +37,7 @@ public class SpringdocController {
             @ApiResponse(responseCode = "200", description = "成功")
     )
     @PostMapping("/two")
-    // @ApiOperation("two")
+    // @Operation(summary = "two")
     public Result<SpringdocDTO> one(@RequestBody SpringdocDTO dto) {
         return ResultUtil.success(dto);
     }
