@@ -2,8 +2,8 @@ package com.cmmplb.mybatis.plus.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.mybatis.plus.dao.AdminMapper;
 import com.cmmplb.mybatis.plus.dao.UserMapper;
 import com.cmmplb.mybatis.plus.entity.Admin;

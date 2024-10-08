@@ -2,8 +2,8 @@ package com.cmmplb.start;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.cmmplb.core.utils.DateUtil;
-import com.cmmplb.core.utils.UUIDUtil;
+import io.github.cmmplb.core.utils.DateUtil;
+import io.github.cmmplb.core.utils.UUIDUtil;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

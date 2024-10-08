@@ -1,7 +1,7 @@
 package com.cmmplb.swagger.filter;
 
-import com.cmmplb.core.utils.SpringProfileUtil;
-import com.cmmplb.core.utils.SpringUtil;
+import io.github.cmmplb.core.utils.SpringProfileUtil;
+import io.github.cmmplb.core.utils.SpringUtil;
 import com.cmmplb.swagger.configuration.properties.SwaggerProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;

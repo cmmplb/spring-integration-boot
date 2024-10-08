@@ -1,6 +1,6 @@
 package com.cmmplb.mongodb.dto;
 
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

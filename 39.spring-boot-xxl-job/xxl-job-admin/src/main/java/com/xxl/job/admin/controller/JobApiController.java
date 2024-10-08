@@ -1,6 +1,6 @@
 package com.xxl.job.admin.controller;
 
-import com.cmmplb.core.utils.ListUtil;
+import io.github.cmmplb.core.utils.ListUtil;
 import com.xxl.job.admin.controller.annotation.PermissionLimit;
 import com.xxl.job.admin.core.conf.XxlJobAdminConfig;
 import com.xxl.job.core.biz.AdminBiz;

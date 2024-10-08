@@ -1,11 +1,11 @@
 package com.cmmplb.mybatis.plus.controller;
 
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.mybatis.plus.entity.User;
 import com.cmmplb.mybatis.plus.service.UserService;
 import com.cmmplb.mybatis.plus.vo.UserInfoVO;
@@ -29,7 +29,7 @@ import java.util.List;
 
 @Api(tags = "用户管理")
 @Slf4j
-@ApiSupport(order = 2, author = StringConstants.AUTHOR)
+@ApiSupport(order = 2, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/user")
 public class UserController {

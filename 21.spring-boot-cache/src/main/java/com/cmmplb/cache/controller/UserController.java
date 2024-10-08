@@ -2,9 +2,9 @@ package com.cmmplb.cache.controller;
 
 import com.cmmplb.cache.domain.entity.User;
 import com.cmmplb.cache.service.UserService;
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 
 @Api(tags = "用户管理")
-@ApiSupport(order = 2, author = StringConstants.AUTHOR)
+@ApiSupport(order = 2, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/user")
 public class UserController {

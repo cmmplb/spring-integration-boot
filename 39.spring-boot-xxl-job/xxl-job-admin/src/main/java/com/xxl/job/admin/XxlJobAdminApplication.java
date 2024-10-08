@@ -1,6 +1,6 @@
 package com.xxl.job.admin;
 
-import com.cmmplb.core.utils.SpringApplicationUtil;
+import io.github.cmmplb.core.utils.SpringApplicationUtil;
 import com.sun.glass.ui.Application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

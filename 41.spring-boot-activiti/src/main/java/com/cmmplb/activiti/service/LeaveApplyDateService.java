@@ -5,8 +5,8 @@ import com.cmmplb.activiti.dto.LeaveApplyDTO;
 import com.cmmplb.activiti.entity.LeaveApply;
 import com.cmmplb.activiti.entity.LeaveApplyDate;
 import com.cmmplb.activiti.vo.LeaveApplyVO;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 
 /**
  * @author penglibo

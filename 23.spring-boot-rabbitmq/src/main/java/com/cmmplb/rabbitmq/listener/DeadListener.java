@@ -57,7 +57,7 @@ public class DeadListener {
      * @param channel
      * @throws IOException
      */
-    /*@RabbitListener(queues = GlobalConstants.COMMON_QUEUE) // 不设置消费者，让其超过过期时间进入死信队列
+    /*@RabbitListener(queues = GlobalConstant.COMMON_QUEUE) // 不设置消费者，让其超过过期时间进入死信队列
     public void commonListener(String body, Message message, Channel channel) throws IOException {
         long msgTag = message.getMessageProperties().getDeliveryTag();
         count++;

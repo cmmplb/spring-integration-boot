@@ -1,8 +1,8 @@
 package com.cmmplb.shiro.general.handler;
 
-import com.cmmplb.core.result.HttpCodeEnum;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.HttpCodeEnum;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
@@ -19,7 +19,7 @@ import javax.servlet.ServletException;
 
 @Slf4j
 @RestControllerAdvice
-public class GlobalExceptionHandler<T> extends com.cmmplb.core.handler.GlobalExceptionHandler<T> {
+public class GlobalExceptionHandler<T> extends io.github.cmmplb.core.handler.GlobalExceptionHandler<T> {
 
     @Override
     public Result<?> exceptionHandler(Exception e) {

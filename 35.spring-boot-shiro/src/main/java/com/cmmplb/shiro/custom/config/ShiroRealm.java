@@ -1,9 +1,9 @@
 package com.cmmplb.shiro.custom.config;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.utils.ThreadUtil;
-import com.cmmplb.redis.service.RedisService;
+import io.github.cmmplb.core.constants.GlobalConstant;
+import io.github.cmmplb.core.utils.ThreadUtil;
+import io.github.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.custom.config.core.AuthToken;
 import com.cmmplb.shiro.general.beans.UserBean;
 import com.cmmplb.shiro.general.constants.AuthorizationConstants;
@@ -41,8 +41,8 @@ public class ShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         String username = ShiroUtil.getUser().getUsername();
         LoginServiceImpl loginService = new LoginServiceImpl();
-        info.addRoles(loginService.getAuthorization(username, GlobalConstants.NUM_ZERO));
-        info.addStringPermissions(loginService.getAuthorization(username, GlobalConstants.NUM_ONE));
+        info.addRoles(loginService.getAuthorization(username, GlobalConstant.NUM_ZERO));
+        info.addStringPermissions(loginService.getAuthorization(username, GlobalConstant.NUM_ONE));
         return info;
     }
 

@@ -1,6 +1,5 @@
 package com.cmmplb.rabbitmq.listener;
 
-import com.cmmplb.rabbit.mq.utils.RabbitMqUtil;
 import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;

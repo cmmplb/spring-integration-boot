@@ -4,7 +4,7 @@ import com.cmmplb.activiti.dto.HandleTaskDTO;
 import com.cmmplb.activiti.dto.TaskQueryDTO;
 import com.cmmplb.activiti.vo.CompletedTaskVO;
 import com.cmmplb.activiti.vo.IncompleteTaskVO;
-import com.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.PageResult;
 
 /**
  * @author penglibo

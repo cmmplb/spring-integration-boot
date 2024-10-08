@@ -2,7 +2,7 @@ package com.cmmplb.sharding.sphere.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.sharding.sphere.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

@@ -1,6 +1,6 @@
 package com.cmmplb.xss.filter;
 
-import com.cmmplb.core.utils.StringUtil;
+import io.github.cmmplb.core.utils.StringUtil;
 import com.cmmplb.xss.config.properties.XssProperties;
 import com.cmmplb.xss.wrapper.XssRequestWrapper;
 import lombok.extern.slf4j.Slf4j;

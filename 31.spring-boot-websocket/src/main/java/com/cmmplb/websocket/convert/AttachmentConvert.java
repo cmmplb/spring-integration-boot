@@ -1,6 +1,6 @@
 package com.cmmplb.websocket.convert;
 
-import com.cmmplb.core.converter.Converter;
+import io.github.cmmplb.core.converter.Converter;
 import com.cmmplb.websocket.domain.entity.Attachment;
 import com.cmmplb.websocket.domain.vo.AttachmentVO;
 import org.mapstruct.Mapper;

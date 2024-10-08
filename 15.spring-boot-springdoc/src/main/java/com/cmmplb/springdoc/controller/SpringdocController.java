@@ -1,7 +1,7 @@
 package com.cmmplb.springdoc.controller;
 
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.springdoc.dto.SpringdocDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

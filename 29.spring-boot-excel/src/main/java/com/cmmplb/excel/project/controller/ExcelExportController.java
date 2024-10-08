@@ -1,12 +1,12 @@
 package com.cmmplb.excel.project.controller;
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.utils.RandomUtil;
 import com.cmmplb.excel.project.data.ExportData;
-import com.cmmplb.report.excel.entity.ExportSheet;
-import com.cmmplb.report.excel.utils.ExcelUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.utils.RandomUtil;
+import io.github.cmmplb.report.excel.entity.ExportSheet;
+import io.github.cmmplb.report.excel.utils.ExcelUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ import java.util.Random;
  */
 
 @Api(tags = "excel导出功能演示")
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/excel/export")
 public class ExcelExportController {

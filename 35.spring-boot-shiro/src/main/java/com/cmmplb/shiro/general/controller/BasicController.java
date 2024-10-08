@@ -1,8 +1,8 @@
 package com.cmmplb.shiro.general.controller;
 
-import com.cmmplb.core.result.HttpCodeEnum;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.HttpCodeEnum;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.shiro.general.constants.HttpConstants;
 import com.cmmplb.shiro.general.utils.CaptchaUtil;
 import com.cmmplb.shiro.general.utils.SmsCodeUtil;

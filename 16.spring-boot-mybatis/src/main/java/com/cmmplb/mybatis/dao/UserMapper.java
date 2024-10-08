@@ -1,6 +1,6 @@
 package com.cmmplb.mybatis.dao;
 
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.mybatis.entity.User;
 import com.cmmplb.mybatis.vo.UserInfoVO;
 import com.github.pagehelper.Page;

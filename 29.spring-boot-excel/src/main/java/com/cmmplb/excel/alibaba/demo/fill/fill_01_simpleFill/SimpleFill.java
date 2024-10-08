@@ -2,7 +2,7 @@ package com.cmmplb.excel.alibaba.demo.fill.fill_01_simpleFill;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.util.MapUtils;
-import com.cmmplb.core.utils.FileUtil;
+import io.github.cmmplb.core.utils.FileUtil;
 import com.cmmplb.excel.alibaba.demo.fill.data.FillData;
 import com.cmmplb.excel.alibaba.demo.util.TestFileUtil;
 

@@ -7,10 +7,10 @@ package com.cmmplb.mybatis.plugin.interceptor;
  * 乐观锁：数据版本插件
  */
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.exception.LockerException;
-import com.cmmplb.core.utils.PatternUtil;
+import com.cmmplb.mybatis.handler.exception.LockerException;
 import com.cmmplb.mybatis.plugin.propertise.LockerProperties;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.utils.PatternUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.executor.Executor;
@@ -42,9 +42,9 @@ import java.util.regex.Pattern;
 @Slf4j
 @Component
 @Intercepts({
-        @Signature(type = StatementHandler.class, method = StringConstants.PREPARE, args = {Connection.class, Integer.class}),
-        @Signature(type = ParameterHandler.class, method = StringConstants.SET_PARAMETERS, args = {PreparedStatement.class}),
-        @Signature(type = Executor.class, method = StringConstants.UPDATE, args = {MappedStatement.class, Object.class})
+        @Signature(type = StatementHandler.class, method = StringConstant.PREPARE, args = {Connection.class, Integer.class}),
+        @Signature(type = ParameterHandler.class, method = StringConstant.SET_PARAMETERS, args = {PreparedStatement.class}),
+        @Signature(type = Executor.class, method = StringConstant.UPDATE, args = {MappedStatement.class, Object.class})
 })
 @EnableConfigurationProperties(LockerProperties.class)
 public class SQLVersionLockerInterceptor implements Interceptor {
@@ -56,7 +56,7 @@ public class SQLVersionLockerInterceptor implements Interceptor {
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object intercept(Invocation invocation) throws Throwable {
         String interceptMethod = invocation.getMethod().getName();
-        if (StringConstants.PREPARE.equals(interceptMethod)) {
+        if (StringConstant.PREPARE.equals(interceptMethod)) {
 
             StatementHandler routingHandler = (StatementHandler) processTarget(invocation.getTarget());
             MetaObject routingMeta = SystemMetaObject.forObject(routingHandler);
@@ -69,7 +69,7 @@ public class SQLVersionLockerInterceptor implements Interceptor {
             String builder = originalSql + " AND " + lockerProperties.getColumn() + " = ?";
             mo.setValue("boundSql.sql", builder);
 
-        } else if (StringConstants.SET_PARAMETERS.equals(interceptMethod)) {
+        } else if (StringConstant.SET_PARAMETERS.equals(interceptMethod)) {
 
             ParameterHandler handler = (ParameterHandler) processTarget(invocation.getTarget());
             MetaObject mo = SystemMetaObject.forObject(handler);

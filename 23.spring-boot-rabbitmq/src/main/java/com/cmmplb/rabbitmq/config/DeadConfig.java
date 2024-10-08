@@ -1,8 +1,8 @@
 package com.cmmplb.rabbitmq.config;
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.rabbit.mq.configuration.properties.RabbitMqProperties;
 import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.rabbit.configuration.properties.RabbitMqProperties;
 import org.springframework.amqp.core.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ import java.util.Map;
 
 @Configuration
 // 关闭配置文件配置bean时才开启类的注入
-@ConditionalOnProperty(prefix = RabbitMqProperties.PREFIX, name = RabbitMqProperties.ENABLED, havingValue = StringConstants.FALSE)
+@ConditionalOnProperty(prefix = RabbitMqProperties.PREFIX, name = RabbitMqProperties.ENABLED, havingValue = StringConstant.FALSE)
 public class DeadConfig {
 
     /**
@@ -39,7 +39,7 @@ public class DeadConfig {
         //过期时间，单位毫秒
         args.put("x-message-ttl", RabbitMqConstants.MESSAGE_TTL_TIME);
         return new Queue(RabbitMqConstants.COMMON_QUEUE, true, false, false, args);
-        //return QueueBuilder.durable(GlobalConstants.COMMON_QUEUE).withArguments(args).build();
+        //return QueueBuilder.durable(GlobalConstant.COMMON_QUEUE).withArguments(args).build();
     }
 
     /**
@@ -76,7 +76,7 @@ public class DeadConfig {
     @Bean
     public Binding bindingCommon() {
         return new Binding(RabbitMqConstants.COMMON_QUEUE, Binding.DestinationType.QUEUE, RabbitMqConstants.COMMON_EXCHANGE, RabbitMqConstants.COMMON_ROUTING_KEY, Collections.<String, Object>emptyMap());
-        //return BindingBuilder.bind(commonQueue()).to(commonExchange()).with(GlobalConstants.COMMON_ROUTING_KEY).noargs();
+        //return BindingBuilder.bind(commonQueue()).to(commonExchange()).with(GlobalConstant.COMMON_ROUTING_KEY).noargs();
     }
 
     /**

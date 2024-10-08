@@ -2,7 +2,7 @@ package com.cmmplb.canal.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cmmplb.core.beans.SelectVO;
+import io.github.cmmplb.core.beans.SelectVO;
 import com.cmmplb.canal.dto.TestDTO;
 import com.cmmplb.canal.dto.TestQueryDTO;
 import com.cmmplb.canal.entity.Test;

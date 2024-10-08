@@ -1,6 +1,6 @@
 package com.cmmplb.data.jpa;
 
-import com.cmmplb.core.utils.RandomUtil;
+import io.github.cmmplb.core.utils.RandomUtil;
 import com.cmmplb.data.jpa.repository.AccountRepository;
 import com.cmmplb.data.jpa.entity.*;
 import com.cmmplb.data.jpa.service.AccountService;

@@ -1,7 +1,7 @@
 package com.cmmplb.elasticsearch.controller.demo;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.core.utils.RandomUtil;
+import io.github.cmmplb.core.utils.RandomUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

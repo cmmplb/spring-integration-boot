@@ -1,8 +1,8 @@
 package com.cmmplb.mongodb.controller;
 
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.mongodb.dto.UserPageQueryDTO;
 import com.cmmplb.mongodb.entity.User;
 import com.cmmplb.mongodb.service.UserService;

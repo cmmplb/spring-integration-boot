@@ -1,7 +1,7 @@
 package com.cmmplb.data.jpa.service.impl;
 
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.data.jpa.dao.AccountDao;
 import com.cmmplb.data.jpa.repository.AccountRepository;
 import com.cmmplb.data.jpa.entity.Account;

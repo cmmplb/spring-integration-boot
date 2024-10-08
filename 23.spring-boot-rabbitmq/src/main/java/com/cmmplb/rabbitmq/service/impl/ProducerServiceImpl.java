@@ -49,7 +49,7 @@ public class ProducerServiceImpl implements ProducerService {
     public void send2DeadQueue(String routingKey, String message) {
         // 两种方式：
         // 1、可以发送到有消费者的队列，拒绝消费
-        // rabbitTemplate.convertAndSend(GlobalConstants.COMMON_EXCHANGE, routingKey, message);
+        // rabbitTemplate.convertAndSend(GlobalConstant.COMMON_EXCHANGE, routingKey, message);
         // 2、发送到没有消费者的队列，设置队列过期时间-需要注释掉消费者-com.cmmplb.rabbitmq.listener.DeadListener.commonListener
         rabbitTemplate.convertAndSend(RabbitMqConstants.COMMON_QUEUE, message, m -> {
             MessageProperties messageProperties = m.getMessageProperties();

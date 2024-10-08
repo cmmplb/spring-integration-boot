@@ -1,6 +1,6 @@
 package com.cmmplb.dynamic.datasource.plugin.interceptor;
 
-import com.cmmplb.core.constants.StringConstants;
+import io.github.cmmplb.core.constants.StringConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.CachingExecutor;
@@ -30,7 +30,7 @@ import java.util.Properties;
 
 @Slf4j
 @Component
-@Intercepts({@Signature(method = StringConstants.QUERY, type = Executor.class, args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class})})
+@Intercepts({@Signature(method = StringConstant.QUERY, type = Executor.class, args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class})})
 public class SQLQueryParamInterceptor implements Interceptor {
 
     @Override

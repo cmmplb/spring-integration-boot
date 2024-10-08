@@ -1,19 +1,16 @@
 package com.cmmplb.shiro.original.config;
 
-import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.utils.MD5Util;
 import com.cmmplb.shiro.general.entity.User;
 import com.cmmplb.shiro.general.service.impl.LoginServiceImpl;
 import com.cmmplb.shiro.general.utils.ShiroUtil;
+import io.github.cmmplb.core.constants.GlobalConstant;
+import io.github.cmmplb.core.utils.MD5Util;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author penglibo
@@ -33,8 +30,8 @@ public class ShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         String username = ShiroUtil.getUser().getUsername();
         LoginServiceImpl loginService = new LoginServiceImpl();
-        info.addRoles(loginService.getAuthorization(username, GlobalConstants.NUM_ZERO));
-        info.addStringPermissions(loginService.getAuthorization(username, GlobalConstants.NUM_ONE));
+        info.addRoles(loginService.getAuthorization(username, GlobalConstant.NUM_ZERO));
+        info.addStringPermissions(loginService.getAuthorization(username, GlobalConstant.NUM_ONE));
         return info;
     }
 
@@ -55,7 +52,7 @@ public class ShiroRealm extends AuthorizingRealm {
         if (!password.equals(user.getPassword())) {
             throw new IncorrectCredentialsException("用户名或密码错误！"); // 返回模糊错误保证安全性
         }
-        if (user.getStatus().equals(GlobalConstants.NUM_ONE)) {
+        if (user.getStatus().equals(GlobalConstant.NUM_ONE)) {
             throw new LockedAccountException("账号已被锁定,请联系管理员！");
         }
 

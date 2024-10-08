@@ -2,14 +2,14 @@ package com.cmmplb.shiro.custom.config;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.redis.configuration.properties.RedisProperties;
-import com.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.custom.config.core.DefaultSubjectFactory;
 import com.cmmplb.shiro.custom.config.core.RedisCacheManager;
 import com.cmmplb.shiro.general.constants.AuthorizationConstants;
 import com.cmmplb.shiro.general.filter.AuthFilter;
 import com.cmmplb.shiro.general.properties.ShiroProperties;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.redis.configuration.properties.RedisProperties;
+import io.github.cmmplb.redis.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
@@ -40,7 +40,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties({RedisProperties.class, ShiroProperties.class})
-@ConditionalOnProperty(prefix = ShiroProperties.PREFIX, name = ShiroProperties.GENERAL, havingValue = StringConstants.FALSE)
+@ConditionalOnProperty(prefix = ShiroProperties.PREFIX, name = ShiroProperties.GENERAL, havingValue = StringConstant.FALSE)
 public class ShiroConfig {
 
     @Autowired

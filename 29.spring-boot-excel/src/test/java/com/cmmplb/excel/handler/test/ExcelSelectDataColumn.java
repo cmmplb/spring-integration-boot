@@ -2,7 +2,7 @@ package com.cmmplb.excel.handler.test;
 
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
-import com.cmmplb.core.utils.SpringUtil;
+import io.github.cmmplb.core.utils.SpringUtil;
 import lombok.Data;
 
 import java.util.Arrays;

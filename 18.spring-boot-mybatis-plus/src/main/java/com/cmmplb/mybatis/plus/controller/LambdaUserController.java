@@ -3,9 +3,9 @@ package com.cmmplb.mybatis.plus.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.mybatis.plus.entity.User;
 import com.cmmplb.mybatis.plus.service.UserService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
@@ -29,7 +29,7 @@ import java.util.Map;
 
 @Api(tags = "用户管理-lambda查询方式")
 @Slf4j
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/lambda/user")
 public class LambdaUserController {

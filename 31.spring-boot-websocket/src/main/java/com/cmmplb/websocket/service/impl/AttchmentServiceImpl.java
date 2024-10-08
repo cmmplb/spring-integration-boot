@@ -2,10 +2,10 @@ package com.cmmplb.websocket.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.exception.BusinessException;
-import com.cmmplb.core.utils.ConverterUtil;
-import com.cmmplb.core.utils.ServletUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.exception.BusinessException;
+import io.github.cmmplb.core.utils.ConverterUtil;
+import io.github.cmmplb.core.utils.ServletUtil;
 import com.cmmplb.websocket.convert.AttachmentConvert;
 import com.cmmplb.websocket.dao.AttachmentMapper;
 import com.cmmplb.websocket.domain.entity.Attachment;
@@ -114,8 +114,8 @@ public class AttchmentServiceImpl extends ServiceImpl<AttachmentMapper, Attachme
             HttpServletResponse response = ServletUtil.getResponse();
             response.setContentType("application/force-download");
             // 填充文件真实名称
-            response.setHeader(StringConstants.CONTENT_DISPOSITION, StringConstants.ATTACHMENT +
-                    new String(URLEncoder.encode(attachment.getName(), StringConstants.UTF8).getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
+            response.setHeader(StringConstant.CONTENT_DISPOSITION, StringConstant.ATTACHMENT +
+                    new String(URLEncoder.encode(attachment.getName(), StringConstant.UTF8).getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
             byte[] buff = new byte[1024];
 
             // 获取关联的资源信息

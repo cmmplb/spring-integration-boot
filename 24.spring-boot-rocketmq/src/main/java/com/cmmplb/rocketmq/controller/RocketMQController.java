@@ -1,6 +1,6 @@
 package com.cmmplb.rocketmq.controller;
 
-import com.cmmplb.core.constants.StringConstants;
+import io.github.cmmplb.core.constants.StringConstant;
 import com.cmmplb.rocketmq.service.ProducerService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @Api(tags = "Rocket演示")
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/rocketmq")
 public class RocketMQController {

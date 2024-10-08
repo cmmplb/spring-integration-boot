@@ -1,9 +1,9 @@
 package com.cmmplb.mongodb;
 
-import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.utils.DateUtil;
-import com.cmmplb.core.utils.MapObjectUtil;
-import com.cmmplb.core.utils.UUIDUtil;
+import io.github.cmmplb.core.constants.GlobalConstant;
+import io.github.cmmplb.core.utils.DateUtil;
+import io.github.cmmplb.core.utils.MapObjectUtil;
+import io.github.cmmplb.core.utils.UUIDUtil;
 import com.cmmplb.mongodb.entity.User;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.*;
@@ -60,7 +60,7 @@ public class MongoDBTest {
         User user = new User();
         user.set_id(UUIDUtil.uuidTrim());
         user.setName("张三");
-        user.setSex(GlobalConstants.NUM_ONE);
+        user.setSex(GlobalConstant.NUM_ONE);
         user.setBirthday(new Date());
         user.setDescription("描述");
 
@@ -96,7 +96,7 @@ public class MongoDBTest {
             System.out.println("=======================");
             System.out.println(document.getLong(User.COLUMN_ID));
             System.out.println(document.getString(User.COLUMN_NAME));
-            System.out.println(GlobalConstants.NUM_ZERO == Byte.parseByte(document.get(User.COLUMN_SEX).toString()) ? "女" : "男");
+            System.out.println(GlobalConstant.NUM_ZERO == Byte.parseByte(document.get(User.COLUMN_SEX).toString()) ? "女" : "男");
             System.out.println(DateUtil.formatDate(document.getDate(User.COLUMN_BIRTHDAY), DateUtil.FORMAT_DATE_YYYY_MM_DD_HH_MM_SS));
             System.out.println(document.getString(User.COLUMN_DESCRIPTION));
             System.out.println("=======================");

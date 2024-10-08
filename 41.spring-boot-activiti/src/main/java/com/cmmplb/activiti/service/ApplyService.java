@@ -8,8 +8,8 @@ import com.cmmplb.activiti.entity.LeaveApplyDate;
 import com.cmmplb.activiti.vo.ApplyDetailsVO;
 import com.cmmplb.activiti.vo.ApplyStatisticsVO;
 import com.cmmplb.activiti.vo.ApplyVO;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 
 import java.util.List;
 

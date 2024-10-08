@@ -2,7 +2,7 @@ package com.cmmplb.activiti.convert;
 
 import com.cmmplb.activiti.entity.User;
 import com.cmmplb.activiti.vo.UserInfoVO;
-import com.cmmplb.core.converter.Converter;
+import io.github.cmmplb.core.converter.Converter;
 import org.mapstruct.Mapper;
 
 /**

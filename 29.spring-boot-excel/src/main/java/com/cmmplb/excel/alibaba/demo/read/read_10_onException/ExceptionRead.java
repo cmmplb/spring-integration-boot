@@ -1,7 +1,7 @@
 package com.cmmplb.excel.alibaba.demo.read.read_10_onException;
 
 import com.alibaba.excel.EasyExcel;
-import com.cmmplb.core.utils.FileUtil;
+import io.github.cmmplb.core.utils.FileUtil;
 import com.cmmplb.excel.alibaba.demo.read.data.ExceptionDemoData;
 import com.cmmplb.excel.alibaba.demo.util.TestFileUtil;
 

@@ -1,7 +1,7 @@
 package com.cmmplb.shiro.original.config.core.session;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.redis.service.RedisService;
+import io.github.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.general.constants.ShiroConstants;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

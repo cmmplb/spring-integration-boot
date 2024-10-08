@@ -1,7 +1,7 @@
 package com.cmmplb.websocket.controller;
 
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.websocket.service.UserService;
 import com.cmmplb.websocket.domain.vo.UserInfoVO;
 import lombok.extern.slf4j.Slf4j;

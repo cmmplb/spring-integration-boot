@@ -19,11 +19,11 @@ import com.cmmplb.activiti.service.LeaveApplyDateService;
 import com.cmmplb.activiti.service.LeaveApplyService;
 import com.cmmplb.activiti.util.ActivitiUtil;
 import com.cmmplb.activiti.vo.*;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.exception.CustomException;
-import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.core.utils.ServletUtil;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.constants.GlobalConstant;
+import io.github.cmmplb.core.exception.CustomException;
+import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.utils.ServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.engine.HistoryService;
@@ -92,7 +92,7 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
         Apply applyUp = new Apply();
         applyUp.setId(id);
         // 流程状态:0-进行中;1-已完成;2-已驳回;3-已撤销;
-        applyUp.setStatus(GlobalConstants.NUM_THREE);
+        applyUp.setStatus(GlobalConstant.NUM_THREE);
         // 删除流程信息
         String businessKey = apply.getDefKey() + ":" + apply.getId();
         deleteProcessInstance(apply.getDefKey(), businessKey);
@@ -107,7 +107,7 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
         }
         int i = baseMapper.deleteById(id);
         // 类型:1-请假;2-出差;3...
-        if (apply.getType().equals(GlobalConstants.NUM_ONE)) {
+        if (apply.getType().equals(GlobalConstant.NUM_ONE)) {
             // 删除关联的请假申请信息
             LeaveApply leaveApply = leaveApplyService.getById(apply.getBusinessId());
             if (null == leaveApply) {
@@ -117,7 +117,7 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
 
             // 删除请假关联的日期信息
             leaveApplyDateService.remove(new LambdaQueryWrapper<LeaveApplyDate>().eq(LeaveApplyDate::getLeaveApplyId, apply.getBusinessId()));
-        } else if (apply.getType().equals(GlobalConstants.NUM_TWO)) {
+        } else if (apply.getType().equals(GlobalConstant.NUM_TWO)) {
             // 删除关联的请假申请信息
             EvectionApply evectionApply = evectionApplyService.getById(apply.getBusinessId());
             if (null == evectionApply) {
@@ -144,10 +144,10 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyMapper, Apply> implements
     public ApplyDetailsVO getApplyDetailsById(Long id) {
         ApplyDetailsVO vo = baseMapper.selectDetailsById(id);
         // 类型:1-请假;2-出差;3...
-        if (vo.getType().equals(GlobalConstants.NUM_ONE)) {
+        if (vo.getType().equals(GlobalConstant.NUM_ONE)) {
             LeaveApplyDetailsVO leaveApply = leaveApplyService.getDetailsById(vo.getBusinessId());
             vo.setLeaveApplyDetails(leaveApply);
-        } else if (vo.getType().equals(GlobalConstants.NUM_TWO)) {
+        } else if (vo.getType().equals(GlobalConstant.NUM_TWO)) {
             EvectionApplyDetailsVO evectionApply = evectionApplyService.getDetailsById(vo.getBusinessId());
             vo.setEvectionApplyDetails(evectionApply);
         }

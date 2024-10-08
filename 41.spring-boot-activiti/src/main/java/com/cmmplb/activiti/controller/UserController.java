@@ -2,8 +2,8 @@ package com.cmmplb.activiti.controller;
 
 import com.cmmplb.activiti.service.UserService;
 import com.cmmplb.activiti.vo.UserInfoVO;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

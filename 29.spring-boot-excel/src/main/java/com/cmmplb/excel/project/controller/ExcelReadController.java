@@ -1,15 +1,15 @@
 package com.cmmplb.excel.project.controller;
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.core.utils.ObjectUtil;
 import com.cmmplb.excel.project.data.ReadData;
-import com.cmmplb.report.excel.beans.ExcelResult;
-import com.cmmplb.report.excel.entity.ImportManySheet;
-import com.cmmplb.report.excel.utils.ExcelUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.utils.ObjectUtil;
+import io.github.cmmplb.report.excel.beans.ExcelResult;
+import io.github.cmmplb.report.excel.entity.ImportManySheet;
+import io.github.cmmplb.report.excel.utils.ExcelUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +28,7 @@ import java.util.List;
  */
 
 @Api(tags = "excel导入功能演示")
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/excel/read")
 public class ExcelReadController {

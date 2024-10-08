@@ -1,8 +1,8 @@
 package com.cmmplb.cache.config;
 
 import com.cmmplb.cache.config.properties.CacheProperties;
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.utils.SpringUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.utils.SpringUtil;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -50,7 +50,7 @@ public class CacheConfiguration {
      * 缓存管理器
      */
     @Bean
-    @ConditionalOnProperty(prefix = CacheProperties.PREFIX, name = CacheProperties.ENABLED, havingValue = StringConstants.TRUE)
+    @ConditionalOnProperty(prefix = CacheProperties.PREFIX, name = CacheProperties.ENABLED, havingValue = StringConstant.TRUE)
     public CacheManager cacheManager(CacheProperties cacheProperties) {
         CacheManager cacheManager = null;
         if (cacheProperties.getCacheType().equals(CacheProperties.CacheType.CACHE2K)) {

@@ -4,8 +4,8 @@ import com.cmmplb.activiti.vo.ExecutionInstanceVO;
 import com.cmmplb.activiti.vo.ProcessHistoricVO;
 import com.cmmplb.activiti.vo.ProcessInstanceVO;
 import com.cmmplb.activiti.vo.ProcessVariableVO;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 
 import java.util.List;
 

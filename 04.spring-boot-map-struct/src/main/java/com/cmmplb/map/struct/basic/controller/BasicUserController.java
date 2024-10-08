@@ -1,7 +1,7 @@
 package com.cmmplb.map.struct.basic.controller;
 
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.map.struct.basic.service.UserService;
 import com.cmmplb.map.struct.basic.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,9 +3,9 @@ package com.cmmplb.websocket.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.utils.ListUtil;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.constants.GlobalConstant;
+import io.github.cmmplb.core.utils.ListUtil;
 import com.cmmplb.websocket.dao.RecentlyMessageMapper;
 import com.cmmplb.websocket.domain.dto.RecentlyMessagePageQueryDTO;
 import com.cmmplb.websocket.domain.entity.MessageRecord;
@@ -72,7 +72,7 @@ public class RecentlyMessageServiceImpl extends ServiceImpl<RecentlyMessageMappe
             Set<String> businessIds = list.stream().map(ele -> ele.getBusinessId().replace(ele.getType() + "-", ""))
                     .collect(Collectors.toSet());
             List<MessageRecord> messageRecordList = messageRecordService.list(new LambdaQueryWrapper<MessageRecord>()
-                    .eq(MessageRecord::getStatus, GlobalConstants.NUM_ZERO)
+                    .eq(MessageRecord::getStatus, GlobalConstant.NUM_ZERO)
                     .in(MessageRecord::getSendBusinessId, businessIds)
             );
             Map<Long, List<MessageRecord>> messageRecordMap = messageRecordList.stream().collect(Collectors.groupingBy(MessageRecord::getSendBusinessId));

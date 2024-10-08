@@ -1,6 +1,6 @@
 package com.cmmplb.shiro.original.config.core.session;
 
-import com.cmmplb.core.utils.StringUtil;
+import io.github.cmmplb.core.utils.StringUtil;
 import com.cmmplb.shiro.general.constants.AuthorizationConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;

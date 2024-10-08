@@ -1,6 +1,6 @@
 package com.cmmplb.springdoc.configuration;
 
-import com.cmmplb.core.constants.StringConstants;
+import io.github.cmmplb.core.constants.StringConstant;
 import com.cmmplb.springdoc.configuration.properties.SpringdocProperties;
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -27,7 +27,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties(SpringdocProperties.class)
-@ConditionalOnProperty(prefix = SpringdocProperties.PREFIX, name = SpringdocProperties.ENABLED, havingValue = StringConstants.TRUE)
+@ConditionalOnProperty(prefix = SpringdocProperties.PREFIX, name = SpringdocProperties.ENABLED, havingValue = StringConstant.TRUE)
 public class SpringdocAutoConfiguration extends OpenAPI implements InitializingBean, ApplicationContextAware {
 
     @Setter

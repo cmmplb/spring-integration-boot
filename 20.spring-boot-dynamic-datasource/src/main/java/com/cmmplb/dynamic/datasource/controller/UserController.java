@@ -1,7 +1,7 @@
 package com.cmmplb.dynamic.datasource.controller;
 
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.dynamic.datasource.entity.User;
 import com.cmmplb.dynamic.datasource.service.UserService;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;

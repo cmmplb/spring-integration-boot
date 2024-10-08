@@ -1,7 +1,7 @@
 package com.cmmplb.mybatis.service.impl;
 
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.mybatis.dao.UserInfoMapper;
 import com.cmmplb.mybatis.entity.UserInfo;
 import com.cmmplb.mybatis.service.UserInfoService;

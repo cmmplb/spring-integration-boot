@@ -1,8 +1,8 @@
 package com.cmmplb.shiro.general.controller;
 
-import com.cmmplb.core.exception.CustomException;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.exception.CustomException;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.shiro.general.constants.HttpConstants;
 import com.cmmplb.shiro.general.dto.LoginDTO;
 import com.cmmplb.shiro.general.properties.ShiroProperties;

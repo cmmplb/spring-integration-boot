@@ -1,9 +1,9 @@
 package com.cmmplb.canal.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cmmplb.core.beans.SelectVO;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.beans.SelectVO;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;

@@ -1,7 +1,7 @@
 package com.cmmplb.mongodb.service;
 
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.mongodb.dto.UserPageQueryDTO;
 import com.cmmplb.mongodb.entity.User;
 

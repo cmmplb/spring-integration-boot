@@ -1,10 +1,10 @@
 package com.cmmplb.shiro.general.filter;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.HttpCodeEnum;
-import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.core.utils.ServletUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.HttpCodeEnum;
+import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.utils.ServletUtil;
 import com.cmmplb.shiro.custom.config.core.AuthToken;
 import com.cmmplb.shiro.general.constants.AuthorizationConstants;
 import com.cmmplb.shiro.general.properties.ShiroProperties;
@@ -81,7 +81,7 @@ public class AuthFilter extends BasicHttpAuthenticationFilter {
         try {
             HttpServletResponse response = ServletUtil.getResponse();
             response.setStatus(HttpStatus.OK.value());
-            response.setContentType(StringConstants.APPLICATION_JSON);
+            response.setContentType(StringConstant.APPLICATION_JSON);
             response.getWriter().write(JSON.toJSONString(ResultUtil.custom(HttpCodeEnum.UNAUTHORIZED)));
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -95,9 +95,9 @@ public class AuthFilter extends BasicHttpAuthenticationFilter {
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        httpServletResponse.setHeader(StringConstants.ACCESS_CONTROL_ALLOW_ORIGIN, StringConstants.ASTERISK);
-        httpServletResponse.setHeader(StringConstants.ACCESS_CONTROL_ALLOW_METHODS, StringConstants.ALLOW_METHODS);
-        httpServletResponse.setHeader(StringConstants.ACCESS_CONTROL_ALLOW_HEADERS, StringConstants.ALLOW_HEADERS);
+        httpServletResponse.setHeader(StringConstant.ACCESS_CONTROL_ALLOW_ORIGIN, StringConstant.ASTERISK);
+        httpServletResponse.setHeader(StringConstant.ACCESS_CONTROL_ALLOW_METHODS, StringConstant.ALLOW_METHODS);
+        httpServletResponse.setHeader(StringConstant.ACCESS_CONTROL_ALLOW_HEADERS, StringConstant.ALLOW_HEADERS);
         // 跨域时会首先发送一个option请求，这里我们给option请求直接返回正常状态
         if (httpServletRequest.getMethod().equals(RequestMethod.OPTIONS.name())) {
             httpServletResponse.setStatus(HttpStatus.OK.value());

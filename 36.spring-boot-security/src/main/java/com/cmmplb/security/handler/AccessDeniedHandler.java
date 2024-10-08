@@ -1,10 +1,10 @@
 package com.cmmplb.security.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.exception.CustomException;
-import com.cmmplb.core.result.HttpCodeEnum;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.exception.CustomException;
+import io.github.cmmplb.core.result.HttpCodeEnum;
+import io.github.cmmplb.core.result.ResultUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
@@ -25,7 +25,7 @@ public class AccessDeniedHandler implements org.springframework.security.web.acc
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException {
         response.setStatus(HttpCodeEnum.FORBIDDEN.getCode());
-        response.setContentType(StringConstants.APPLICATION_JSON);
+        response.setContentType(StringConstant.APPLICATION_JSON);
         response.getWriter().write(JSON.toJSONString(ResultUtil.custom(HttpCodeEnum.FORBIDDEN)));
         // throw new CustomException(HttpCodeEnum.FORBIDDEN);
     }

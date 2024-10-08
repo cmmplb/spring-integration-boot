@@ -3,7 +3,7 @@ package com.cmmplb.activiti.service;
 import com.cmmplb.activiti.dto.ModelBpmnDTO;
 import com.cmmplb.activiti.vo.BpmnInfoVO;
 import com.cmmplb.activiti.vo.BpmnProgressVO;
-import com.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.Result;
 
 /**
  * @author penglibo

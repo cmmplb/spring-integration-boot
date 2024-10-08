@@ -1,7 +1,7 @@
 package com.cmmplb.swagger.controller;
 
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.swagger.dto.SwaggerDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

@@ -1,8 +1,8 @@
 package com.cmmplb.activiti.vo;
 
 import com.cmmplb.activiti.constant.KeyConstant;
-import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.utils.StringUtil;
+import io.github.cmmplb.core.constants.GlobalConstant;
+import io.github.cmmplb.core.utils.StringUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

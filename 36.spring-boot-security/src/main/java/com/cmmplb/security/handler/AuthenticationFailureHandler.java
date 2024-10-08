@@ -1,10 +1,10 @@
 package com.cmmplb.security.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.exception.CustomException;
-import com.cmmplb.core.result.HttpCodeEnum;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.exception.CustomException;
+import io.github.cmmplb.core.result.HttpCodeEnum;
+import io.github.cmmplb.core.result.ResultUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 
@@ -25,7 +25,7 @@ public class AuthenticationFailureHandler implements org.springframework.securit
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException {
         response.setStatus(HttpCodeEnum.INVALID_REQUEST.getCode());
-        response.setContentType(StringConstants.APPLICATION_JSON);
+        response.setContentType(StringConstant.APPLICATION_JSON);
         response.getWriter().write(JSON.toJSONString(ResultUtil.custom(exception.getMessage())));
         // throw new CustomException(exception.getMessage()); // 打印异常
     }

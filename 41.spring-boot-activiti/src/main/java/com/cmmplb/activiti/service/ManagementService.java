@@ -1,8 +1,8 @@
 package com.cmmplb.activiti.service;
 
 import com.cmmplb.activiti.vo.JobVO;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 
 /**
  * @author penglibo

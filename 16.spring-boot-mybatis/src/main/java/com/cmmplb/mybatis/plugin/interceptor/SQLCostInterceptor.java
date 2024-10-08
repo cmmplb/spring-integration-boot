@@ -1,6 +1,6 @@
 package com.cmmplb.mybatis.plugin.interceptor;
 
-import com.cmmplb.core.utils.PatternUtil;
+import io.github.cmmplb.core.utils.PatternUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import static com.cmmplb.core.constants.StringConstants.*;
+import static io.github.cmmplb.core.constants.StringConstant.*;
 
 /**
  * @author penglibo
@@ -45,7 +45,7 @@ public class SQLCostInterceptor implements Interceptor {
         } finally {
             String build = ""
                     + STR_N + "===================================================================================================================="
-                    + STR_N + PatternUtil.replaceStrBlank(boundSql.getSql()) + STR_N + "sql耗时:" + LEFT + (System.currentTimeMillis() - startTime) + "ms" + RIGHT
+                    + STR_N + PatternUtil.replaceStrBlank(boundSql.getSql()) + STR_N + "sql耗时:" + LEFT_SQUARE_BRACKET + (System.currentTimeMillis() - startTime) + "ms" + RIGHT_SQUARE_BRACKET
                     + STR_N + "====================================================================================================================";
             log.info(build);
         }

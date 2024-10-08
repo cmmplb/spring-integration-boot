@@ -1,6 +1,6 @@
 package com.cmmplb.activiti.util;
 
-import com.cmmplb.core.utils.ServletUtil;
+import io.github.cmmplb.core.utils.ServletUtil;
 
 /**
  * @author penglibo

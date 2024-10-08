@@ -1,10 +1,10 @@
 package com.cmmplb.config.controller;
 
 import com.cmmplb.config.beans.*;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.core.utils.XmlBuilderUtil;
-import com.cmmplb.core.utils.YmlUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.utils.XmlUtils;
+import io.github.cmmplb.core.utils.YmlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -152,7 +152,7 @@ public class ConfigController {
         }
         br.close();
         // XML转为JAVA对象
-        ConfigCustomXml configCustomXml = (ConfigCustomXml) XmlBuilderUtil.xmlStrToObject(ConfigCustomXml.class, buffer.toString());
+        ConfigCustomXml configCustomXml = (ConfigCustomXml) XmlUtils.xmlStrToObject(ConfigCustomXml.class, buffer.toString());
         return ResultUtil.success(configCustomXml.getName() + "-" + configCustomXml.getVersion());
     }
 }

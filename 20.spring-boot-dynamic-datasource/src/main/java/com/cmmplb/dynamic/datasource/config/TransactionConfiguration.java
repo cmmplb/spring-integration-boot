@@ -1,7 +1,7 @@
 package com.cmmplb.dynamic.datasource.config;
 
 
-import com.cmmplb.core.constants.StringConstants;
+import io.github.cmmplb.core.constants.StringConstant;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ImportResource;
  */
 
 @Configuration
-@ImportResource(StringConstants.TRANSACTION_LOCATIONS)
+@ImportResource(StringConstant.TRANSACTION_LOCATIONS)
 public class TransactionConfiguration {
 
 }

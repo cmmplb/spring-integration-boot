@@ -1,7 +1,7 @@
 
 package com.cmmplb.log.event;
 
-import com.cmmplb.core.utils.ThreadUtil;
+import io.github.cmmplb.core.utils.ThreadUtil;
 import com.cmmplb.log.dao.LogDao;
 import com.cmmplb.log.entity.Log;
 import lombok.extern.slf4j.Slf4j;

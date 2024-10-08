@@ -1,10 +1,10 @@
 // package com.tz.campus.common.interceptor;
 //
 // import com.alibaba.fastjson.JSON;
-// import com.cmmplb.core.exception.CustomException;
-// import com.cmmplb.core.result.ResultUtil;
+// import io.github.cmmplb.core.exception.CustomException;
+// import io.github.cmmplb.core.result.ResultUtil;
 // import com.cmmplb.permission.annotations.WithoutLogin;
-// import com.cmmplb.redis.service.RedisService;
+// import io.github.cmmplb.redis.service.RedisService;
 // import lombok.extern.slf4j.Slf4j;
 // import org.aspectj.lang.JoinPoint;
 // import org.aspectj.lang.ProceedingJoinPoint;
@@ -95,7 +95,7 @@
 //                             }
 //                             // 判断用户账号是否禁用
 //                             Boolean o = (Boolean) redisUtil.get(RedisConstants.SIGN_O_PREFIX);
-//                             if (null != o && o && AppContext.getRequestContext().getClientType().equals(GlobalConstants.CLIENT_TYPE_PC)) {
+//                             if (null != o && o && AppContext.getRequestContext().getClientType().equals(GlobalConstant.CLIENT_TYPE_PC)) {
 //                                 // 校验登录日期
 //                                 if (ResultUtil.getVerify(JSON.parseObject(null ==
 //                                         redisUtil.get(RedisConstants.TOKEN_UID_CACHE_PREFIX + RedisConstants.TOKEN) ? JSON.toJSONString(new Date().getTime()) :

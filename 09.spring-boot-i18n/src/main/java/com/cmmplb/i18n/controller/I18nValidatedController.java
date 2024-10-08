@@ -1,12 +1,12 @@
 package com.cmmplb.i18n.controller;
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
 import com.cmmplb.i18n.dto.DemoDTO;
 import com.cmmplb.i18n.utils.MessageUtils;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Api(tags = "国际化校验演示")
 @ApiSort(1)
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/i18n/validated")
 public class I18nValidatedController {

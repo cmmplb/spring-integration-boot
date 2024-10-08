@@ -1,6 +1,6 @@
 package com.cmmplb.websocket.domain.dto;
 
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

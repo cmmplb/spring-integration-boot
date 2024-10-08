@@ -1,10 +1,10 @@
 package com.cmmplb.xss.config;
 
-import com.cmmplb.core.beans.DataMap;
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.utils.StringUtil;
 import com.cmmplb.xss.config.properties.XssProperties;
 import com.cmmplb.xss.filter.XssFilter;
+import io.github.cmmplb.core.beans.DataMap;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.utils.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -32,7 +32,7 @@ public class XssFilterConfig {
         FilterRegistrationBean<XssFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setDispatcherTypes(DispatcherType.REQUEST);
         registrationBean.setFilter(new XssFilter());
-        registrationBean.addUrlPatterns(StringUtils.split(xssProperties.getUrlPatterns(), StringConstants.COMMA));
+        registrationBean.addUrlPatterns(StringUtils.split(xssProperties.getUrlPatterns(), StringConstant.COMMA));
         DataMap<String, String> param = new DataMap<>();
         param.set(XssProperties.COL_ENABLED, String.valueOf(xssProperties.getEnabled()));
         param.set(XssProperties.COL_IS_INCLUDE_RICH_TEXT, String.valueOf(xssProperties.getIsIncludeRichText()));

@@ -1,9 +1,9 @@
 package com.cmmplb.log.aspect;
 
 import cn.hutool.core.util.URLUtil;
-import com.cmmplb.core.utils.IpUtil;
-import com.cmmplb.core.utils.ServletUtil;
-import com.cmmplb.core.utils.SpringUtil;
+import io.github.cmmplb.core.utils.IpUtil;
+import io.github.cmmplb.core.utils.ServletUtil;
+import io.github.cmmplb.core.utils.SpringUtil;
 import com.cmmplb.log.constants.LogConstant;
 import com.cmmplb.log.entity.Log;
 import com.cmmplb.log.event.LogEvent;

@@ -1,7 +1,7 @@
 package com.cmmplb.rabbitmq.controller;
 
 import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
-import com.cmmplb.core.constants.StringConstants;
+import io.github.cmmplb.core.constants.StringConstant;
 import com.cmmplb.rabbitmq.service.ProducerService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @Api(tags = "RabbitMQ五种模式演示")
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/rabbitmq")
 public class RabbitMQController {

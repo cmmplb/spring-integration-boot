@@ -1,6 +1,6 @@
 package com.cmmplb.elasticsearch;
 
-import com.cmmplb.core.utils.IpUtil;
+import io.github.cmmplb.core.utils.IpUtil;
 
 /**
  * @author penglibo

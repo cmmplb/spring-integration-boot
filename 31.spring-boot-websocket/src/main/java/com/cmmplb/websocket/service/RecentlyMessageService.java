@@ -1,7 +1,7 @@
 package com.cmmplb.websocket.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.PageResult;
 import com.cmmplb.websocket.domain.dto.RecentlyMessagePageQueryDTO;
 import com.cmmplb.websocket.domain.entity.RecentlyMessage;
 import com.cmmplb.websocket.domain.vo.RecentlyMessageVO;

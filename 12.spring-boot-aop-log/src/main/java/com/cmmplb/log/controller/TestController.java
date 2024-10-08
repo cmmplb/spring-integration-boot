@@ -1,7 +1,7 @@
 package com.cmmplb.log.controller;
 
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.log.annotations.Log;
 import com.cmmplb.log.constants.LogConstant;
 import org.springframework.web.bind.annotation.GetMapping;

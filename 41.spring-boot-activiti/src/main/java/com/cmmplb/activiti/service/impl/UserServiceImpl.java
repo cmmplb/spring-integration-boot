@@ -7,7 +7,7 @@ import com.cmmplb.activiti.dao.UserMapper;
 import com.cmmplb.activiti.entity.User;
 import com.cmmplb.activiti.service.UserService;
 import com.cmmplb.activiti.vo.UserInfoVO;
-import com.cmmplb.core.utils.ConverterUtil;
+import io.github.cmmplb.core.utils.ConverterUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

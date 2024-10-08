@@ -1,7 +1,7 @@
 package com.cmmplb.sa.token;
 
 import cn.dev33.satoken.SaManager;
-import com.cmmplb.core.utils.SpringApplicationUtil;
+import io.github.cmmplb.core.utils.SpringApplicationUtil;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**

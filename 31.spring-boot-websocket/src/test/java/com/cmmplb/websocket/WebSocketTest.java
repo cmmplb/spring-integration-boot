@@ -1,9 +1,9 @@
 package com.cmmplb.websocket;
 
-import com.cmmplb.core.utils.Base64Util;
-import com.cmmplb.core.utils.FileUtil;
-import com.cmmplb.core.utils.ImageUtil;
-import com.cmmplb.core.utils.RandomUtil;
+import io.github.cmmplb.core.utils.Base64Util;
+import io.github.cmmplb.core.utils.FileUtil;
+import io.github.cmmplb.core.utils.ImageUtil;
+import io.github.cmmplb.core.utils.RandomUtil;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

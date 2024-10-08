@@ -1,6 +1,6 @@
 package com.cmmplb.websocket.interceptor;
 
-import com.cmmplb.core.utils.MapObjectUtil;
+import io.github.cmmplb.core.utils.MapObjectUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;

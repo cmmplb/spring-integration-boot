@@ -1,6 +1,6 @@
 package com.cmmplb.data.jpa.vo;
 
-import com.cmmplb.core.utils.DateUtil;
+import io.github.cmmplb.core.utils.DateUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

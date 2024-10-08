@@ -1,8 +1,8 @@
 package com.cmmplb.mongodb.service.impl;
 
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.utils.StringUtil;
-import com.cmmplb.core.utils.UUIDUtil;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.utils.StringUtil;
+import io.github.cmmplb.core.utils.UUIDUtil;
 import com.cmmplb.mongodb.dao.UserDao;
 import com.cmmplb.mongodb.dto.UserPageQueryDTO;
 import com.cmmplb.mongodb.entity.User;

@@ -1,7 +1,7 @@
 
 package com.cmmplb.i18n.utils;
 
-import com.cmmplb.core.utils.SpringUtil;
+import io.github.cmmplb.core.utils.SpringUtil;
 import com.cmmplb.i18n.config.MessageSourceConfig;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;

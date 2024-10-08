@@ -1,8 +1,8 @@
 package com.cmmplb.websocket.domain.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.utils.DateUtil;
+import io.github.cmmplb.core.constants.GlobalConstant;
+import io.github.cmmplb.core.utils.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -97,11 +97,11 @@ public class MessageDTO implements Serializable {
         private String recentlyTime;
 
         public String getTime() {
-            return DateUtil.dateFormat(sendTime, GlobalConstants.NUM_TWO);
+            return DateUtil.dateFormat(sendTime, GlobalConstant.NUM_TWO);
         }
 
         public String getRecentlyTime() {
-            return DateUtil.dateFormat(sendTime, GlobalConstants.NUM_THREE);
+            return DateUtil.dateFormat(sendTime, GlobalConstant.NUM_THREE);
         }
 
         public Message(String uuid, String businessId) {

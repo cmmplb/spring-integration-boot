@@ -6,7 +6,7 @@ import com.alibaba.excel.enums.WriteDirectionEnum;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.metadata.fill.FillConfig;
 import com.alibaba.excel.write.metadata.fill.FillWrapper;
-import com.cmmplb.core.utils.FileUtil;
+import io.github.cmmplb.core.utils.FileUtil;
 import com.cmmplb.excel.alibaba.demo.fill.data.FillData;
 import com.cmmplb.excel.alibaba.demo.util.TestFileUtil;
 import lombok.extern.slf4j.Slf4j;

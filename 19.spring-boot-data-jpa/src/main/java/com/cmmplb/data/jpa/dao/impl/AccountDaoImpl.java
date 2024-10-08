@@ -1,6 +1,6 @@
 package com.cmmplb.data.jpa.dao.impl;
 
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.data.jpa.dao.AccountDao;
 import com.cmmplb.data.jpa.entity.Account;
 import com.cmmplb.data.jpa.entity.QAccount;

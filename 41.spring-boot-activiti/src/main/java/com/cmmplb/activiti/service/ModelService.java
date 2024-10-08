@@ -2,8 +2,8 @@ package com.cmmplb.activiti.service;
 
 import com.cmmplb.activiti.dto.ModelDTO;
 import com.cmmplb.activiti.vo.ModelVO;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.Map;

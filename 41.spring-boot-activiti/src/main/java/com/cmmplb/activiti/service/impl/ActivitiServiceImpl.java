@@ -4,7 +4,7 @@ import com.cmmplb.activiti.service.ActivitiService;
 import com.cmmplb.activiti.vo.ProcessHistoricVO;
 import com.cmmplb.activiti.vo.ProcessDefinitionVO;
 import com.cmmplb.activiti.vo.TaskVO;
-import com.cmmplb.core.utils.RandomUtil;
+import io.github.cmmplb.core.utils.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;

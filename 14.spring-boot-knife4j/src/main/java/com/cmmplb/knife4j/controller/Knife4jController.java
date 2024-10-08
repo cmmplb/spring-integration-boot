@@ -1,7 +1,7 @@
 package com.cmmplb.knife4j.controller;
 
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.knife4j.dto.Knife4jDTO;
 import com.github.xiaoymin.knife4j.annotations.*;
 import io.swagger.annotations.Api;

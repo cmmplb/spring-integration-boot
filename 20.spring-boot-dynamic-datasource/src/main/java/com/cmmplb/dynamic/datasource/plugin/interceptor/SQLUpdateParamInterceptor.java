@@ -1,7 +1,7 @@
 package com.cmmplb.dynamic.datasource.plugin.interceptor;
 
 
-import com.cmmplb.core.constants.StringConstants;
+import io.github.cmmplb.core.constants.StringConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.CachingExecutor;
 import org.apache.ibatis.executor.Executor;
@@ -24,7 +24,7 @@ import java.util.*;
 
 @Slf4j
 @Component
-@Intercepts({@Signature(method = StringConstants.UPDATE, type = Executor.class, args = {MappedStatement.class, Object.class})})
+@Intercepts({@Signature(method = StringConstant.UPDATE, type = Executor.class, args = {MappedStatement.class, Object.class})})
 public class SQLUpdateParamInterceptor implements Interceptor {
 
 

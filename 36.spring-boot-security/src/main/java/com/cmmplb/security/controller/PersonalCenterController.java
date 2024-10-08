@@ -1,9 +1,9 @@
 package com.cmmplb.security.controller;
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.core.utils.ObjectUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.utils.ObjectUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
@@ -25,7 +25,7 @@ import java.security.Principal;
  */
 
 @Api(tags = "个人中心管理")
-@ApiSupport(order = 2, author = StringConstants.AUTHOR)
+@ApiSupport(order = 2, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/personal/center")
 public class PersonalCenterController {

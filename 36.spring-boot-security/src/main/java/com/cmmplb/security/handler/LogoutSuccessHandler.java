@@ -1,6 +1,6 @@
 package com.cmmplb.security.handler;
 
-import com.cmmplb.core.utils.SpringApplicationUtil;
+import io.github.cmmplb.core.utils.SpringApplicationUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 

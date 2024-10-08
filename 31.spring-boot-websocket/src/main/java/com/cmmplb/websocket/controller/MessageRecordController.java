@@ -1,8 +1,8 @@
 package com.cmmplb.websocket.controller;
 
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.websocket.domain.dto.MessageRecordPageQueryDTO;
 import com.cmmplb.websocket.service.MessageRecordService;
 import com.cmmplb.websocket.domain.vo.MessageRecordVO;

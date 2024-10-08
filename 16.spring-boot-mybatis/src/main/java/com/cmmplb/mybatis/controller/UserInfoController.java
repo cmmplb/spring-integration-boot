@@ -1,10 +1,10 @@
 package com.cmmplb.mybatis.controller;
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.mybatis.entity.UserInfo;
 import com.cmmplb.mybatis.service.UserInfoService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 
 @Api(tags = "用户详情管理")
-@ApiSupport(order = 3, author = StringConstants.AUTHOR)
+@ApiSupport(order = 3, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/user/info")
 public class UserInfoController {

@@ -1,6 +1,6 @@
 package com.cmmplb.shiro.general.utils;
 
-import com.cmmplb.core.utils.ObjectUtil;
+import io.github.cmmplb.core.utils.ObjectUtil;
 import com.cmmplb.shiro.general.beans.UserBean;
 import com.cmmplb.shiro.general.entity.User;
 import org.apache.shiro.SecurityUtils;

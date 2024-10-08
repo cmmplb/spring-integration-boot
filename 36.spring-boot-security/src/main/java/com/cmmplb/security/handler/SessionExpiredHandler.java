@@ -1,6 +1,6 @@
 package com.cmmplb.security.handler;
 
-import com.cmmplb.core.exception.CustomException;
+import io.github.cmmplb.core.exception.CustomException;
 import org.springframework.security.web.session.SessionInformationExpiredEvent;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 

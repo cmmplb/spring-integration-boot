@@ -1,6 +1,6 @@
 package com.cmmplb.shiro.original.config.core.session;
 
-import com.cmmplb.core.utils.UUIDUtil;
+import io.github.cmmplb.core.utils.UUIDUtil;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionIdGenerator;
 

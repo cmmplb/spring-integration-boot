@@ -1,6 +1,6 @@
 package com.cmmplb.xss.wrapper;
 
-import com.cmmplb.core.utils.StringUtil;
+import io.github.cmmplb.core.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;

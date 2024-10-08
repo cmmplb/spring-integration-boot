@@ -1,6 +1,6 @@
 package com.cmmplb.websocket.utils;
 
-import com.cmmplb.core.utils.ServletUtil;
+import io.github.cmmplb.core.utils.ServletUtil;
 
 /**
  * @author penglibo

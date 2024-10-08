@@ -1,7 +1,7 @@
 package com.cmmplb.excel.alibaba.demo.read.read_02_indexOrNameRead;
 
 import com.alibaba.excel.EasyExcel;
-import com.cmmplb.core.utils.FileUtil;
+import io.github.cmmplb.core.utils.FileUtil;
 import com.cmmplb.excel.alibaba.demo.read.data.IndexOrNameData;
 
 import java.io.InputStream;

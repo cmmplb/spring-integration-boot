@@ -1,8 +1,8 @@
 package com.cmmplb.mybatis.controller;
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.mybatis.entity.User;
 import com.cmmplb.mybatis.service.UserService;
 import com.cmmplb.mybatis.vo.UserInfoVO;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 
 @Api(tags = "测试相关配置功能")
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/test/config")
 public class TestConfigController {

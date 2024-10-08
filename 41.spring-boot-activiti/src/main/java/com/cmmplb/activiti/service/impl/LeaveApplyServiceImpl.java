@@ -14,8 +14,8 @@ import com.cmmplb.activiti.service.LeaveApplyService;
 import com.cmmplb.activiti.util.SecurityUtil;
 import com.cmmplb.activiti.vo.LeaveApplyDetailsVO;
 import com.cmmplb.activiti.vo.LeaveApplyVO;
-import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.exception.CustomException;
+import io.github.cmmplb.core.constants.GlobalConstant;
+import io.github.cmmplb.core.exception.CustomException;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
@@ -64,7 +64,7 @@ public class LeaveApplyServiceImpl extends ServiceImpl<LeaveApplyMapper, LeaveAp
         LeaveApply leaveApply = new LeaveApply();
         // 这里不整合认证授权，从前端切换用户用来快速测试
         leaveApply.setUserId(SecurityUtil.getUserId());
-        leaveApply.setStatus(GlobalConstants.NUM_ZERO);
+        leaveApply.setStatus(GlobalConstant.NUM_ZERO);
         leaveApply.setReason(dto.getReason());
         leaveApply.setCreateTime(new Date());
         leaveApply.setUpdateTime(new Date());
@@ -99,9 +99,9 @@ public class LeaveApplyServiceImpl extends ServiceImpl<LeaveApplyMapper, LeaveAp
         Apply apply = new Apply();
         apply.setTitle(dto.getTitle());
         apply.setUserId(SecurityUtil.getUserId());
-        apply.setType(GlobalConstants.NUM_ONE);
+        apply.setType(GlobalConstant.NUM_ONE);
         apply.setBusinessId(leaveApply.getId());
-        apply.setStatus(GlobalConstants.NUM_ZERO);
+        apply.setStatus(GlobalConstant.NUM_ZERO);
         apply.setDefKey(processDefinition.getKey());
         apply.setApplyTime(dto.getApplyTime());
         apply.setCreateTime(new Date());

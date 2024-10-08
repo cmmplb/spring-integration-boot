@@ -1,6 +1,6 @@
 package com.cmmplb.cache;
 
-import com.cmmplb.core.utils.SpringApplicationUtil;
+import io.github.cmmplb.core.utils.SpringApplicationUtil;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 

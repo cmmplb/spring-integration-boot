@@ -1,7 +1,7 @@
 package com.cmmplb.elasticsearch;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.core.utils.RandomUtil;
+import io.github.cmmplb.core.utils.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;
 import org.apache.lucene.search.TotalHits;

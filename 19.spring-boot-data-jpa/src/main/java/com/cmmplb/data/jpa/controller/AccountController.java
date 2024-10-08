@@ -1,9 +1,9 @@
 package com.cmmplb.data.jpa.controller;
 
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.data.jpa.entity.Account;
 import com.cmmplb.data.jpa.service.AccountService;
 import com.cmmplb.data.jpa.vo.AccountInfoVO;

@@ -10,8 +10,8 @@ import com.cmmplb.activiti.service.ApplyService;
 import com.cmmplb.activiti.service.EvectionApplyService;
 import com.cmmplb.activiti.util.SecurityUtil;
 import com.cmmplb.activiti.vo.EvectionApplyDetailsVO;
-import com.cmmplb.core.constants.GlobalConstants;
-import com.cmmplb.core.exception.CustomException;
+import io.github.cmmplb.core.constants.GlobalConstant;
+import io.github.cmmplb.core.exception.CustomException;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
@@ -54,7 +54,7 @@ public class EvectionApplyServiceImpl extends ServiceImpl<EvectionApplyMapper, E
         EvectionApply evectionApply = new EvectionApply();
         // 这里不整合认证授权，从前端切换用户用来快速测试
         evectionApply.setUserId(SecurityUtil.getUserId());
-        evectionApply.setStatus(GlobalConstants.NUM_ZERO);
+        evectionApply.setStatus(GlobalConstant.NUM_ZERO);
         evectionApply.setReason(dto.getReason());
         evectionApply.setStartTime(dto.getStartTime());
         evectionApply.setEndTime(dto.getEndTime());
@@ -74,9 +74,9 @@ public class EvectionApplyServiceImpl extends ServiceImpl<EvectionApplyMapper, E
         Apply apply = new Apply();
         apply.setTitle(dto.getTitle());
         apply.setUserId(SecurityUtil.getUserId());
-        apply.setType(GlobalConstants.NUM_TWO);
+        apply.setType(GlobalConstant.NUM_TWO);
         apply.setBusinessId(evectionApply.getId());
-        apply.setStatus(GlobalConstants.NUM_ZERO);
+        apply.setStatus(GlobalConstant.NUM_ZERO);
         apply.setApplyTime(dto.getApplyTime());
         apply.setDefKey(processDefinition.getKey());
         apply.setCreateTime(new Date());

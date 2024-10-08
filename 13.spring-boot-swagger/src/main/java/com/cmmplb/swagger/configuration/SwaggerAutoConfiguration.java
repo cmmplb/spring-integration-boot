@@ -1,8 +1,8 @@
 package com.cmmplb.swagger.configuration;
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.exception.ConfigurationException;
-import com.cmmplb.core.utils.StringUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.exception.ConfigurationException;
+import io.github.cmmplb.core.utils.StringUtil;
 import com.cmmplb.swagger.configuration.properties.SwaggerProperties;
 import com.google.common.collect.Lists;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -45,7 +45,7 @@ import java.util.stream.Collectors;
 @EnableOpenApi
 @Profile({"local", "dev", "uat"})
 @EnableConfigurationProperties({SwaggerProperties.class})
-@ConditionalOnProperty(prefix = SwaggerProperties.PREFIX, name = SwaggerProperties.ENABLED, havingValue = StringConstants.TRUE)
+@ConditionalOnProperty(prefix = SwaggerProperties.PREFIX, name = SwaggerProperties.ENABLED, havingValue = StringConstant.TRUE)
 public class SwaggerAutoConfiguration {
 
     /**

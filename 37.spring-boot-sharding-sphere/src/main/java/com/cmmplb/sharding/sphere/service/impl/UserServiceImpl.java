@@ -2,8 +2,8 @@ package com.cmmplb.sharding.sphere.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import com.cmmplb.sharding.sphere.dao.UserMapper;
 import com.cmmplb.sharding.sphere.entity.User;
 import com.cmmplb.sharding.sphere.service.UserService;

@@ -1,6 +1,6 @@
 package com.cmmplb.security.filter;
 
-import com.cmmplb.core.utils.SpringApplicationUtil;
+import io.github.cmmplb.core.utils.SpringApplicationUtil;
 import com.cmmplb.security.handler.AuthenticationFailureHandler;
 import com.cmmplb.security.handler.exception.ValidateCodeException;
 import com.cmmplb.security.utils.SmsCodeUtil;

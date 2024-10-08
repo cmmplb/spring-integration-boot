@@ -2,8 +2,8 @@ package com.cmmplb.mybatis.plus.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.mybatis.plus.dao.AdminMapper;
 import com.cmmplb.mybatis.plus.entity.Admin;
 import com.cmmplb.mybatis.plus.service.AdminService;

@@ -1,9 +1,9 @@
 package com.cmmplb.websocket.controller;
 
-import com.cmmplb.core.beans.PageResult;
-import com.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.websocket.service.ContactsService;
 import com.cmmplb.websocket.domain.vo.ContactsInfoVO;
 import com.cmmplb.websocket.domain.vo.ContactsVO;

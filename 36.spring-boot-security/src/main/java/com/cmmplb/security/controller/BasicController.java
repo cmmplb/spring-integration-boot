@@ -1,9 +1,9 @@
 package com.cmmplb.security.controller;
 
-import com.cmmplb.core.constants.StringConstants;
-import com.cmmplb.core.result.HttpCodeEnum;
-import com.cmmplb.core.result.Result;
-import com.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.HttpCodeEnum;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
 import com.cmmplb.security.utils.CaptchaUtil;
 import com.cmmplb.security.utils.SmsCodeUtil;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @Api(tags = "基础管理")
-@ApiSupport(order = 1, author = StringConstants.AUTHOR)
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/basic")
 public class BasicController {

@@ -1,7 +1,7 @@
 package com.cmmplb.websocket.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.core.exception.BusinessException;
+import io.github.cmmplb.core.exception.BusinessException;
 import com.cmmplb.websocket.dao.UserMapper;
 import com.cmmplb.websocket.domain.entity.User;
 import com.cmmplb.websocket.service.UserService;

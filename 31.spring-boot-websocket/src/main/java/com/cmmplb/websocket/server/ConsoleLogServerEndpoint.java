@@ -1,8 +1,8 @@
 package com.cmmplb.websocket.server;
 
-import com.cmmplb.core.utils.ErrorUtil;
-import com.cmmplb.core.utils.LogDirUtil;
-import com.cmmplb.core.utils.PatternUtil;
+import io.github.cmmplb.core.utils.ErrorUtil;
+import io.github.cmmplb.core.utils.LogDirUtil;
+import io.github.cmmplb.core.utils.PatternUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.util.StringUtils;

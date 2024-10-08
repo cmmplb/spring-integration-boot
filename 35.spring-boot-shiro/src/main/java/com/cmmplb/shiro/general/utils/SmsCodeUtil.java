@@ -1,8 +1,8 @@
 package com.cmmplb.shiro.general.utils;
 
-import com.cmmplb.core.utils.RandomUtil;
-import com.cmmplb.core.utils.SpringUtil;
-import com.cmmplb.redis.service.RedisService;
+import io.github.cmmplb.core.utils.RandomUtil;
+import io.github.cmmplb.core.utils.SpringUtil;
+import io.github.cmmplb.redis.service.RedisService;
 import com.cmmplb.shiro.general.constants.RedisConstants;
 import lombok.extern.slf4j.Slf4j;
 
