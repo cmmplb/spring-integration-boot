@@ -10,5 +10,5 @@ mybatis-plus:
   mapper-locations:
     - classpath:mapper/*.xml
     - classpath:mapper/*/*.xml
-  # type-aliases扫描路径-mapper.xml的resultType中直接写类名，可以不用写全限定名
+  # type-aliases扫描路径-mapper.xml的resultType中直接写类名, 可以不用写全限定名
   type-aliases-package: com.cmmplb.websocket.entity

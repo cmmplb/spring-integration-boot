@@ -6,11 +6,11 @@
     <parent>
         <artifactId>spring-parent</artifactId>
         <groupId>io.github.cmmplb</groupId>
-        <version>1.0.3</version>
+        <version>2.5.15.2</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
-    <!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。 -->
+    <!-- 项目的唯一的标识符, 实际对应项目的名称, 就是项目根目录的名称。 -->
     <artifactId>spring-integration-boot</artifactId>
     <!-- 项目版本 -->
     <version>${revision}</version>
@@ -24,10 +24,46 @@
     <inceptionYear>2021</inceptionYear>
     <!-- 项目URL地址 -->
     <url>https://gitee.com/cmmplb/spring-integration-boot</url>
+    <!-- 开源协议 -->
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
 
-    <properties>
-        <revision>1.0.0</revision>
-    </properties>
+    <!--开发者相关信息-->
+    <developers>
+        <developer>
+            <id>cmmplb</id>
+            <name>penglibo</name>
+            <email>cmmplb@163.com</email>
+        </developer>
+    </developers>
+
+    <!-- 项目信息,scm:git:不变，后面改成克隆仓库时的https地址 -->
+    <scm>
+        <connection>scm:git:https://gitee.com/cmmplb/spring-integration-boot.git</connection>
+        <developerConnection>scm:git:https://gitee.com/cmmplb/spring-integration-boot.git</developerConnection>
+        <url>https://gitee.com/cmmplb/spring-integration-boot.git</url>
+    </scm>
+
+    <!--
+        更多配置信息:
+        organization组织信息
+        developers开发者信息
+        issueManagement项目缺陷跟踪系统信息
+        ciManagement项目持续集成系统信息
+        scm：项目版本控制系统信息
+        mailingLists：邮件列表
+        properties：自定义属性
+        dependencies：依赖配置
+        dependencyManagement：依赖配置管理
+        pluginManagement: 插件依赖配置
+        repositories：仓库配置
+        build：构建信息，包括源码目录，输出目录，插件配置，插件管理配置
+        reporting：项目的报告输出目录配置，报告插件配置
+    -->
 
     <!-- 子模块 -->
     <modules>

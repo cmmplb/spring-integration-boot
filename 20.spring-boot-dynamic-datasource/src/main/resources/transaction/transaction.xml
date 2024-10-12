@@ -24,7 +24,7 @@
     </tx:advice>
 
     <aop:config>
-        <aop:pointcut expression="execution(* com.cmmplb.mybatis.plus.service..*.*(..))" id="txPointcut"/>
+        <aop:pointcut expression="execution(* io.github.cmmplb.mybaits.plus.service..*.*(..))" id="txPointcut"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
 </beans>

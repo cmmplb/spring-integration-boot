@@ -91,7 +91,7 @@ $(function() {
 	
 	// before upload
 	/*$(window).bind('beforeunload',function(){
-		return 'Glue尚未保存，确定离开Glue编辑器？';
+		return 'Glue尚未保存, 确定离开Glue编辑器？';
 	});*/
 	
 });

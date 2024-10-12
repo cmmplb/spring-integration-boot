@@ -1,6 +1,6 @@
 spring:
   rabbitmq:
-    # 集群配置，以逗号分隔的客户端应连接的地址列表。设置后，主机和端口将被忽略。
+    # 集群配置, 以逗号分隔的客户端应连接的地址列表. 设置后, 主机和端口将被忽略. 
     # addresses: @rabbitmq.address@
     host: 127.0.0.1
     port: 5672
@@ -10,10 +10,10 @@ spring:
     virtual-host: /cmmplb
     #开启消息二次确认,生产者到broker的交换机
     publisher-confirm-type: correlated
-    #开启消息二次确认，交换机到队列的可靠性投递
+    #开启消息二次确认, 交换机到队列的可靠性投递
     publisher-returns: true
     template:
-      #为true,则交换机处理消息到路由失败，则会返回给生产者
+      #为true,则交换机处理消息到路由失败, 则会返回给生产者
       mandatory: true
     listener:
       simple:
@@ -23,10 +23,10 @@ spring:
         max-concurrency: 10
         #自动签收auto 手动 manual
         acknowledge-mode: manual
-        #限流（海量数据，同时只能过来一条）
+        #限流（海量数据, 同时只能过来一条）
         prefetch: 1
       direct:
-        #消息手工确认ACK，自动签收aut o (NONE,AUTO,MANUAL)
+        #消息手工确认ACK, 自动签收aut o (NONE,AUTO,MANUAL)
         acknowledge-mode: manual
 
 rabbitmq:
@@ -35,13 +35,13 @@ rabbitmq:
   queues:
     # ============================简单队列模式==============================
     # ---------------------简单队列-一个生产者对应一个消费者------------------
-    - # 队列名称,代表一个bean名称，不能重复
+    - # 队列名称,代表一个bean名称, 不能重复
       name: simple_queue
       # 服务器重新启动后队列是否继续存在,默认true
       durable: true
       # 是否为排他队列,默认false,特点:
       # 1.只对首次声明它的连接（Connection）可见
-      # 2.会在其连接断开的时候自动删除。
+      # 2.会在其连接断开的时候自动删除. 
       exclusive: false
       # 如果服务器不使用队列时是否删除,默认false
       auto-delete: false
@@ -75,18 +75,18 @@ rabbitmq:
     # 普通队列
     - name: common_queue
       arguments:
-        # 消息过期后，进入到死信交换机
+        # 消息过期后, 进入到死信交换机
         x-dead-letter-exchange: dead.exchange
-        # 消息过期后，进入到死信交换机的路由key
+        # 消息过期后, 进入到死信交换机的路由key
         x-dead-letter-routing-key: dead.#
-        # 过期时间，单位毫秒
+        # 过期时间, 单位毫秒
         x-message-ttl: 30000
 
   # 交换机配置
   exchanges:
     # ==============================订阅模型-Fanout(广播模式)===============
     # ---------------------订阅模型-Fanout-交换机---------------------
-    - # 交换机名称,代表一个bean名称，不能重复
+    - # 交换机名称,代表一个bean名称, 不能重复
       name: fanout.exchange
       type: fanout
       # 服务器重新启动后交换机是否继续存在,默认true
@@ -112,13 +112,13 @@ rabbitmq:
   # 队列交换机绑定配置
   bindings:
     # ======================订阅模型-Fanout(广播模式)交换机绑定队列==============
-    - # 队列交换机绑定bean名称，默认为队列名+'-'+交换机名
+    - # 队列交换机绑定bean名称, 默认为队列名+'-'+交换机名
       name: oneFanoutQueue
       # 绑定的队列名称
       queue-name: one_fanout_queue
       # 绑定的交换机名称
       exchange-name: fanout.exchange
-      # 交换机路由key,#表示0个或若干个关键字，*表示一个关键字
+      # 交换机路由key,#表示0个或若干个关键字, *表示一个关键字
       routing-key:
       # 参数
       # arguments:

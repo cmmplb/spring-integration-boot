@@ -14,9 +14,9 @@
 
 - 由 @EnableSwagger2 改为 @EnableOpenApi
 
-- 配置方法Docket中DocumentationType版本改变，变更为DocumentationType.OAS_30
+- 配置方法Docket中DocumentationType版本改变, 变更为DocumentationType.OAS_30
 
-- 访问地址变更，从之前的http://localhost:8080/swagger-ui.html变更为http://localhost:8080/swagger-ui/index.html
+- 访问地址变更, 从之前的http://localhost:8080/swagger-ui.html变更为http://localhost:8080/swagger-ui/index.html
 
 - 重写WebMvcConfigurer类中的addResourceHandlers接口
 

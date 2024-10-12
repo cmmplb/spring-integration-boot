@@ -7,7 +7,7 @@
     <!-- 开启二级缓存 -->
     <cache eviction="LRU" flushInterval="108000" readOnly="false" size="1024"/>
 
-    <!-- 声明缓存，这里3.x只需要这样配置 -->
+    <!-- 声明缓存, 这里3.x只需要这样配置 -->
     <!-- <cache-ref namespace="com.cmmplb.mybatis.plus.dao.UserMapper"/> -->
 
     <!-- 1. eviction：缓存回收策略：• 默认的是 LRU。
@@ -15,13 +15,13 @@
             FIFO – 先进先出：按对象进入缓存的顺序来移除它们。
             SOFT – 软引用：移除基于垃圾回收器状态和软引用规则的对象。
             WEAK – 弱引用：更积极地移除基于垃圾收集器状态和弱引用规则的对象。
-        2. flushInterval：刷新间隔，单位毫秒
-            默认情况是不设置，也就是没有刷新间隔，缓存仅仅调用语句时刷新
-        3. size：引用数目，正整数
-            代表缓存最多可以存储多少个对象，太大容易导致内存溢出
-        4. readOnly：只读，true/false
+        2. flushInterval：刷新间隔, 单位毫秒
+            默认情况是不设置, 也就是没有刷新间隔, 缓存仅仅调用语句时刷新
+        3. size：引用数目, 正整数
+            代表缓存最多可以存储多少个对象, 太大容易导致内存溢出
+        4. readOnly：只读, true/false
             true：只读缓存；会给所有调用者返回缓存对象的相同实例。因此这些对象不能被修改。这提供了很重要的性能优势。
-            false：读写缓存；会返回缓存对象的拷贝（通过序列化）。这会慢一些，但是安全，因此默认是 false。
+            false：读写缓存；会返回缓存对象的拷贝（通过序列化）。这会慢一些, 但是安全, 因此默认是 false。
      -->
 
     <sql id="base_column">
@@ -44,7 +44,7 @@
         from `user` u
     </sql>
 
-    <!-- 如果一条语句每次都需要最新的数据，就意味着每次都需要从数据库中查询数据，可以把这个属性设置为false -->
+    <!-- 如果一条语句每次都需要最新的数据, 就意味着每次都需要从数据库中查询数据, 可以把这个属性设置为false -->
     <select id="selectByPaged" resultType="com.cmmplb.mybatis.plus.entity.User" useCache="false">
         select
         <include refid="base_column"/>
@@ -69,7 +69,7 @@
                      select="com.cmmplb.mybatis.plus.dao.UserInfoMapper.selectById"/>
     </resultMap>
 
-    <!-- 如果一条语句每次都需要最新的数据，就意味着每次都需要从数据库中查询数据，可以把这个属性设置为false -->
+    <!-- 如果一条语句每次都需要最新的数据, 就意味着每次都需要从数据库中查询数据, 可以把这个属性设置为false -->
     <select id="selectUserInfoById" resultMap="info_map" useCache="false">
         <include refid="base_select"/>
         where u.id = #{id}

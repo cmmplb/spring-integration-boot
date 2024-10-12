@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cmmplb.mybatis.mapper.dao.UserMapper">
+<mapper namespace="io.github.cmmplb.mybatis.mapper.dao.UserMapper">
     <cache/>
 
     <sql id="base_column">
@@ -25,7 +25,7 @@
         from `user` u
     </sql>
 
-    <select id="selectList" resultType="com.cmmplb.mybatis.mapper.entity.User">
+    <select id="selectList" resultType="io.github.cmmplb.mybatis.mapper.entity.User">
         <include refid="base_select"/>
     </select>
 
@@ -67,12 +67,12 @@
         where `id` = #{id}
     </update>
 
-    <select id="selectById" resultType="com.cmmplb.mybatis.mapper.entity.User">
+    <select id="selectById" resultType="io.github.cmmplb.mybatis.mapper.entity.User">
         <include refid="base_select"/>
         where u.`id` = #{id}
     </select>
 
-    <select id="selectByPaged" resultType="com.cmmplb.mybatis.mapper.entity.User">
+    <select id="selectByPaged" resultType="io.github.cmmplb.mybatis.mapper.entity.User">
         <include refid="base_select"/>
     </select>
 
@@ -81,12 +81,12 @@
         from `user`
     </select>
 
-    <select id="selectByPagedList" resultType="com.cmmplb.mybatis.mapper.entity.User">
+    <select id="selectByPagedList" resultType="io.github.cmmplb.mybatis.mapper.entity.User">
         <include refid="base_select"/>
         limit #{q.start},#{q.size}
     </select>
 
-    <select id="testCurrentUserId" resultType="com.cmmplb.mybatis.mapper.entity.User">
+    <select id="testCurrentUserId" resultType="io.github.cmmplb.mybatis.mapper.entity.User">
         <include refid="base_select"/>
         where u.id = #{currentUserId}
     </select>

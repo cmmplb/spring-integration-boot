@@ -10,10 +10,10 @@
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
-    <!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。 -->
+    <!-- 项目的唯一的标识符, 实际对应项目的名称, 就是项目根目录的名称。 -->
     <artifactId>spring-boot-velocity</artifactId>
-    <!-- 项目ID，项目坐标核心元素，项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。 -->
-    <groupId>com.cmmplb.velocity</groupId>
+    <!-- 项目ID, 项目坐标核心元素, 项目组织唯一的标识符, 实际对应JAVA的包的结构, 是main目录里java的目录结构。 -->
+    <groupId>io.github.cmmplb.velocity</groupId>
     <!-- 项目的打包类型：pom、jar、war -->
     <packaging>jar</packaging>
     <!-- 项目名称 -->
@@ -23,7 +23,7 @@
 
     <!--
             SpringBoot 1.3.x版本官方支持Velocity
-            SpringBoot 1.4.x版本支持Velocity，但是官方标记为@deprecated
+            SpringBoot 1.4.x版本支持Velocity, 但是官方标记为@deprecated
             SpringBoot 1.5.x版本官方不支持Velocity
         -->
     <!--<dependencyManagement>

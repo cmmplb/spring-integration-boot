@@ -9,7 +9,7 @@ const service = axios.create({
     baseURL: baseUrl,
     // baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
     // baseURL: "http://localhost:9000/" , // url = base url + request url
-    // withCredentials: true, // send cookies when cross-domain requests, 跨域请求，允许保存cookie
+    // withCredentials: true, // send cookies when cross-domain requests, 跨域请求, 允许保存cookie
     timeout: 60000, // 超时时间
 });
 
@@ -42,14 +42,14 @@ service.interceptors.response.use(
         // 登录失效
         if (error && error.response && error.response.status === 401) {
             // buildMsg('登录失效', 'info');
-            // 记录当前页面地址，用于登录成功回调
+            // 记录当前页面地址, 用于登录成功回调
             let refer = window.location.href;
             if (refer.indexOf('login') === -1) {
                 console.log('refer:', refer);
                 // setStorage({name: storage.referPrefix, content: refer, type: storage.session});
             }
             // store.dispatch('user/clear').then(() => {
-            //     // 存储当前页面，用于登录成功后重定向到当前页
+            //     // 存储当前页面, 用于登录成功后重定向到当前页
             //     if (window.location.pathname !== '/login') {
             //         window.location.href = '/login';
             //     }

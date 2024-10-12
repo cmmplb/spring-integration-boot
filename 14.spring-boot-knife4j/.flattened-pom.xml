@@ -5,11 +5,11 @@
   <parent>
     <groupId>io.github.cmmplb</groupId>
     <artifactId>spring-integration-boot</artifactId>
-    <version>1.0.0</version>
+    <version>2.5.15.2</version>
   </parent>
-  <groupId>com.cmmplb.knife4j</groupId>
+  <groupId>io.github.cmmplb.knife4j</groupId>
   <artifactId>spring-boot-knife4j</artifactId>
-  <version>1.0.0</version>
+  <version>2.5.15.2</version>
   <name>${project.artifactId}</name>
   <description>${project.artifactId}</description>
   <licenses>

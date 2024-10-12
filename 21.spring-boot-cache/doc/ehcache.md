@@ -2,7 +2,7 @@
 
 项目源码仓库：https://github.com/cache2k/cache2k
 
-Ehcache是一种高性能、开源的Java缓存框架，被广泛应用于许多大规模、高并发的分布式系统中。。
+Ehcache是一种高性能、开源的Java缓存框架, 被广泛应用于许多大规模、高并发的分布式系统中。。
 
 ````
 <dependency>

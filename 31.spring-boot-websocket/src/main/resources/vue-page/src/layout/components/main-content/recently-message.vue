@@ -139,7 +139,7 @@ export default {
 /* 用户消息列表 */
 .content-user-list-container {
   display: flex;
-  /*  默认情况下，项目都排在一条线（又称“轴线”）上。如果一条轴线排不下，flex-wrap:wrap 该样式用于设置换行 */
+  /*  默认情况下, 项目都排在一条线（又称“轴线”）上。如果一条轴线排不下, flex-wrap:wrap 该样式用于设置换行 */
   flex-wrap: wrap;
   /* align-content:flex-start 该样式用于让div与交叉轴的起点对齐（即顶部对齐） */
   align-content: flex-start;
@@ -206,7 +206,7 @@ export default {
             .name {
               //width: 62%;
               font-size: 16px;
-              /* text-overflow，默认为clip。ellipsis文本溢出时自动加上省略号。 */
+              /* text-overflow, 默认为clip。ellipsis文本溢出时自动加上省略号。 */
               text-overflow: ellipsis;
               /* 超出隐藏 */
               overflow: hidden;
@@ -227,7 +227,7 @@ export default {
             .message {
               max-width: 91%;
               font-size: 12px;
-              /* text-overflow，默认为clip。ellipsis文本溢出时自动加上省略号。 */
+              /* text-overflow, 默认为clip。ellipsis文本溢出时自动加上省略号。 */
               text-overflow: ellipsis;
               /* 超出隐藏 */
               overflow: hidden;

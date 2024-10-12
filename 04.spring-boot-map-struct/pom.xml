@@ -10,10 +10,10 @@
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
-    <!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。 -->
+    <!-- 项目的唯一的标识符, 实际对应项目的名称, 就是项目根目录的名称。 -->
     <artifactId>spring-boot-map-struct</artifactId>
-    <!-- 项目ID，项目坐标核心元素，项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。 -->
-    <groupId>com.cmmplb.map.struct</groupId>
+    <!-- 项目ID, 项目坐标核心元素, 项目组织唯一的标识符, 实际对应JAVA的包的结构, 是main目录里java的目录结构。 -->
+    <groupId>io.github.cmmplb.map.struct</groupId>
     <!-- 项目的打包类型：pom、jar、war -->
     <packaging>jar</packaging>
     <!-- 项目名称 -->
@@ -34,13 +34,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- idea 插件：MapStruct Support -->
-        <!-- 单独引用的时候，lombok需要在mapstruct之上，否则无法设置set -->
+        <!-- 单独引用的时候, lombok需要在mapstruct之上, 否则无法设置set -->
         <!-- mapstruct -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
         </dependency>
-        <!-- 若我们使用的JDK版本高于1.8，当我们在pom里面导入依赖时候，建议使用坐标是：org.mapstruct:mapstruct-jdk8 -->
+        <!-- 若我们使用的JDK版本高于1.8, 当我们在pom里面导入依赖时候, 建议使用坐标是：org.mapstruct:mapstruct-jdk8 -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-jdk8</artifactId>

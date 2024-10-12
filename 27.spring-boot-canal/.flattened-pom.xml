@@ -5,11 +5,11 @@
   <parent>
     <groupId>io.github.cmmplb</groupId>
     <artifactId>spring-integration-boot</artifactId>
-    <version>1.0.0</version>
+    <version>2.5.15.2</version>
   </parent>
-  <groupId>com.cmmplb.canal</groupId>
+  <groupId>io.github.cmmplb.canal</groupId>
   <artifactId>spring-boot-canal</artifactId>
-  <version>1.0.0</version>
+  <version>2.5.15.2</version>
   <name>${project.artifactId}</name>
   <description>${project.artifactId}</description>
   <licenses>
@@ -28,8 +28,9 @@
       <artifactId>spring-boot-starter-swagger</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.xpand</groupId>
+      <groupId>io.github.cmmplb</groupId>
       <artifactId>spring-boot-starter-canal</artifactId>
+      <version>2.5.15.2</version>
     </dependency>
     <dependency>
       <groupId>mysql</groupId>

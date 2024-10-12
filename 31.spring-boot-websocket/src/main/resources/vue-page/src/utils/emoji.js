@@ -76,7 +76,7 @@ export const emojiData = [
  * @param {Object} html 富文本内容
  */
 export function parseToText(html) {
-    // 1、对img表情进行解析，解析出表情对应的name
+    // 1、对img表情进行解析, 解析出表情对应的name
     let reg = /<img[\S\s]*?>/g;
     let imgList = html.match(reg);
     let length = imgList?.length || 0;
@@ -110,7 +110,7 @@ export function parseEmojiName(html, emojiList) {
 }
 
 /**
- * 解析富文本编辑器默认标签，p标签
+ * 解析富文本编辑器默认标签, p标签
  * @param {Object} html
  */
 export function parseDefaultTab(html) {
@@ -122,7 +122,7 @@ export function parseDefaultTab(html) {
     html = html.replace(reg, "");
     html = html.replace(reg1, "");
     html = html.replace(reg2, "\n");
-    // 去除首尾多余换行，^代表开头，$代表结尾，\s 代表：匹配一个空白字符，包括\n,\r,\f,\t,\v等，g：globle进行全局匹配
+    // 去除首尾多余换行, ^代表开头, $代表结尾, \s 代表：匹配一个空白字符, 包括\n,\r,\f,\t,\v等, g：globle进行全局匹配
     // html = html.replace(/^\s+|\s+$/g, "");
     html = html.replace(reg3, "");
     return html;

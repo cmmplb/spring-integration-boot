@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- scan-logback配置文件一旦发生变化，logback支持重新加载文件，这是基于logback框架中一个后台线程实现的。默认情况下，logback一分钟加载一次 -->
+<!-- debug-当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <property name="logging.level" value="info"/>
+    <!-- 日志存放路径 -->
+    <define name="log.dir" class="io.github.cmmplb.core.utils.LogDirUtil"/>
+    <!--<property name="log.path" value="${logging.dir}/${spring.application.name}"/>-->
+    <property name="log.path" value="${log.dir}/01.spring-boot-start"/>
+
+    <!-- 日志输出格式 -->
+    <property name="log.pattern" value="%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n"/>
+    <!-- 编码格式设置 -->
+    <property name="encoding" value="UTF-8"/>
+    <!-- 彩色日志格式 -->
+    <!--
+        %d{yyyy-MM-dd HH:mm:ss.SSS}——日志输出时间;
+        %level——日志级别;
+        ${log_level_pattern:-%5p}：用于呈现日志级别的格式（默认%5p）；
+        $PID——进程号;
+        %t——输出日志的线程名；
+        %-40.40logger{39}——其中的“-”表示左对齐，“{39}”表示logger名字最长39个字符，否则按照句点分割;
+        %msg——日志消息;
+        %n——平台的换行符;
+    -->
+    <property name="console_log_pattern"
+              value="${console_log_pattern:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${log_level_pattern:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${log_exception_conversion_word:-%wEx}}"/>
+    <!-- 彩色日志依赖的渲染类 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+    <!-- 控制台输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 对日志进行格式化 -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${console_log_pattern}</pattern>
+            <charset>${encoding}</charset>
+        </encoder>
+    </appender>
+
+    <!-- 系统info日志输出 -->
+    <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建，没有默认值。 -->
+        <file>${log.path}/info.log</file>
+        <!-- 循环政策：基于时间创建日志文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${log.path}/%d{yyyy-MM, aux}/info.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <!-- 日志最大的历史 30天 -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <!-- 字符编码 -->
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+            <charset>${encoding}</charset>
+        </encoder>
+        <!--
+            警告
+            This appender no longer admits a layout as a sub-component, set an encoder instead.
+
+         -->
+        <!--  layout 负责把事件转换成字符串，格式化的日志信息的输出 -->
+        <!--<layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${log.pattern}</pattern>
+        </layout>-->
+        <!-- 官方已经不建议这么使用，而是推荐使用encoder -->
+        <!--<encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>-->
+
+        <!--
+            过滤策略：
+            LevelFilter ： 只打印level标签设置的日志级别
+            ThresholdFilter：打印大于等于level标签设置的级别，小的舍弃
+            当前appender=fileDebug只记录debug级别
+         -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 过滤的级别 -->
+            <level>info</level>
+            <!-- 匹配时的操作：接收（记录） -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 不匹配时的操作：拒绝（不记录） -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 系统debug日志输出 -->
+    <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/debug.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${log.path}/%d{yyyy-MM, aux}/debug.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <!-- 日志最大的历史 30天 -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+            <charset>${encoding}</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 过滤的级别 -->
+            <level>debug</level>
+            <!-- 匹配时的操作：接收（记录） -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 不匹配时的操作：拒绝（不记录） -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 系统error日志输出 -->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${log.path}/%d{yyyy-MM}/error.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <!-- 日志最大的历史 30天 -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+            <charset>${encoding}</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>error</level>
+        </filter>
+    </appender>
+
+    <!-- ===日志输出级别，OFF level > FATAL > ERROR > WARN > INFO > DEBUG > ALL level=== -->
+
+    <!-- Spring日志级别控制 -->
+    <logger name="org.springframework" level="${logging.level}"/>
+
+    <!-- start日志级别 -->
+    <logger name="io.github.cmmplb" level="${logging.level}"/>
+
+    <!-- 系统日志级别控制 -->
+    <logger name="root" level="${logging.level}" additivity="false">
+        <!-- 当additivity设为true时，这个logger标签会继承root，也就不止打印自己的日志，还会打印root的日志，打印两遍。 -->
+        <appender-ref ref="info"/>
+        <appender-ref ref="debug"/>
+        <appender-ref ref="error"/>
+        <appender-ref ref="console"/>
+    </logger>
+
+</configuration>

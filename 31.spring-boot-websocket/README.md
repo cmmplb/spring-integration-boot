@@ -13,7 +13,7 @@
 
 前端连接websocket和netty的demo学习。
 
-目前只加了首页的样式和上传头像切换功能，学习一下，简单实现通讯录的逻辑，一点一点的加代码。
+目前只加了首页的样式和上传头像切换功能, 学习一下, 简单实现通讯录的逻辑, 一点一点的加代码。
 
 #### finished
 
@@ -40,19 +40,19 @@
 
 ![image_02.png](doc%2Fimages%2Fimage_02.png)
 
-#### 方便学习，没有集成认证，点击右上角直接切换用户。
+#### 方便学习, 没有集成认证, 点击右上角直接切换用户。
 
 ![image_03.png](doc%2Fimages%2Fimage_03.png)
 
 #### 遇到的问题
 
-1. vue绑定数据修改了但是页面上没刷新，使用vue事件强制更新
+1. vue绑定数据修改了但是页面上没刷新, 使用vue事件强制更新
 
 ````
 this.$forceUpdate();
 ````
 
-2. 设置滚动条位置时不生效，等待dom加载完成
+2. 设置滚动条位置时不生效, 等待dom加载完成
 
 ````
 nextTick(() => {
@@ -60,7 +60,7 @@ nextTick(() => {
 })
 ````
 
-3. 上拉滑动加载数据实现，添加滚动事件后，计算距离顶部的距离，为0则到顶触发响应的事件
+3. 上拉滑动加载数据实现, 添加滚动事件后, 计算距离顶部的距离, 为0则到顶触发响应的事件
 
 ````
 addEventListener("scroll", this.handle);
@@ -73,7 +73,7 @@ handle(event){
 
 4. group by配合any_value(column)
 
-5. JSONObject.parseObject解析出来的对象属性值是null，要有构造函数
+5. JSONObject.parseObject解析出来的对象属性值是null, 要有构造函数
 
 ***
 
@@ -83,7 +83,7 @@ handle(event){
 ***
 
 2024-01-12
-添加vuex存储最近消息和聊天记录，发送消息后将聊天用户置顶，同时把每个组件拆分了一下。
+添加vuex存储最近消息和聊天记录, 发送消息后将聊天用户置顶, 同时把每个组件拆分了一下。
 
 ***
 
@@ -94,8 +94,8 @@ handle(event){
 ***
 
 2024-01-26
-添加websocket心跳检测，断线重连，消息数量，已读未读，表情回显到聊天记录。
+添加websocket心跳检测, 断线重连, 消息数量, 已读未读, 表情回显到聊天记录。
 
 2024-02-02
-调整了一下布局方式，使用vue-draggable-resizable组件实现窗口拖拽。
+调整了一下布局方式, 使用vue-draggable-resizable组件实现窗口拖拽。
 ![image_06.png](doc%2Fimages%2Fimage_06.png)

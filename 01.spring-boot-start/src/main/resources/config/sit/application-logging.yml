@@ -1,5 +1,5 @@
 logging:
-  # 使用了core里的logback，路径：${logging.file.path}/${spring.application.name}, core根据系统环境指定。
+  # 使用了core里的logback, 路径：${logging.file.path}/${spring.application.name}, core根据系统环境指定. 
   file.path: /Users/penglibo/Cmmplb/Logs
   # log level(trace < debug < info < warn < error)
   level:

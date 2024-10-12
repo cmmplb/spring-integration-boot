@@ -60,8 +60,8 @@
         <img v-if="imgUrl" :src="imgUrl" class="upload-avatar" alt="">
         <div v-else>
           <i class="el-icon-upload avatar-uploader-icon"></i>
-          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-          <div class="el-upload__tip" slot="tip">只能上传jpg/png/jpeg文件，且不超过5M</div>
+          <div class="el-upload__text">将文件拖到此处, 或<em>点击上传</em></div>
+          <div class="el-upload__tip" slot="tip">只能上传jpg/png/jpeg文件, 且不超过5M</div>
         </div>
       </el-upload>
       <div slot="footer" class="dialog-footer">
@@ -190,7 +190,7 @@ export default {
       avatarVisible: false,
       // 裁剪头像弹窗状态
       cropperVisible: false,
-      // 是否裁剪圆形框，默认圆形
+      // 是否裁剪圆形框, 默认圆形
       circular: true,
       // 上传的文件
       file: "",
@@ -230,7 +230,7 @@ export default {
         return false;
       }
       // URL.createObjectURL的参数只能是blob或者file类型
-      // 第一种方法用FileReader，URL.createObjectURL接收blob类型
+      // 第一种方法用FileReader, URL.createObjectURL接收blob类型
       const reader = new FileReader();
       reader.onload = () => {
         // 把Array Buffer转化为blob 如果是base64不需要
@@ -242,7 +242,7 @@ export default {
       };
       // 转化为base64
       reader.readAsArrayBuffer(file.raw);
-      // 第二种方法，URL.createObjectURL接收file类型
+      // 第二种方法, URL.createObjectURL接收file类型
       // this.$nextTick(() => {
       //   this.file = URL.createObjectURL(file.raw)
       //   this.cropperVisible = true
@@ -316,17 +316,17 @@ export default {
               };
               const context = canvas.getContext("2d");
               context.clearRect(0, 0, width, height);
-              // 在canvas开始绘制前填充白色透明背景并设置透明度，用以清除图片裁剪后透明区域变成黑色的问题
+              // 在canvas开始绘制前填充白色透明背景并设置透明度, 用以清除图片裁剪后透明区域变成黑色的问题
               context.fillStyle = "rgba(255, 255, 255, 0)";
               context.fillRect(0, 0, width, height);
 
-              // 开始路径画圆，剪切处理
+              // 开始路径画圆, 剪切处理
               context.save(); // 保存当前canvas的状态
               context.beginPath();
               context.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, false); // 创建弧/曲线(用于创建圆形或部分圆)
               context.clip(); // 从原始画布剪切任意形状和尺寸的区域
               context.drawImage(image, 0, 0);
-              context.restore(); // 返回之前保存过的路径状态和属性，恢复状态
+              context.restore(); // 返回之前保存过的路径状态和属性, 恢复状态
 
               console.log("3333");
               // 将canvas图片转换成 blob数据
@@ -342,9 +342,9 @@ export default {
             console.log("reader err", err);
           };
         } else {
-          // new File()的第一个参数是一个字符串数组，数组中的每一个元素对应着文件中一行的内容
+          // new File()的第一个参数是一个字符串数组, 数组中的每一个元素对应着文件中一行的内容
           // 第二个参数就是文件名字符串
-          // 第三个参数可以设定一些文件的属性，比如文件的MIME，最后更新时间等
+          // 第三个参数可以设定一些文件的属性, 比如文件的MIME, 最后更新时间等
           file = new File([blob], this.fileName, {type: blob.type, lastModified: Date.now()});
         }
         // 等待文件转换完成
@@ -352,10 +352,10 @@ export default {
           console.log("444");
           file.uid = Date.now();
           form.append("files", file);
-          // 如果想在这里打印查看form的值，会发现它是空对象
-          // 解决办法，需要用form.get('键')的方法获取值
+          // 如果想在这里打印查看form的值, 会发现它是空对象
+          // 解决办法, 需要用form.get('键')的方法获取值
           // console.log(form.get('file'));
-          // 这里调用接口，获取后端返给的图片地址
+          // 这里调用接口, 获取后端返给的图片地址
           const res = await upload(form);
           if (res.data.code === 200 && res.data.data) {
             // 返回的数组

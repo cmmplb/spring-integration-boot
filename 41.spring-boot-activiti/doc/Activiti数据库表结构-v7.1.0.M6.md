@@ -2,26 +2,26 @@
 
 ## 1.1 数据库表名说明
 
-Activiti工作流总共包含23张数据表，所有的表名默认以“ACT_”开头。
+Activiti工作流总共包含23张数据表, 所有的表名默认以“ACT_”开头。
 
-并且表名的第二部分用两个字母表明表的用例，而这个用例也基本上跟Service API匹配。
+并且表名的第二部分用两个字母表明表的用例, 而这个用例也基本上跟Service API匹配。
 
-- ACT_GE_* : “GE”代表“General”（通用），用在各种情况下；
+- ACT_GE_* : “GE”代表“General”（通用）, 用在各种情况下；
 
-- ACT_HI_* : “HI”代表“History”（历史），这些表中保存的都是历史数据，比如执行过的流程实例、变量、任务，等等。
+- ACT_HI_* : “HI”代表“History”（历史）, 这些表中保存的都是历史数据, 比如执行过的流程实例、变量、任务, 等等。
 
-  __Activit默认提供了4种历史级别,对于几种级别根据对功能的要求选择，如果需要日后跟踪详细可以开启full：__
-    1. none: 不保存任何历史记录，可以提高系统性能；
+  __Activit默认提供了4种历史级别,对于几种级别根据对功能的要求选择, 如果需要日后跟踪详细可以开启full：__
+    1. none: 不保存任何历史记录, 可以提高系统性能；
     2. activity：保存所有的流程实例、任务、活动信息；
-    3. audit：也是Activiti的默认级别，保存所有的流程实例、任务、活动、表单属性；
-    4. full：最完整的历史记录，除了包含audit级别的信息之外还能保存详细，例如：流程变量。
+    3. audit：也是Activiti的默认级别, 保存所有的流程实例、任务、活动、表单属性；
+    4. full：最完整的历史记录, 除了包含audit级别的信息之外还能保存详细, 例如：流程变量。
 
-- ACT_ID_* : “ID”代表“Identity”（身份），这些表中保存的都是身份信息，如用户和组以及两者之间的关系。如果Activiti被集成在某一系统当中的话，这些表可以不用，可以直接使用现有系统中的用户或组信息；
+- ACT_ID_* : “ID”代表“Identity”（身份）, 这些表中保存的都是身份信息, 如用户和组以及两者之间的关系。如果Activiti被集成在某一系统当中的话, 这些表可以不用, 可以直接使用现有系统中的用户或组信息；
 
-- ACT_RE_* : “RE”代表“Repository”（仓库），这些表中保存一些‘静态’信息，如流程定义和流程资源（如图片、规则等）；
+- ACT_RE_* : “RE”代表“Repository”（仓库）, 这些表中保存一些‘静态’信息, 如流程定义和流程资源（如图片、规则等）；
 
 - ACT_RU_* :
-  “RU”代表“Runtime”（运行时），这些表中保存一些流程实例、用户任务、变量等的运行时数据。Activiti只保存流程实例在执行过程中的运行时数据，并且当流程结束后会立即移除这些数据，这是为了保证运行时表尽量的小并运行的足够快；
+  “RU”代表“Runtime”（运行时）, 这些表中保存一些流程实例、用户任务、变量等的运行时数据。Activiti只保存流程实例在执行过程中的运行时数据, 并且当流程结束后会立即移除这些数据, 这是为了保证运行时表尽量的小并运行的足够快；
 
 ## 1.2 数据库表结构
 
@@ -33,7 +33,7 @@ Activiti工作流总共包含23张数据表，所有的表名默认以“ACT_”
 | 流程历史记录                    | ACT_HI_ACTINST<br/>ACT_HI_ATTACHMENT<br/>ACT_HI_COMMENT<br/>ACT_HI_DETAIL<br/>ACT_HI_IDENTITYLINK<br/>ACT_HI_PROCINST<br/>ACT_HI_TASKINST<br/>ACT_HI_VARINST                              | 历史的流程实例<br/>历史的流程附件<br/>历史的说明性信息<br/>历史的流程运行中的细节信息<br/>历史的流程运行过程中用户关系<br/>历史的流程实例<br/>历史的任务实例<br/>历史的流程运行中的变量信息 |
 | 事件日志                      | ACT_EVT_LOG                                                                                                                                                                               | 事件日志                                                                                                            |
 | 流程定义的动态变更信息               | ACT_PROCDEF_INFO                                                                                                                                                                          | 流程定义的动态变更信息                                                                                                     |
-| 用户用户组表， v7.1.0.M6好像没找到这些表 | ACT_ID_GROUP<br/>ACT_ID_INFO<br/>ACT_ID_MEMBERSHIP <br/>ACT_ID_USER                                                                                                                       | 身份信息-组信息<br/>身份信息-组信息<br/>身份信息-用户和组关系的中间表<br/>身份信息-用户信息                                                         |
+| 用户用户组表,  v7.1.0.M6好像没找到这些表 | ACT_ID_GROUP<br/>ACT_ID_INFO<br/>ACT_ID_MEMBERSHIP <br/>ACT_ID_USER                                                                                                                       | 身份信息-组信息<br/>身份信息-组信息<br/>身份信息-用户和组关系的中间表<br/>身份信息-用户信息                                                         |
 | 流程定义表                     | ACT_RE_DEPLOYMENT<br/>ACT_RE_MODEL  <br/>ACT_RE_PROCDEF                                                                                                                                   | 部署单元信息<br/>模型信息 <br/>已部署的流程定义                                                                                   |
 | 运行实例表                     | ACT_RU_DEADLETTER_JOB<br/>ACT_RU_EVENT_SUBSCR<br/>ACT_RU_EXECUTION<br/>ACT_RU_IDENTITYLINK<br/>ACT_RU_INTEGRATION<br/>ACT_RU_JOB<br/>ACT_RU_TASK<br/>ACT_RU_TIMER_JOB<br/>ACT_RU_VARIABLE | 作业失败<br/>运行时事件<br/>运行时流程执行实例<br/>运行时用户关系信息<br/>运行时综合<br/>运行时作业<br/>运行时任务<br/>运行时定时器<br/>运行时变量表                  |
 
@@ -97,7 +97,7 @@ CREATE TABLE `act_evt_log`
 用来保存部署文件的大文本数据。
 
 保存流程定义图片和xml、Serializable(序列化)
-的变量,即保存所有二进制数据，特别注意类路径部署时候，不要把svn等隐藏文件或者其他与流程无关的文件也一起部署到该表中，会造成一些错误（可能导致流程定义无法删除）。
+的变量,即保存所有二进制数据, 特别注意类路径部署时候, 不要把svn等隐藏文件或者其他与流程无关的文件也一起部署到该表中, 会造成一些错误（可能导致流程定义无法删除）。
 
 ````sql
 CREATE TABLE `act_ge_bytearray`
@@ -106,7 +106,7 @@ CREATE TABLE `act_ge_bytearray`
     `REV_`           int(11)      DEFAULT NULL COMMENT '版本号',
     `NAME_`          varchar(255) DEFAULT NULL COMMENT '部署的文件名称,mail.bpmn、mail.png 、mail.bpmn20.xml',
     `DEPLOYMENT_ID_` varchar(64)  DEFAULT NULL COMMENT '来自于父表ACT_RE_DEPLOYMENT的主键,部署的ID',
-    `BYTES_`         longblob     DEFAULT NULL COMMENT '大文本类型，存储文本字节流',
+    `BYTES_`         longblob     DEFAULT NULL COMMENT '大文本类型, 存储文本字节流',
     `GENERATED_`     tinyint(4)   DEFAULT NULL COMMENT '是否是引擎生成,0为用户生成,1为Activiti生成',
     PRIMARY KEY (`ID_`),
     KEY `ACT_FK_BYTEARR_DEPL` (`DEPLOYMENT_ID_`),
@@ -134,7 +134,7 @@ CREATE TABLE `act_ge_property`
 
 #### ACT_HI_ACTINST(act_hi_actinst)（历史节点表）
 
-历史活动信息。这里记录流程流转过的所有节点，与HI_TASKINST不同的是，taskinst只记录usertask内容。
+历史活动信息。这里记录流程流转过的所有节点, 与HI_TASKINST不同的是, taskinst只记录usertask内容。
 
 ````sql
 CREATE TABLE `act_hi_actinst`
@@ -151,7 +151,7 @@ CREATE TABLE `act_hi_actinst`
     `ASSIGNEE_`          varchar(255)  DEFAULT NULL COMMENT '代理人员,节点签收人',
     `START_TIME_`        datetime     NOT NULL COMMENT '开始时间',
     `END_TIME_`          datetime      DEFAULT NULL COMMENT '结束时间',
-    `DURATION_`          bigint(20)    DEFAULT NULL COMMENT '时长，耗时,毫秒值',
+    `DURATION_`          bigint(20)    DEFAULT NULL COMMENT '时长, 耗时,毫秒值',
     `DELETE_REASON_`     varchar(4000) DEFAULT NULL COMMENT '',
     `TENANT_ID_`         varchar(255)  DEFAULT '' COMMENT '',
     PRIMARY KEY (`ID_`),
@@ -192,13 +192,13 @@ CREATE TABLE `act_hi_attachment`
 CREATE TABLE `act_hi_comment`
 (
     `ID_`           varchar(64) NOT NULL COMMENT '',
-    `TYPE_`         varchar(255)  DEFAULT NULL COMMENT '意见记录类型，为comment时，为处理意见，类型：event（事件）comment（意见）',
+    `TYPE_`         varchar(255)  DEFAULT NULL COMMENT '意见记录类型, 为comment时, 为处理意见, 类型：event（事件）comment（意见）',
     `TIME_`         datetime    NOT NULL COMMENT '记录时间',
-    `USER_ID_`      varchar(255)  DEFAULT NULL COMMENT '用户Id，填写人',
-    `TASK_ID_`      varchar(64)   DEFAULT NULL COMMENT '任务Id，节点实例ID',
+    `USER_ID_`      varchar(255)  DEFAULT NULL COMMENT '用户Id, 填写人',
+    `TASK_ID_`      varchar(64)   DEFAULT NULL COMMENT '任务Id, 节点实例ID',
     `PROC_INST_ID_` varchar(64)   DEFAULT NULL COMMENT '流程实例Id',
-    `ACTION_`       varchar(255)  DEFAULT NULL COMMENT '行为类型。为addcomment时，为处理意见，值为下列内容中的一种：　　　　AddUserLink、DeleteUserLink、AddGroupLink、DeleteGroupLink、AddComment、AddAttachment、DeleteAttachment',
-    `MESSAGE_`      varchar(4000) DEFAULT NULL COMMENT '处理意见，用于存放流程产生的信息，比如审批意见',
+    `ACTION_`       varchar(255)  DEFAULT NULL COMMENT '行为类型。为addcomment时, 为处理意见, 值为下列内容中的一种：　　　　AddUserLink、DeleteUserLink、AddGroupLink、DeleteGroupLink、AddComment、AddAttachment、DeleteAttachment',
+    `MESSAGE_`      varchar(4000) DEFAULT NULL COMMENT '处理意见, 用于存放流程产生的信息, 比如审批意见',
     `FULL_MSG_`     longblob      DEFAULT NULL COMMENT '全部消息',
     PRIMARY KEY (`ID_`)
 ) ENGINE = InnoDB
@@ -208,13 +208,13 @@ CREATE TABLE `act_hi_comment`
 
 ### ACT_HI_DETAIL(act_hi_detail)（历史详细信息）
 
-历史详情表：流程中产生的变量详细，包括控制流程流转的变量，业务表单中填写的流程需要用到的变量等。
+历史详情表：流程中产生的变量详细, 包括控制流程流转的变量, 业务表单中填写的流程需要用到的变量等。
 
 ````sql
 CREATE TABLE `act_hi_detail`
 (
     `ID_`           varchar(64)  NOT NULL COMMENT '主键',
-    `TYPE_`         varchar(255) NOT NULL COMMENT '数据类型，FormProperty-表单;VariableUpdate-参数',
+    `TYPE_`         varchar(255) NOT NULL COMMENT '数据类型, FormProperty-表单;VariableUpdate-参数',
     `PROC_INST_ID_` varchar(64)   DEFAULT NULL COMMENT '流程实例ID',
     `EXECUTION_ID_` varchar(64)   DEFAULT NULL COMMENT '执行实例Id',
     `TASK_ID_`      varchar(64)   DEFAULT NULL COMMENT '任务Id',
@@ -227,7 +227,7 @@ CREATE TABLE `act_hi_detail`
     `DOUBLE_`       double        DEFAULT NULL COMMENT 'DOUBLE_',
     `LONG_`         bigint(20)    DEFAULT NULL COMMENT 'LONG_,存储变量类型为long',
     `TEXT_`         varchar(4000) DEFAULT NULL COMMENT '值,存储变量值类型为String',
-    `TEXT2_`        varchar(4000) DEFAULT NULL COMMENT '值2,此处存储的是JPA持久化对象时，才会有值。此值为对象ID',
+    `TEXT2_`        varchar(4000) DEFAULT NULL COMMENT '值2,此处存储的是JPA持久化对象时, 才会有值。此值为对象ID',
     PRIMARY KEY (`ID_`),
     KEY `ACT_IDX_HI_DETAIL_PROC_INST` (`PROC_INST_ID_`),
     KEY `ACT_IDX_HI_DETAIL_ACT_INST` (`ACT_INST_ID_`),
@@ -302,7 +302,7 @@ CREATE TABLE `act_hi_taskinst`
     `NAME_`           varchar(255)  DEFAULT NULL COMMENT '名称',
     `PARENT_TASK_ID_` varchar(64)   DEFAULT NULL COMMENT '父任务iD',
     `DESCRIPTION_`    varchar(4000) DEFAULT NULL COMMENT '描述',
-    `OWNER_`          varchar(255)  DEFAULT NULL COMMENT '实际签收人 任务的拥有者,签收人（默认为空，只有在委托时才有值）',
+    `OWNER_`          varchar(255)  DEFAULT NULL COMMENT '实际签收人 任务的拥有者,签收人（默认为空, 只有在委托时才有值）',
     `ASSIGNEE_`       varchar(255)  DEFAULT NULL COMMENT '代理人,签收人或被委托',
     `START_TIME_`     datetime    NOT NULL COMMENT '开始时间',
     `CLAIM_TIME_`     datetime      DEFAULT NULL COMMENT '提醒时间',
@@ -310,7 +310,7 @@ CREATE TABLE `act_hi_taskinst`
     `DURATION_`       bigint(20)    DEFAULT NULL COMMENT '时长',
     `DELETE_REASON_`  varchar(4000) DEFAULT NULL COMMENT '删除理由,删除原因(completed,deleted)',
     `PRIORITY_`       int(11)       DEFAULT NULL COMMENT '优先级',
-    `DUE_DATE_`       datetime      DEFAULT NULL COMMENT '应完成时间,过期时间，表明任务应在多长时间内完成',
+    `DUE_DATE_`       datetime      DEFAULT NULL COMMENT '应完成时间,过期时间, 表明任务应在多长时间内完成',
     `FORM_KEY_`       varchar(255)  DEFAULT NULL COMMENT '表单key,desinger节点定义的form_key属性',
     `CATEGORY_`       varchar(255)  DEFAULT NULL COMMENT '',
     `TENANT_ID_`      varchar(255)  DEFAULT '' COMMENT '',
@@ -336,8 +336,8 @@ CREATE TABLE `act_hi_varinst`
     `BYTEARRAY_ID_`      varchar(64)   DEFAULT NULL COMMENT '字节数组ID,ACT_GE_BYTEARRAY表的主键',
     `DOUBLE_`            double        DEFAULT NULL COMMENT '存储DoubleType类型的数据',
     `LONG_`              bigint(20)    DEFAULT NULL COMMENT '存储LongType类型的数据',
-    `TEXT_`              varchar(4000) DEFAULT NULL COMMENT '存储变量值类型为String，如此处存储持久化对象时，值jpa对象的class',
-    `TEXT2_`             varchar(4000) DEFAULT NULL COMMENT '此处存储的是JPA持久化对象时，才会有值。此值为对象ID',
+    `TEXT_`              varchar(4000) DEFAULT NULL COMMENT '存储变量值类型为String, 如此处存储持久化对象时, 值jpa对象的class',
+    `TEXT2_`             varchar(4000) DEFAULT NULL COMMENT '此处存储的是JPA持久化对象时, 才会有值。此值为对象ID',
     `CREATE_TIME_`       datetime      DEFAULT NULL COMMENT '',
     `LAST_UPDATED_TIME_` datetime      DEFAULT NULL COMMENT '',
     PRIMARY KEY (`ID_`),
@@ -393,7 +393,7 @@ CREATE TABLE `act_re_deployment`
 
 ### ACT_RE_MODEL(act_re_model)(流程设计模型表)
 
-创建流程的设计模型时，保存在该数据表中。
+创建流程的设计模型时, 保存在该数据表中。
 
 ````sql
 CREATE TABLE `act_re_model`
@@ -401,12 +401,12 @@ CREATE TABLE `act_re_model`
     `ID_`                           varchar(64) NOT NULL,
     `REV_`                          int(11)          DEFAULT NULL COMMENT '乐观锁版本',
     `NAME_`                         varchar(255)     DEFAULT NULL COMMENT '模型的名称：比如：收文管理',
-    `KEY_`                          varchar(255)     DEFAULT NULL COMMENT '模型的关键字，流程引擎用到。比如：FTOA_SWGL',
-    `CATEGORY_`                     varchar(255)     DEFAULT NULL COMMENT '类型，用户自己对流程模型的分类。',
+    `KEY_`                          varchar(255)     DEFAULT NULL COMMENT '模型的关键字, 流程引擎用到。比如：FTOA_SWGL',
+    `CATEGORY_`                     varchar(255)     DEFAULT NULL COMMENT '类型, 用户自己对流程模型的分类。',
     `CREATE_TIME_`                  timestamp   NULL DEFAULT NULL COMMENT '创建时间',
     `LAST_UPDATE_TIME_`             timestamp   NULL DEFAULT NULL COMMENT '最后修改时间',
-    `VERSION_`                      int(11)          DEFAULT NULL COMMENT '版本，从1开始。',
-    `META_INFO_`                    varchar(4000)    DEFAULT NULL COMMENT '以json格式保存流程定义的信息,数据源信息，比如：{"name":"FTOA_SWGL","revision":1,"description":"丰台财政局OA，收文管理流程"}',
+    `VERSION_`                      int(11)          DEFAULT NULL COMMENT '版本, 从1开始。',
+    `META_INFO_`                    varchar(4000)    DEFAULT NULL COMMENT '以json格式保存流程定义的信息,数据源信息, 比如：{"name":"FTOA_SWGL","revision":1,"description":"丰台财政局OA, 收文管理流程"}',
     `DEPLOYMENT_ID_`                varchar(64)      DEFAULT NULL COMMENT '部署ID',
     `EDITOR_SOURCE_VALUE_ID_`       varchar(64)      DEFAULT NULL COMMENT '编辑源值ID,是 ACT_GE_BYTEARRAY 表中的ID_值。',
     `EDITOR_SOURCE_EXTRA_VALUE_ID_` varchar(64)      DEFAULT NULL COMMENT '编辑源额外值ID（外键ACT_GE_BYTEARRAY ）,是 ACT_GE_BYTEARRAY 表中的ID_值。',
@@ -425,9 +425,9 @@ CREATE TABLE `act_re_model`
 
 ### ACT_RE_PROCDEF(act_re_procdef)（流程定义：解析表）
 
-流程解析表，解析成功了，在该表保存一条记录。业务流程定义数据表
+流程解析表, 解析成功了, 在该表保存一条记录。业务流程定义数据表
 
-此表和ACT_RE_DEPLOYMENT是多对一的关系，即，一个部署的bar包里可能包含多个流程定义文件，每个流程定义文件都会有一条记录在ACT_RE_PROCDEF表内，每个流程定义的数据，都会对于ACT_GE_BYTEARRAY表内的一个资源文件和PNG图片文件。和ACT_GE_BYTEARRAY的关联是通过程序用ACT_GE_BYTEARRAY.NAME与ACT_RE_PROCDEF.NAME_完成的，在数据库表结构中没有体现。
+此表和ACT_RE_DEPLOYMENT是多对一的关系, 即, 一个部署的bar包里可能包含多个流程定义文件, 每个流程定义文件都会有一条记录在ACT_RE_PROCDEF表内, 每个流程定义的数据, 都会对于ACT_GE_BYTEARRAY表内的一个资源文件和PNG图片文件。和ACT_GE_BYTEARRAY的关联是通过程序用ACT_GE_BYTEARRAY.NAME与ACT_RE_PROCDEF.NAME_完成的, 在数据库表结构中没有体现。
 
 ````sql
 CREATE TABLE `act_re_procdef`
@@ -437,7 +437,7 @@ CREATE TABLE `act_re_procdef`
     `CATEGORY_`               varchar(255)  DEFAULT NULL COMMENT '流程命名空间（该编号就是流程文件targetNamespace的属性值）流程定义的Namespace就是类别',
     `NAME_`                   varchar(255)  DEFAULT NULL COMMENT '流程名称（该编号就是流程文件process元素的name属性值）',
     `KEY_`                    varchar(255) NOT NULL COMMENT '流程编号（该编号就是流程文件process元素的id属性值）',
-    `VERSION_`                int(11)      NOT NULL COMMENT '流程版本号（由程序控制，新增即为1，修改后依次加1来完成的）',
+    `VERSION_`                int(11)      NOT NULL COMMENT '流程版本号（由程序控制, 新增即为1, 修改后依次加1来完成的）',
     `DEPLOYMENT_ID_`          varchar(64)   DEFAULT NULL COMMENT '部署编号',
     `RESOURCE_NAME_`          varchar(4000) DEFAULT NULL COMMENT '资源文件名称,流程bpmn文件名称',
     `DGRM_RESOURCE_NAME_`     varchar(4000) DEFAULT NULL COMMENT '图片资源文件名称,png流程图片名称',
@@ -515,7 +515,7 @@ CREATE TABLE `act_ru_event_subscr`
 
 ### ACT_RU_EXECUTION(act_ru_execution)（运行时流程执行实例）
 
-核心，我的代办任务查询表
+核心, 我的代办任务查询表
 
 ````sql
 CREATE TABLE `act_ru_execution`
@@ -708,10 +708,10 @@ CREATE TABLE `act_ru_task`
     `PARENT_TASK_ID_`   varchar(64)      DEFAULT NULL COMMENT '父节任务ID',
     `DESCRIPTION_`      varchar(4000)    DEFAULT NULL COMMENT '任务描述',
     `TASK_DEF_KEY_`     varchar(255)     DEFAULT NULL COMMENT '任务定义key,任务定义的ID',
-    `OWNER_`            varchar(255)     DEFAULT NULL COMMENT '所属人(老板),拥有者（一般情况下为空，只有在委托时才有值）',
+    `OWNER_`            varchar(255)     DEFAULT NULL COMMENT '所属人(老板),拥有者（一般情况下为空, 只有在委托时才有值）',
     `ASSIGNEE_`         varchar(255)     DEFAULT NULL COMMENT '代理人员(受让人),签收人或委托人',
-    `DELEGATION_`       varchar(64)      DEFAULT NULL COMMENT '代理团,委托类型，DelegationState分为两种：PENDING，RESOLVED。如无委托则为空',
-    `PRIORITY_`         int(11)          DEFAULT NULL COMMENT '优先权,优先级别，默认为：50',
+    `DELEGATION_`       varchar(64)      DEFAULT NULL COMMENT '代理团,委托类型, DelegationState分为两种：PENDING, RESOLVED。如无委托则为空',
+    `PRIORITY_`         int(11)          DEFAULT NULL COMMENT '优先权,优先级别, 默认为：50',
     `CREATE_TIME_`      timestamp   NULL DEFAULT NULL COMMENT '创建时间',
     `DUE_DATE_`         datetime         DEFAULT NULL COMMENT '执行时间',
     `CATEGORY_`         varchar(255)     DEFAULT NULL COMMENT '',
@@ -785,7 +785,7 @@ CREATE TABLE `act_ru_variable`
     `DOUBLE_`       double        DEFAULT NULL COMMENT '',
     `LONG_`         bigint(20)    DEFAULT NULL COMMENT '存储变量类型为long',
     `TEXT_`         varchar(4000) DEFAULT NULL COMMENT '存储变量值类型为String,存储变量值类型为String',
-    `TEXT2_`        varchar(4000) DEFAULT NULL COMMENT '此处存储的是JPA持久化对象时，才会有值。此值为对象ID',
+    `TEXT2_`        varchar(4000) DEFAULT NULL COMMENT '此处存储的是JPA持久化对象时, 才会有值。此值为对象ID',
     PRIMARY KEY (`ID_`),
     KEY `ACT_IDX_VARIABLE_TASK_ID` (`TASK_ID_`),
     KEY `ACT_FK_VAR_EXE` (`EXECUTION_ID_`),

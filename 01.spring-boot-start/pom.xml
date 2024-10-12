@@ -10,10 +10,10 @@
     </parent>
     <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
-    <!-- 项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。 -->
+    <!-- 项目的唯一的标识符, 实际对应项目的名称, 就是项目根目录的名称。 -->
     <artifactId>spring-boot-start</artifactId>
-    <!-- 项目ID，项目坐标核心元素，项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。 -->
-    <groupId>com.cmmplb.start</groupId>
+    <!-- 项目ID, 项目坐标核心元素, 项目组织唯一的标识符, 实际对应JAVA的包的结构, 是main目录里java的目录结构。 -->
+    <groupId>io.github.cmmplb.start</groupId>
     <!-- 项目的打包类型：pom、jar、war -->
     <packaging>jar</packaging>
     <!-- 项目名称 -->
@@ -28,13 +28,6 @@
             <groupId>io.github.cmmplb</groupId>
             <artifactId>spring-boot-starter-core</artifactId>
         </dependency>
-        <!-- springboot2.0+的版本按照网上的例子直接引入web排除tomcat,切换不了容器,启动还是tomcat,单独引用mvc来解决 -->
-        <!-- webmvc -->
-        <!--<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <scope>provided</scope>
-        </dependency>-->
         <!-- undertow容器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

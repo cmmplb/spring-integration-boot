@@ -10,11 +10,11 @@ knife4j:
     enableSearch: true
     #禁用OpenApi结构显示
     enableOpenApi: true
-    # 对于调试中的请求参数是否缓存进行开启配置，该参数默认为true - 后端配置-前台也可以在文档管理里面配置
+    # 对于调试中的请求参数是否缓存进行开启配置, 该参数默认为true - 后端配置-前台也可以在文档管理里面配置
     enableRequestCache: true
     # 是否启用Host
     enableHost: false
-    # 启用Host后地址，例如：http://192.168.0.111:8080
+    # 启用Host后地址, 例如：http://192.168.0.111:8080
     enableHostText: ""
     # 自定义Swagger Models名称
     enableSwaggerModels: true

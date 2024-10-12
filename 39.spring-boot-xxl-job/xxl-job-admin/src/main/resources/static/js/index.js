@@ -17,7 +17,7 @@ $(function () {
         singleDatePicker:false,
         showDropdowns:false,        // 是否显示年月选择条件
         timePicker: true, 			// 是否显示小时和分钟选择条件
-        timePickerIncrement: 10, 	// 时间的增量，单位为分钟
+        timePickerIncrement: 10, 	// 时间的增量, 单位为分钟
         timePicker24Hour : true,
         opens : 'left', //日期选择框的弹出位置
         ranges: rangesConf,

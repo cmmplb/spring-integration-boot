@@ -62,7 +62,7 @@ CREATE TABLE `user_info`
     `icon`        varchar(256)       DEFAULT NULL COMMENT '头像',
     `create_time` datetime NOT NULL COMMENT '创建时间',
     `update_time` datetime          DEFAULT NULL COMMENT '更新时间',
-    `deleted`     tinyint  NOT NULL DEFAULT '0' COMMENT '逻辑删除 默认0， 1，删除',
+    `deleted`     tinyint  NOT NULL DEFAULT '0' COMMENT '逻辑删除 默认0,  1, 删除',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 1

@@ -8,11 +8,11 @@ idea：
 
 file -> Setting -> Tools -> External Tools
 
-添加下载的路径，Program 为应用程序路径
+添加下载的路径, Program 为应用程序路径
 
 Workings Directory 为文件夹路径
 
-设置以后右键选中bpmn文件，点击idea最上端tools ->External Tools 选中camunda
+设置以后右键选中bpmn文件, 点击idea最上端tools ->External Tools 选中camunda
 
 # docker
 

@@ -22,10 +22,10 @@ servers:
   IP_ADDRESS: 192.168.0.2      # 常量模式
 ```
 
-以上规则仅针对springboot中@ConfigurationProperties注解进行属性绑定时有效，对@Value注解进行属性映射无效。
+以上规则仅针对springboot中@ConfigurationProperties注解进行属性绑定时有效, 对@Value注解进行属性映射无效。
 
 ````yaml
-0127八进制的格式，最终以十进制数字87
+0127八进制的格式, 最终以十进制数字87
 ````
 
-yaml文件中对于数字的定义支持进制书写格式，如需使用字符串请使用引号明确标注
+yaml文件中对于数字的定义支持进制书写格式, 如需使用字符串请使用引号明确标注

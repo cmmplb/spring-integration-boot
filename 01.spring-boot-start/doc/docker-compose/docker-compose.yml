@@ -1,0 +1,36 @@
+version: "3"
+services:
+  spring-boot-start:
+    #image: 1045599379/cmmplb:spring-boot-start-1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/cmmplb/spring-boot-start:1.0.0
+    container_name: spring-boot-start
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - COMPOSE_PROJECT_NAME=spring-boot-start
+    volumes:
+      - ./data/:/Users/penglibo/Cmmplb/Logs
+    networks:
+      - cmmplb
+networks:
+  cmmplb:
+    external: true
+
+# 报错：ERROR: for spring-boot-start  Cannot start service spring-boot-start:
+#driver failed programming external connectivity on endpoint spring-boot-start
+#(387e89ce3216d44ffc7419aa78f3f0647cef21c8a178ec4f55468d3d548c67e8):
+#(iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 90 -j DNAT
+# --to-destination 172.19.0.6:90 ! -i br-8c04ffe4dde6: iptables: No chain/target/match by that name.
+# docker网桥原因, 重启docker服务重试
+# service docker restart
+# systemctl docker restart
+
+# 查看规则
+# cat /etc/sysconfig/iptables
+# 添加规则
+# iptables -t nat -A DOCKER ! -i docker0 -p tcp -m tcp --dport 8082 -j DNAT --to-destination 172.17.0.5:80
+
+
+# 还有个问题, docker启动jar后无法访问, 找半天原来是这个配置
+# server.address=127.0.0.1, 删除即可

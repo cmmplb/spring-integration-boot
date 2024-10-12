@@ -125,7 +125,7 @@
                 <el-upload class="upload" ref="upload" drag multiple :http-request="upload" action="/deploy/upload"
                     :auto-upload="false" :file-list="fileList">
                     <i class="el-icon-upload"></i>
-                    <div class="el-upload__text">将流程文件拖到此处，或<em>点击上传</em></div>
+                    <div class="el-upload__text">将流程文件拖到此处, 或<em>点击上传</em></div>
                     <div class="el-upload__tip" slot="tip">提示：仅允许导入"bpmn"、"xml"或"zip"格式文件！</div>
                 </el-upload>
                 <div slot="footer" class="dialog-footer">
@@ -321,7 +321,7 @@
             // 查看流程图-bpmn
             async handlerShowProcessChartBpmn(row) {
                 if (this.bpmnModeler) {
-                    // 如果存在就销毁重新创建，否则会不停添加流程
+                    // 如果存在就销毁重新创建, 否则会不停添加流程
                     this.bpmnModeler.destroy();
                 }
                 this.showBpmnProcess = true;
@@ -442,7 +442,7 @@
             },
             // 确认
             handlerConfirm() {
-                // 手动提交上传，会调用http-request事件
+                // 手动提交上传, 会调用http-request事件
                 this.$refs.upload.submit();
                 // console.log("res:", res);
                 console.log('fileList:', this.fileList)

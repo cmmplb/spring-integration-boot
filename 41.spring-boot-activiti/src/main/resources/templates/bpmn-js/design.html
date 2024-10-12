@@ -25,7 +25,7 @@
 
     <!-- 汉化 -->
     <script src="/integration/bpmn-js/js/zh.js"></script>
-    <!-- 小地图，https://github.com/PL-FE/bpmn-doc/blob/main/doc/customMiniMap.md -->
+    <!-- 小地图, https://github.com/PL-FE/bpmn-doc/blob/main/doc/customMiniMap.md -->
     <link rel="stylesheet" href="/integration/diagram-minimap/css/minimap.css" />
     <script src="/integration/diagram-minimap/js/diagram-minimap.umd.js"></script>
 
@@ -69,7 +69,7 @@
         },
         methods: {
             async init() {
-                // 获取流程信息，不存在则创建
+                // 获取流程信息, 不存在则创建
                 await axios.get('/bpmn/js/' + this.getQueryString('modelId')).then(res => {
                     if (res.data.code === 200 && res.data.data) {
                         console.log('res:', res)
@@ -84,9 +84,9 @@
 
                 this.canvas = this.$refs.canvas;
 
-                // properties-panel给建模器提供属性编辑器，
+                // properties-panel给建模器提供属性编辑器,
                 // camunda-bpmn-moddle拓展属性编辑器可以编辑内容
-                // bpmn-js有两种模式：Modeler模式和Viewer模式，在Modeler模式下可以对流程图进行编辑，而Viewer模式则不能，仅作为展示用
+                // bpmn-js有两种模式：Modeler模式和Viewer模式, 在Modeler模式下可以对流程图进行编辑, 而Viewer模式则不能, 仅作为展示用
                 // viewer只需引入一个JS即可<script src="/integration/bpmn-js/js/bpmn-modeler.development.js">
 
                 // 侧边栏: Palette
@@ -200,7 +200,7 @@
         width: 90%;
     }
 
-    /* 隐藏右下角logo，官方要求不能隐藏，否则侵权 */
+    /* 隐藏右下角logo, 官方要求不能隐藏, 否则侵权 */
     .bjs-powered-by {
         /*display: none;*/
     }

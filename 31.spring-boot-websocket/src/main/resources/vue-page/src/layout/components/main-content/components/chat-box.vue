@@ -68,7 +68,7 @@
         <!-- 文件 -->
         <!-- ... -->
       </div>
-      <!-- 聊天输入框内容，让div成为可编辑状态contenteditable="true" -->
+      <!-- 聊天输入框内容, 让div成为可编辑状态contenteditable="true" -->
       <div class="footer-box-content">
         <div @click="clickInput"
              @paste="pasteEvent"
@@ -199,10 +199,10 @@ export default {
     handlerCloseEmoji() {
       this.showEmoji = false;
     },
-    // 聊天框表情，https://blog.csdn.net/weixin_52707625/article/details/131861061
+    // 聊天框表情, https://blog.csdn.net/weixin_52707625/article/details/131861061
     handlerEmojiClick(ele) {
       const selection = window.getSelection(); // 获取光标
-      // 如果没有焦点或者焦点不在输入框内，聚焦到输入框
+      // 如果没有焦点或者焦点不在输入框内, 聚焦到输入框
       if (selection.anchorNode !== this.$refs.inputBox && !this.$refs.inputBox.contains(selection.anchorNode)) {
         // 聚焦到输入框
         selection.removeAllRanges();
@@ -238,7 +238,7 @@ export default {
       e.preventDefault();
       e = e.originalEvent || e;
       const text = e.clipboardData ? e.clipboardData.getData("text/plain") : prompt("请在这里粘贴文本", "");
-      if (e.clipboardData) { // 支持直接 clipboardData，则直接 OK
+      if (e.clipboardData) { // 支持直接 clipboardData, 则直接 OK
         document.execCommand("insertText", false, text);
       } else { // 不支持则取用户在 prompt 提示输入框粘贴的内容（自动去格式的）
         let sel, textRange;
@@ -284,9 +284,9 @@ export default {
         return false;
       }
     },
-    // 点击输入框内的图标时，移动光标到对应位置
+    // 点击输入框内的图标时, 移动光标到对应位置
     clickInput(e) {
-      // 如果点击的不是HTML标签，无需处理
+      // 如果点击的不是HTML标签, 无需处理
       if (!(e.target instanceof HTMLImageElement)) {
         return;
       }
@@ -294,16 +294,16 @@ export default {
       // 获取点击图片的中心位置
       let targetX = target.x + Math.floor(target.width / 2);
 
-      // Selection对象表示用户选择的文本范围或插入符号的当前位置。它代表页面中的文本选区，可能横跨多个元素。文本选区由用户拖拽鼠标经过文字而产生。
+      // Selection对象表示用户选择的文本范围或插入符号的当前位置。它代表页面中的文本选区, 可能横跨多个元素。文本选区由用户拖拽鼠标经过文字而产生。
       // https://www.jianshu.com/p/5997a90aab64
       // 获取光标
       let selection = window.getSelection();
-      // 通常情况下我不会直接操作 selection 对象，而是需要操作用seleciton对象所对应的用户选择的ranges(区域)，俗称”拖蓝“。
+      // 通常情况下我不会直接操作 selection 对象, 而是需要操作用seleciton对象所对应的用户选择的ranges(区域), 俗称”拖蓝“。
       let range = selection.getRangeAt(0);
 
       // 返回拥有和原 Range 相同端点的克隆 Range 对象
       range = range.cloneRange();
-      // 调用setStart()和setEnd()方法，来修改一个光标的位置或拖蓝范围。这两个方法接受的参数为各自的起终节点和偏移量。
+      // 调用setStart()和setEnd()方法, 来修改一个光标的位置或拖蓝范围。这两个方法接受的参数为各自的起终节点和偏移量。
       range.setStartBefore(target);
       if (e.x < targetX) {
         range.setEndBefore(target);
@@ -362,7 +362,7 @@ export default {
       });
       // 清空聊天框
       this.$refs.inputBox.innerHTML = "";
-      // 无法正确地检测到数据变化，无法自动重新渲染界面，使用 $forceUpdate方法强制更新组件确保界面上的数据和组件实例的数据保持一致
+      // 无法正确地检测到数据变化, 无法自动重新渲染界面, 使用 $forceUpdate方法强制更新组件确保界面上的数据和组件实例的数据保持一致
       // this.$forceUpdate();
       console.log("发送消息：messageMap:", this.messageMap);
       websocket.send(message);
@@ -376,11 +376,11 @@ export default {
       data.businessId = data.type + "-" + data.sendBusinessId;
       // 把消息更新到最近聊天用户的消息记录上
       await this.$store.dispatch("message/setRecentlyMessage", data);
-      // 如果收到的消息不是是当前聊天用户，设置消息未读数量
+      // 如果收到的消息不是是当前聊天用户, 设置消息未读数量
       if (this.recentlyMessageActivate.businessId !== data.businessId) {
         await this.$store.dispatch("message/setMessageUnRead", data.businessId);
       } else {
-        // 如果收到的消息是当前聊天用户，把消息添加到聊天对话中
+        // 如果收到的消息是当前聊天用户, 把消息添加到聊天对话中
         // 消息记录中表情包回显
         await this.$store.dispatch("message/pushMessageMap", {...data, message: echoEmojis(data.message)});
         // 调用后台标记消息已读
@@ -417,12 +417,12 @@ export default {
     // 聊天记录滚动事件
     async handleScroll(event) {
       console.log("聊天记录滚动事件:");
-      // 如果滑动到了距离顶部50，并且还有下一页数据，0-初始化;1-上拉;2-无数据
+      // 如果滑动到了距离顶部50, 并且还有下一页数据, 0-初始化;1-上拉;2-无数据
       // 这里计算滑动获取历史消息记录后距离底部的位置
       const bottom = event.target.scrollHeight - event.target.scrollTop - event.target.clientHeight;
       if (event.target.scrollTop === 0 && this.pageDate.current + 1 <= this.pageDate.totalPage) {
         this.pageDate.current = this.pageDate.current + 1;
-        // 这里要同步调用，不然数据还没加载，滚动条高度获取不对，用nextTick后高度也不对
+        // 这里要同步调用, 不然数据还没加载, 滚动条高度获取不对, 用nextTick后高度也不对
         await this.getMessageRecordList(true);
         // 定位到滑动加载数据的位置
         this.$refs["messageRecordScrollbarRef"].wrap.scrollTop = event.target.scrollHeight - bottom - event.target.clientHeight;
@@ -538,9 +538,9 @@ export default {
           /* 消息文字样式 */
           .message-text {
             padding: 10px;
-            /* 设置文字的强制自动换行，但只对英文起作用，以字母作为换行依据。 */
+            /* 设置文字的强制自动换行, 但只对英文起作用, 以字母作为换行依据。 */
             word-break: break-all;
-            /* 设置文字的强制自动换行，但只对英文起作用，以单词作为换行依据。 */
+            /* 设置文字的强制自动换行, 但只对英文起作用, 以单词作为换行依据。 */
             word-wrap: break-word;
             /* 动态计算盒子的宽度 */
             max-width: 45%;
@@ -560,7 +560,7 @@ export default {
           .message-read {
             display: flex;
             /*
-              end value has mixed support: 处理一个CSS属性时，end这个值的支持程度在不同的浏览器中是混合的，有的浏览器支持，有的浏览器不支持。
+              end value has mixed support: 处理一个CSS属性时, end这个值的支持程度在不同的浏览器中是混合的, 有的浏览器支持, 有的浏览器不支持。
               consider using flex-end instead: 建议使用flex-end替代原有的值。
             */
             // align-items: end;
@@ -583,10 +583,10 @@ export default {
         }
       }
 
-      /* 发送的消息样式，布局在最右侧 */
+      /* 发送的消息样式, 布局在最右侧 */
       .send {
         .message-content {
-          /* flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap，让发送头像排列在最后 */
+          /* flex-flow属性是flex-direction属性和flex-wrap属性的简写形式, 默认值为row nowrap, 让发送头像排列在最后 */
           flex-flow: row-reverse;
 
           .message-text {
@@ -669,9 +669,9 @@ export default {
         line-height: 2rem;
         height: 12rem;
         font-size: 1.3rem !important;
-        /* 设置文字的强制自动换行，但只对英文起作用，以字母作为换行依据。 */
+        /* 设置文字的强制自动换行, 但只对英文起作用, 以字母作为换行依据。 */
         word-break: break-all;
-        /* 设置文字的强制自动换行，但只对英文起作用，以单词作为换行依据。 */
+        /* 设置文字的强制自动换行, 但只对英文起作用, 以单词作为换行依据。 */
         word-wrap: break-word;
 
         ::v-deep .in-img {
@@ -689,7 +689,7 @@ export default {
 <style lang="css">
 /*
   已读未读提示
-.el-tooltip__popper无效问题，修改elementui自带样式的话，不能在<style scoped><style>中修改，因为不会生效。
+.el-tooltip__popper无效问题, 修改elementui自带样式的话, 不能在<style scoped><style>中修改, 因为不会生效。
 */
 .el-tooltip__popper {
   width: 50px;

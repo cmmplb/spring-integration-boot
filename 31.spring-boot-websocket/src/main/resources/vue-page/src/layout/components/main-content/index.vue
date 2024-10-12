@@ -43,7 +43,7 @@ export default {
   updated() {
   },
   methods: {
-    // 使用bus事件只能在mounted调用了一次，这里单独传递
+    // 使用bus事件只能在mounted调用了一次, 这里单独传递
     handlerMessageUser() {
       this.$emit("handlerMessageUser");
     }

@@ -13,7 +13,7 @@ bean:
   version: 1.0.0
 
 version:
-  list: 1.0.0,2.0.0,3.0.0 # yml中 - 形式的list子元素 ,@value 读取是有问题的，但是如果list或者map 是以 " , " 则可以使用@value 读取
+  list: 1.0.0,2.0.0,3.0.0 # yml中 - 形式的list子元素 ,@value 读取是有问题的, 但是如果list或者map 是以 " , " 则可以使用@value 读取
 
 properties:
   name: config-properties

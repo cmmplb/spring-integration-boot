@@ -33,7 +33,7 @@ const websocket = {
             console.log("连接成功");
             this.clearAllTimer();
             this.heartBeat();
-            // 解锁，可以重连
+            // 解锁, 可以重连
             this.lockReconnect = false;
             // 连接成功后重置重连次数
             this.reconnectCount = 0;
@@ -95,7 +95,7 @@ const websocket = {
     },
     // 准备重连
     readyReconnect() {
-        // 避免循环重连，当一个重连任务进行时，不进行重连
+        // 避免循环重连, 当一个重连任务进行时, 不进行重连
         if (this.lockReconnectTask) return;
         this.lockReconnectTask = true;
         this.clearAllTimer();
@@ -105,13 +105,13 @@ const websocket = {
     reconnect() {
         if (this.lockReconnect) return;
         if (this.reconnectCount > this.reconnectLimit) return;
-        // 加锁，禁止重连
+        // 加锁, 禁止重连
         this.lockReconnect = true;
         console.log(`重连第${this.reconnectCount}次`);
         this.reconnectCount++;
         this.createWebSocket();
         this.reconnectTimer = setTimeout(() => {
-            // 解锁，可以重连
+            // 解锁, 可以重连
             this.lockReconnect = false;
             this.reconnect();
         }, this.reconnectTimeout);

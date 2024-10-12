@@ -1,6 +1,6 @@
 springdoc:
   swagger-ui:
-    # 访问路径，默认为/swagger-ui.html
+    # 访问路径, 默认为/swagger-ui.html
     path: /
   custom:
     enabled: true

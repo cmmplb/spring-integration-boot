@@ -116,7 +116,7 @@
                                 style="color: rgb(255,137,64)">
                                 查看流程进度(bpmn-js)
                             </el-button>
-                            <!-- 管理员和自己能撤销，这里管理员为了简便直接读取缓存写死了1L -->
+                            <!-- 管理员和自己能撤销, 这里管理员为了简便直接读取缓存写死了1L -->
                             <el-button v-if="scope.row.status === 0 && (scope.row.userId === userId || userId === 1)"
                                 icon="el-icon-delete" @click="handlerCancel(scope.row)" type="text" size="small"
                                 style="color: rgba(3,72,248,0.32)">
@@ -456,7 +456,7 @@
             // 查看流程图进度
             async handlerProcessChartBpmn(row) {
                 if (this.bpmnModeler) {
-                    // 如果存在就销毁重新创建，否则会不停添加流程
+                    // 如果存在就销毁重新创建, 否则会不停添加流程
                     this.bpmnModeler.destroy();
                 }
                 this.showBpmnProcess = true;

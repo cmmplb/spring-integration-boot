@@ -7,7 +7,7 @@ services:
     ports:
       - 11111:11111
     environment:
-      # mysql的slaveid， 不要与my.cnf一样。
+      # mysql的slaveid,  不要与my.cnf一样. 
       - canal.instance.mysql.slaveId=2000
       - canal.auto.scan=false
       - canal.destinations=example
@@ -18,7 +18,7 @@ services:
       # mysql密码
       - canal.instance.dbPassword=canal
       - canal.mq.topic=example
-      # 监听的表，支持表达式。 .\… 为监听所有表
+      # 监听的表, 支持表达式.  .\… 为监听所有表
       - canal.instance.filter.regex=.*\\..*
 
       #配置admin连接参数
@@ -28,7 +28,7 @@ services:
       # canal admin config
       - canal.admin.manager=172.19.0.4:8089
       - canal.admin.port=11110
-      # admin端配置的canal连接所用的账号密码，密码需要加密，在mysql中执行 SELECT PASSWORD('密码')删掉*
+      # admin端配置的canal连接所用的账号密码, 密码需要加密, 在mysql中执行 SELECT PASSWORD('密码')删掉*
       - canal.admin.user=admin
       - canal.admin.passwd=4ACFE3202A5FF5CF467898FC58AAB1D615029441
       # admin auto register
@@ -37,7 +37,7 @@ services:
       - canal.admin.register.cluster=
 
       # 更多配置：https://github.com/alibaba/canal/wiki/AdminGuide
-    #这个挂载有问题，会导致容器里的文件隐藏，导致配置不了，注释掉，手动进入容器配置，docker exec -it <容器名称/ID> /bin/bash 
+    #这个挂载有问题, 会导致容器里的文件隐藏, 导致配置不了, 注释掉, 手动进入容器配置, docker exec -it <容器名称/ID> /bin/bash 
     #或者拷贝出来：docker cp 镜像id:容器文件夹或文件路径 宿主机路径
     #docker cp 镜像id:/home/admin/canal-server/logs ./data/logs
     #docker cp 镜像id:/home/admin/canal-server/conf ./data/conf

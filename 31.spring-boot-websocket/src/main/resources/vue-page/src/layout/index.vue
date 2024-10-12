@@ -25,7 +25,7 @@
     <!--		drag-cancel=".table-container" 定义应该用于阻止拖动初始化的选择器-->
     <!--		axis="x" 定义元素可拖动的轴。可用值为x, y 或者 both-->
     <!--		:grid="[1,1]" 定义捕捉元素的网格。-->
-    <!--		:handles="['tl','tr','bl','br']" 定义缩放的句柄（共八个方向）:tl:上左，tm:上中，tr:上右，mr:中左，ml:中右，bl:下左，bm:下中，br:下右-->
+    <!--		:handles="['tl','tr','bl','br']" 定义缩放的句柄（共八个方向）:tl:上左, tm:上中, tr:上右, mr:中左, ml:中右, bl:下左, bm:下中, br:下右-->
     <vue-draggable-resizable :w="width"
                              :h="height"
                              :x="400"
@@ -133,7 +133,7 @@ export default {
         }
       });
     },
-    // 监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+    // 监听窗口关闭事件, 当窗口关闭时, 主动去关闭websocket连接, 防止连接还没断开就关闭窗口, server端会抛异常。
     handleWindowClose(event) {
       event.preventDefault(); // 取消默认行为
       websocket.close();
@@ -160,7 +160,7 @@ export default {
 <style scoped lang='scss'>
 /* 页面flex布局 */
 .app-wrapper {
-  /* vh指的是视口高度，vw指的是视口宽度 */
+  /* vh指的是视口高度, vw指的是视口宽度 */
   height: 100vh;
   width: 100vw;
   background-image: url('@/assets/images/background/sea.jpeg');

@@ -16556,18 +16556,18 @@
       aria: {
         general: {
           withTitle: '这是一个关于“{title}”的图表。',
-          withoutTitle: '这是一个图表，'
+          withoutTitle: '这是一个图表, '
         },
         series: {
           single: {
             prefix: '',
-            withName: '图表类型是{seriesType}，表示{seriesName}。',
+            withName: '图表类型是{seriesType}, 表示{seriesName}。',
             withoutName: '图表类型是{seriesType}。'
           },
           multiple: {
             prefix: '它由{seriesCount}个图表系列组成。',
-            withName: '第{seriesId}个系列是一个表示{seriesName}的{seriesType}，',
-            withoutName: '第{seriesId}个系列是一个{seriesType}，',
+            withName: '第{seriesId}个系列是一个表示{seriesName}的{seriesType}, ',
+            withoutName: '第{seriesId}个系列是一个{seriesType}, ',
             separator: {
               middle: '；',
               end: '。'
@@ -16576,11 +16576,11 @@
         },
         data: {
           allData: '其数据是——',
-          partialData: '其中，前{displayCnt}项是——',
+          partialData: '其中, 前{displayCnt}项是——',
           withName: '{name}的数据是{value}',
           withoutName: '{value}',
           separator: {
-            middle: '，',
+            middle: ', ',
             end: ''
           }
         }
@@ -46335,9 +46335,9 @@
         minShowLabelAngle: 0,
         // 选中时扇区偏移量
         selectedOffset: 10,
-        // 选择模式，默认关闭，可选single，multiple
+        // 选择模式, 默认关闭, 可选single, multiple
         // selectedMode: false,
-        // 南丁格尔玫瑰图模式，'radius'（半径） | 'area'（面积）
+        // 南丁格尔玫瑰图模式, 'radius'（半径） | 'area'（面积）
         // roseType: null,
         percentPrecision: 2,
         // If still show when all data zero.
@@ -46365,9 +46365,9 @@
           // Works only position is 'outer' and alignTo is not 'edge'.
           bleedMargin: 10,
           // Distance between text and label line.
-          distanceToLabelLine: 5 // formatter: 标签文本格式器，同 tooltip.formatter，不支持异步回调
-          // 默认使用全局文本样式，详见 textStyle
-          // distance: 当position为inner时有效，为label位置到圆心的距离与圆半径(环状图为内外半径和)的比例系数
+          distanceToLabelLine: 5 // formatter: 标签文本格式器, 同 tooltip.formatter, 不支持异步回调
+          // 默认使用全局文本样式, 详见 textStyle
+          // distance: 当position为inner时有效, 为label位置到圆心的距离与圆半径(环状图为内外半径和)的比例系数
 
         },
         // Enabled when label.normal.position is 'outer'
@@ -57128,7 +57128,7 @@
 
         if (!containerGroup) {
           // FIXME
-          // 加一层containerGroup是为了clip，但是现在clip功能并没有实现。
+          // 加一层containerGroup是为了clip, 但是现在clip功能并没有实现。
           containerGroup = this._containerGroup = new Group$1();
 
           this._initEvents(containerGroup);
@@ -58691,7 +58691,7 @@
         var treeRoot = seriesModel.getData().tree.root;
         treeRoot.setLayout(calculateRootPosition(layoutInfo, rootRect, targetInfo), true);
         seriesModel.setLayoutInfo(layoutInfo); // FIXME
-        // 现在没有clip功能，暂时取ec高宽。
+        // 现在没有clip功能, 暂时取ec高宽。
 
         prunning(treeRoot, // Transform to base element coordinate system.
         new BoundingRect(-layoutInfo.x, -layoutInfo.y, ecWidth, ecHeight), viewAbovePath, viewRoot, 0);
@@ -60809,7 +60809,7 @@
           d = diff;
           t = _t;
         }
-      } // Assume the segment is monotone，Find root through Bisection method
+      } // Assume the segment is monotone, Find root through Bisection method
       // At most 32 iteration
 
 
@@ -62683,11 +62683,11 @@
         min: 0,
         // 最大值
         max: 100,
-        // 分割段数，默认为10
+        // 分割段数, 默认为10
         splitNumber: 10,
         // 坐标轴线
         axisLine: {
-          // 默认显示，属性show控制显示与否
+          // 默认显示, 属性show控制显示与否
           show: true,
           roundCap: false,
           lineStyle: {
@@ -62697,7 +62697,7 @@
         },
         // 坐标轴线
         progress: {
-          // 默认显示，属性show控制显示与否
+          // 默认显示, 属性show控制显示与否
           show: false,
           overlap: true,
           width: 10,
@@ -62706,7 +62706,7 @@
         },
         // 分隔线
         splitLine: {
-          // 默认显示，属性show控制显示与否
+          // 默认显示, 属性show控制显示与否
           show: true,
           // 属性length控制线长
           length: 10,
@@ -62720,7 +62720,7 @@
         },
         // 坐标轴小标记
         axisTick: {
-          // 属性show控制显示与否，默认不显示
+          // 属性show控制显示与否, 默认不显示
           show: true,
           // 每份split细分多少段
           splitNumber: 5,
@@ -62766,9 +62766,9 @@
         },
         title: {
           show: true,
-          // x, y，单位px
+          // x, y, 单位px
           offsetCenter: [0, '20%'],
-          // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+          // 其余属性默认使用全局文本样式, 详见TEXTSTYLE
           color: '#464646',
           fontSize: 16,
           valueAnimation: false
@@ -62781,10 +62781,10 @@
           width: 100,
           height: null,
           padding: [5, 10],
-          // x, y，单位px
+          // x, y, 单位px
           offsetCenter: [0, '40%'],
           // formatter: null,
-          // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+          // 其余属性默认使用全局文本样式, 详见TEXTSTYLE
           color: '#464646',
           fontSize: 30,
           fontWeight: 'bold',
@@ -63049,7 +63049,7 @@
         funnelAlign: 'center',
         label: {
           show: true,
-          position: 'outer' // formatter: 标签文本格式器，同Tooltip.formatter，不支持异步回调
+          position: 'outer' // formatter: 标签文本格式器, 同Tooltip.formatter, 不支持异步回调
 
         },
         labelLine: {
@@ -68396,7 +68396,7 @@
         // Geo coordinate system
         // geoIndex: 0,
         // symbol: null,        // 图形类型
-        symbolSize: 10 // 图形大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+        symbolSize: 10 // 图形大小, 半宽（半径）参数, 当图形为方向或菱形则总宽度为symbolSize * 2
         // symbolRotate: null,  // 图形旋转控制
         // itemStyle: {
         //     opacity: 1
@@ -69642,7 +69642,7 @@
         label: {
           show: false,
           position: 'end' // distance: 5,
-          // formatter: 标签文本格式器，同Tooltip.formatter，不支持异步回调
+          // formatter: 标签文本格式器, 同Tooltip.formatter, 不支持异步回调
 
         },
         lineStyle: {
@@ -80936,7 +80936,7 @@
           $a.target = '_blank';
           $a.href = url;
           var evt = new MouseEvent('click', {
-            // some micro front-end framework， window maybe is a Proxy
+            // some micro front-end framework,  window maybe is a Proxy
             view: document.defaultView,
             bubbles: true,
             cancelable: false
@@ -85250,7 +85250,7 @@
           interval: 'auto',
           rotate: 0,
           // formatter: null,
-          // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+          // 其余属性默认使用全局文本样式, 详见TEXTSTYLE
           color: '#A4B1D7'
         },
         itemStyle: {
@@ -85295,7 +85295,7 @@
         emphasis: {
           label: {
             show: true,
-            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+            // 其余属性默认使用全局文本样式, 详见TEXTSTYLE
             color: '#6f778d'
           },
           itemStyle: {
@@ -86707,7 +86707,7 @@
             }
 
             if (isFunction(symbolSize)) {
-              // FIXME 这里不兼容 ECharts 2.x，2.x 貌似参数是整个数据？
+              // FIXME 这里不兼容 ECharts 2.x, 2.x 貌似参数是整个数据？
               symbolSize = symbolSize(rawIdx, dataParams);
             }
 
@@ -90224,7 +90224,7 @@
         var handleLabels = displaybles.handleLabels;
         var orient = this._orient;
         var labelTexts = ['', '']; // FIXME
-        // date型，支持formatter，autoformatter（ec2 date.getAutoFormatter）
+        // date型, 支持formatter, autoformatter（ec2 date.getAutoFormatter）
 
         if (dataZoomModel.get('showDetail')) {
           var axisProxy = dataZoomModel.findRepresentativeAxisProxy();
@@ -90468,7 +90468,7 @@
 
     function getOtherDim(thisDim) {
       // FIXME
-      // 这个逻辑和getOtherAxis里一致，但是写在这里是否不好
+      // 这个逻辑和getOtherAxis里一致, 但是写在这里是否不好
       var map = {
         x: 'y',
         y: 'x',
@@ -90950,7 +90950,7 @@
         inactiveColor: '#aaa',
         borderWidth: 0,
         padding: 5,
-        // 接受数组分别设定上右下左边距，同css
+        // 接受数组分别设定上右下左边距, 同css
         textGap: 10,
         precision: 0,
         textStyle: {
@@ -92689,7 +92689,7 @@
       categories: function (outPieceList) {
         var thisOption = this.option;
         each(thisOption.categories, function (cate) {
-          // FIXME category模式也使用pieceList，但在visualMapping中不是使用pieceList。
+          // FIXME category模式也使用pieceList, 但在visualMapping中不是使用pieceList。
           // 是否改一致。
           outPieceList.push({
             text: this.formatValueText(cate, true),

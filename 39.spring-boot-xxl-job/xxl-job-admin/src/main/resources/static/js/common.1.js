@@ -72,7 +72,7 @@ $(function(){
 
 	// left menu status v: js + server + cookie
 	$('.sidebar-toggle').click(function(){
-		var xxljob_adminlte_settings = $.cookie('xxljob_adminlte_settings');	// on=open，off=close
+		var xxljob_adminlte_settings = $.cookie('xxljob_adminlte_settings');	// on=open, off=close
 		if ('off' == xxljob_adminlte_settings) {
             xxljob_adminlte_settings = 'on';
 		} else {

@@ -1,5 +1,5 @@
 mybatis:
-  # type-aliases扫描路径-mapper.xml的resultType中直接写类名，可以不用写全限定名
+  # type-aliases扫描路径-mapper.xml的resultType中直接写类名, 可以不用写全限定名
   type-aliases-package: com.cmmplb.cache.entity
   # mapper xml实现扫描路径
   mapper-locations:

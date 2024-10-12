@@ -114,7 +114,7 @@
 </repositories>
 ```
 
-在Activiti中核心类的是ProcessEngine流程引擎，与Spring整合就是让Spring来管理ProcessEngine
+在Activiti中核心类的是ProcessEngine流程引擎, 与Spring整合就是让Spring来管理ProcessEngine
 
 通过org.activiti.spring.SpringProcessEngineConfiguration 与Spring整合方式来创建ProcessEngine对象。 
 
@@ -179,7 +179,7 @@
             <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
         </tx:attributes>
     </tx:advice>
-    <!-- 切面，根据具体项目修改切点配置
+    <!-- 切面, 根据具体项目修改切点配置
     <aop:config proxy-target-class="true">
         <aop:advisor advice-ref="txAdvice"
                      pointcut="execution(*com.itheima.service.impl..(..))"/>
@@ -189,10 +189,10 @@
 
 databaseSchemaUpdate的取值内容：
 
-flase：       默认值。activiti在启动时，会对比数据库表中保存的版本，如果没有表或者版本不匹配，将抛出异常。（生产环境常用）
-true：        activiti会对数据库中所有表进行更新操作。如果表不存在，则自动创建。（开发时常用）
-create_drop： 在activiti启动时创建表，在关闭时删除表（必须手动关闭引擎，才能删除表）。（单元测试常用）
-drop-create： 在activiti启动时删除原来的旧表，然后在创建新表（不需要手动关闭引擎）。
+flase：       默认值。activiti在启动时, 会对比数据库表中保存的版本, 如果没有表或者版本不匹配, 将抛出异常。（生产环境常用）
+true：        activiti会对数据库中所有表进行更新操作。如果表不存在, 则自动创建。（开发时常用）
+create_drop： 在activiti启动时创建表, 在关闭时删除表（必须手动关闭引擎, 才能删除表）。（单元测试常用）
+drop-create： 在activiti启动时删除原来的旧表, 然后在创建新表（不需要手动关闭引擎）。
 
 
 
@@ -225,21 +225,21 @@ drop-create： 在activiti启动时删除原来的旧表，然后在创建新表
 
 1、加载activiti-spring.xml配置文件
 
-2、加载SpringProcessEngineConfiguration对象，这个对象它需要依赖注入dataSource对象和transactionManager对象。
+2、加载SpringProcessEngineConfiguration对象, 这个对象它需要依赖注入dataSource对象和transactionManager对象。
 
-3、加载ProcessEngineFactoryBean工厂来创建ProcessEngine对象，而ProcessEngineFactoryBean工厂又需要依赖注入processEngineConfiguration对象。
+3、加载ProcessEngineFactoryBean工厂来创建ProcessEngine对象, 而ProcessEngineFactoryBean工厂又需要依赖注入processEngineConfiguration对象。
 
-4、processEngine对象来负责创建我们的Service对象，从而简化Activiti的开发过程。
+4、processEngine对象来负责创建我们的Service对象, 从而简化Activiti的开发过程。
 
 # 二、Activiti7与SpringBoot整合开发
 
-Activiti7发布正式版之后，它与SpringBoot2.x已经完全支持整合开发。
+Activiti7发布正式版之后, 它与SpringBoot2.x已经完全支持整合开发。
 
 ## 2.1     SpringBoot整合Activiti7的配置
 
-为了能够实现SpringBoot与Activiti7整合开发，首先我们要引入相关的依赖支持。
+为了能够实现SpringBoot与Activiti7整合开发, 首先我们要引入相关的依赖支持。
 
-在工程的pom.xml文件中引入相关的依赖，其中activiti的依赖是：activiti-spring-boot-starter。
+在工程的pom.xml文件中引入相关的依赖, 其中activiti的依赖是：activiti-spring-boot-starter。
 
 具体依赖如下所示：
 
@@ -293,13 +293,13 @@ Activiti7发布正式版之后，它与SpringBoot2.x已经完全支持整合开�
 </build>
 ```
 
-通过该pom.xml文件所导入的坐标，我们就可以实现activiti7与Springboot整合。
+通过该pom.xml文件所导入的坐标, 我们就可以实现activiti7与Springboot整合。
 
 ## 2.2    SpringBoot的application.yml文件配置
 
-为了能够实现Activiti7生成的表放到Mysql数据库中，需要在配置文件application.yml中添加相关的配置
+为了能够实现Activiti7生成的表放到Mysql数据库中, 需要在配置文件application.yml中添加相关的配置
 
-注意：activiti7默认没有开启数据库历史记录，需要手动配置开启
+注意：activiti7默认没有开启数据库历史记录, 需要手动配置开启
 
 ```yaml
 spring:
@@ -309,20 +309,20 @@ spring:
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
   activiti:
-    #1.flase：默认值。activiti在启动时，对比数据库表中保存的版本，如果没有表或者版本不匹配，将抛出异常
-    #2.true： activiti会对数据库中所有表进行更新操作。如果表不存在，则自动创建
-    #3.create_drop： 在activiti启动时创建表，在关闭时删除表（必须手动关闭引擎，才能删除表）
-    #4.drop-create： 在activiti启动时删除原来的旧表，然后在创建新表（不需要手动关闭引擎）
+    #1.flase：默认值。activiti在启动时, 对比数据库表中保存的版本, 如果没有表或者版本不匹配, 将抛出异常
+    #2.true： activiti会对数据库中所有表进行更新操作。如果表不存在, 则自动创建
+    #3.create_drop： 在activiti启动时创建表, 在关闭时删除表（必须手动关闭引擎, 才能删除表）
+    #4.drop-create： 在activiti启动时删除原来的旧表, 然后在创建新表（不需要手动关闭引擎）
     database-schema-update: true
     #检测历史表是否存在 activiti7默认没有开启数据库历史记录 启动数据库历史记录
     db-history-used: true
     #记录历史等级 可配置的历史级别有none, activity, audit, full
-    #none：不保存任何的历史数据，因此，在流程执行过程中，这是最高效的。
-    #activity：级别高于none，保存流程实例与流程行为，其他数据不保存。
-    #audit：除activity级别会保存的数据外，还会保存全部的流程任务及其属性。audit为history的默认值。
-    #full：保存历史数据的最高级别，除了会保存audit级别的数据外，还会保存其他全部流程相关的细节数据，包括一些流程参数等。
+    #none：不保存任何的历史数据, 因此, 在流程执行过程中, 这是最高效的。
+    #activity：级别高于none, 保存流程实例与流程行为, 其他数据不保存。
+    #audit：除activity级别会保存的数据外, 还会保存全部的流程任务及其属性。audit为history的默认值。
+    #full：保存历史数据的最高级别, 除了会保存audit级别的数据外, 还会保存其他全部流程相关的细节数据, 包括一些流程参数等。
     history-level: full
-    #校验流程文件，默认校验resources下的processes文件夹里的流程文件
+    #校验流程文件, 默认校验resources下的processes文件夹里的流程文件
     check-process-definitions: false
 ```
 
@@ -345,13 +345,13 @@ public class ActApplication {
 
 ## 2.4    添加SpringSecurity安全框架整合配置
 
-因为Activiti7与SpringBoot整合后，默认情况下，集成了SpringSecurity安全框架，这样我们就要去准备SpringSecurity整合进来的相关用户权限配置信息。
+因为Activiti7与SpringBoot整合后, 默认情况下, 集成了SpringSecurity安全框架, 这样我们就要去准备SpringSecurity整合进来的相关用户权限配置信息。
 
 SpringBoot的依赖包已经将SpringSecurity的依赖包也添加进项目中。
 
 ### 2.4.1  添加SecurityUtil类
 
-为了能够快速实现SpringSecurity安全框架的配置，所添加的一个组件。
+为了能够快速实现SpringSecurity安全框架的配置, 所添加的一个组件。
 
 ```java
 package com.itheima.utils;
@@ -425,11 +425,11 @@ public class SecurityUtil {
 
 ### 2.4.2  添加DemoApplicationConfig类
 
-在Activiti7官方下载的Example中找到DemoApplicationConfig类，它的作用是为了实现SpringSecurity框架的用户权限的配置，这样我们就可以在系统中使用用户权限信息。
+在Activiti7官方下载的Example中找到DemoApplicationConfig类, 它的作用是为了实现SpringSecurity框架的用户权限的配置, 这样我们就可以在系统中使用用户权限信息。
 
-本次项目中基本是在文件中定义出来的用户信息，当然也可以是数据库中查询的用户权限信息。
+本次项目中基本是在文件中定义出来的用户信息, 当然也可以是数据库中查询的用户权限信息。
 
-后面处理流程时用到的任务负责人，需要添加在这里
+后面处理流程时用到的任务负责人, 需要添加在这里
 
 ```java
 package com.itheima.config;
@@ -455,7 +455,7 @@ public class DemoApplicationConfiguration {
      @Bean
      public UserDetailsService myUserDetailsService() {
          InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();
-         //这里添加用户，后面处理流程时用到的任务负责人，需要添加在这里
+         //这里添加用户, 后面处理流程时用到的任务负责人, 需要添加在这里
          String[][] usersGroupsAndRoles = {
                  {"jack", "password", "ROLE_ACTIVITI_USER", "GROUP_activitiTeam"},
                  {"rose", "password", "ROLE_ACTIVITI_USER", "GROUP_activitiTeam"},
@@ -483,13 +483,13 @@ public class DemoApplicationConfiguration {
 
 ##  2.5 创建Bpmn文件
 
-Activiti7可以自动部署流程，前提是在resources目录下，创建一个新的目录processes，用来放置bpmn文件。
+Activiti7可以自动部署流程, 前提是在resources目录下, 创建一个新的目录processes, 用来放置bpmn文件。
 
-创建一个简单的Bpmn流程文件，并设置任务的用户组Candidate Groups。
+创建一个简单的Bpmn流程文件, 并设置任务的用户组Candidate Groups。
 
-Candidate Groups中的内容与上面DemoApplicationConfiguration类中出现的用户组名称要保持一致，可以填写：activitiTeam 或者 otherTeam。
+Candidate Groups中的内容与上面DemoApplicationConfiguration类中出现的用户组名称要保持一致, 可以填写：activitiTeam 或者 otherTeam。
 
-这样填写的好处：当不确定到底由谁来负责当前任务的时候，只要是Groups内的用户都可以拾取这个任务
+这样填写的好处：当不确定到底由谁来负责当前任务的时候, 只要是Groups内的用户都可以拾取这个任务
 
 ![](assets/1578369213.png)
 
@@ -561,7 +561,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
     /**
-     **查询任务，并完成自己的任务
+     **查询任务, 并完成自己的任务
      **/
     @Test
     public void testTask() {

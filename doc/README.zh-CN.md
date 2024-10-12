@@ -9,7 +9,7 @@
 
 ## 简介
 
-Vue Cestbon Admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+Vue Cestbon Admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`TypeScript`等主流技术开发, 开箱即用的中后台前端解决方案, 也可用于学习参考。
 
 ## 特性
 
@@ -38,7 +38,7 @@ Vue Cestbon Admin 是一个免费开源的中后台模版。使用了最新的`v
 
 ### 使用 Gitpod
 
-在 Gitpod（适用于 GitHub 的免费在线开发环境）中打开项目，并立即开始编码.
+在 Gitpod（适用于 GitHub 的免费在线开发环境）中打开项目, 并立即开始编码.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/anncwb/vue-vben-admin)
 
@@ -137,7 +137,7 @@ yarn build
 
 ## 相关仓库
 
-如果这些插件对你有帮助，可以给一个 star 支持下
+如果这些插件对你有帮助, 可以给一个 star 支持下
 
 - [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock) - 用于本地及开发环境数据 mock
 - [vite-plugin-html](https://github.com/anncwb/vite-plugin-html) - 用于 html 模版转换及压缩
@@ -150,7 +150,7 @@ yarn build
 ## 后台整合示例
 
 - [lamp-cloud](https://github.com/zuihou/lamp-cloud) - 基于 SpringCloud Alibaba 的微服务中后台快速开发平台
-- [matecloud](https://github.com/matevip/matecloud) - MateCloud 微服务脚手架，基于 Spring Cloud 2020.0.3、SpringBoot 2.5.3 的全开源平台
+- [matecloud](https://github.com/matevip/matecloud) - MateCloud 微服务脚手架, 基于 Spring Cloud 2020.0.3、SpringBoot 2.5.3 的全开源平台
 
 ## 维护者
 
@@ -158,7 +158,7 @@ yarn build
 
 ## 捐赠
 
-如果你觉得这个项目对你有帮助，你可以帮作者买一杯咖啡表示支持!
+如果你觉得这个项目对你有帮助, 你可以帮作者买一杯咖啡表示支持!
 
 ![donate](https://anncwb.github.io/anncwb/images/sponsor.png)
 
@@ -166,7 +166,7 @@ yarn build
 
 ## 交流
 
-`Vue-vben-Admin` 是完全开源免费的项目，在帮助开发者更方便地进行中大型管理系统开发，同时也提供 QQ 交流群使用问题欢迎在群内提问。
+`Vue-vben-Admin` 是完全开源免费的项目, 在帮助开发者更方便地进行中大型管理系统开发, 同时也提供 QQ 交流群使用问题欢迎在群内提问。
 
 - QQ 群 `569291866`
 

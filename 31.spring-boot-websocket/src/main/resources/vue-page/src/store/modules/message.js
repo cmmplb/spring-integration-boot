@@ -5,7 +5,7 @@ const getRecentlyMessageMap = () => {
     // const obj = Object.fromEntries(map); // Map转对象
     // const map = new Map(Object.entries(obj)); // 对象转map :
     const recentlyMessageMap = new Map();
-    // 由于map不能存储到本地，这里转换一下，存储的时候存集合，获取转为map
+    // 由于map不能存储到本地, 这里转换一下, 存储的时候存集合, 获取转为map
     const recentlyMessageList = getStorage({name: recentlyMessageMapKey});
     if (recentlyMessageList && recentlyMessageList.length > 0) {
         recentlyMessageList.map(ele => {
@@ -36,7 +36,7 @@ const getMessageMap = () => {
     return messageMap;
 };
 
-// map层级太深，vue监听不到数据变化，重新复制一个新Map
+// map层级太深, vue监听不到数据变化, 重新复制一个新Map
 const setMap = (oldMap, newKey, newValue, cacheKey) => {
     const newMap = new Map();
     // 设置新值排序第一位

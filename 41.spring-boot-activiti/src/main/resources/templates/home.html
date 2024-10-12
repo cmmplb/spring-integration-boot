@@ -20,7 +20,7 @@
 <body>
     <div id="app">
         <!-- 通过基础的 24 分栏 -->
-        <!-- Row 组件 提供 gutter 属性来指定每一栏之间的间隔，默认间隔为 0。 -->
+        <!-- Row 组件 提供 gutter 属性来指定每一栏之间的间隔, 默认间隔为 0。 -->
         <div>
             <el-row :gutter="20" class="content-card">
                 <el-col :span="6">
@@ -152,7 +152,7 @@
         mounted() {
             this.getApplyStatistics();
             setTimeout(() => {
-                // 这里要延迟渲染，等数据加载之后再显示统计图
+                // 这里要延迟渲染, 等数据加载之后再显示统计图
                 this.init();
             }, 200)
             this.chart1();

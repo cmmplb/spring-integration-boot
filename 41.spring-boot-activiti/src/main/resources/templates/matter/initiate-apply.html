@@ -89,7 +89,7 @@
                         <el-col :span="23">
                             <el-form-item label="请假日期">
                                 <el-button icon="el-icon-plus" round size="mini" @click="handlerAddRow">添加一行</el-button>
-                                <!-- 这里用到了表格内的数据为空校验，leaveDateList列表必须在绑定的dataForm里面定义 -->
+                                <!-- 这里用到了表格内的数据为空校验, leaveDateList列表必须在绑定的dataForm里面定义 -->
                                 <el-table stripe border align="center" :data="form.leaveDateList" class="table-content">
                                     <el-table-column label="序号" type="index" width="50" :resizable="false"
                                         align="center">
@@ -99,8 +99,8 @@
 
                                     <el-table-column label="请假类型" width="170" align="center">
                                         <template #default="{ row, $index }">
-                                            <!-- 为了区分是哪一行进行的校验，需要动态绑定 prop 到 el-form-item 元素-->
-                                            <!-- prop/rules/v-model三者的值必须一致，校验才能生效，注意这里的leaveDateList不用再加form.leaveDateList -->
+                                            <!-- 为了区分是哪一行进行的校验, 需要动态绑定 prop 到 el-form-item 元素-->
+                                            <!-- prop/rules/v-model三者的值必须一致, 校验才能生效, 注意这里的leaveDateList不用再加form.leaveDateList -->
                                             <el-form-item :prop="'leaveDateList.' + $index + '.type'"
                                                 :rules="rules.type">
                                                 <el-select v-model="row.type" clearable placeholder="请选择请假类型"
@@ -429,7 +429,7 @@
         margin-left: 30px;
     }
 
-    /* 小标题相对定位，用于添加子元素的绝对定位 */
+    /* 小标题相对定位, 用于添加子元素的绝对定位 */
     .title {
         position: relative;
         margin-bottom: 20px;

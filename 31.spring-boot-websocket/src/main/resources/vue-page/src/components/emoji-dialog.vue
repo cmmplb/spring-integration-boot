@@ -65,11 +65,11 @@ export default {
     background-color: white;
 
     img {
-      /*  1、ease 默认值，慢速开始，快速变快，慢速结束
+      /*  1、ease 默认值, 慢速开始, 快速变快, 慢速结束
           2、linear 匀速
-          3、ease-in 慢速开始，加速结束
-          4、ease-out 快速开始，减速结束
-          5、ease-in-out 慢速开始和结束，中间先加后减
+          3、ease-in 慢速开始, 加速结束
+          4、ease-out 快速开始, 减速结束
+          5、ease-in-out 慢速开始和结束, 中间先加后减
       */
       transition: transform 0.3s ease;
       width: 2rem;

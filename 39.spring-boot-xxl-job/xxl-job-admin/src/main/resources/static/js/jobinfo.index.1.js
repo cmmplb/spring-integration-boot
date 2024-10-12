@@ -22,7 +22,7 @@ $(function() {
 	    },
 	    "searching": false,
 	    "ordering": false,
-	    //"scrollX": true,	// scroll x，close self-adaption
+	    //"scrollX": true,	// scroll x, close self-adaption
 	    "columns": [
 	                {
 	                	"data": 'id',

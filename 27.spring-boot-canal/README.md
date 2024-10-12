@@ -13,7 +13,7 @@ server_id=1
 docker exec -it mysql /bin/bash
 cd /etc/mysql/mysql.conf.d
 vi mysqld.cnf
-修改mysqld.cnf配置文件，添加如下配置：
+修改mysqld.cnf配置文件, 添加如下配置：
 log-bin=/var/lib/mysql/mysql-bin
 server-id=12345 #不能和mysql的重复
 重启
@@ -40,10 +40,10 @@ FLUSH PRIVILEGES;
 mysql -uroot -proot
 #创建账号(账号：canal;密码：canal）
 CREATE USER 'canal'@'%' IDENTIFIED BY 'canal'; 
-#因为mysql8不支持GRANT创建用户，改用CREATE USER，然后再使用GRANT。
+#因为mysql8不支持GRANT创建用户, 改用CREATE USER, 然后再使用GRANT。
 CREATE USER 'canal'@'%' IDENTIFIED BY 'canal'; 
 GRANT ALL PRIVILEGES ON *.* TO 'canal'@'%' WITH GRANT OPTION;
-#因为mysql8修改了加密规则， 低版本的mysql界面工具可能连不上mysql8, 需要更改加密规则。
+#因为mysql8修改了加密规则,  低版本的mysql界面工具可能连不上mysql8, 需要更改加密规则。
 # 2. 修改加密规则： 
 ALTER USER ‘root'@‘localhost' IDENTIFIED BY ‘password' PASSWORD EXPIRE NEVER;
 #3更新一下用户的密码 ： 
