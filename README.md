@@ -1,6 +1,6 @@
 # 学习springboot整合
 
-master分支为1.x版本
+master分支为2.5.15.x版本
 
 ````
 feature

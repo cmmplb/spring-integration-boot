@@ -12,8 +12,6 @@
     <modelVersion>4.0.0</modelVersion>
     <!-- 项目的唯一的标识符, 实际对应项目的名称, 就是项目根目录的名称。 -->
     <artifactId>spring-boot-mongodb</artifactId>
-    <!-- 项目ID, 项目坐标核心元素, 项目组织唯一的标识符, 实际对应JAVA的包的结构, 是main目录里java的目录结构。 -->
-    <groupId>io.github.cmmplb.mongodb</groupId>
     <!-- 项目的打包类型：pom、jar、war -->
     <packaging>jar</packaging>
     <!-- 项目名称 -->

@@ -5,7 +5,7 @@
     <!-- 父工程 -->
     <parent>
         <artifactId>spring-boot-admin</artifactId>
-        <groupId>io.github.cmmplb.admin</groupId>
+        <groupId>io.github.cmmplb</groupId>
         <version>${revision}</version>
     </parent>
     <!-- 指定当前POM模型的版本 -->
