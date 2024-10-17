@@ -65,7 +65,9 @@ master 分支为最新版本 3.3.4.x：
 
 ### 当前分支：feature/3.3.4.x，对比上一个版本 3.1.12.x 的配置变化和问题：
 
-...
+1. org.springframework.core.LocalVariableTableParameterNameDiscoverer 已移除，使用
+   org.springframework.core.StandardReflectionParameterNameDiscoverer 代替；
+   ...
 
 ## 历史版本变化和问题
 
@@ -105,7 +107,7 @@ master 分支为最新版本 3.3.4.x：
 4. 访问接口打印警告：
 
    ````
-   ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: ...
+   localVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: ...
    ````
 
     - public Result<String> index(String name), 解析不了请求参数name

@@ -13,7 +13,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
+import org.springframework.core.StandardReflectionParameterNameDiscoverer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
@@ -72,7 +72,7 @@ public class LogAspect {
         // 请求的方法参数值
         Object[] args = joinPoint.getArgs();
         // 请求的方法参数名称
-        LocalVariableTableParameterNameDiscoverer u = new LocalVariableTableParameterNameDiscoverer();
+        StandardReflectionParameterNameDiscoverer u = new StandardReflectionParameterNameDiscoverer();
         String[] paramNames = u.getParameterNames(method);
         if (args != null && paramNames != null) {
             StringBuilder params = new StringBuilder();
