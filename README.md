@@ -59,7 +59,17 @@ master 分支为最新版本 3.3.4.x：
 - AbstractMojo                                        自定义maven插件
 ````
 
-### 当前分支：feature/3.1.12.x，对比上一个版本 2.7.18.x 的配置变化和问题：**
+****
+
+## 版本变化
+
+### 当前分支：feature/3.3.4.x，对比上一个版本 3.1.12.x 的配置变化和问题：
+
+...
+
+## 历史版本变化和问题
+
+### feature/3.1.12.x，对比上一个版本 feature/2.7.18.x 的变化：
 
 ****
 
@@ -226,10 +236,6 @@ if ((e instanceof BusinessException c)) {
 | servlet-api                            | 2.5      |  
 | ehcache                                | 2.10.9.2 | 
 | springdoc-openapi-ui                   | 1.8.0    |
-
-****
-
-## 历史版本变化和问题
 
 ### feature/2.7.18.x，对比上一个版本 feature/2.5.15.x 的变化：
 
