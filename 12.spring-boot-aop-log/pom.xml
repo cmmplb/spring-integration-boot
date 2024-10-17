@@ -26,6 +26,11 @@
             <groupId>io.github.cmmplb</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- swagger 模块 -->
+        <dependency>
+            <groupId>io.github.cmmplb</groupId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
+        </dependency>
         <!-- aop -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

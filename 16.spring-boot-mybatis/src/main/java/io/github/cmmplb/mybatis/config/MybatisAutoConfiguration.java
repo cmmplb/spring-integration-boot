@@ -1,4 +1,4 @@
-package com.cmmplb.mybatis.config;
+package io.github.cmmplb.mybatis.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@MapperScan(basePackages = {"com.cmmplb.mybatis.dao"})
+@MapperScan(basePackages = "io.github.cmmplb.mybatis.dao")
 public class MybatisAutoConfiguration {
 
 //    /**

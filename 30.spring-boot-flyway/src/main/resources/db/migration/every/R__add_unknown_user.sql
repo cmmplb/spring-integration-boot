@@ -1,4 +1,4 @@
-INSERT INTO `user` (`tenant_id`,
+INSERT INTO `userDetails` (`tenant_id`,
                     `name`,
                     `sex`,
                     `mobile`,

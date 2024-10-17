@@ -1,18 +1,17 @@
-package com.cmmplb.dynamic.datasource.controller;
+package io.github.cmmplb.dynamic.datasource.controller;
 
-import io.github.cmmplb.core.result.Result;
-import io.github.cmmplb.core.result.ResultUtil;
-import com.cmmplb.dynamic.datasource.entity.User;
-import com.cmmplb.dynamic.datasource.service.UserService;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.dynamic.datasource.entity.User;
+import io.github.cmmplb.dynamic.datasource.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,9 +21,11 @@ import java.util.List;
  * @since jdk 1.8
  */
 
-@Api(tags = "用户")
+@Tag(name = "用户")
+// @ApiSupport > @ApiSort > @Api  -  排序的规则是倒序
 @ApiSort(2)
-@ApiSupport(order = 2, author = "张三")
+// 作者,方法名上ApiOperationSupport.author没有则取类名声明的作者
+@ApiSupport(order = 2, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -35,13 +36,15 @@ public class UserController {
     // 测试自定义切面方式切换数据源是否生效, 更新走master、查询走slave_1
 
     @PutMapping("/{id}")
-    @ApiOperation("根据id更新")
-    public Result<Object> updateById(User user) {
+    @Operation(summary = "根据id更新", description = "根据id更新")
+    @ApiOperationSupport(order = 1)
+    public Result<Object> updateById(@RequestBody User user) {
         return ResultUtil.success(userService.updateInfoById(user));
     }
 
     @GetMapping("/list")
-    @ApiOperation("查询列表")
+    @Operation(summary = "查询列表")
+    @ApiOperationSupport(order = 2)
     public Result<List<User>> getList() {
         return ResultUtil.success(userService.getList());
     }

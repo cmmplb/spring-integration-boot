@@ -5,9 +5,9 @@ import io.github.cmmplb.core.beans.QueryPageBean;
 import io.github.cmmplb.mybatis.mapper.dao.UserMapper;
 import io.github.cmmplb.mybatis.mapper.entity.User;
 import io.github.cmmplb.mybatis.mapper.service.UserService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**

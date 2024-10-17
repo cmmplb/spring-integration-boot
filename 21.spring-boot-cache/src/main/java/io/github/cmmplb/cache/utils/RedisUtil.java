@@ -1,11 +1,11 @@
-package com.cmmplb.cache.utils;
+package io.github.cmmplb.cache.utils;
 
+import jakarta.annotation.Resource;
 import org.springframework.data.redis.connection.RedisServerCommands;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;

@@ -46,11 +46,14 @@
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
+            <classifier>jakarta</classifier>
         </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
             <scope>provided</scope>
+            <optional>true</optional>
+            <classifier>jakarta</classifier>
         </dependency>
         <!-- MapStruct -->
         <dependency>
@@ -66,7 +69,7 @@
     <!-- 插件 -->
     <build>
         <plugins>
-            <!--  querydsl apt plugin  -->
+            <!--  querydsl apt plugin, 编译生成QEntity的类  -->
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
@@ -85,6 +88,7 @@
                     <dependency>
                         <groupId>com.querydsl</groupId>
                         <artifactId>querydsl-apt</artifactId>
+                        <classifier>jakarta</classifier>
                         <version>${querydsl.version}</version>
                     </dependency>
                 </dependencies>

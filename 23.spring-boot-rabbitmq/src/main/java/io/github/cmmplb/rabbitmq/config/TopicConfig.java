@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.config;
+package io.github.cmmplb.rabbitmq.config;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstant;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.rabbit.configuration.properties.RabbitMqProperties;
 import org.springframework.amqp.core.Binding;
@@ -35,7 +35,7 @@ public class TopicConfig {
      */
     @Bean
     public Queue oneTopicQueue() {
-        return new Queue(RabbitMqConstants.ONE_TOPIC_QUEUE);
+        return new Queue(RabbitMqConstant.ONE_TOPIC_QUEUE);
     }
 
     /**
@@ -44,7 +44,7 @@ public class TopicConfig {
      */
     @Bean
     public Queue TwoTopicQueue() {
-        return new Queue(RabbitMqConstants.TWO_TOPIC_QUEUE);
+        return new Queue(RabbitMqConstant.TWO_TOPIC_QUEUE);
     }
 
     /**
@@ -53,7 +53,7 @@ public class TopicConfig {
      */
     @Bean
     public TopicExchange topicExchange() {
-        return new TopicExchange(RabbitMqConstants.TOPIC_EXCHANGE);
+        return new TopicExchange(RabbitMqConstant.TOPIC_EXCHANGE);
     }
 
     /**
@@ -62,7 +62,7 @@ public class TopicConfig {
      */
     @Bean
     public Binding bindingTopicOne() {
-        return BindingBuilder.bind(oneTopicQueue()).to(topicExchange()).with(RabbitMqConstants.ONE_TOPIC_ROUTING_KEY);
+        return BindingBuilder.bind(oneTopicQueue()).to(topicExchange()).with(RabbitMqConstant.ONE_TOPIC_ROUTING_KEY);
     }
 
     /**
@@ -71,7 +71,7 @@ public class TopicConfig {
      */
     @Bean
     public Binding bindingTopicTwo() {
-        return BindingBuilder.bind(TwoTopicQueue()).to(topicExchange()).with(RabbitMqConstants.TWO_TOPIC_ROUTING_KEY);
+        return BindingBuilder.bind(TwoTopicQueue()).to(topicExchange()).with(RabbitMqConstant.TWO_TOPIC_ROUTING_KEY);
     }
 
     /**
@@ -80,6 +80,6 @@ public class TopicConfig {
      */
     @Bean
     public Binding bindingTopicThree() {
-        return BindingBuilder.bind(TwoTopicQueue()).to(topicExchange()).with(RabbitMqConstants.THREE_TOPIC_ROUTING_KEY);//#表示0个或若干个关键字, *表示一个关键字
+        return BindingBuilder.bind(TwoTopicQueue()).to(topicExchange()).with(RabbitMqConstant.THREE_TOPIC_ROUTING_KEY);//#表示0个或若干个关键字, *表示一个关键字
     }
 }

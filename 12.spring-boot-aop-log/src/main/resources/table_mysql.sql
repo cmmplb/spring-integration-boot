@@ -1,11 +1,11 @@
-DROP DATABASE IF EXISTS `spring_integration_boot`;
+DROP DATABASE IF EXISTS `spring_boot_log`;
 
-CREATE DATABASE `spring_integration_boot` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `spring_boot_log` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-USE `spring_integration_boot`;
+USE `spring_boot_log`;
 
 DROP TABLE IF EXISTS `sys_log`;
 CREATE TABLE `sys_log`

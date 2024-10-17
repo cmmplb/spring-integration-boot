@@ -1,15 +1,15 @@
-DROP DATABASE IF EXISTS `master`;
+DROP DATABASE IF EXISTS `spring_boot_dynamic_datasource_master`;
 
-CREATE DATABASE `master` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `spring_boot_dynamic_datasource_master` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-USE `master`;
+USE `spring_boot_dynamic_datasource_master`;
 
 /*用户信息表*/
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`
+DROP TABLE IF EXISTS `userDetails`;
+CREATE TABLE `userDetails`
 (
     `id`          bigint     NOT NULL AUTO_INCREMENT COMMENT '主键',
     `tenant_id`   bigint(20) NOT NULL DEFAULT '0' COMMENT '租户id',
@@ -27,16 +27,16 @@ CREATE TABLE `user`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4 COMMENT ='用户信息表';
 
-INSERT INTO `user` (`tenant_id`,
-                    `name`,
-                    `sex`,
-                    `mobile`,
-                    `status`,
-                    `amount`,
-                    `create_time`,
-                    `update_time`,
-                    `version`,
-                    `deleted`)
+INSERT INTO `userDetails` (`tenant_id`,
+                           `name`,
+                           `sex`,
+                           `mobile`,
+                           `status`,
+                           `amount`,
+                           `create_time`,
+                           `update_time`,
+                           `version`,
+                           `deleted`)
 VALUES (1,
         '小明',
         1,
@@ -60,18 +60,18 @@ VALUES (1,
 
 -- ======================================================================================
 
-DROP DATABASE IF EXISTS `slave1`;
+DROP DATABASE IF EXISTS `spring_boot_dynamic_datasource_slave1`;
 
-CREATE DATABASE `slave1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `spring_boot_dynamic_datasource_slave1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-USE `slave1`;
+USE `spring_boot_dynamic_datasource_slave1`;
 
 /*用户信息表*/
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`
+DROP TABLE IF EXISTS `userDetails`;
+CREATE TABLE `userDetails`
 (
     `id`          bigint     NOT NULL AUTO_INCREMENT COMMENT '主键',
     `tenant_id`   bigint(20) NOT NULL DEFAULT '0' COMMENT '租户id',
@@ -89,16 +89,16 @@ CREATE TABLE `user`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4 COMMENT ='用户信息表';
 
-INSERT INTO `user` (`tenant_id`,
-                    `name`,
-                    `sex`,
-                    `mobile`,
-                    `status`,
-                    `amount`,
-                    `create_time`,
-                    `update_time`,
-                    `version`,
-                    `deleted`)
+INSERT INTO `userDetails` (`tenant_id`,
+                           `name`,
+                           `sex`,
+                           `mobile`,
+                           `status`,
+                           `amount`,
+                           `create_time`,
+                           `update_time`,
+                           `version`,
+                           `deleted`)
 VALUES (1,
         '小明',
         1,
@@ -122,18 +122,18 @@ VALUES (1,
 
 -- ======================================================================================
 
-DROP DATABASE IF EXISTS `slave2`;
+DROP DATABASE IF EXISTS `spring_boot_dynamic_datasource_slave2`;
 
-CREATE DATABASE `slave2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `spring_boot_dynamic_datasource_slave2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-USE `slave2`;
+USE `spring_boot_dynamic_datasource_slave2`;
 
 /*用户信息表*/
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`
+DROP TABLE IF EXISTS `userDetails`;
+CREATE TABLE `userDetails`
 (
     `id`          bigint     NOT NULL AUTO_INCREMENT COMMENT '主键',
     `tenant_id`   bigint(20) NOT NULL DEFAULT '0' COMMENT '租户id',
@@ -151,16 +151,16 @@ CREATE TABLE `user`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4 COMMENT ='用户信息表';
 
-INSERT INTO `user` (`tenant_id`,
-                    `name`,
-                    `sex`,
-                    `mobile`,
-                    `status`,
-                    `amount`,
-                    `create_time`,
-                    `update_time`,
-                    `version`,
-                    `deleted`)
+INSERT INTO `userDetails` (`tenant_id`,
+                           `name`,
+                           `sex`,
+                           `mobile`,
+                           `status`,
+                           `amount`,
+                           `create_time`,
+                           `update_time`,
+                           `version`,
+                           `deleted`)
 VALUES (1,
         '小明',
         1,

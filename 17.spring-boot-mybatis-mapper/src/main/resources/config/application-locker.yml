@@ -1,8 +1,0 @@
-#乐观锁
-locker:
-  #数据库字段
-  column: version
-  #实体类字段
-  property: version
-  #失败重试次数
-  retry-number: 3

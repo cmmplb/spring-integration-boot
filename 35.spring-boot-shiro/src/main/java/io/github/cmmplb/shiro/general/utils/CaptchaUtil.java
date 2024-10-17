@@ -1,14 +1,14 @@
 package io.github.cmmplb.shiro.general.utils;
 
+import com.wf.captcha.SpecCaptcha;
+import com.wf.captcha.base.Captcha;
 import io.github.cmmplb.core.utils.ServletUtil;
 import io.github.cmmplb.core.utils.SpringUtil;
 import io.github.cmmplb.redis.service.RedisService;
 import io.github.cmmplb.shiro.general.constants.RedisConstants;
-import com.wf.captcha.SpecCaptcha;
-import com.wf.captcha.base.Captcha;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**

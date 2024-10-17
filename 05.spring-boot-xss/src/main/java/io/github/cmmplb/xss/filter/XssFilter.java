@@ -3,11 +3,11 @@ package io.github.cmmplb.xss.filter;
 import io.github.cmmplb.core.utils.StringUtil;
 import io.github.cmmplb.xss.config.properties.XssProperties;
 import io.github.cmmplb.xss.wrapper.XssRequestWrapper;
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;

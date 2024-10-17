@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head lang="en">
-    <meta charset="UTF-8" />
-    <title>Insert title here</title>
+  <meta charset="UTF-8" />
+  <title>Insert title here</title>
 </head>
 <body>
-${message}
-${name}
-${age}
+<h1>
+    ${message}
+</h1>
+    ${name}
+    ${age}
 </body>
 </html>

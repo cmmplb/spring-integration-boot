@@ -1,9 +1,9 @@
-package com.cmmplb.websocket.service.impl;
+package io.github.cmmplb.websocket.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.websocket.dao.AttachmentDataMapper;
-import com.cmmplb.websocket.domain.entity.AttachmentData;
-import com.cmmplb.websocket.service.AttachmentDataService;
+import io.github.cmmplb.websocket.dao.AttachmentDataMapper;
+import io.github.cmmplb.websocket.domain.entity.AttachmentData;
+import io.github.cmmplb.websocket.service.AttachmentDataService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

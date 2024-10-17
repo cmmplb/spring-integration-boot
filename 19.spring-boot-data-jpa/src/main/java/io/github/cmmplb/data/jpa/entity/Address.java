@@ -1,10 +1,9 @@
-package com.cmmplb.data.jpa.entity;
+package io.github.cmmplb.data.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -45,14 +44,14 @@ public class Address implements Serializable {
     //     *      CascadeType.MERGE   级联更新（合并）操作
     //     *      CascadeType.REMOVE  级联删除操作
     //     *      CascadeType.REFRESH 级联刷新操作
-    //     *      CascadeType.DETACH 级联分离操作,如果你要删除一个实体, 但是它有外键无法删除, 这个级联权限会撤销所有相关的外键关联. 
+    //     *      CascadeType.DETACH 级联分离操作,如果你要删除一个实体, 但是它有外键无法删除, 这个级联权限会撤销所有相关的外键关联.
     /*@ManyToOne(cascade = CascadeType.ALL, targetEntity = Account.class, fetch = FetchType.LAZY)
     // 多对一,多个标签对应一个用户--CascadeType赋予此类操作彼类的权限
     @JoinColumn(name = "account_id") //设置在表中的关联字段(外键)
     // 防止json序列化死循环问题解决
     @JsonBackReference
     private Account account;*/
-    // @JoinColumn注解来标识account主键创建到address表的列的名称, 
+    // @JoinColumn注解来标识account主键创建到address表的列的名称,
     //当然没有此注解的时候JPA会根据默认规则生成一个列名称. 
 
     @Override

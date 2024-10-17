@@ -1,4 +1,4 @@
-package com.cmmplb.dynamic.datasource.plugin.interceptor;
+package io.github.cmmplb.dynamic.datasource.plugin.interceptor;
 
 import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
 import lombok.extern.slf4j.Slf4j;

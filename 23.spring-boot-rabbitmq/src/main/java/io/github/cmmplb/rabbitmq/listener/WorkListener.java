@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.listener;
+package io.github.cmmplb.rabbitmq.listener;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstant;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -18,14 +18,14 @@ import java.io.IOException;
 @Component
 public class WorkListener {
 
-    @RabbitListener(queues = RabbitMqConstants.WORK_QUEUE)
+    @RabbitListener(queues = RabbitMqConstant.WORK_QUEUE)
     public void listener(String body, Message message, Channel channel) throws IOException {
         System.out.println("one - 监听到Work模式消息:" + body);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
     // 创建两个队列共同消费
-    @RabbitListener(queues = RabbitMqConstants.WORK_QUEUE)
+    @RabbitListener(queues = RabbitMqConstant.WORK_QUEUE)
     public void listenTwo(String body, Message message, Channel channel) throws IOException {
         System.out.println("two - 监听到Work模式消息:" + body);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

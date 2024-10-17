@@ -1,4 +1,4 @@
-package com.cmmplb.canal.service.impl;
+package io.github.cmmplb.canal.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -6,12 +6,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.cmmplb.core.beans.SelectVO;
 import java.util.stream.Collectors;
 import io.github.cmmplb.core.exception.CustomException;
-import com.cmmplb.canal.dao.TestMapper;
-import com.cmmplb.canal.dto.TestDTO;
-import com.cmmplb.canal.dto.TestQueryDTO;
-import com.cmmplb.canal.entity.Test;
-import com.cmmplb.canal.service.TestService;
-import com.cmmplb.canal.vo.TestVO;
+import io.github.cmmplb.canal.dao.TestMapper;
+import io.github.cmmplb.canal.dto.TestDTO;
+import io.github.cmmplb.canal.dto.TestQueryDTO;
+import io.github.cmmplb.canal.entity.Test;
+import io.github.cmmplb.canal.service.TestService;
+import io.github.cmmplb.canal.vo.TestVO;
 
 
 import org.springframework.beans.BeanUtils;

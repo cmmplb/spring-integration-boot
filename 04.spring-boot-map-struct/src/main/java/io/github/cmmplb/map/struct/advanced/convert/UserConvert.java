@@ -1,9 +1,9 @@
-package com.cmmplb.map.struct.advanced.convert;
+package io.github.cmmplb.map.struct.advanced.convert;
 
-import com.cmmplb.map.struct.advanced.core.converter.Converter;
-import com.cmmplb.map.struct.advanced.dto.UserDTO;
-import com.cmmplb.map.struct.advanced.entity.User;
-import com.cmmplb.map.struct.advanced.vo.UserVO;
+import io.github.cmmplb.map.struct.advanced.core.converter.Converter;
+import io.github.cmmplb.map.struct.advanced.dto.UserDTO;
+import io.github.cmmplb.map.struct.advanced.entity.User;
+import io.github.cmmplb.map.struct.advanced.vo.UserVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

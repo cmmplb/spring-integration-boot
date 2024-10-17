@@ -2,12 +2,12 @@ package io.github.cmmplb.quartz.configuration;
 
 import io.github.cmmplb.quartz.job.DongAoJob;
 import io.github.cmmplb.quartz.job.WelcomeJob;
+import jakarta.annotation.PostConstruct;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.PostConstruct;
 
 /**
  * @author penglibo

@@ -1,13 +1,13 @@
 package io.github.cmmplb.sa.token.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
-import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since jdk 1.8
  */
 
-@Api(tags = "用户管理")
+@Schema(name = "用户管理")
 @ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/user")
@@ -41,7 +41,7 @@ public class UserController {
         return "当前会话是否登录：" + StpUtil.isLogin();
     }
 
-    @ApiOperation("查询")
+    @Operation(summary = "查询")
     @ApiOperationSupport(order = 1)
     @GetMapping("/info")
     public Result<String> getInfo() {

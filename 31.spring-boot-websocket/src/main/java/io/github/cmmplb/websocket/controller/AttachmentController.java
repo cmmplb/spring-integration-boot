@@ -1,9 +1,9 @@
-package com.cmmplb.websocket.controller;
+package io.github.cmmplb.websocket.controller;
 
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import com.cmmplb.websocket.service.AttachmentService;
-import com.cmmplb.websocket.domain.vo.AttachmentVO;
+import io.github.cmmplb.websocket.service.AttachmentService;
+import io.github.cmmplb.websocket.domain.vo.AttachmentVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.config;
+package io.github.cmmplb.rabbitmq.config;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstant;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.rabbit.configuration.properties.RabbitMqProperties;
 import org.springframework.amqp.core.*;
@@ -33,7 +33,7 @@ public class DirectConfig {
      */
     @Bean
     public Queue oneDirectQueue() {
-        return new Queue(RabbitMqConstants.ONE_DIRECT_QUEUE);
+        return new Queue(RabbitMqConstant.ONE_DIRECT_QUEUE);
     }
 
     /**
@@ -42,7 +42,7 @@ public class DirectConfig {
      */
     @Bean
     public Queue twoDirectQueue() {
-        return new Queue(RabbitMqConstants.TWO_DIRECT_QUEUE);
+        return new Queue(RabbitMqConstant.TWO_DIRECT_QUEUE);
     }
 
     /**
@@ -51,7 +51,7 @@ public class DirectConfig {
      */
     @Bean
     public DirectExchange directExchange() {
-        return new DirectExchange(RabbitMqConstants.DIRECT_EXCHANGE);
+        return new DirectExchange(RabbitMqConstant.DIRECT_EXCHANGE);
     }
 
     /**
@@ -60,7 +60,7 @@ public class DirectConfig {
      */
     @Bean
     public Binding bindingDirectOne(@Qualifier("topicExchange") Exchange topicExchange) {
-        return BindingBuilder.bind(oneDirectQueue()).to(directExchange()).with(RabbitMqConstants.ONE_DIRECT_ROUTING_KEY);
+        return BindingBuilder.bind(oneDirectQueue()).to(directExchange()).with(RabbitMqConstant.ONE_DIRECT_ROUTING_KEY);
     }
 
     /**
@@ -69,7 +69,7 @@ public class DirectConfig {
      */
     @Bean
     public Binding bindingDirectTwo() {
-        return BindingBuilder.bind(twoDirectQueue()).to(directExchange()).with(RabbitMqConstants.TWO_DIRECT_ROUTING_KEY);
+        return BindingBuilder.bind(twoDirectQueue()).to(directExchange()).with(RabbitMqConstant.TWO_DIRECT_ROUTING_KEY);
     }
 
     /**
@@ -78,6 +78,6 @@ public class DirectConfig {
      */
     @Bean
     public Binding bindingDirectThree() {
-        return BindingBuilder.bind(twoDirectQueue()).to(directExchange()).with(RabbitMqConstants.THREE_DIRECT_ROUTING_KEY);
+        return BindingBuilder.bind(twoDirectQueue()).to(directExchange()).with(RabbitMqConstant.THREE_DIRECT_ROUTING_KEY);
     }
 }

@@ -1,7 +1,7 @@
-package com.cmmplb.dynamic.datasource.dao;
+package io.github.cmmplb.dynamic.datasource.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cmmplb.dynamic.datasource.entity.Order;
+import io.github.cmmplb.dynamic.datasource.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

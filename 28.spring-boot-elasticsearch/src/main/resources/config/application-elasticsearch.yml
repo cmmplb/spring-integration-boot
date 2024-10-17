@@ -1,6 +1,14 @@
 spring:
   elasticsearch:
-    rest:
-      uris: http://localhost:9200
-      username: elastic
-      password: cmmplb
+    # 地址
+    uris: http://localhost:9200
+    # 用户名
+    username: elastic
+    # 密码
+    password: cmmplb
+    # 连接超时时间
+    connection-timeout: 5s
+    # 数据读写超时时间
+    socket-timeout: 10s
+    # 如果Elasticsearch API路径有前缀，可以在此指定
+    #path-prefix:

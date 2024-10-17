@@ -1,6 +1,9 @@
 spring:
   devtools:
     restart:
+      # 是否启用自动重启
       enabled: false
+      # 设置热部署的文件路径，只有这个目录下的文件发生改变
+      additional-paths: src/main/java
       # 设置不参与热部署的文件或文件夹
       exclude: static/**,public/**,config/application.yml

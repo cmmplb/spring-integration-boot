@@ -1,12 +1,12 @@
-package com.cmmplb.data.jpa.service.impl;
+package io.github.cmmplb.data.jpa.service.impl;
 
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.data.jpa.dao.AccountDao;
-import com.cmmplb.data.jpa.repository.AccountRepository;
-import com.cmmplb.data.jpa.entity.Account;
-import com.cmmplb.data.jpa.service.AccountService;
-import com.cmmplb.data.jpa.vo.AccountInfoVO;
+import io.github.cmmplb.data.jpa.dao.AccountDao;
+import io.github.cmmplb.data.jpa.repository.AccountRepository;
+import io.github.cmmplb.data.jpa.entity.Account;
+import io.github.cmmplb.data.jpa.service.AccountService;
+import io.github.cmmplb.data.jpa.vo.AccountInfoVO;
 import com.querydsl.core.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -65,7 +65,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public PageResult<Account> getByPaged(QueryPageBean queryPageBean) {
-        Page<Account> page = accountRepository.findAll(PageRequest.of(queryPageBean.getCurrent(), queryPageBean.getSize(), Sort.Direction.DESC, "id"));
+        // PageRequest第一页的pageNumber是0
+        Page<Account> page = accountRepository.findAll(PageRequest.of(queryPageBean.getCurrent() - 1, queryPageBean.getSize(), Sort.Direction.DESC, "id"));
         return new PageResult<>(page.getTotalElements(), page.getContent());
     }
 }

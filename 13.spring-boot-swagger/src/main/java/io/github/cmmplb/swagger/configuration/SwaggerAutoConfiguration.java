@@ -208,6 +208,9 @@ public class SwaggerAutoConfiguration {
         }
     }
 
+    /**
+     * API 页面上半部分展示信息
+     */
     private static ApiInfo apiInfo(SwaggerProperties swaggerProperties) {
         return new ApiInfoBuilder()
                 .title(swaggerProperties.getTitle())
@@ -220,3 +223,4 @@ public class SwaggerAutoConfiguration {
                 .build();
     }
 }
+

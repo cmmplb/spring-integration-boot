@@ -1,6 +1,6 @@
-package com.cmmplb.cache.service;
+package io.github.cmmplb.cache.service;
 
-import com.cmmplb.cache.domain.entity.User;
+import io.github.cmmplb.cache.domain.entity.User;
 
 import java.util.List;
 
@@ -43,4 +43,6 @@ public interface UserService {
      * @return 用户信息
      */
     User getById(Long id);
+
+    User getInfoById(Long id);
 }

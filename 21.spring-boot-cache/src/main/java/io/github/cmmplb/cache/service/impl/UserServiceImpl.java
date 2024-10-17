@@ -1,15 +1,15 @@
-package com.cmmplb.cache.service.impl;
+package io.github.cmmplb.cache.service.impl;
 
-import com.cmmplb.cache.domain.entity.User;
-import com.cmmplb.cache.mapper.UserMapper;
-import com.cmmplb.cache.service.UserService;
+import io.github.cmmplb.cache.domain.entity.User;
+import io.github.cmmplb.cache.mapper.UserMapper;
+import io.github.cmmplb.cache.service.UserService;
+import jakarta.annotation.Resource;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -50,8 +50,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     // cacheNames对应缓存管理器名称
-    @Cacheable(cacheNames = "users", key = "'UserInfo'+#id", sync = true)
+    @Cacheable(cacheNames = "userInfo", key = "'UserInfo'+#id", sync = true)
     public User getById(Long id) {
+        return userMapper.selectById(id);
+    }
+
+    @Override
+    public User getInfoById(Long id) {
         return userMapper.selectById(id);
     }
 

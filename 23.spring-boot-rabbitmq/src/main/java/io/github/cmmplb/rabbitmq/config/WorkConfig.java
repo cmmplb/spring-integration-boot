@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.config;
+package io.github.cmmplb.rabbitmq.config;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstant;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.rabbit.configuration.properties.RabbitMqProperties;
 import org.springframework.amqp.core.Queue;
@@ -26,6 +26,6 @@ public class WorkConfig {
      */
     @Bean
     public Queue workQueue() {
-        return new Queue(RabbitMqConstants.WORK_QUEUE);
+        return new Queue(RabbitMqConstant.WORK_QUEUE);
     }
 }

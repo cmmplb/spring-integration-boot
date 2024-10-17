@@ -2,6 +2,10 @@ package io.github.cmmplb.shiro.original.config;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.utils.MD5Util;
+import io.github.cmmplb.redis.configuration.properties.RedisProperties;
+import io.github.cmmplb.redis.service.RedisService;
 import io.github.cmmplb.shiro.general.constants.ShiroConstants;
 import io.github.cmmplb.shiro.general.filter.AuthFilter;
 import io.github.cmmplb.shiro.general.properties.ShiroProperties;
@@ -9,13 +13,9 @@ import io.github.cmmplb.shiro.original.config.session.CustomSessionDao;
 import io.github.cmmplb.shiro.original.config.session.ShiroSessionIdGenerator;
 import io.github.cmmplb.shiro.original.config.session.ShiroSessionListener;
 import io.github.cmmplb.shiro.original.config.session.ShiroSessionManager;
-import io.github.cmmplb.core.constants.StringConstant;
-import io.github.cmmplb.core.utils.MD5Util;
-import io.github.cmmplb.redis.configuration.properties.RedisProperties;
-import io.github.cmmplb.redis.service.RedisService;
+import jakarta.servlet.Filter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SessionsSecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -30,11 +30,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.Filter;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author penglibo
@@ -267,7 +263,7 @@ public class ShiroConfig {
         CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
         cookieRememberMeManager.setCookie(rememberMeCookie());
         // rememberMe cookie加密的密钥
-        cookieRememberMeManager.setCipherKey(Base64.decode("4AvVhmFLUs0KTA3Kprsdag=="));
+        cookieRememberMeManager.setCipherKey(Base64.getDecoder().decode("4AvVhmFLUs0KTA3Kprsdag=="));
         return cookieRememberMeManager;
     }
 

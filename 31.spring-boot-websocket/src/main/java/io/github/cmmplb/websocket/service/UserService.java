@@ -1,8 +1,8 @@
-package com.cmmplb.websocket.service;
+package io.github.cmmplb.websocket.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cmmplb.websocket.domain.entity.User;
-import com.cmmplb.websocket.domain.vo.UserInfoVO;
+import io.github.cmmplb.websocket.domain.entity.User;
+import io.github.cmmplb.websocket.domain.vo.UserInfoVO;
 
 import java.util.List;
 

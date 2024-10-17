@@ -1,11 +1,11 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cmmplb.activiti.dto.EvectionApplyDTO;
-import com.cmmplb.activiti.dto.LeaveApplyDTO;
-import com.cmmplb.activiti.entity.EvectionApply;
-import com.cmmplb.activiti.entity.LeaveApply;
-import com.cmmplb.activiti.vo.EvectionApplyDetailsVO;
+import io.github.cmmplb.activiti.dto.EvectionApplyDTO;
+import io.github.cmmplb.activiti.dto.LeaveApplyDTO;
+import io.github.cmmplb.activiti.entity.EvectionApply;
+import io.github.cmmplb.activiti.entity.LeaveApply;
+import io.github.cmmplb.activiti.vo.EvectionApplyDetailsVO;
 
 /**
  * @author penglibo

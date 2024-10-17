@@ -1,6 +1,6 @@
-package com.cmmplb.activiti.vo;
+package io.github.cmmplb.activiti.vo;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -15,24 +15,24 @@ public class TaskVO {
     /**
      * id
      */
-    @ApiModelProperty(value = "id", example = "1")
+    @Schema(description = "id", example = "1")
     private String id;
 
     /**
      * 名称
      */
-    @ApiModelProperty(value = "名称", example = "1")
+    @Schema(description = "名称", example = "1")
     private String name;
 
     /**
      * 流程实例id
      */
-    @ApiModelProperty(value = "流程实例id", example = "1")
+    @Schema(description = "流程实例id", example = "1")
     private String processInstanceId;
 
     /**
      * 流程定义id
      */
-    @ApiModelProperty(value = "流程定义id", example = "1")
+    @Schema(description = "流程定义id", example = "1")
     private String processDefinitionId;
 }

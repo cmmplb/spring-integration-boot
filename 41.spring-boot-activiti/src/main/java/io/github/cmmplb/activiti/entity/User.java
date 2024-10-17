@@ -1,8 +1,6 @@
-package com.cmmplb.activiti.entity;
+package io.github.cmmplb.activiti.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 

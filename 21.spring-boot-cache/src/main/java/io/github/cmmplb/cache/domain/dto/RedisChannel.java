@@ -1,6 +1,6 @@
-package com.cmmplb.cache.domain.dto;
+package io.github.cmmplb.cache.domain.dto;
 
-import com.cmmplb.cache.service.IRedisMessage;
+import io.github.cmmplb.cache.service.IRedisMessage;
 import lombok.extern.slf4j.Slf4j;
 
 /**

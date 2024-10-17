@@ -1,6 +1,6 @@
 redis:
   # cluster type (standalone, sentinel, cluster)
-  cluster-type: sentinel
+  cluster-type: standalone
   # pool type (jedis, lettuce, redisson(目前不支持))
   # spring boot 2.0以上版本默认连接池是lettuce (基于Netty)
   # spring boot 1.5以上版本默认采用的连接池是jedis
@@ -21,7 +21,7 @@ redis:
     # 用户名
     username: cmmplb
     # redis主机密码
-    password: 123456
+    password: cmmplb
 
   # 哨兵
   sentinel:
@@ -62,9 +62,9 @@ redis:
     max-idle: 8
     # pool中空闲连接的最小数量 (使用负值为无效配置)
     min-idle: 1
-    # 从pool中获取连接时, 是否校验连接有效性(影响性能, 生产环境不建议开启)
+    # 从pool中获取连接时, 是否校验连接有效性(影响性能，生产环境不建议开启)
     test-on-borrow: false
-    # 返还到pool中连接时, 是否校验连接有效性(影响性能, 生产环境不建议开启)
+    # 返还到pool中连接时, 是否校验连接有效性(影响性能，生产环境不建议开启)
     test-on-return: false
     # pool中定时进行连接有效性扫描, 无效连接将被释放
     test-while-idle: true

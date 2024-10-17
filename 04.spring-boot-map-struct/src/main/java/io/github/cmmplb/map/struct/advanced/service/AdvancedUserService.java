@@ -1,6 +1,6 @@
-package com.cmmplb.map.struct.advanced.service;
+package io.github.cmmplb.map.struct.advanced.service;
 
-import com.cmmplb.map.struct.advanced.vo.UserVO;
+import io.github.cmmplb.map.struct.advanced.vo.UserVO;
 
 import java.util.List;
 

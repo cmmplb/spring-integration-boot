@@ -11,6 +11,6 @@ import lombok.Data;
 @Data
 public class OrderDateDTO {
 
-    // @ApiModelProperty(value = "主键id")
+    // @Schema(description = "主键id")
     private String id;
 }

@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.listener;
+package io.github.cmmplb.rabbitmq.listener;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstant;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -21,7 +21,7 @@ public class FanoutListener {
     /**
      * 订阅模型监听
      */
-    @RabbitListener(queues = RabbitMqConstants.ONE_FANOUT_QUEUE)
+    @RabbitListener(queues = RabbitMqConstant.ONE_FANOUT_QUEUE)
     public void listener(String body, Message message, Channel channel) throws IOException {
         System.out.println("one - 监听到订阅模型Fanout(广播模式)消息:" + body);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
@@ -30,7 +30,7 @@ public class FanoutListener {
     /**
      * 创建的第二个监听, 同样能接收到消息
      */
-    @RabbitListener(queues = RabbitMqConstants.TWO_FANOUT_QUEUE)
+    @RabbitListener(queues = RabbitMqConstant.TWO_FANOUT_QUEUE)
     public void listenTwo(String body, Message message, Channel channel) throws IOException {
         System.out.println("two - 监听到订阅模型Fanout(广播模式)消息:" + body);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

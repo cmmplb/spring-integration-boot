@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.config;
+package io.github.cmmplb.rabbitmq.config;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstant;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.rabbit.configuration.properties.RabbitMqProperties;
 import org.springframework.amqp.core.*;
@@ -33,12 +33,12 @@ public class DeadConfig {
     public Queue commonQueue() {
         Map<String, Object> args = new HashMap<>(3);
         //消息过期后, 进入到死信交换机
-        args.put("x-dead-letter-exchange", RabbitMqConstants.DEAD_EXCHANGE);
+        args.put("x-dead-letter-exchange", RabbitMqConstant.DEAD_EXCHANGE);
         //消息过期后, 进入到死信交换机的路由key
-        args.put("x-dead-letter-routing-key", RabbitMqConstants.DEAD_ROUTING_KEY);
+        args.put("x-dead-letter-routing-key", RabbitMqConstant.DEAD_ROUTING_KEY);
         //过期时间, 单位毫秒
-        args.put("x-message-ttl", RabbitMqConstants.MESSAGE_TTL_TIME);
-        return new Queue(RabbitMqConstants.COMMON_QUEUE, true, false, false, args);
+        args.put("x-message-ttl", RabbitMqConstant.MESSAGE_TTL_TIME);
+        return new Queue(RabbitMqConstant.COMMON_QUEUE, true, false, false, args);
         //return QueueBuilder.durable(GlobalConstant.COMMON_QUEUE).withArguments(args).build();
     }
 
@@ -48,7 +48,7 @@ public class DeadConfig {
      */
     @Bean
     public Queue deadQueue() {
-        return QueueBuilder.durable(RabbitMqConstants.DEAD_QUEUE).build();
+        return QueueBuilder.durable(RabbitMqConstant.DEAD_QUEUE).build();
     }
 
     /**
@@ -57,7 +57,7 @@ public class DeadConfig {
      */
     @Bean
     public Exchange commonExchange() {
-        return new TopicExchange(RabbitMqConstants.COMMON_EXCHANGE, true, false);
+        return new TopicExchange(RabbitMqConstant.COMMON_EXCHANGE, true, false);
     }
 
     /**
@@ -66,7 +66,7 @@ public class DeadConfig {
      */
     @Bean
     public Exchange deadExchange() {
-        return new TopicExchange(RabbitMqConstants.DEAD_EXCHANGE, true, false);
+        return new TopicExchange(RabbitMqConstant.DEAD_EXCHANGE, true, false);
     }
 
     /**
@@ -75,7 +75,7 @@ public class DeadConfig {
      */
     @Bean
     public Binding bindingCommon() {
-        return new Binding(RabbitMqConstants.COMMON_QUEUE, Binding.DestinationType.QUEUE, RabbitMqConstants.COMMON_EXCHANGE, RabbitMqConstants.COMMON_ROUTING_KEY, Collections.<String, Object>emptyMap());
+        return new Binding(RabbitMqConstant.COMMON_QUEUE, Binding.DestinationType.QUEUE, RabbitMqConstant.COMMON_EXCHANGE, RabbitMqConstant.COMMON_ROUTING_KEY, Collections.<String, Object>emptyMap());
         //return BindingBuilder.bind(commonQueue()).to(commonExchange()).with(GlobalConstant.COMMON_ROUTING_KEY).noargs();
     }
 
@@ -85,6 +85,6 @@ public class DeadConfig {
      */
     @Bean
     public Binding bindingDead() {
-        return new Binding(RabbitMqConstants.DEAD_QUEUE, Binding.DestinationType.QUEUE, RabbitMqConstants.DEAD_EXCHANGE, RabbitMqConstants.DEAD_ROUTING_KEY, null);
+        return new Binding(RabbitMqConstant.DEAD_QUEUE, Binding.DestinationType.QUEUE, RabbitMqConstant.DEAD_EXCHANGE, RabbitMqConstant.DEAD_ROUTING_KEY, null);
     }
 }

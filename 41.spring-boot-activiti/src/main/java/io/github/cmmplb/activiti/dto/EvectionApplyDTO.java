@@ -1,7 +1,6 @@
-package com.cmmplb.activiti.dto;
+package io.github.cmmplb.activiti.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -14,13 +13,13 @@ import java.util.Date;
  */
 
 @Data
-@ApiModel(value = "EvectionApplyDTO", description = "出差申请参数")
+@Schema(name = "EvectionApplyDTO", description = "出差申请参数")
 public class EvectionApplyDTO {
 
     /**
      * 标题
      */
-    @ApiModelProperty(value = "标题")
+    @Schema(description = "标题")
     private String title;
 
     /**
@@ -32,18 +31,18 @@ public class EvectionApplyDTO {
     /**
      * 申请时间
      */
-    @ApiModelProperty(value = "开始时间")
+    @Schema(description = "开始时间")
     private Date startTime;
 
     /**
      * 申请时间
      */
-    @ApiModelProperty(value = "结束时间")
+    @Schema(description = "结束时间")
     private Date endTime;
 
     /**
      * 出差说明
      */
-    @ApiModelProperty(value = "出差说明")
+    @Schema(description = "出差说明")
     private String reason;
 }

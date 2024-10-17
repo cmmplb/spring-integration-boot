@@ -1,11 +1,11 @@
-package com.cmmplb.map.struct.basic.service.impl;
+package io.github.cmmplb.map.struct.basic.service.impl;
 
-import com.cmmplb.map.struct.basic.convert.UserConvert;
-import com.cmmplb.map.struct.basic.dao.UserDao;
-import com.cmmplb.map.struct.basic.dto.UserDTO;
-import com.cmmplb.map.struct.basic.entity.User;
-import com.cmmplb.map.struct.basic.service.UserService;
-import com.cmmplb.map.struct.basic.vo.UserVO;
+import io.github.cmmplb.map.struct.basic.convert.UserConvert;
+import io.github.cmmplb.map.struct.basic.dao.UserDao;
+import io.github.cmmplb.map.struct.basic.dto.UserDTO;
+import io.github.cmmplb.map.struct.basic.entity.User;
+import io.github.cmmplb.map.struct.basic.service.UserService;
+import io.github.cmmplb.map.struct.basic.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

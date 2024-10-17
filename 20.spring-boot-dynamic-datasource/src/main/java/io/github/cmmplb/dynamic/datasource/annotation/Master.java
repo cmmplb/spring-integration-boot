@@ -1,4 +1,4 @@
-package com.cmmplb.dynamic.datasource.annotation;
+package io.github.cmmplb.dynamic.datasource.annotation;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 

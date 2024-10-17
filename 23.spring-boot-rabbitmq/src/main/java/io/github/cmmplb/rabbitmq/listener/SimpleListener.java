@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.listener;
+package io.github.cmmplb.rabbitmq.listener;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstant;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
@@ -20,7 +20,7 @@ import java.io.IOException;
 @Component
 public class SimpleListener {
 
-    @RabbitListener(queues = RabbitMqConstants.SIMPLE_QUEUE)
+    @RabbitListener(queues = RabbitMqConstant.SIMPLE_QUEUE)
     public void listener(String body, Message message, Channel channel) throws IOException {
         System.out.println("监听到简单队列消息:" + body);
         log.info("告诉broker, 消息已经被确认");

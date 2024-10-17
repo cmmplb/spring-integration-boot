@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.config;
+package io.github.cmmplb.rabbitmq.config;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstant;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.rabbit.configuration.properties.RabbitMqProperties;
 import org.springframework.amqp.core.Binding;
@@ -36,7 +36,7 @@ public class FanoutConfig {
      */
     @Bean
     public Queue oneFanoutQueue() {
-        return new Queue(RabbitMqConstants.ONE_FANOUT_QUEUE);
+        return new Queue(RabbitMqConstant.ONE_FANOUT_QUEUE);
     }
 
     /**
@@ -45,7 +45,7 @@ public class FanoutConfig {
      */
     @Bean
     public Queue twoFanoutQueue() {
-        return new Queue(RabbitMqConstants.TWO_FANOUT_QUEUE);
+        return new Queue(RabbitMqConstant.TWO_FANOUT_QUEUE);
     }
 
     /**
@@ -54,7 +54,7 @@ public class FanoutConfig {
      */
     @Bean
     public FanoutExchange fanoutExchange() {
-        return new FanoutExchange(RabbitMqConstants.FANOUT_EXCHANGE);
+        return new FanoutExchange(RabbitMqConstant.FANOUT_EXCHANGE);
     }
 
     /**

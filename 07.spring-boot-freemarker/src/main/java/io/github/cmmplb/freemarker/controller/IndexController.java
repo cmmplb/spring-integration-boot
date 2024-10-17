@@ -1,5 +1,6 @@
 package io.github.cmmplb.freemarker.controller;
 
+import io.github.cmmplb.core.utils.RandomUtil;
 import io.github.cmmplb.freemarker.properties.ResourceProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -32,7 +33,8 @@ public class IndexController {
     public String hello(ModelMap map) {
         map.addAttribute("resource", resourceProperties);
         map.addAttribute("port", environment.getProperty("server.port"));
-        map.addAttribute("path", environment.getProperty("server.servlet.context-path"));
+        String path = environment.getProperty("server.servlet.context-path");
+        map.addAttribute("path", "/".equals(path) ? "" : path);
         return "index";
     }
 
@@ -47,9 +49,11 @@ public class IndexController {
         List<Map<String, Object>> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Map<String, Object> map = new HashMap<>();
-            map.put("name", "kevin_" + i);
-            map.put("age", 10 + i);
-            map.put("phone", "1860291105" + i);
+            // {user.name}会和计算机用户名关联
+            // map.put("name", RandomUtil.getRandomName());
+            map.put("username", RandomUtil.getRandomName());
+            map.put("age", RandomUtil.getNum(1, 100));
+            map.put("phone", RandomUtil.getRandomPhone());
             list.add(map);
         }
         return list;

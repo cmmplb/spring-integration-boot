@@ -1,8 +1,9 @@
 package io.github.cmmplb.mybatis;
 
-import com.cmmplb.mybatis.dao.UserMapper;
-import com.cmmplb.mybatis.entity.User;
-import com.cmmplb.mybatis.service.UserService;
+import io.github.cmmplb.mybatis.dao.UserMapper;
+import io.github.cmmplb.mybatis.entity.User;
+import io.github.cmmplb.mybatis.service.UserService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import javax.annotation.Resource;
+
 
 /**
  * @author penglibo

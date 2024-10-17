@@ -1,9 +1,9 @@
-package com.cmmplb.data.jpa.entity;
+package io.github.cmmplb.data.jpa.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.*;
+import java.util.Date;
 
 /**
  * @author penglibo

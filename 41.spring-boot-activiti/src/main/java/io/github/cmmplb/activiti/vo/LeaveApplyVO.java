@@ -1,7 +1,7 @@
-package com.cmmplb.activiti.vo;
+package io.github.cmmplb.activiti.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.Date;
@@ -18,69 +18,69 @@ public class LeaveApplyVO {
     /**
      * 主键
      */
-    @ApiModelProperty(value = "主键", example = "1")
+    @Schema(description = "主键", example = "1")
     private Long id;
 
     /**
      * 申请人id
      */
-    @ApiModelProperty(value = "申请人id", example = "1")
+    @Schema(description = "申请人id", example = "1")
     private Long userId;
 
     /**
      * 申请人姓名
      */
-    @ApiModelProperty(value = "申请人姓名", example = "小明")
+    @Schema(description = "申请人姓名", example = "小明")
     private String userName;
 
     /**
      * 流程状态:0-进行中;1-已完成;2-已驳回;3-已撤销;
      */
-    @ApiModelProperty(value = "流程状态:0-进行中;1-已完成;2-已驳回;3-已撤销;", example = "1")
+    @Schema(description = "流程状态:0-进行中;1-已完成;2-已驳回;3-已撤销;", example = "1")
     private Byte status;
 
     /**
      * 流程状态
      */
-    @ApiModelProperty(value = "流程状态", example = "进行中")
+    @Schema(description = "流程状态", example = "进行中")
     private String statusName;
 
     /**
      * 类型:1-事假;2-病假;3-年假;4-丧假;5-产假;
      */
-    @ApiModelProperty(value = "类型:1-事假;2-病假;3-年假;4-丧假;5-产假;", example = "1")
+    @Schema(description = "类型:1-事假;2-病假;3-年假;4-丧假;5-产假;", example = "1")
     private Byte type;
 
     /**
      * 类型
      */
-    @ApiModelProperty(value = "类型", example = "年假")
+    @Schema(description = "类型", example = "年假")
     private String typeName;
 
     /**
      * 原因
      */
-    @ApiModelProperty(value = "原因", example = "想回家")
+    @Schema(description = "原因", example = "想回家")
     private String reason;
 
     /**
      * 申请时间
      */
-    @ApiModelProperty(value = "申请时间", example = "2023-11-11 12:12:11")
+    @Schema(description = "申请时间", example = "2023-11-11 12:12:11")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date applyTime;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(value = "创建时间", example = "2023-11-11 12:12:11")
+    @Schema(description = "创建时间", example = "2023-11-11 12:12:11")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     /**
      * 更新时间
      */
-    @ApiModelProperty(value = "更新时间", example = "2023-11-11 12:12:11")
+    @Schema(description = "更新时间", example = "2023-11-11 12:12:11")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 

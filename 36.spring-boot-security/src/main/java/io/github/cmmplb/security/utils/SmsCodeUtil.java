@@ -3,7 +3,7 @@ package io.github.cmmplb.security.utils;
 import io.github.cmmplb.core.utils.RandomUtil;
 import io.github.cmmplb.core.utils.SpringUtil;
 import io.github.cmmplb.redis.service.RedisService;
-import io.github.cmmplb.security.constants.RedisConstants;
+import io.github.cmmplb.security.constants.RedisConstant;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -36,7 +36,7 @@ public class SmsCodeUtil {
     /**
      * 校验验证码
      * @param mobile 手机号
-     * @param code 验证码
+     * @param code   验证码
      * @return boolean
      */
     public static boolean validate(String mobile, String code) {
@@ -44,14 +44,15 @@ public class SmsCodeUtil {
     }
 
     private static void setCache(String mobile, String value) {
-        getRedisService().set(getCaptchaKey(mobile), value, RedisConstants.CAPTCHA_EXPIRE_SECONDS); // 5分钟
+        // 5分钟
+        getRedisService().set(getCaptchaKey(mobile), value, RedisConstant.CAPTCHA_EXPIRE_SECONDS);
     }
 
     /**
      * 获取验证码的缓存Key
      */
     public static String getCaptchaKey(String mobile) {
-        return RedisConstants.SMS_CACHE_PREFIX + mobile;
+        return RedisConstant.SMS_CACHE_PREFIX + mobile;
     }
 
     /**

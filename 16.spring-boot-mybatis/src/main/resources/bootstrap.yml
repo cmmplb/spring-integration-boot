@@ -18,3 +18,4 @@ spring.profiles.include:
   - mybatis
   - swagger
   - tomcat
+  - transaction

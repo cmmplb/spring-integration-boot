@@ -1,23 +1,39 @@
+# knife4j配置
+knife4j:
+  # 开启knife4j增强
+  enable: true
+  # 是否是生产环境, 默认false，为true之后swagger相关资源接口请求会返回You do not have permission to access this page
+  production: false
+  # Basic认证
+  basic:
+    enable: false
+    # Basic认证用户名
+    username: admin
+    # Basic认证密码-不配置默认账号admin/123321
+    password: admin
+
+# springdoc-openapi项目配置
+#springdoc:
+#  swagger-ui:
+    # 该参数是swagger默认的排序规则，如果设置为alpha，那么Knife4j提供的按照order排序的增强规则不生效，alpha:按照字母顺序排序，
+    # 使用增强order属性排序扩展规则`x-order`进行排序，或者不设置该参数
+    # 类排序
+#    tags-sorter: order
+    # 方法排序
+#    operations-sorter: order
+
 # swagger配置
 swagger:
   # 是否开启swagger
   enabled: true
-  # swagger会解析的包路径
-  base-package: com.momo
-  # 请求头
-  header-list:
-  # swagger会解析的url规则
-  base-path:
-  # 在basePath基础上需要排除的url规则
-  exclude-path:
   # 分组名称
-  group-name: momo
+  group-name: @project.artifactId@
   # 标题
-  title: Swagger API
+  title: @project.artifactId@ Swagger API
   # 描述
   description: description
   # 版本
-  version: 1.0.0
+  version: @project.version@
   # 许可证
   license: license
   # 许可证URL
@@ -29,48 +45,6 @@ swagger:
   # 联系人信息
   contact:
     # 联系人
-    name: momo
-    url: url
-    email: email
-  # 全局统一鉴权配置
-  authorization:
-    # 鉴权策略ID, 需要和SecurityReferences ID保持一致, 否则无法在请求头部参数渲染
-    name: momo_assess_token
-    # 需要开启鉴权URL的正则
-    auth-regex: ^.*$
-    # 认证类型-默认关闭-开启在左侧菜单显示认证
-    # none-无认证
-    # param-param模式-需要配置parameterList
-    # implicit-简化模式
-    # authorization_code-授权码模式
-    # password-oauth2-密码模式
-    # client_credentials-oauth2-客户端模式
-    type: none
-    parameter-list:
-      # 简单模式参数
-      - # 参数key
-        parameterKeyName: token
-        # 参数名称
-        parameterName: token
-        # 参数类型：query,header,path,cookie,form,formData,body
-        parameterType: header
-      - # 参数key
-        parameterKeyName: Bear
-        # 参数名称
-        parameterName: Bear
-        # 参数类型：query,header,path,cookie,form,formData,body
-        parameterType: header
-    client:
-      client-id: momo_cloud
-      client-secret: 123456
-      # 简化/授权码模式认证url:http://xxx/xxx/oauth/authorize
-      url: http://localhost:@gateway.port@/auth/oauth/authorize
-    # 权限认证调用服务的 Api,如：http://xxx/xxx/login
-    token-url-list:
-      - http://localhost:@gateway.port@/auth/oauth/token
-    # 鉴权作用域列表
-    authorization-scope-list:
-      # 作用域名称
-      - scope: server
-        # 作用域描述
-        description: server all
+    name: penglibo
+    url: https://gitee.com/cmmplb
+    email: cmmplb@163.com

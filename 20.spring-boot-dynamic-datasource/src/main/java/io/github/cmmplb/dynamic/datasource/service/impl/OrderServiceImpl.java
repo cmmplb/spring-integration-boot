@@ -1,9 +1,9 @@
-package com.cmmplb.dynamic.datasource.service.impl;
+package io.github.cmmplb.dynamic.datasource.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.dynamic.datasource.dao.OrderMapper;
-import com.cmmplb.dynamic.datasource.entity.Order;
-import com.cmmplb.dynamic.datasource.service.OrderService;
+import io.github.cmmplb.dynamic.datasource.dao.OrderMapper;
+import io.github.cmmplb.dynamic.datasource.entity.Order;
+import io.github.cmmplb.dynamic.datasource.service.OrderService;
 import org.springframework.stereotype.Service;
 
 /**

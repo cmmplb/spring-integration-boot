@@ -1,7 +1,7 @@
-package com.cmmplb.activiti.vo;
+package io.github.cmmplb.activiti.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -21,31 +21,31 @@ public class UserInfoVO implements Serializable {
     /**
      * 主键
      */
-    @ApiModelProperty(value = "主键", example = "1")
+    @Schema(description = "主键", example = "1")
     private Long id;
 
     /**
      * 用户名
      */
-    @ApiModelProperty(value = "用户名", example = "admin")
+    @Schema(description = "用户名", example = "admin")
     private String username;
 
     /**
      * 姓名
      */
-    @ApiModelProperty(value = "姓名", example = "小明")
+    @Schema(description = "姓名", example = "小明")
     private String name;
 
     /**
      * 用户状态:0-正常;1-禁用
      */
-    @ApiModelProperty(value = "用户状态:0-正常;1-禁用", example = "0")
+    @Schema(description = "用户状态:0-正常;1-禁用", example = "0")
     private Byte status;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(value = "创建时间", example = "2021-01-01 12:00:00")
+    @Schema(description = "创建时间", example = "2021-01-01 12:00:00")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 

@@ -8,6 +8,10 @@ import io.github.cmmplb.core.utils.ServletUtil;
 import io.github.cmmplb.shiro.custom.config.core.AuthToken;
 import io.github.cmmplb.shiro.general.constants.AuthorizationConstants;
 import io.github.cmmplb.shiro.general.properties.ShiroProperties;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
@@ -17,10 +21,6 @@ import org.apache.shiro.web.util.WebUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**

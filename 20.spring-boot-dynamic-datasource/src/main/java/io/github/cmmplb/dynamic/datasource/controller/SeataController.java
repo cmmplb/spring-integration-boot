@@ -1,12 +1,14 @@
-package com.cmmplb.dynamic.datasource.controller;
+package io.github.cmmplb.dynamic.datasource.controller;
 
-import io.github.cmmplb.core.result.Result;
-import io.github.cmmplb.core.result.ResultUtil;
-import com.cmmplb.dynamic.datasource.service.DemoService;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.result.Result;
+import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.dynamic.datasource.service.DemoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @since jdk 1.8
  */
 
-@Api(tags = "seate事务演示")
+@Tag(name = "seate事务演示")
+// @ApiSupport > @ApiSort > @Api  -  排序的规则是倒序
 @ApiSort(1)
-@ApiSupport(order = 1, author = "张三")
+// 作者,方法名上ApiOperationSupport.author没有则取类名声明的作者
+@ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/seata")
 public class SeataController {
@@ -30,7 +34,8 @@ public class SeataController {
 
 
     @PostMapping("/seate/buy")
-    @ApiOperation("seate事务测试")
+    @Operation(summary = "seate事务测试", description = "seate事务测试")
+    @ApiOperationSupport(order = 1)
     public Result<Boolean> demo() {
         return ResultUtil.success(demoService.demo());
     }

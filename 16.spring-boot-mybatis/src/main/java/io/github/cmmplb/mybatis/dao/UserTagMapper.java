@@ -1,6 +1,6 @@
-package com.cmmplb.mybatis.dao;
+package io.github.cmmplb.mybatis.dao;
 
-import com.cmmplb.mybatis.entity.UserTag;
+import io.github.cmmplb.mybatis.entity.UserTag;
 
 import java.util.List;
 

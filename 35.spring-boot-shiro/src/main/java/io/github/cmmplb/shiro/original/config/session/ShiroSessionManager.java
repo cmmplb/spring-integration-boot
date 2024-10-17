@@ -2,13 +2,13 @@ package io.github.cmmplb.shiro.original.config.session;
 
 import io.github.cmmplb.core.utils.StringUtil;
 import io.github.cmmplb.shiro.general.constants.AuthorizationConstants;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
 /**

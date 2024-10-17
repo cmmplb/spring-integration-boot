@@ -1,7 +1,7 @@
-package com.cmmplb.dynamic.datasource.service;
+package io.github.cmmplb.dynamic.datasource.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cmmplb.dynamic.datasource.entity.Goods;
+import io.github.cmmplb.dynamic.datasource.entity.Goods;
 
 /**
  * @author penglibo

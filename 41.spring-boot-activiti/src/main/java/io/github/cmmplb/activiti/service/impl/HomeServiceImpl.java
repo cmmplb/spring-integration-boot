@@ -1,16 +1,14 @@
-package com.cmmplb.activiti.service.impl;
+package io.github.cmmplb.activiti.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.cmmplb.activiti.dto.ApplyStatisticsTimeDTO;
-import com.cmmplb.activiti.entity.Apply;
-import com.cmmplb.activiti.entity.EvectionApply;
-import com.cmmplb.activiti.entity.LeaveApply;
-import com.cmmplb.activiti.service.ApplyService;
-import com.cmmplb.activiti.service.EvectionApplyService;
-import com.cmmplb.activiti.service.HomeService;
-import com.cmmplb.activiti.service.LeaveApplyService;
-import com.cmmplb.activiti.vo.ApplyStatisticsVO;
-import com.cmmplb.activiti.vo.ItemCountVO;
+import io.github.cmmplb.activiti.dto.ApplyStatisticsTimeDTO;
+import io.github.cmmplb.activiti.entity.Apply;
+import io.github.cmmplb.activiti.service.ApplyService;
+import io.github.cmmplb.activiti.service.EvectionApplyService;
+import io.github.cmmplb.activiti.service.HomeService;
+import io.github.cmmplb.activiti.service.LeaveApplyService;
+import io.github.cmmplb.activiti.vo.ApplyStatisticsVO;
+import io.github.cmmplb.activiti.vo.ItemCountVO;
 import io.github.cmmplb.core.constants.GlobalConstant;
 import io.github.cmmplb.core.utils.DateUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -49,10 +47,10 @@ public class HomeServiceImpl implements HomeService {
     public ItemCountVO getItemCount() {
         ItemCountVO vo = new ItemCountVO();
         // 流程状态:0-进行中;1-已完成;2-已驳回;3-已撤销;
-        int incompleteCount = applyService.count(new LambdaQueryWrapper<Apply>().eq(Apply::getStatus, GlobalConstant.NUM_ZERO));
-        int completedCount = applyService.count(new LambdaQueryWrapper<Apply>().eq(Apply::getStatus, GlobalConstant.NUM_ONE));
-        int leaveCount = leaveApplyService.count();
-        int evectionCount = evectionApplyService.count();
+        long incompleteCount = applyService.count(new LambdaQueryWrapper<Apply>().eq(Apply::getStatus, GlobalConstant.NUM_ZERO));
+        long completedCount = applyService.count(new LambdaQueryWrapper<Apply>().eq(Apply::getStatus, GlobalConstant.NUM_ONE));
+        long leaveCount = leaveApplyService.count();
+        long evectionCount = evectionApplyService.count();
         vo.setIncompleteCount(incompleteCount);
         vo.setCompletedCount(completedCount);
         vo.setLeaveCount(leaveCount);

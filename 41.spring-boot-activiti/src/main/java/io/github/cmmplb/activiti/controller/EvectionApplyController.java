@@ -1,14 +1,12 @@
-package com.cmmplb.activiti.controller;
+package io.github.cmmplb.activiti.controller;
 
-import com.cmmplb.activiti.dto.EvectionApplyDTO;
-import com.cmmplb.activiti.dto.LeaveApplyDTO;
-import com.cmmplb.activiti.service.EvectionApplyService;
-import com.cmmplb.activiti.service.LeaveApplyService;
+import io.github.cmmplb.activiti.dto.EvectionApplyDTO;
+import io.github.cmmplb.activiti.service.EvectionApplyService;
 import io.github.cmmplb.core.exception.CustomException;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.ActivitiException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since jdk 1.8
  */
 
-@Api(tags = "出差管理")
+@Schema(name = "出差管理")
 @Slf4j
 @RestController
 @RequestMapping("/evection")
@@ -32,7 +30,7 @@ public class EvectionApplyController {
     @Autowired
     private EvectionApplyService evectionApplyService;
 
-    @ApiOperation("添加出差申请")
+    @Operation(summary = "添加出差申请")
     @PostMapping(value = "/save")
     public Result<Boolean> save(@RequestBody EvectionApplyDTO dto) {
         boolean save;

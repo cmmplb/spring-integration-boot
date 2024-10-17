@@ -1,8 +1,5 @@
-package com.cmmplb.cache.config;
+package io.github.cmmplb.cache.config;
 
-import com.cmmplb.cache.config.properties.CacheProperties;
-import io.github.cmmplb.core.constants.StringConstant;
-import io.github.cmmplb.core.utils.SpringUtil;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -11,16 +8,26 @@ import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
+import io.github.cmmplb.cache.config.properties.CacheProperties;
+import io.github.cmmplb.cache.domain.entity.User;
+import io.github.cmmplb.core.constants.StringConstant;
 import org.cache2k.Cache2kBuilder;
 import org.cache2k.extra.spring.SpringCache2kCacheManager;
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.CacheManagerBuilder;
+import org.ehcache.config.builders.ExpiryPolicyBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
+import org.ehcache.config.units.EntryUnit;
+import org.ehcache.config.units.MemoryUnit;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
-import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.cache.interceptor.SimpleKey;
 import org.springframework.cache.interceptor.SimpleKeyGenerator;
+import org.springframework.cache.jcache.JCacheCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -46,6 +53,9 @@ import java.util.concurrent.TimeUnit;
 @EnableConfigurationProperties(CacheProperties.class)
 public class CacheConfiguration {
 
+    @Autowired
+    private RedisConnectionFactory redisConnectionFactory;
+
     /**
      * 缓存管理器
      */
@@ -56,17 +66,20 @@ public class CacheConfiguration {
         if (cacheProperties.getCacheType().equals(CacheProperties.CacheType.CACHE2K)) {
             cacheManager = new SpringCache2kCacheManager();
         }
+        // EhCache3和Springboot3移除了EhCacheCacheManager
         if (cacheProperties.getCacheType().equals(CacheProperties.CacheType.EHCACHE)) {
-            cacheManager = new EhCacheCacheManager();
+            // cacheManager = new EhCacheCacheManager();
+            // 缓存类型不再是EhCache了，EhCache3是实现JCache的一种缓存。
+            cacheManager = new JCacheCacheManager();
         }
-        // GuavaCacheManager被移除, 不再自动配置Guava缓存, 采用CaffeineCacheManager替换, 使用Caffiene替换Guava缓存. 
+        // GuavaCacheManager被移除, 不再自动配置Guava缓存, 采用CaffeineCacheManager替换, 使用Caffiene替换Guava缓存.
         if (cacheProperties.getCacheType().equals(CacheProperties.CacheType.CAFFEINE)) {
             cacheManager = new CaffeineCacheManager();
         }
         if (cacheProperties.getCacheType().equals(CacheProperties.CacheType.REDIS)) {
             // 使用redis分布式缓存作为管理器
             cacheManager = new RedisCacheManager(
-                    RedisCacheWriter.nonLockingRedisCacheWriter(SpringUtil.getBean(RedisConnectionFactory.class)),
+                    RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory),
                     // 默认策略, 未配置的key会使用这个
                     this.getRedisCacheConfigurationWithTtl(60),
                     // 指定 key 策略
@@ -74,6 +87,44 @@ public class CacheConfiguration {
             );
         }
         return cacheManager;
+    }
+
+    @Bean
+    public org.ehcache.CacheManager ehCacheManager() {
+        // 基于代码配置ehcache
+        //userTokenCache配置
+        org.ehcache.config.CacheConfiguration<String, User> userTokenCacheCacheConfiguration = CacheConfigurationBuilder
+                .newCacheConfigurationBuilder(String.class, User.class, ResourcePoolsBuilder.newResourcePoolsBuilder()
+                        // 堆缓存大小为 100 个条目
+                        .heap(100, EntryUnit.ENTRIES)
+                        // 堆外缓存大小为 10 MB
+                        .offheap(10, MemoryUnit.MB)
+                )
+                // 设置缓存的生存时间为 10 秒
+                .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(10)))
+                // 设置缓存的空闲时间为 5 秒
+                .withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(5)))
+                .build();
+
+        //otherCache配置
+        org.ehcache.config.CacheConfiguration<String, String> otherCacheCacheConfiguration = CacheConfigurationBuilder
+                .newCacheConfigurationBuilder(String.class, String.class, ResourcePoolsBuilder.newResourcePoolsBuilder()
+                        .heap(100, EntryUnit.ENTRIES)
+                        .offheap(10, MemoryUnit.MB)
+                        // 磁盘储存,永久储存
+                        .disk(100, MemoryUnit.MB, true)
+                )
+                // 设置缓存的生存时间为 10 秒
+                .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(10)))
+                // 设置缓存的空闲时间为 5 秒
+                .withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(5)))
+                .build();
+        return CacheManagerBuilder.newCacheManagerBuilder()
+                // 磁盘储存路径
+                .with(CacheManagerBuilder.persistence("/Users/penglibo/Downloads"))
+                .withCache("userTokenCache", userTokenCacheCacheConfiguration)
+                .withCache("otherCache", otherCacheCacheConfiguration)
+                .build(true);
     }
 
     /**
@@ -151,12 +202,13 @@ public class CacheConfiguration {
     }
 
     private RedisCacheConfiguration getRedisCacheConfigurationWithTtl(Integer seconds) {
-        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL,
                 JsonTypeInfo.As.PROPERTY);
-        jackson2JsonRedisSerializer.setObjectMapper(om);
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(om, Object.class);
+        // 过时，改为由上面的构造函数传入
+        // jackson2JsonRedisSerializer.setObjectMapper(om);
 
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
         redisCacheConfiguration = redisCacheConfiguration.serializeValuesWith(RedisSerializationContext

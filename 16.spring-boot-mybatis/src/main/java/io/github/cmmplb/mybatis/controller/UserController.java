@@ -1,16 +1,18 @@
-package com.cmmplb.mybatis.controller;
+package io.github.cmmplb.mybatis.controller;
 
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSort;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import io.github.cmmplb.core.beans.PageResult;
+import io.github.cmmplb.core.beans.QueryPageBean;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import io.github.cmmplb.core.beans.PageResult;
-import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.mybatis.entity.User;
-import com.cmmplb.mybatis.service.UserService;
-import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
-import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.github.cmmplb.mybatis.entity.User;
+import io.github.cmmplb.mybatis.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +24,11 @@ import java.util.List;
  * 用户管理
  */
 
-@Api(tags = "用户管理")
+@Slf4j
+@Tag(name = "用户管理")
+// @ApiSupport > @ApiSort > @Api  -  排序的规则是倒序
+@ApiSort(2)
+// 作者,方法名上ApiOperationSupport.author没有则取类名声明的作者
 @ApiSupport(order = 2, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/user")
@@ -31,43 +37,46 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation("新增用户")
+    @Operation(summary = "新增用户", description = "新增用户")
     @ApiOperationSupport(order = 1)
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public Result<Boolean> save(@RequestBody User user) {
         return ResultUtil.success(userService.save(user));
     }
 
-    @ApiOperation("根据id删除用户")
+    @Operation(summary = "根据id删除用户")
     @ApiOperationSupport(order = 2)
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Result<Boolean> removeById(@PathVariable(value = "id") Long id) {
         return ResultUtil.success(userService.removeById(id));
     }
 
-    @ApiOperation("根据id修改用户信息")
+    @Operation(summary = "根据id修改用户信息")
     @ApiOperationSupport(order = 3)
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Result<Boolean> updateById(@PathVariable(value = "id") Long id, @RequestBody User user) {
         user.setId(id);
-        return ResultUtil.success(userService.updateById(user));
+        boolean b = userService.updateById(user);
+        log.info("修改用户信息:{}", b);
+        // System.out.println(1 / 0);
+        return ResultUtil.success();
     }
 
-    @ApiOperation("获取用户列表")
+    @Operation(summary = "获取用户列表")
     @ApiOperationSupport(order = 4)
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Result<List<User>> list() {
         return ResultUtil.success(userService.list());
     }
 
-    @ApiOperation("根据id获取用户信息")
+    @Operation(summary = "根据id获取用户信息")
     @ApiOperationSupport(order = 5)
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Result<User> getById(@PathVariable(value = "id") Long id) {
         return ResultUtil.success(userService.getById(id));
     }
 
-    @ApiOperation("分页获取用户信息")
+    @Operation(summary = "分页获取用户信息")
     @ApiOperationSupport(order = 6)
     @RequestMapping(value = "/paged", method = RequestMethod.GET)
     public Result<PageResult<User>> getByPaged(QueryPageBean pageBean) {

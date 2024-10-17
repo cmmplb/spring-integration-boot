@@ -3,8 +3,6 @@ spring:
     mongodb:
       host: 127.0.0.1
       port: 27017
-      database: cmmplb
-#      username: root
-#      password: cmmplb
-
-logging.level.org.springframework.data.convert.CustomConversions: ERROR
+      database: admin
+      username: root
+      password: cmmplb

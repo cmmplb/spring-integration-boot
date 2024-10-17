@@ -1,4 +1,4 @@
-package com.cmmplb.cache.annotation;
+package io.github.cmmplb.cache.annotation;
 
 import org.springframework.core.annotation.AliasFor;
 

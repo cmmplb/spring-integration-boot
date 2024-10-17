@@ -1,17 +1,16 @@
 package io.github.cmmplb.security.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import io.github.cmmplb.security.domain.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
  * @author penglibo
- * @date 2021-09-08 11:46:41
+ * @date 2024-09-02 11:28:39
  * @since jdk 1.8
  */
-public interface UserService extends UserDetailsService {
-
-    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+public interface UserService extends UserDetailsService, IService<User> {
 
     UserDetails getUserByMobile(String mobile);
 }

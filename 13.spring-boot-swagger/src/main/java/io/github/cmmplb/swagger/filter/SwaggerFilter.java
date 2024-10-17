@@ -3,11 +3,11 @@ package io.github.cmmplb.swagger.filter;
 import io.github.cmmplb.core.utils.SpringProfileUtil;
 import io.github.cmmplb.core.utils.SpringUtil;
 import io.github.cmmplb.swagger.configuration.properties.SwaggerProperties;
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;

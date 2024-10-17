@@ -10,16 +10,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.cmmplb.activiti.controller;
+package io.github.cmmplb.activiti.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.ActivitiException;
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.charset.StandardCharsets;
@@ -35,7 +33,7 @@ import java.util.Objects;
 @RestController
 public class StencilSetController {
 
-    @ApiOperation("获取配置")
+    @Operation(summary = "获取配置")
     @GetMapping(value = "/editor/stencilset")
     public String getStencilSet() {
         try {

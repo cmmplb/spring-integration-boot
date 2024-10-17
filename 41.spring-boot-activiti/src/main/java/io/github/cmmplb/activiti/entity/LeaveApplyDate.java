@@ -1,7 +1,7 @@
-package com.cmmplb.activiti.entity;
+package io.github.cmmplb.activiti.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -35,20 +35,20 @@ public class LeaveApplyDate implements Serializable {
     /**
      * 类型:1-事假;2-病假;3-年假;4-丧假;5-产假;
      */
-    @ApiModelProperty(value = "类型")
+    @Schema(description = "类型")
     private Byte type;
 
     /**
      * 开始时间
      */
-    @ApiModelProperty(value = "开始时间")
+    @Schema(description = "开始时间")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date startTime;
 
     /**
      * 结束时间
      */
-    @ApiModelProperty(value = "结束时间")
+    @Schema(description = "结束时间")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endTime;
 

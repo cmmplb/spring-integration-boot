@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.config;
+package io.github.cmmplb.activiti.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;

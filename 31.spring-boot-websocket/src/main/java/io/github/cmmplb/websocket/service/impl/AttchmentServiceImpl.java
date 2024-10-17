@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.service.impl;
+package io.github.cmmplb.websocket.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -6,13 +6,14 @@ import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.exception.BusinessException;
 import io.github.cmmplb.core.utils.ConverterUtil;
 import io.github.cmmplb.core.utils.ServletUtil;
-import com.cmmplb.websocket.convert.AttachmentConvert;
-import com.cmmplb.websocket.dao.AttachmentMapper;
-import com.cmmplb.websocket.domain.entity.Attachment;
-import com.cmmplb.websocket.domain.entity.AttachmentData;
-import com.cmmplb.websocket.service.AttachmentDataService;
-import com.cmmplb.websocket.service.AttachmentService;
-import com.cmmplb.websocket.domain.vo.AttachmentVO;
+import io.github.cmmplb.websocket.convert.AttachmentConvert;
+import io.github.cmmplb.websocket.dao.AttachmentMapper;
+import io.github.cmmplb.websocket.domain.entity.Attachment;
+import io.github.cmmplb.websocket.domain.entity.AttachmentData;
+import io.github.cmmplb.websocket.domain.vo.AttachmentVO;
+import io.github.cmmplb.websocket.service.AttachmentDataService;
+import io.github.cmmplb.websocket.service.AttachmentService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -22,8 +23,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -67,7 +70,7 @@ public class AttchmentServiceImpl extends ServiceImpl<AttachmentMapper, Attachme
                 fileName = md5 + suffixName;
 
                 // 查询资源是否存在
-                int count = attachmentDataService.count(new LambdaQueryWrapper<AttachmentData>().eq(AttachmentData::getMd5, md5));
+                long count = attachmentDataService.count(new LambdaQueryWrapper<AttachmentData>().eq(AttachmentData::getMd5, md5));
                 if (count == 0) {
                     // 保存资源信息
                     AttachmentData attachmentData = new AttachmentData();

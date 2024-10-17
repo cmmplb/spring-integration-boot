@@ -1,7 +1,8 @@
 package io.github.cmmplb.knife4j.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+
 
 /**
  * @author penglibo
@@ -10,8 +11,12 @@ import lombok.Data;
  */
 
 @Data
+@Schema(name = "OrderDateDTO", description = "OrderDateDTO")
 public class OrderDateDTO {
 
-    @ApiModelProperty(value = "主键id")
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private String id;
+
+    @Schema(name = "name", description = "名称")
+    private String name;
 }

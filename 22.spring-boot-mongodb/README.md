@@ -3,13 +3,15 @@ https://mrbird.cc/MongoDB-shell.html
 
 ###Mongo DB下载地址：https://www.mongodb.com/download
 
-####bin目录配置到系统环境, 创建一个数据库保存目录, 比如D:\MongoDB, 然后打开命令窗口输入如下命令启动MongoDB服务：
+https://www.mongodb.com/try/download/community
+
+####bin目录配置到系统环境，创建一个数据库保存目录，比如D:\MongoDB，然后打开命令窗口输入如下命令启动MongoDB服务：
 
 ````
 mongod --dbpath=D:\ProgramFileDev\MongoDB\Data
 ````
 
-打开另外一个命令窗口作为客户端, 输入mongo即可连上服务：
+打开另外一个命令窗口作为客户端，输入mongo即可连上服务：
 ````
 mongo
 ````
@@ -49,14 +51,14 @@ print("hello MnogoDB")
 mongo test.js
 ````
 连上服务后
-连上服务后, 可使用load()函数执行脚本：
+连上服务后，可使用load()函数执行脚本：
 ````
 load("test.js")
 hello MnogoDB
 true
 ````
 
-mongo 成功连接到 MongoDB 时将检查用户的主目录中是否有一个名为 .mongorc.js 的 JavaScript 文件。如果找到, mongo 将在第一次显示提示符之前执行 .mongorc.js 的内容。
+mongo 成功连接到 MongoDB 时将检查用户的主目录中是否有一个名为 .mongorc.js 的 JavaScript 文件。如果找到，mongo 将在第一次显示提示符之前执行 .mongorc.js 的内容。
 
 ===============================================================
 
@@ -74,7 +76,7 @@ use 数据库名称
 ```
 
 
-如果数据库存在则选择该数据库, 如果数据库不存在则自动创建。以下语句创建commentdb数据库：
+如果数据库存在则选择该数据库，如果数据库不存在则自动创建。以下语句创建commentdb数据库：
 
 ```bash
 use commentdb
@@ -90,7 +92,7 @@ show dbs
 
 
 
-查看集合,需要先选择数据库之后, 才能查看该数据库的集合：
+查看集合,需要先选择数据库之后，才能查看该数据库的集合：
 
 ```bash
 show collections
@@ -100,7 +102,7 @@ show collections
 
 #### 3.3.2 插入与查询文档
 
-选择数据库后, 使用集合来对文档进行操作, 插入文档语法格式：
+选择数据库后，使用集合来对文档进行操作，插入文档语法格式：
 
 ```bash
 db.集合名称.insert(数据);
@@ -120,13 +122,13 @@ db.comment.insert({content:"十次方课程",userid:"1011"})
 db.集合名称.find()
 ```
 
-查询spit集合的所有文档, 输入以下命令：
+查询spit集合的所有文档，输入以下命令：
 
 ```bash
 db.comment.find()
 ```
 
-​	发现文档会有一个叫_id的字段, 这个相当于我们原来关系数据库中表的主键, 当你在插入文档记录时没有指定该字段, MongoDB会自动创建, 其类型是ObjectID类型。如果我们在插入文档记录时指定该字段也可以, 其类型可以是ObjectID类型, 也可以是MongoDB支持的任意类型。
+​	发现文档会有一个叫_id的字段，这个相当于我们原来关系数据库中表的主键，当你在插入文档记录时没有指定该字段，MongoDB会自动创建，其类型是ObjectID类型。如果我们在插入文档记录时指定该字段也可以，其类型可以是ObjectID类型，也可以是MongoDB支持的任意类型。
 
 
 
@@ -143,19 +145,19 @@ db.comment.insert({_id:"6",content:"这个手机好",userid:"1014",thumbup:123})
 
 
 
-按一定条件来查询, 比如查询userid为1013的记录, 只要在find()中添加参数即可, 参数也是json格式, 如下：
+按一定条件来查询，比如查询userid为1013的记录，只要在find()中添加参数即可，参数也是json格式，如下：
 
 ```bash
 db.comment.find({userid:'1013'})
 ```
 
-只需要返回符合条件的第一条数据, 我们可以使用findOne命令来实现：
+只需要返回符合条件的第一条数据，我们可以使用findOne命令来实现：
 
 ```bash
 db.comment.findOne({userid:'1013'})
 ```
 
-返回指定条数的记录, 可以在find方法后调用limit来返回结果, 例如：
+返回指定条数的记录，可以在find方法后调用limit来返回结果，例如：
 
 ```bash
 db.comment.find().limit(2)
@@ -171,15 +173,15 @@ db.comment.find().limit(2)
 db.集合名称.update(条件,修改后的数据)
 ```
 
-修改_id为1的记录, 点赞数为1000, 输入以下语句：
+修改_id为1的记录，点赞数为1000，输入以下语句：
 
 ```bash
 db.comment.update({_id:"1"},{thumbup:1000})
 ```
 
-执行后发现, 这条文档除了thumbup字段其它字段都不见了。
+执行后发现，这条文档除了thumbup字段其它字段都不见了。
 
-为了解决这个问题, 我们需要使用修改器$set来实现, 命令如下：
+为了解决这个问题，我们需要使用修改器$set来实现，命令如下：
 
 ```java
 db.comment.update({_id:"2"},{$set:{thumbup:2000}})
@@ -191,13 +193,13 @@ db.comment.update({_id:"2"},{$set:{thumbup:2000}})
 db.集合名称.remove(条件)
 ```
 
-以下语句可以将数据全部删除, 慎用~
+以下语句可以将数据全部删除，慎用~
 
 ```bash
 db.comment.remove({})
 ```
 
-删除条件可以放到大括号中, 例如删除thumbup为1000的数据, 输入以下语句：
+删除条件可以放到大括号中，例如删除thumbup为1000的数据，输入以下语句：
 
 ```bash
 db.comment.remove({thumbup:1000})
@@ -213,7 +215,7 @@ db.comment.remove({thumbup:1000})
 db.comment.count()
 ```
 
-按条件统计 , 例如统计userid为1013的记录条数：
+按条件统计 ，例如统计userid为1013的记录条数：
 
 ```bash
 db.comment.count({userid:"1013"})
@@ -229,13 +231,13 @@ MongoDB的模糊查询是通过正则表达式的方式实现的。格式为：
 /模糊查询字符串/
 ```
 
-查询评论内容包含“流量”的所有文档, 代码如下：
+查询评论内容包含“流量”的所有文档，代码如下：
 
 ```bash
 db.comment.find({content:/流量/})
 ```
 
-查询评论内容中以“加班”开头的, 代码如下：
+查询评论内容中以“加班”开头的，代码如下：
 
 ```BASH
 db.comment.find({content:/^加班/})
@@ -245,7 +247,7 @@ db.comment.find({content:/^加班/})
 
 #### 3.3.6 大于 小于 不等于
 
-<, <=, >, >= 这个操作符也是很常用的, 格式如下:
+<, <=, >, >= 这个操作符也是很常用的，格式如下:
 
 ```bash
 db.集合名称.find({ "field" : { $gt: value }}) // 大于: field > value
@@ -285,9 +287,9 @@ db.comment.find({userid:{$nin:["1013","1014"]}})
 
 
 
-#### 3.3.8 条件连接 
+#### 3.3.8 条件连接
 
-我们如果需要查询同时满足两个以上条件, 需要使用$and操作符将条件进行关联（相当于SQL的and）。格式为：
+我们如果需要查询同时满足两个以上条件，需要使用$and操作符将条件进行关联（相当于SQL的and）。格式为：
 
 ```bash
 $and:[ {条件},{条件},{条件} ]
@@ -301,13 +303,13 @@ db.comment.find({$and:[ {thumbup:{$gte:1000}} ,{thumbup:{$lt:2000} }]})
 
 
 
-如果两个以上条件之间是或者的关系, 我们使用操作符进行关联, 与前面and的使用方式相同, 格式为：
+如果两个以上条件之间是或者的关系，我们使用操作符进行关联，与前面and的使用方式相同，格式为：
 
 ```bash
 $or:[ {条件},{条件},{条件} ]
 ```
 
-查询评论集合中userid为1013, 或者点赞数小于2000的文档记录：
+查询评论集合中userid为1013，或者点赞数小于2000的文档记录：
 
 ```bash
 db.comment.find({$or:[ {userid:"1013"} ,{thumbup:{$lt:2000} }]})
@@ -315,9 +317,9 @@ db.comment.find({$or:[ {userid:"1013"} ,{thumbup:{$lt:2000} }]})
 
 
 
-#### 3.3.9 列值增长 
+#### 3.3.9 列值增长
 
-对某列值在原有值的基础上进行增加或减少, 可以使用$inc运算符：
+对某列值在原有值的基础上进行增加或减少，可以使用$inc运算符：
 
 ```bash
 db.comment.update({_id:"2"},{$inc:{thumbup:1}})

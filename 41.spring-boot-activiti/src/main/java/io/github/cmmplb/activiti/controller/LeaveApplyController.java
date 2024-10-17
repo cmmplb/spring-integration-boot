@@ -1,20 +1,19 @@
-package com.cmmplb.activiti.controller;
+package io.github.cmmplb.activiti.controller;
 
-import com.cmmplb.activiti.dto.LeaveApplyDTO;
-import com.cmmplb.activiti.service.LeaveApplyService;
-import com.cmmplb.activiti.vo.LeaveApplyVO;
-import io.github.cmmplb.core.beans.PageResult;
-import io.github.cmmplb.core.beans.QueryPageBean;
+import io.github.cmmplb.activiti.dto.LeaveApplyDTO;
+import io.github.cmmplb.activiti.service.LeaveApplyService;
 import io.github.cmmplb.core.exception.CustomException;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.ActivitiException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author penglibo
@@ -22,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * @since jdk 1.8
  */
 
-@Api(tags = "请假管理")
+@Schema(name = "请假管理")
 @Slf4j
 @RestController
 @RequestMapping("/leave")
@@ -31,7 +30,7 @@ public class LeaveApplyController {
     @Autowired
     private LeaveApplyService leaveApplyService;
 
-    @ApiOperation("添加请假申请")
+    @Operation(summary = "添加请假申请")
     @PostMapping(value = "/save")
     public Result<Boolean> save(@RequestBody LeaveApplyDTO dto) {
         boolean save;

@@ -1,11 +1,11 @@
-package com.cmmplb.map.struct.advanced.service.impl;
+package io.github.cmmplb.map.struct.advanced.service.impl;
 
-import com.cmmplb.map.struct.advanced.convert.UserConvert;
-import com.cmmplb.map.struct.advanced.core.utils.ConverterUtil;
-import com.cmmplb.map.struct.advanced.dao.AdvancedUserDao;
-import com.cmmplb.map.struct.advanced.entity.User;
-import com.cmmplb.map.struct.advanced.service.AdvancedUserService;
-import com.cmmplb.map.struct.advanced.vo.UserVO;
+import io.github.cmmplb.map.struct.advanced.convert.UserConvert;
+import io.github.cmmplb.map.struct.advanced.core.utils.ConverterUtil;
+import io.github.cmmplb.map.struct.advanced.dao.AdvancedUserDao;
+import io.github.cmmplb.map.struct.advanced.entity.User;
+import io.github.cmmplb.map.struct.advanced.service.AdvancedUserService;
+import io.github.cmmplb.map.struct.advanced.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

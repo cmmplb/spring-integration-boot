@@ -1,8 +1,7 @@
-package com.cmmplb.canal.dto;
+package io.github.cmmplb.canal.dto;
 
 import io.github.cmmplb.core.beans.QueryPageBean;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -17,12 +16,12 @@ import java.io.Serializable;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value = "TestQueryDTO", description = "信息分页搜索参数")
+@Schema(name = "TestQueryDTO", description = "信息分页搜索参数")
 public class TestQueryDTO extends QueryPageBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "", example = "String")
+    @Schema(description = "", example = "String")
     private String name;
 
 }

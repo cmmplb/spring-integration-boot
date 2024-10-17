@@ -1,16 +1,17 @@
-package com.cmmplb.activiti.controller;
+package io.github.cmmplb.activiti.controller;
 
-import com.cmmplb.activiti.dto.SuspendActivateProcessDefinitionDTO;
-import com.cmmplb.activiti.service.DeployService;
-import com.cmmplb.activiti.vo.ProcessDefinitionVO;
+import io.github.cmmplb.activiti.dto.SuspendActivateProcessDefinitionDTO;
+import io.github.cmmplb.activiti.service.DeployService;
+import io.github.cmmplb.activiti.vo.ProcessDefinitionVO;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @since jdk 1.8
  */
 
-@Api(tags = "部署管理")
+@Schema(name = "部署管理")
 @Slf4j
 @RestController
 @RequestMapping("/deploy")
@@ -31,59 +32,59 @@ public class DeployController {
     @Autowired
     private DeployService deployService;
 
-    @ApiOperation("分页条件查询列表")
+    @Operation(summary = "分页条件查询列表")
     @PostMapping(value = "/paged")
     public Result<PageResult<ProcessDefinitionVO>> getByPaged(@RequestBody QueryPageBean queryPageBean) {
         return ResultUtil.success(deployService.getByPaged(queryPageBean));
     }
 
-    @ApiOperation("上传部署流程文件")
+    @Operation(summary = "上传部署流程文件")
     @PostMapping(value = "/upload")
     public Result<Boolean> upload(@RequestPart(value = "files") MultipartFile[] files) {
         return ResultUtil.success(deployService.upload(files));
     }
 
-    @ApiOperation("删除")
+    @Operation(summary = "删除")
     @DeleteMapping(value = "/{id}")
-    @ApiImplicitParam(name = "id", paramType = "query", value = "部署id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
+    @Parameter(name = "id", description = "部署id", required = true, in = ParameterIn.PATH, example = "1")
     public Result<Boolean> removeById(@PathVariable(value = "id") String id) {
         return ResultUtil.success(deployService.removeById(id));
     }
 
-    @ApiOperation("查看工作流定义")
+    @Operation(summary = "查看工作流定义")
     @GetMapping(value = "/show/process/{id}/{resource}")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", paramType = "query", value = "部署id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1"),
-            @ApiImplicitParam(name = "resource", paramType = "query", value = "资源路径", required = true, dataType = "String", dataTypeClass = String.class, example = "1"),
+    @Parameters({
+            @Parameter(name = "id", description = "部署id", required = true, in = ParameterIn.PATH, example = "1"),
+            @Parameter(name = "resource", description = "资源路径", required = true, in = ParameterIn.PATH, example = "1")
     })
     public void showProcessDefinition(@PathVariable("id") String id, @PathVariable(value = "resource") String resource) {
         deployService.showProcessDefinition(id, resource);
     }
 
-    @ApiOperation("查看流程图")
+    @Operation(summary = "查看流程图")
     @GetMapping(value = "/show/model/{id}")
-    @ApiImplicitParam(name = "id", paramType = "query", value = "流程定义id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
+    @Parameter(name = "id", description = "流程定义id", required = true, in = ParameterIn.PATH, example = "1")
     public void showFlowChart(@PathVariable(value = "id") String id) {
         deployService.showProcessChart(id);
     }
 
-    @ApiOperation("将流程定义转为模型")
+    @Operation(summary = "将流程定义转为模型")
     @PostMapping(value = "/exchange/{id}")
-    @ApiImplicitParam(name = "id", paramType = "query", value = "流程定义id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
+    @Parameter(name = "id", description = "流程定义id", required = true, in = ParameterIn.PATH, example = "1")
     public Result<Boolean> exchangeProcessToModel(@PathVariable(value = "id") String id) {
         return ResultUtil.success(deployService.exchangeProcessToModel(id));
     }
 
-    @ApiOperation("挂起流程定义")
+    @Operation(summary = "挂起流程定义")
     @PostMapping(value = "/suspend/{id}")
-    @ApiImplicitParam(name = "id", paramType = "query", value = "流程定义id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
+    @Parameter(name = "id", description = "流程定义id", required = true, in = ParameterIn.PATH, example = "1")
     public Result<Boolean> suspendProcessDefinition(@PathVariable(value = "id") String id, @RequestBody SuspendActivateProcessDefinitionDTO dto) {
         return ResultUtil.success(deployService.suspendProcessDefinition(id, dto));
     }
 
-    @ApiOperation("激活流程定义")
+    @Operation(summary = "激活流程定义")
     @PostMapping(value = "/activate/{id}")
-    @ApiImplicitParam(name = "id", paramType = "query", value = "流程定义id", required = true, dataType = "Long", dataTypeClass = Long.class, example = "1")
+    @Parameter(name = "id", description = "流程定义id", required = true, in = ParameterIn.PATH, example = "1")
     public Result<Boolean> activateProcessDefinition(@PathVariable(value = "id") String id, @RequestBody SuspendActivateProcessDefinitionDTO dto) {
         return ResultUtil.success(deployService.activateProcessDefinition(id, dto));
     }

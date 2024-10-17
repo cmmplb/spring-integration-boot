@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.config;
+package io.github.cmmplb.activiti.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 
 @Configuration
-@MapperScan(basePackages = {"com.cmmplb.activiti.dao"})
+@MapperScan(basePackages = {"io.github.cmmplb.activiti.dao"})
 public class MybatisPlusAutoConfiguration implements WebMvcConfigurer {
 
     @Bean

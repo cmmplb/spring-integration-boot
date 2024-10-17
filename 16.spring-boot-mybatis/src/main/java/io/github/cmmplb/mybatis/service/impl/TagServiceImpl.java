@@ -1,11 +1,10 @@
-package com.cmmplb.mybatis.service.impl;
+package io.github.cmmplb.mybatis.service.impl;
 
-import com.cmmplb.mybatis.dao.TagMapper;
-import com.cmmplb.mybatis.entity.Tag;
-import com.cmmplb.mybatis.service.TagService;
+import io.github.cmmplb.mybatis.dao.TagMapper;
+import io.github.cmmplb.mybatis.entity.Tag;
+import io.github.cmmplb.mybatis.service.TagService;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * @author penglibo

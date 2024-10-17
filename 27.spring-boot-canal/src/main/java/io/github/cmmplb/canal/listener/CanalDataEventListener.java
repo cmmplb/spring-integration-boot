@@ -1,4 +1,4 @@
-package com.cmmplb.canal.listener;
+package io.github.cmmplb.canal.listener;
 
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.xpand.starter.canal.annotation.*;

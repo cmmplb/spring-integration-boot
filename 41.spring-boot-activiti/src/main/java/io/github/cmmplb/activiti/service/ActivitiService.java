@@ -1,8 +1,8 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
-import com.cmmplb.activiti.vo.ProcessHistoricVO;
-import com.cmmplb.activiti.vo.ProcessDefinitionVO;
-import com.cmmplb.activiti.vo.TaskVO;
+import io.github.cmmplb.activiti.vo.ProcessHistoricVO;
+import io.github.cmmplb.activiti.vo.ProcessDefinitionVO;
+import io.github.cmmplb.activiti.vo.TaskVO;
 
 import java.util.List;
 

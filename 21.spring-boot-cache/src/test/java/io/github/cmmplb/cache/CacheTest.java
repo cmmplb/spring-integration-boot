@@ -1,8 +1,17 @@
 package io.github.cmmplb.cache;
 
 import lombok.extern.slf4j.Slf4j;
+import org.ehcache.Cache;
+import org.ehcache.CacheManager;
+import org.ehcache.UserManagedCache;
+import org.ehcache.config.builders.*;
+import org.ehcache.config.units.MemoryUnit;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import redis.clients.jedis.*;
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.JedisSentinelPool;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -29,6 +38,92 @@ public class CacheTest {
         sentinel();
     }
 
+    @Test
+    public void fun1() {
+        CacheManager manager = CacheManagerBuilder.newCacheManagerBuilder()
+                .withCache("myCache", CacheConfigurationBuilder.newCacheConfigurationBuilder(Integer.class, String.class, ResourcePoolsBuilder.heap(100).build()))
+                .build(true);
+
+        //通过别名获取缓存
+        Cache<Integer, String> cache = manager.getCache("myCache", Integer.class, String.class);
+
+        cache.put(1001, "haha");
+
+        String value = cache.get(1001);
+        System.out.println(value);
+
+        // 移除一个给定的Cache，CacheManager不仅会删除它对Cache的引用，而且还会关闭它。
+        manager.removeCache("myCache");
+        // 关闭CacheManager提供的所有临时资源。
+        manager.close();
+    }
+
+    // https://blog.csdn.net/lianghecai52171314/article/details/124419796
+    // 创建CacheManager的同时指定Cache
+    @Test
+    public void fun2() {
+        CacheManager manager = CacheManagerBuilder.newCacheManagerBuilder()
+                .build(true);
+
+        //创建Cache实例
+        CacheConfigurationBuilder<Integer, String> builder = CacheConfigurationBuilder.newCacheConfigurationBuilder(Integer.class, String.class,
+                ResourcePoolsBuilder.heap(10)  //堆内缓存，速度最快
+                        .offheap(2, MemoryUnit.MB)  // 堆外内存，速度低于 heap，但是高于 disk
+                // .disk(1, MemoryUnit.GB)   //磁盘缓存，速度最低，相对于 heap和off-heap，disk可以分配大量资源空间
+        ).withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(10)));
+
+        Cache<Integer, String> cache = manager.createCache("myCache", builder);
+        //写缓存
+        cache.put(1001, "xixi");
+        //读缓存
+        String value = cache.get(1001);
+        System.out.println(value);
+
+        manager.removeCache("myCache");
+        //关闭资源
+        manager.close();
+    }
+
+    // 将数据缓存到本地硬盘上
+    @Test
+    public void fun4() {
+        CacheManager manager = CacheManagerBuilder
+                .persistence("d:/CacheData")    //硬盘缓存文件位置
+                .builder(CacheManagerBuilder.newCacheManagerBuilder())
+                .build();
+        manager.init();
+
+        //创建Cache实例
+        CacheConfigurationBuilder<Integer, String> builder = CacheConfigurationBuilder.newCacheConfigurationBuilder(Integer.class, String.class,
+                ResourcePoolsBuilder.heap(10));
+
+        Cache<Integer, String> cache = manager.createCache("myCache", builder);
+        //写缓存
+        cache.put(1001, "xixi");
+        //读缓存
+        String value = cache.get(1001);
+        System.out.println(value);
+
+        manager.removeCache("myCache");
+        //关闭资源
+        manager.close();
+    }
+
+    @Test
+    public void fun3() {
+        UserManagedCache<Integer, String> cache = UserManagedCacheBuilder.newUserManagedCacheBuilder(Integer.class, String.class)
+                .build(false);
+        cache.init();
+
+        //写
+        cache.put(11, "aa");
+        //读
+        String value = cache.get(11);
+        System.out.println(value);
+
+        cache.close();
+    }
+
     /**
      * 单机
      */
@@ -53,13 +148,13 @@ public class CacheTest {
         nodes.add(new HostAndPort(host, 6374));
         nodes.add(new HostAndPort(host, 6375));
         nodes.add(new HostAndPort(host, 6376));
-        JedisPoolConfig config = getJedisPoolConfig();
-        JedisCluster cluster = new JedisCluster(nodes, 10000, 10000, 100,
-                password,
-                config);
-        cluster.set(commonKey, "cluster");
-        System.out.println(cluster.get(commonKey));
-        cluster.close();
+        // JedisPoolConfig config = getJedisPoolConfig();
+        // JedisCluster cluster = new JedisCluster(nodes, 10000, 10000, 100,
+        //         password,
+        //         config);
+        // cluster.set(commonKey, "cluster");
+        // System.out.println(cluster.get(commonKey));
+        // cluster.close();
     }
 
     /**

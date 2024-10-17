@@ -1,11 +1,11 @@
-package com.cmmplb.activiti.controller;
+package io.github.cmmplb.activiti.controller;
 
-import com.cmmplb.activiti.service.UserService;
-import com.cmmplb.activiti.vo.UserInfoVO;
+import io.github.cmmplb.activiti.service.UserService;
+import io.github.cmmplb.activiti.vo.UserInfoVO;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ import java.util.List;
  * @since jdk 1.8
  */
 
-@Api(tags = "用户管理")
+@Schema(name = "用户管理")
 @Slf4j
 @RestController
 @RequestMapping("/user")
@@ -29,7 +29,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation("获取用户列表")
+    @Operation(summary = "获取用户列表")
     @GetMapping(value = "/list")
     public Result<List<UserInfoVO>> getList() {
         return ResultUtil.success(userService.getList());

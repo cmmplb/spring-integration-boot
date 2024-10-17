@@ -1,4 +1,4 @@
-package com.cmmplb.rabbitmq.service;
+package io.github.cmmplb.rabbitmq.service;
 
 /**
  * @author penglibo

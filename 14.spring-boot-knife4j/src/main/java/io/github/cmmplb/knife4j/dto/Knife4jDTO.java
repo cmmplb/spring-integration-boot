@@ -1,6 +1,6 @@
 package io.github.cmmplb.knife4j.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -10,18 +10,22 @@ import lombok.Data;
  */
 
 @Data
+@Schema(name = "knife4jDTO", description = "请求参数")
 public class Knife4jDTO {
 
-    @ApiModelProperty(value = "主键id")
+    @Schema(description = "订单编号")
     private String id;
 
-    @ApiModelProperty(value = "姓名", example = "张飞")
+    /**
+     * required = true替换为 requiredMode = Schema.RequiredMode.REQUIRED
+     */
+    @Schema(description = "姓名", example = "张飞", requiredMode = Schema.RequiredMode.REQUIRED)
     private String name;
 
-    @ApiModelProperty(value = "邮箱")
+    @Schema(name = "email", description = "邮箱", example = "@163.com")
     private String email;
 
-    @ApiModelProperty(value = "订单信息")
+    @Schema(description = "订单信息")
     private OrderDateDTO orderDateDTO;
 
     //more...

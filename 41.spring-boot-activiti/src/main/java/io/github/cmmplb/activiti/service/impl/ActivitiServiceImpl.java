@@ -1,9 +1,9 @@
-package com.cmmplb.activiti.service.impl;
+package io.github.cmmplb.activiti.service.impl;
 
-import com.cmmplb.activiti.service.ActivitiService;
-import com.cmmplb.activiti.vo.ProcessHistoricVO;
-import com.cmmplb.activiti.vo.ProcessDefinitionVO;
-import com.cmmplb.activiti.vo.TaskVO;
+import io.github.cmmplb.activiti.service.ActivitiService;
+import io.github.cmmplb.activiti.vo.ProcessHistoricVO;
+import io.github.cmmplb.activiti.vo.ProcessDefinitionVO;
+import io.github.cmmplb.activiti.vo.TaskVO;
 import io.github.cmmplb.core.utils.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.HistoryService;

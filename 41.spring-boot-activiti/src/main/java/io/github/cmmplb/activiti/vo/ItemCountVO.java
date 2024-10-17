@@ -1,6 +1,6 @@
-package com.cmmplb.activiti.vo;
+package io.github.cmmplb.activiti.vo;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -15,25 +15,25 @@ public class ItemCountVO {
     /**
      * 代办数量
      */
-    @ApiModelProperty(value = "代办数量", example = "1")
-    private Integer incompleteCount;
+    @Schema(description = "代办数量", example = "1")
+    private Long incompleteCount;
 
     /**
      * 已办数量
      */
-    @ApiModelProperty(value = "已办数量", example = "1")
-    private Integer completedCount;
+    @Schema(description = "已办数量", example = "1")
+    private Long completedCount;
 
     /**
      * 请假数量
      */
-    @ApiModelProperty(value = "请假数量", example = "1")
-    private Integer leaveCount;
+    @Schema(description = "请假数量", example = "1")
+    private Long leaveCount;
 
     /**
      * 出差数量
      */
-    @ApiModelProperty(value = "出差数量", example = "1")
-    private Integer evectionCount;
+    @Schema(description = "出差数量", example = "1")
+    private Long evectionCount;
 
 }

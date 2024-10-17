@@ -1,8 +1,8 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
-import com.cmmplb.activiti.dto.ModelBpmnDTO;
-import com.cmmplb.activiti.vo.BpmnInfoVO;
-import com.cmmplb.activiti.vo.BpmnProgressVO;
+import io.github.cmmplb.activiti.dto.ModelBpmnDTO;
+import io.github.cmmplb.activiti.vo.BpmnInfoVO;
+import io.github.cmmplb.activiti.vo.BpmnProgressVO;
 import io.github.cmmplb.core.result.Result;
 
 /**

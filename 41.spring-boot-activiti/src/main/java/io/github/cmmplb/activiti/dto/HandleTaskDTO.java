@@ -1,6 +1,6 @@
-package com.cmmplb.activiti.dto;
+package io.github.cmmplb.activiti.dto;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -10,7 +10,7 @@ import lombok.Data;
  */
 
 @Data
-@ApiModel(value = "HandleTaskDTO", description = "办理任务")
+@Schema(name = "HandleTaskDTO", description = "办理任务")
 public class HandleTaskDTO {
 
     /**

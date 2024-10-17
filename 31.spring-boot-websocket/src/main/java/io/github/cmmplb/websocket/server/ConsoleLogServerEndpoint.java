@@ -1,14 +1,14 @@
-package com.cmmplb.websocket.server;
+package io.github.cmmplb.websocket.server;
 
 import io.github.cmmplb.core.utils.ErrorUtil;
 import io.github.cmmplb.core.utils.LogDirUtil;
 import io.github.cmmplb.core.utils.PatternUtil;
+import jakarta.websocket.*;
+import jakarta.websocket.server.ServerEndpoint;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.util.StringUtils;
 
-import javax.websocket.*;
-import javax.websocket.server.ServerEndpoint;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

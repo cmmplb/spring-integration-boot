@@ -21,10 +21,10 @@
 
     <!-- 依赖 -->
     <dependencies>
-        <!-- core公共核心模块 -->
+        <!-- swagger 公共核心模块 -->
         <dependency>
             <groupId>io.github.cmmplb</groupId>
-            <artifactId>spring-boot-starter-core</artifactId>
+            <artifactId>spring-boot-starter-swagger</artifactId>
         </dependency>
         <!-- mail -->
         <dependency>

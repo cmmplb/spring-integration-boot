@@ -1,14 +1,14 @@
 package io.github.cmmplb.security.utils;
 
+import com.wf.captcha.SpecCaptcha;
+import com.wf.captcha.base.Captcha;
 import io.github.cmmplb.core.utils.ServletUtil;
 import io.github.cmmplb.core.utils.SpringUtil;
 import io.github.cmmplb.redis.service.RedisService;
-import io.github.cmmplb.security.constants.RedisConstants;
-import com.wf.captcha.SpecCaptcha;
-import com.wf.captcha.base.Captcha;
+import io.github.cmmplb.security.constants.RedisConstant;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -36,18 +36,20 @@ public class CaptchaUtil {
 
         //生成验证码
         SpecCaptcha captcha = new SpecCaptcha(75, 40);
-        captcha.setLen(1); // 验证码个数
+        // 验证码个数
+        captcha.setLen(1);
         captcha.setCharType(Captcha.TYPE_DEFAULT);
         captcha.out(response.getOutputStream());
 
 
         String text = captcha.text();
         log.info("图形验证码：" + text);
-        String base64 = captcha.toBase64(); //
+        String base64 = captcha.toBase64();
 
         //保存到缓存
         setCache(uuid, text);
-        // return base64; // 返回base64
+        // 返回base64
+        // return base64;
     }
 
     /**
@@ -66,14 +68,15 @@ public class CaptchaUtil {
      * @param value value
      */
     private static void setCache(String uuid, String value) {
-        getRedisService().set(getCaptchaKey(uuid), value, RedisConstants.CAPTCHA_EXPIRE_SECONDS); // 5分钟
+        // 5分钟
+        getRedisService().set(getCaptchaKey(uuid), value, RedisConstant.CAPTCHA_EXPIRE_SECONDS);
     }
 
     /**
      * 获取验证码的缓存Key
      */
     public static String getCaptchaKey(String uuid) {
-        return RedisConstants.CAPTCHA_CACHE_PREFIX + uuid;
+        return RedisConstant.CAPTCHA_CACHE_PREFIX + uuid;
     }
 
     /**

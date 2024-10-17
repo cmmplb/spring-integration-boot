@@ -142,6 +142,12 @@ public class ConfigController {
      */
     @RequestMapping("/custom/xml")
     public Result<String> getConfigCustomXml() throws Exception {
+        // 高版本没有com.sun.xml.internal.bind.v2.ContextFactory导致报错
+        // <dependency>
+        //     <groupId>com.sun.xml.bind</groupId>
+        //     <artifactId>jaxb-impl</artifactId>
+        //     <version>2.3.3</version>
+        // </dependency>
         Resource resource = new ClassPathResource("static/custom.xml");
         // 利用输入流获取XML文件内容
         BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8));

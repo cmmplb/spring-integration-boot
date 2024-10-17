@@ -1,8 +1,8 @@
-package com.cmmplb.mybatis.dao;
+package io.github.cmmplb.mybatis.dao;
 
 import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.mybatis.entity.User;
-import com.cmmplb.mybatis.vo.UserInfoVO;
+import io.github.cmmplb.mybatis.entity.User;
+import io.github.cmmplb.mybatis.vo.UserInfoVO;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

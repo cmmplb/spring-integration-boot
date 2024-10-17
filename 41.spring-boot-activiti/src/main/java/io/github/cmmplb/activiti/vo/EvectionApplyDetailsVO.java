@@ -1,10 +1,9 @@
-package com.cmmplb.activiti.vo;
+package io.github.cmmplb.activiti.vo;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author penglibo
@@ -18,24 +17,24 @@ public class EvectionApplyDetailsVO {
     /**
      * 申请人姓名
      */
-    @ApiModelProperty(value = "申请人姓名")
+    @Schema(description = "申请人姓名")
     private String userName;
 
     /**
      * 请假说明
      */
-    @ApiModelProperty(value = "请假说明")
+    @Schema(description = "请假说明")
     private String reason;
 
     /**
      * 开始时间
      */
-    @ApiModelProperty(value = "开始时间")
+    @Schema(description = "开始时间")
     private Date startTime;
 
     /**
      * 结束时间
      */
-    @ApiModelProperty(value = "结束时间")
+    @Schema(description = "结束时间")
     private Date endTime;
 }

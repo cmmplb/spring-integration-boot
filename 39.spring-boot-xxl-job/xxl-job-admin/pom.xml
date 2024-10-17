@@ -19,6 +19,11 @@
     <!-- 描述信息 -->
     <description>${project.artifactId}</description>
 
+    <!-- xxl-admin基于springboot2，更换版本 -->
+    <properties>
+        <spring-boot-dependencies.version>2.7.0</spring-boot-dependencies.version>
+    </properties>
+
     <!-- 依赖 -->
     <dependencies>
         <!--  starter-web：spring-webmvc + autoconfigure + logback + yaml + tomcat  -->

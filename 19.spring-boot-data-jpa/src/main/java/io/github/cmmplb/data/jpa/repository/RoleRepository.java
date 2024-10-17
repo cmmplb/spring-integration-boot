@@ -1,6 +1,6 @@
-package com.cmmplb.data.jpa.repository;
+package io.github.cmmplb.data.jpa.repository;
 
-import com.cmmplb.data.jpa.entity.Role;
+import io.github.cmmplb.data.jpa.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;

@@ -1,0 +1,154 @@
+<html lang="zh_CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>首页</title>
+  <link rel="icon" href="/images/favicon.png">
+</head>
+<!-- 引入vue3 -->
+<script src="/vue3/vue@3.4.38.js"></script>
+<!-- 引入element-plus -->
+<link rel="stylesheet" href="/element-plus/index@2.8.1.css">
+<script src="/element-plus/index@2.8.1.js"></script>
+<!-- 引入axios -->
+<script src="/axios/axios@1.7.7.js"></script>
+<!-- 引用vue组件使用 -->
+<script src="/http-vue-loader/httpVueLoader@1.4.2.js"></script>
+<script src="/js/util.js"></script>
+
+<body>
+<div id="app">
+  <!-- 使用组件，注意这里要用闭包，<title-component/> 这样写的后后面的标签都不显示了 -->
+  <title-component title="首页"></title-component>
+
+  <span>username：{{ username }}</span>
+
+  <el-button type="danger" @click="logout" style="margin-left: 20px" plain>退出登陆</el-button>
+
+  <div class="tag">
+    <el-tag size="large" type="warning">注解权限管理</el-tag>
+  </div>
+  <div class="box">
+    <!-- 换行 -->
+    <!-- plan为消息提示背景 -->
+    <el-button :plain="true" @click="getAnnotationInfo" plain>查询注解控制</el-button>
+    <el-button :plain="true" @click="postAuthorize" plain>postAuthorize</el-button>
+    <el-button :plain="true" @click="postFilter" plain>postFilter</el-button>
+  </div>
+
+  <div class="tag">
+    <el-tag size="large" type="success">资源管理</el-tag>
+  </div>
+  <div class="box">
+    <el-button :plain="true" @click="getResourceInfo" plain>查询资源</el-button>
+    <el-button :plain="true" @click="getPrincipalInfo" plain>查询principal</el-button>
+  </div>
+</div>
+</body>
+<script>
+  const {createApp, ref, onMounted} = Vue;
+  const App = {
+    setup() {
+
+      // 添加请求拦截器
+      request(axios);
+
+      // 添加响应拦截器
+      response(axios);
+
+      const username = ref('');
+      const getPrincipalInfo = () => {
+        axios.get('personal/center/principal').then(res => {
+          console.log('res:', res);
+          ElementPlus.ElMessage({
+            message: res.data.data,
+            showClose: true,
+            type: 'success',
+            plain: true
+          });
+        });
+      };
+      const postAuthorize = () => {
+        axios.get('annotation/postAuthorize').then(res => {
+          console.log('res:', res);
+          ElementPlus.ElMessage({
+            message: res.data.data,
+            showClose: true,
+            type: 'success',
+            plain: true
+          });
+        });
+      };
+      const postFilter = () => {
+        axios.get('annotation/postFilter').then(res => {
+          console.log('res:', res);
+          ElementPlus.ElMessage({
+            message: '集合长度：' + res.data.length,
+            showClose: true,
+            type: 'success',
+            plain: true
+          });
+        });
+      };
+      const getResourceInfo = () => {
+        axios.get('resource/info').then(res => {
+          console.log('res:', res);
+          ElementPlus.ElMessage({
+            message: res.data.data,
+            showClose: true,
+            type: 'success',
+            plain: true
+          });
+        });
+      };
+      const getAnnotationInfo = () => {
+        axios.get('annotation/info').then(res => {
+          console.log('res:', res);
+          ElementPlus.ElMessage({
+            message: res.data.data,
+            type: 'success',
+            plain: true
+          });
+        });
+      };
+      const logout = () => {
+        window.location.href = '/logout';
+      };
+      const getPrincipal = () => {
+        axios.get('personal/center/principal').then(res => {
+          console.log('res:', res);
+          username.value = res.data.data.name;
+        });
+      };
+      onMounted(() => {
+        getPrincipal();
+      });
+      return {
+        username,
+        getResourceInfo,
+        getPrincipalInfo,
+        postAuthorize,
+        postFilter,
+        getAnnotationInfo,
+        logout
+      };
+    }
+  };
+  const app = Vue.createApp(App);
+  const {defineAsyncComponent} = Vue;
+  // 注册组件
+  app.component('title-component', defineAsyncComponent(httpVueLoader('/component/title.vue')));
+  app.use(ElementPlus);
+  app.mount('#app');
+
+</script>
+<style>
+    .tag {
+        margin-top: 20px;
+    }
+
+    .box {
+        margin-top: 20px;
+        display: flex;
+    }
+</style>
+</html>

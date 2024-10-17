@@ -1,13 +1,16 @@
 package io.github.cmmplb.sync.controller;
 
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSort;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
 import io.github.cmmplb.sync.service.SyncService;
-import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
-import com.github.xiaoymin.knife4j.annotations.ApiSupport;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.extensions.Extension;
+import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +27,13 @@ import java.util.concurrent.*;
  * @since jdk 1.8
  */
 
-@Api(tags = "异步线程演示")
+@Tag(name = "异步线程演示", description = "异步线程演示"
+        , extensions = {@Extension(properties = {@ExtensionProperty(name = "x-order", value = "1", parseValue = true)})}
+)
 @Slf4j
+// @ApiSupport > @ApiSort > @Api  -  排序的规则是倒序
+@ApiSort(1)
+// 作者,方法名上ApiOperationSupport.author没有则取类名声明的作者
 @ApiSupport(order = 1, author = StringConstant.AUTHOR)
 @RestController
 @RequestMapping("/sync")
@@ -34,7 +42,7 @@ public class SyncController {
     @Autowired
     private SyncService syncService;
 
-    @ApiOperation("同步方法")
+    @Operation(summary = "同步方法", description = "同步方法")
     @ApiOperationSupport(order = 1)
     @GetMapping("/sync")
     public Result<String> sync() {
@@ -44,7 +52,7 @@ public class SyncController {
         return ResultUtil.success("总耗时：" + (end - start) + " ms");
     }
 
-    @ApiOperation("异步方法")
+    @Operation(summary = "异步方法")
     @ApiOperationSupport(order = 2)
     @GetMapping("/async")
     public Result<String> async() {
@@ -54,7 +62,7 @@ public class SyncController {
         return ResultUtil.success("总耗时：" + (end - start) + " ms");
     }
 
-    @ApiOperation("异步方法-带返回值")
+    @Operation(summary = "异步方法-带返回值")
     @ApiOperationSupport(order = 3)
     @GetMapping("/async/return")
     public Result<String> asyncReturn() throws ExecutionException, InterruptedException, TimeoutException {
@@ -64,7 +72,7 @@ public class SyncController {
         // return ResultUtil.success(syncService.asyncReturn().get(1, TimeUnit.SECONDS));
     }
 
-    @ApiOperation("异步执行多个方法,没有返回值")
+    @Operation(summary = "异步执行多个方法,没有返回值")
     @ApiOperationSupport(order = 4)
     @GetMapping("/async/all")
     public Result<String> asyncAll() throws ExecutionException, InterruptedException {
@@ -102,7 +110,7 @@ public class SyncController {
     @Autowired
     private Executor one;
 
-    @ApiOperation("异步执行多个方法, 返回所有方法的返回值")
+    @Operation(summary = "异步执行多个方法, 返回所有方法的返回值")
     @ApiOperationSupport(order = 5)
     @GetMapping("/async/all/return")
     public Result<Map<String, Object>> asyncAllReturn() throws ExecutionException, InterruptedException {
@@ -167,7 +175,7 @@ public class SyncController {
      */
     private static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
 
-    private static final ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor (
+    private static final ThreadPoolExecutor THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(
             // 核心线程数
             AVAILABLE_PROCESSORS,
             // 最大线程数
@@ -185,7 +193,7 @@ public class SyncController {
      * CompletionService 能够让异步任务的执行结果有序化, 先执行完的先进入阻塞队列,
      * 利用这个特性, 你可以轻松实现后续处理的有序性, 避免无谓的等待
      */
-    @ApiOperation("使用CompletionService批量异步处理")
+    @Operation(summary = "使用CompletionService批量异步处理")
     @ApiOperationSupport(order = 6)
     @GetMapping("/async/completion/service")
     public static void completionService() {
@@ -193,7 +201,7 @@ public class SyncController {
 
         CompletionService<Map<String, Object>> cs = new ExecutorCompletionService<>(THREAD_POOL_EXECUTOR);
         cs.submit(() -> {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             dataMap.put("A", "");
             log.info("A, thread-name:" + Thread.currentThread().getName());
             return dataMap;
@@ -205,7 +213,7 @@ public class SyncController {
             return dataMap;
         });
         cs.submit(() -> {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
             dataMap.put("C", "");
             log.info("C, thread-name:" + Thread.currentThread().getName());
             return dataMap;

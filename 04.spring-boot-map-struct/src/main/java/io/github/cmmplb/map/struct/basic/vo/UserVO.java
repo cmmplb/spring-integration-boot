@@ -1,4 +1,4 @@
-package com.cmmplb.map.struct.basic.vo;
+package io.github.cmmplb.map.struct.basic.vo;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

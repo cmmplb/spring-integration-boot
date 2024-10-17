@@ -1,4 +1,4 @@
-package com.cmmplb.dynamic.datasource.config;
+package io.github.cmmplb.dynamic.datasource.config;
 
 
 import io.github.cmmplb.core.constants.StringConstant;

@@ -1,7 +1,7 @@
-package com.cmmplb.websocket.config;
+package io.github.cmmplb.websocket.config;
 
-import com.cmmplb.websocket.handler.ChatTextWebSocketHandler;
-import com.cmmplb.websocket.interceptor.WebsocketInterceptor;
+import io.github.cmmplb.websocket.handler.ChatTextWebSocketHandler;
+import io.github.cmmplb.websocket.interceptor.WebsocketInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;

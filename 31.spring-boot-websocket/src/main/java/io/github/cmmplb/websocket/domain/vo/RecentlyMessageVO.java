@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.domain.vo;
+package io.github.cmmplb.websocket.domain.vo;
 
 import io.github.cmmplb.core.constants.GlobalConstant;
 import io.github.cmmplb.core.utils.DateUtil;

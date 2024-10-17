@@ -1,12 +1,12 @@
-package com.cmmplb.mybatis.entity;
+package io.github.cmmplb.mybatis.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,57 +18,58 @@ import java.util.Date;
 
 @Data
 @Accessors(chain = true) // 使用这个可以让set返回实体, 便于链式set
-@ApiModel(value = "User", description = "用户信息表")
+@Schema(name = "User", description = "用户信息表")
 public class User implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**
      * 主键
      */
-    @ApiModelProperty(value = "主键", example = "1")
+    @Schema(name = "id", description = "主键id", example = "1")
     private Long id;
 
     /**
-     * 租户id
+     * 租户id, required = true替换为 requiredMode = Schema.RequiredMode.REQUIRED
      */
-    @ApiModelProperty(value = "租户id", example = "1", required = true)
+    @Schema(name = "tenantId", description = "租户id", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
     private Long tenantId;
 
     /**
      * 用户名
      */
-    @ApiModelProperty(value = "用户名", example = "小明", required = true)
+    @Schema(name = "name", description = "用户名", example = "小明", requiredMode = Schema.RequiredMode.REQUIRED)
     private String name;
 
     /**
      * 性别:0-女;1-男
      */
-    @ApiModelProperty(value = "性别:0-女;1-男", example = "1", required = true)
+    @Schema(name = "sex", type = "integer", description = " 性别:0-女;1-男", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
     private Byte sex;
 
     /**
      * 手机号
      */
-    @ApiModelProperty(value = "手机号", example = "19999999999", required = true)
+    @Schema(name = "mobile", description = "手机号", example = "19999999999", requiredMode = Schema.RequiredMode.REQUIRED)
     private String mobile;
 
     /**
      * 用户状态:0-正常;1-禁用
      */
-    @ApiModelProperty(value = "用户状态:0-正常;1-禁用", example = "0")
+    @Schema(name = "status", type = "integer", description = "用户状态:0-正常;1-禁用", example = "0", requiredMode = Schema.RequiredMode.REQUIRED)
     private Byte status;
 
     /**
      * 乐观锁版本号
      */
-    @ApiModelProperty(value = "乐观锁版本号", example = "1")
+    @Schema(name = "version", description = "乐观锁版本号", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
     private Integer version;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty(value = "创建时间", example = "2021-01-01 12:00:00")
+    @Schema(name = "createTime", description = "创建时间", example = "2021-01-01 12:00:00", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
@@ -76,7 +77,7 @@ public class User implements Serializable {
     /**
      * 更新时间
      */
-    @ApiModelProperty(value = "更新时间", example = "2021-01-01 12:00:00")
+    @Schema(name = "updateTime", description = "更新时间", example = "2021-01-01 12:00:00", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
@@ -84,6 +85,6 @@ public class User implements Serializable {
     /**
      * 逻辑删除:0-正常;1-删除
      */
-    @ApiModelProperty(value = "逻辑删除:0-正常;1-删除", example = "0")
+    @Schema(name = "deleted", type = "integer", description = "逻辑删除:0-正常;1-删除", example = "0", requiredMode = Schema.RequiredMode.REQUIRED)
     private Byte deleted;
 }

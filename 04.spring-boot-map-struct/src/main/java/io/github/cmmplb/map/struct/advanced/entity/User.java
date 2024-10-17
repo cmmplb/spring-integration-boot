@@ -1,4 +1,4 @@
-package com.cmmplb.map.struct.advanced.entity;
+package io.github.cmmplb.map.struct.advanced.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

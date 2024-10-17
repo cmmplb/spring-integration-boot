@@ -1,12 +1,12 @@
-package com.cmmplb.websocket.service.impl;
+package io.github.cmmplb.websocket.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.cmmplb.core.exception.BusinessException;
-import com.cmmplb.websocket.dao.UserMapper;
-import com.cmmplb.websocket.domain.entity.User;
-import com.cmmplb.websocket.service.UserService;
-import com.cmmplb.websocket.utils.SecurityUtil;
-import com.cmmplb.websocket.domain.vo.UserInfoVO;
+import io.github.cmmplb.websocket.dao.UserMapper;
+import io.github.cmmplb.websocket.domain.entity.User;
+import io.github.cmmplb.websocket.service.UserService;
+import io.github.cmmplb.websocket.utils.SecurityUtil;
+import io.github.cmmplb.websocket.domain.vo.UserInfoVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

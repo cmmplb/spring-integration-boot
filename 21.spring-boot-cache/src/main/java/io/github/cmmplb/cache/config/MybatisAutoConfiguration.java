@@ -1,4 +1,4 @@
-package com.cmmplb.cache.config;
+package io.github.cmmplb.cache.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;

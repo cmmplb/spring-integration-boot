@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.listener;
+package io.github.cmmplb.rabbitmq.listener;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstant;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
@@ -23,7 +23,7 @@ public class TopicListener {
     /**
      * 订阅模型监听
      */
-    @RabbitListener(queues = RabbitMqConstants.ONE_TOPIC_QUEUE)
+    @RabbitListener(queues = RabbitMqConstant.ONE_TOPIC_QUEUE)
     public void listener(String body, Message message, Channel channel) throws IOException {
         System.out.println("one - 监听到订阅模型-Topic (主题模式)消息:" + message);
         log.info("告诉broker, 消息已经被确认");
@@ -33,7 +33,7 @@ public class TopicListener {
     /**
      * 订阅模型监听
      */
-    @RabbitListener(queues = RabbitMqConstants.TWO_TOPIC_QUEUE)
+    @RabbitListener(queues = RabbitMqConstant.TWO_TOPIC_QUEUE)
     public void listenerTwo(String body, Message message, Channel channel) throws IOException {
         System.out.println("two - 监听到订阅模型-Topic (主题模式)消息:" + body);
         log.info("告诉broker, 消息已经被确认");

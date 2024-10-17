@@ -1,4 +1,4 @@
-package com.cmmplb.netty.socket.dto;
+package io.github.cmmplb.netty.socket.dto;
 
 import lombok.Data;
 

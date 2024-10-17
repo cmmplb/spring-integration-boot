@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.image;
+package io.github.cmmplb.activiti.image;
 
 import org.activiti.bpmn.model.AssociationDirection;
 import org.activiti.bpmn.model.GraphicInfo;

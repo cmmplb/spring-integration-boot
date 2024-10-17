@@ -1,7 +1,7 @@
-package com.cmmplb.map.struct.basic.dao;
+package io.github.cmmplb.map.struct.basic.dao;
 
-import com.cmmplb.map.struct.basic.dto.UserDTO;
-import com.cmmplb.map.struct.basic.entity.User;
+import io.github.cmmplb.map.struct.basic.dto.UserDTO;
+import io.github.cmmplb.map.struct.basic.entity.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.cmmplb.dynamic.datasource.config;
+package io.github.cmmplb.dynamic.datasource.config;
 
 import com.baomidou.dynamic.datasource.aop.DynamicDatasourceNamedInterceptor;
 import com.baomidou.dynamic.datasource.processor.DsProcessor;
@@ -23,8 +23,7 @@ import java.util.Map;
 @Configuration
 public class AspectConfig {
 
-    // 实现com.cmmplb.dynamic.datasource包service下所有类的add和update,delete开头的方法使用master数据源, select使用slave数据源. 
-
+    // 实现com.cmmplb.dynamic.datasource包service下所有类的add和update,delete开头的方法使用master数据源, select使用slave数据源.
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Bean
     public DynamicDatasourceNamedInterceptor dsAdvice(DsProcessor dsProcessor) {

@@ -1,10 +1,10 @@
 package io.github.cmmplb.data.jpa;
 
 import io.github.cmmplb.core.utils.RandomUtil;
-import com.cmmplb.data.jpa.repository.AccountRepository;
-import com.cmmplb.data.jpa.entity.*;
-import com.cmmplb.data.jpa.service.AccountService;
-import com.cmmplb.data.jpa.vo.AccountTagVO;
+import io.github.cmmplb.data.jpa.repository.AccountRepository;
+import io.github.cmmplb.data.jpa.entity.*;
+import io.github.cmmplb.data.jpa.service.AccountService;
+import io.github.cmmplb.data.jpa.vo.AccountTagVO;
 import com.querydsl.core.Tuple;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

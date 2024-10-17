@@ -1,15 +1,15 @@
-DROP DATABASE IF EXISTS `spring_integration`;
+DROP DATABASE IF EXISTS `spring_boot_mybatis_plus`;
 
-CREATE DATABASE `spring_integration` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `spring_boot_mybatis_plus` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-USE `spring_integration`;
+USE `spring_boot_mybatis_plus`;
 
 /*用户信息表*/
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`
+DROP TABLE IF EXISTS `userDetails`;
+CREATE TABLE `userDetails`
 (
     `id`          bigint     NOT NULL AUTO_INCREMENT COMMENT '主键',
     `tenant_id`   bigint(20) NOT NULL DEFAULT '0' COMMENT '租户id',
@@ -26,15 +26,15 @@ CREATE TABLE `user`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4 COMMENT ='用户信息表';
 
-INSERT INTO `user` (`tenant_id`,
-                    `name`,
-                    `sex`,
-                    `mobile`,
-                    `status`,
-                    `create_time`,
-                    `update_time`,
-                    `version`,
-                    `deleted`)
+INSERT INTO `userDetails` (`tenant_id`,
+                           `name`,
+                           `sex`,
+                           `mobile`,
+                           `status`,
+                           `create_time`,
+                           `update_time`,
+                           `version`,
+                           `deleted`)
 VALUES (1,
         '小明',
         1,
@@ -62,7 +62,7 @@ CREATE TABLE `user_info`
     `icon`        varchar(256)       DEFAULT NULL COMMENT '头像',
     `create_time` datetime NOT NULL COMMENT '创建时间',
     `update_time` datetime          DEFAULT NULL COMMENT '更新时间',
-    `deleted`     tinyint  NOT NULL DEFAULT '0' COMMENT '逻辑删除 默认0,  1, 删除',
+    `deleted`     tinyint  NOT NULL DEFAULT '0' COMMENT '逻辑删除 默认0， 1，删除',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 1

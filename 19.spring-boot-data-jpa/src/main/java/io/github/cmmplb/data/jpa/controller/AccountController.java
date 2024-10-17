@@ -1,12 +1,12 @@
-package com.cmmplb.data.jpa.controller;
+package io.github.cmmplb.data.jpa.controller;
 
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import com.cmmplb.data.jpa.entity.Account;
-import com.cmmplb.data.jpa.service.AccountService;
-import com.cmmplb.data.jpa.vo.AccountInfoVO;
+import io.github.cmmplb.data.jpa.entity.Account;
+import io.github.cmmplb.data.jpa.service.AccountService;
+import io.github.cmmplb.data.jpa.vo.AccountInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

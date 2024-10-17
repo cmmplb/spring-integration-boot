@@ -1,9 +1,12 @@
-package com.cmmplb.data.jpa.entity;
+package io.github.cmmplb.data.jpa.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -17,7 +20,8 @@ import java.util.Date;
 // @Data // 此处不能用Data注解, 因为和用户类相互引用, 使用Data注解会重写equals等方法, 如果两个类都用Data注解会报错
 @Getter
 @Setter
-@Entity    // @Entity: 实体类, 必须
+// @Entity: 实体类, 必须, 表示该类是一个JPA实体类, 它会映射到数据库中的一个表. JPA会管理这个类的实例, 并将它们持久化到数据库中.
+@Entity
 // @Table: 对应数据库中的表, 必须, name=表名, Indexes是声明表里的索引, columnList是索引的列, 同时声明此索引列是否唯一, 默认false
 @Table(name = "account", indexes = {
         @Index(name = "id", columnList = "id", unique = true),
