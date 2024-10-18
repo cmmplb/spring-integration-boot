@@ -1,9 +1,9 @@
-package com.cmmplb.dynamic.datasource.service;
+package io.github.cmmplb.dynamic.datasource.service;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.dynamic.datasource.annotation.DSTransactional;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cmmplb.dynamic.datasource.entity.User;
+import io.github.cmmplb.dynamic.datasource.entity.User;
 
 import java.util.List;
 

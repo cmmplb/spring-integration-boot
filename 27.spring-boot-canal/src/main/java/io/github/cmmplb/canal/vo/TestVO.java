@@ -1,4 +1,4 @@
-package com.cmmplb.canal.vo;
+package io.github.cmmplb.canal.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;

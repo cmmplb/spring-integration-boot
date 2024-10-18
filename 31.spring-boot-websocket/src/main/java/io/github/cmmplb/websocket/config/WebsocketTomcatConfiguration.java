@@ -1,6 +1,6 @@
-package com.cmmplb.websocket.config;
+package io.github.cmmplb.websocket.config;
 
-import com.cmmplb.websocket.server.ConsoleLogServerEndpoint;
+import io.github.cmmplb.websocket.server.ConsoleLogServerEndpoint;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

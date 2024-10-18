@@ -1,4 +1,4 @@
-package com.cmmplb.mybatis.handler.exception;
+package io.github.cmmplb.mybatis.handler.exception;
 
 /**
  * 触发乐观锁异常

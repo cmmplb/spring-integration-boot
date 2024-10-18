@@ -1,4 +1,4 @@
-package com.cmmplb.dynamic.datasource.config;
+package io.github.cmmplb.dynamic.datasource.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TableNameHandler;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 // 开启二级缓存-mybatis-plus版本必须低于2.0.9才可以使用二级缓存
 @EnableCaching
 @Configuration
-@MapperScan(basePackages = {"com.cmmplb.dynamic.datasource.dao"})
+@MapperScan(basePackages = {"io.github.cmmplb.dynamic.datasource.dao"})
 public class MybatisPlusAutoConfiguration {
 
     /**

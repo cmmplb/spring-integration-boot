@@ -1,11 +1,11 @@
-package com.cmmplb.websocket.service;
+package io.github.cmmplb.websocket.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.websocket.domain.entity.Contacts;
-import com.cmmplb.websocket.domain.vo.ContactsInfoVO;
-import com.cmmplb.websocket.domain.vo.ContactsVO;
+import io.github.cmmplb.websocket.domain.entity.Contacts;
+import io.github.cmmplb.websocket.domain.vo.ContactsInfoVO;
+import io.github.cmmplb.websocket.domain.vo.ContactsVO;
 
 public interface ContactsService extends IService<Contacts> {
 

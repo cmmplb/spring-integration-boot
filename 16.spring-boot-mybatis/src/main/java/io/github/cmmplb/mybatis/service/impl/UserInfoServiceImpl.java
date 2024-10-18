@@ -1,10 +1,10 @@
-package com.cmmplb.mybatis.service.impl;
+package io.github.cmmplb.mybatis.service.impl;
 
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.mybatis.dao.UserInfoMapper;
-import com.cmmplb.mybatis.entity.UserInfo;
-import com.cmmplb.mybatis.service.UserInfoService;
+import io.github.cmmplb.mybatis.dao.UserInfoMapper;
+import io.github.cmmplb.mybatis.entity.UserInfo;
+import io.github.cmmplb.mybatis.service.UserInfoService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;

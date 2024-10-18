@@ -15,12 +15,12 @@
         <typeAlias alias="Integer" type="java.lang.Integer" />
         <typeAlias alias="Long" type="java.lang.Long" />
         <typeAlias alias="HashMap" type="java.util.HashMap" />
-        <package name="com.cmmplb.mybatis.entity" />
+        <package name="io.github.cmmplb.mybatis.entity" />
     </typeAliases>
 
     <plugins>
         <!--  The invocation order is bottom up  -->
-        <plugin interceptor="com.cmmplb.mybatis.plugin.interceptor.SQLQueryParamInterceptor" />
+        <plugin interceptor="io.github.cmmplb.mybatis.plugin.interceptor.SQLQueryParamInterceptor" />
 
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
 

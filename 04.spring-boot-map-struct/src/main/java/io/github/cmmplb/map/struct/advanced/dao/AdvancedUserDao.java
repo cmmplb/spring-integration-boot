@@ -1,7 +1,7 @@
-package com.cmmplb.map.struct.advanced.dao;
+package io.github.cmmplb.map.struct.advanced.dao;
 
-import com.cmmplb.map.struct.advanced.dto.UserDTO;
-import com.cmmplb.map.struct.advanced.entity.User;
+import io.github.cmmplb.map.struct.advanced.dto.UserDTO;
+import io.github.cmmplb.map.struct.advanced.entity.User;
 
 import java.util.List;
 

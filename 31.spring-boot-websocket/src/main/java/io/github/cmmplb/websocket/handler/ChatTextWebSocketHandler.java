@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.handler;
+package io.github.cmmplb.websocket.handler;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -6,11 +6,11 @@ import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.github.cmmplb.core.constants.GlobalConstant;
 import io.github.cmmplb.core.utils.StringUtil;
-import com.cmmplb.websocket.domain.dto.MessageDTO;
-import com.cmmplb.websocket.domain.entity.MessageRecord;
-import com.cmmplb.websocket.domain.entity.RecentlyMessage;
-import com.cmmplb.websocket.service.MessageRecordService;
-import com.cmmplb.websocket.service.RecentlyMessageService;
+import io.github.cmmplb.websocket.domain.dto.MessageDTO;
+import io.github.cmmplb.websocket.domain.entity.MessageRecord;
+import io.github.cmmplb.websocket.domain.entity.RecentlyMessage;
+import io.github.cmmplb.websocket.service.MessageRecordService;
+import io.github.cmmplb.websocket.service.RecentlyMessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;

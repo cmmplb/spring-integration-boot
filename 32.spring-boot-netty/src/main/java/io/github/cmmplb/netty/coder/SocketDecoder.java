@@ -1,7 +1,7 @@
-package com.cmmplb.netty.coder;
+package io.github.cmmplb.netty.coder;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.netty.socket.entity.NettyMessage;
+import io.github.cmmplb.netty.socket.entity.NettyMessage;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

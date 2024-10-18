@@ -1,4 +1,4 @@
-package com.cmmplb.cache.domain.entity;
+package io.github.cmmplb.cache.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;

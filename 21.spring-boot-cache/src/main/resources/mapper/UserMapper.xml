@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cmmplb.cache.mapper.UserMapper">
+<mapper namespace="io.github.cmmplb.cache.mapper.UserMapper">
     <cache/>
 
     <sql id="base_column">
@@ -25,7 +25,7 @@
         from `user` u
     </sql>
 
-    <select id="selectList" resultType="com.cmmplb.cache.domain.entity.User">
+    <select id="selectList" resultType="io.github.cmmplb.cache.domain.entity.User">
         <include refid="base_select"/>
     </select>
 
@@ -67,7 +67,7 @@
         where `id` = #{id}
     </update>
 
-    <select id="selectById" resultType="com.cmmplb.cache.domain.entity.User">
+    <select id="selectById" resultType="io.github.cmmplb.cache.domain.entity.User">
         <include refid="base_select"/>
         where u.`id` = #{id}
     </select>

@@ -1,6 +1,6 @@
-package com.cmmplb.map.struct.advanced.core.utils;
+package io.github.cmmplb.map.struct.advanced.core.utils;
 
-import com.cmmplb.map.struct.advanced.core.converter.Converter;
+import io.github.cmmplb.map.struct.advanced.core.converter.Converter;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.cmmplb.mybatis.plugin.propertise;
+package io.github.cmmplb.mybatis.plugin.propertise;
 
 import io.github.cmmplb.core.constants.StringConstant;
 import lombok.Data;

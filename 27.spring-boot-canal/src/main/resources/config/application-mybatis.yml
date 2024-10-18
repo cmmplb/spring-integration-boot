@@ -3,7 +3,7 @@ mybatis-plus:
   mapper-locations:
     - classpath:/mapper/*.xml
   # 别名包路径
-  typeAliasesPackage: com.cmmplb.canal.entity
+  typeAliasesPackage: io.github.cmmplb.canal.entity
   global-config:
     banner: false #不显示banner图到控制台
     db-config:

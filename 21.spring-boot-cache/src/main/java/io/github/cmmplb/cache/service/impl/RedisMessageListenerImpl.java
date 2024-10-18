@@ -1,6 +1,6 @@
-package com.cmmplb.cache.service.impl;
+package io.github.cmmplb.cache.service.impl;
 
-import com.cmmplb.cache.utils.RedisUtil;
+import io.github.cmmplb.cache.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.Message;

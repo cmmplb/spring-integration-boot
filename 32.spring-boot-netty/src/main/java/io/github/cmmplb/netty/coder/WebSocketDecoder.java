@@ -1,4 +1,4 @@
-package com.cmmplb.netty.coder;
+package io.github.cmmplb.netty.coder;
 
 import com.google.common.primitives.Bytes;
 import io.netty.buffer.ByteBuf;

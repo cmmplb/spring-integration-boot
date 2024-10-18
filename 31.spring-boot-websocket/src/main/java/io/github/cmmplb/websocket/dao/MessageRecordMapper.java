@@ -1,9 +1,9 @@
-package com.cmmplb.websocket.dao;
+package io.github.cmmplb.websocket.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cmmplb.websocket.domain.entity.MessageRecord;
-import com.cmmplb.websocket.domain.vo.MessageRecordVO;
+import io.github.cmmplb.websocket.domain.entity.MessageRecord;
+import io.github.cmmplb.websocket.domain.vo.MessageRecordVO;
 import org.apache.ibatis.annotations.Param;
 
 /**

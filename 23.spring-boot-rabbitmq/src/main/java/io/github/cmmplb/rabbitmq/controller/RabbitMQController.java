@@ -1,8 +1,8 @@
-package com.cmmplb.rabbitmq.controller;
+package io.github.cmmplb.rabbitmq.controller;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstants;
 import io.github.cmmplb.core.constants.StringConstant;
-import com.cmmplb.rabbitmq.service.ProducerService;
+import io.github.cmmplb.rabbitmq.service.ProducerService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;

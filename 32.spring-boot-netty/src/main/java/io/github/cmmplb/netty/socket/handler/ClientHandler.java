@@ -1,6 +1,6 @@
-package com.cmmplb.netty.socket.handler;
+package io.github.cmmplb.netty.socket.handler;
 
-import com.cmmplb.netty.socket.client.TcpClient;
+import io.github.cmmplb.netty.socket.client.TcpClient;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

@@ -1,6 +1,6 @@
-package com.cmmplb.netty.websocket.server;
+package io.github.cmmplb.netty.websocket.server;
 
-import com.cmmplb.netty.websocket.handler.WebSocketHandler;
+import io.github.cmmplb.netty.websocket.handler.WebSocketHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

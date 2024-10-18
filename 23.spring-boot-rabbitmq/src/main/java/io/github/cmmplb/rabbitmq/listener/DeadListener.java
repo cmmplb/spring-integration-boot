@@ -1,6 +1,6 @@
-package com.cmmplb.rabbitmq.listener;
+package io.github.cmmplb.rabbitmq.listener;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstants;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;

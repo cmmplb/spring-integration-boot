@@ -1,4 +1,4 @@
-package com.cmmplb.mybatis.entity;
+package io.github.cmmplb.mybatis.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;

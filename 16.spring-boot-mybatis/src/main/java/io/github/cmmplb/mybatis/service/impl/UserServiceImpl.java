@@ -1,11 +1,11 @@
-package com.cmmplb.mybatis.service.impl;
+package io.github.cmmplb.mybatis.service.impl;
 
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.mybatis.dao.UserMapper;
-import com.cmmplb.mybatis.entity.User;
-import com.cmmplb.mybatis.service.UserService;
-import com.cmmplb.mybatis.vo.UserInfoVO;
+import io.github.cmmplb.mybatis.dao.UserMapper;
+import io.github.cmmplb.mybatis.entity.User;
+import io.github.cmmplb.mybatis.service.UserService;
+import io.github.cmmplb.mybatis.vo.UserInfoVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

@@ -1,8 +1,8 @@
-package com.cmmplb.cache.service.impl;
+package io.github.cmmplb.cache.service.impl;
 
-import com.cmmplb.cache.domain.entity.User;
-import com.cmmplb.cache.mapper.UserMapper;
-import com.cmmplb.cache.service.UserService;
+import io.github.cmmplb.cache.domain.entity.User;
+import io.github.cmmplb.cache.mapper.UserMapper;
+import io.github.cmmplb.cache.service.UserService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

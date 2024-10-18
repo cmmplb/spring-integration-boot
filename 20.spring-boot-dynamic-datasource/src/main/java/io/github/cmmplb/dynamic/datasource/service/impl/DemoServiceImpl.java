@@ -1,11 +1,11 @@
-package com.cmmplb.dynamic.datasource.service.impl;
+package io.github.cmmplb.dynamic.datasource.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
-import com.cmmplb.dynamic.datasource.entity.Order;
-import com.cmmplb.dynamic.datasource.service.DemoService;
-import com.cmmplb.dynamic.datasource.service.GoodsService;
-import com.cmmplb.dynamic.datasource.service.OrderService;
-import com.cmmplb.dynamic.datasource.service.UserService;
+import io.github.cmmplb.dynamic.datasource.entity.Order;
+import io.github.cmmplb.dynamic.datasource.service.DemoService;
+import io.github.cmmplb.dynamic.datasource.service.GoodsService;
+import io.github.cmmplb.dynamic.datasource.service.OrderService;
+import io.github.cmmplb.dynamic.datasource.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

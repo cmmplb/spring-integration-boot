@@ -1,9 +1,9 @@
-package com.cmmplb.map.struct.advanced.controller;
+package io.github.cmmplb.map.struct.advanced.controller;
 
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import com.cmmplb.map.struct.advanced.service.AdvancedUserService;
-import com.cmmplb.map.struct.advanced.vo.UserVO;
+import io.github.cmmplb.map.struct.advanced.service.AdvancedUserService;
+import io.github.cmmplb.map.struct.advanced.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

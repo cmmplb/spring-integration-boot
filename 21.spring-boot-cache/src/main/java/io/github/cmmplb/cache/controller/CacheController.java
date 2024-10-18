@@ -1,10 +1,10 @@
-package com.cmmplb.cache.controller;
+package io.github.cmmplb.cache.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.cmmplb.cache.domain.entity.User;
-import com.cmmplb.cache.service.UserService;
-import com.cmmplb.cache.service.impl.RedisMessageListenerImpl;
-import com.cmmplb.cache.utils.RedisUtil;
+import io.github.cmmplb.cache.domain.entity.User;
+import io.github.cmmplb.cache.service.UserService;
+import io.github.cmmplb.cache.service.impl.RedisMessageListenerImpl;
+import io.github.cmmplb.cache.utils.RedisUtil;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;

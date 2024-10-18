@@ -1,4 +1,4 @@
-package com.cmmplb.canal.controller;
+package io.github.cmmplb.canal.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.github.cmmplb.core.beans.SelectVO;
@@ -8,11 +8,11 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import com.cmmplb.canal.vo.TestVO;
-import com.cmmplb.canal.dto.TestDTO;
-import com.cmmplb.canal.dto.TestQueryDTO;
-import com.cmmplb.canal.entity.Test;
-import com.cmmplb.canal.service.TestService;
+import io.github.cmmplb.canal.vo.TestVO;
+import io.github.cmmplb.canal.dto.TestDTO;
+import io.github.cmmplb.canal.dto.TestQueryDTO;
+import io.github.cmmplb.canal.entity.Test;
+import io.github.cmmplb.canal.service.TestService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

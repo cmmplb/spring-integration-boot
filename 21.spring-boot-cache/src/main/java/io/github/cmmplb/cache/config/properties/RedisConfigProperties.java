@@ -1,4 +1,4 @@
-package com.cmmplb.cache.config.properties;
+package io.github.cmmplb.cache.config.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

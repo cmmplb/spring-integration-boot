@@ -1,4 +1,4 @@
-package com.cmmplb.dynamic.datasource.plugin.interceptor;
+package io.github.cmmplb.dynamic.datasource.plugin.interceptor;
 
 
 import io.github.cmmplb.core.constants.StringConstant;

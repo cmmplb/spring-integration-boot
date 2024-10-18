@@ -1,4 +1,4 @@
-package com.cmmplb.data.jpa.entity;
+package io.github.cmmplb.data.jpa.entity;
 
 import lombok.Data;
 

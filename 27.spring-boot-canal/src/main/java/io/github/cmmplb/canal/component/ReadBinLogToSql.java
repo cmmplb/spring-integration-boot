@@ -1,4 +1,4 @@
-package com.cmmplb.canal.component;
+package io.github.cmmplb.canal.component;
 
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;

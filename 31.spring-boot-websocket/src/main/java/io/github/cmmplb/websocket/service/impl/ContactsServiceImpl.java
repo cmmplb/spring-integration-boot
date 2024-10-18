@@ -1,15 +1,15 @@
-package com.cmmplb.websocket.service.impl;
+package io.github.cmmplb.websocket.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.websocket.dao.ContactsMapper;
-import com.cmmplb.websocket.domain.entity.Contacts;
-import com.cmmplb.websocket.service.ContactsService;
-import com.cmmplb.websocket.utils.SecurityUtil;
-import com.cmmplb.websocket.domain.vo.ContactsInfoVO;
-import com.cmmplb.websocket.domain.vo.ContactsVO;
+import io.github.cmmplb.websocket.dao.ContactsMapper;
+import io.github.cmmplb.websocket.domain.entity.Contacts;
+import io.github.cmmplb.websocket.service.ContactsService;
+import io.github.cmmplb.websocket.utils.SecurityUtil;
+import io.github.cmmplb.websocket.domain.vo.ContactsInfoVO;
+import io.github.cmmplb.websocket.domain.vo.ContactsVO;
 import org.springframework.stereotype.Service;
 
 /**

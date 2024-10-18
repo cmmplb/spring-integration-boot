@@ -1,4 +1,4 @@
-package com.cmmplb.rabbitmq.constants;
+package io.github.cmmplb.rabbitmq.constants;
 
 /**
  * @author penglibo

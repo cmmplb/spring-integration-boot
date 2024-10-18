@@ -1,4 +1,4 @@
-package com.cmmplb.cache.utils;
+package io.github.cmmplb.cache.utils;
 
 import org.springframework.data.redis.connection.RedisServerCommands;
 import org.springframework.data.redis.core.RedisCallback;

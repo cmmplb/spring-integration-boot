@@ -1,6 +1,6 @@
 package io.github.cmmplb.rabbitmq;
 
-import com.cmmplb.rabbitmq.service.ProducerService;
+import io.github.cmmplb.rabbitmq.service.ProducerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

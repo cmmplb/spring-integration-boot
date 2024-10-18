@@ -1,8 +1,5 @@
-package com.cmmplb.cache.config;
+package io.github.cmmplb.cache.config;
 
-import com.cmmplb.cache.config.properties.CacheProperties;
-import io.github.cmmplb.core.constants.StringConstant;
-import io.github.cmmplb.core.utils.SpringUtil;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -11,6 +8,9 @@ import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
+import io.github.cmmplb.cache.config.properties.CacheProperties;
+import io.github.cmmplb.core.constants.StringConstant;
+import io.github.cmmplb.core.utils.SpringUtil;
 import org.cache2k.Cache2kBuilder;
 import org.cache2k.extra.spring.SpringCache2kCacheManager;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -59,7 +59,7 @@ public class CacheConfiguration {
         if (cacheProperties.getCacheType().equals(CacheProperties.CacheType.EHCACHE)) {
             cacheManager = new EhCacheCacheManager();
         }
-        // GuavaCacheManager被移除, 不再自动配置Guava缓存, 采用CaffeineCacheManager替换, 使用Caffiene替换Guava缓存. 
+        // GuavaCacheManager被移除, 不再自动配置Guava缓存, 采用CaffeineCacheManager替换, 使用Caffeine替换Guava缓存.
         if (cacheProperties.getCacheType().equals(CacheProperties.CacheType.CAFFEINE)) {
             cacheManager = new CaffeineCacheManager();
         }

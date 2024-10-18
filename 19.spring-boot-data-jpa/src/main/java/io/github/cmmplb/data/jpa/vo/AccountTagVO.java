@@ -1,8 +1,6 @@
-package com.cmmplb.data.jpa.vo;
+package io.github.cmmplb.data.jpa.vo;
 
 import lombok.Data;
-
-import javax.persistence.Column;
 
 /**
  * @author penglibo

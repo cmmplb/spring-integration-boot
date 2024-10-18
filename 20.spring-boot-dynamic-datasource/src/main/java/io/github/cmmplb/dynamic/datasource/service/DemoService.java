@@ -1,4 +1,4 @@
-package com.cmmplb.dynamic.datasource.service;
+package io.github.cmmplb.dynamic.datasource.service;
 
 /**
  * @author penglibo

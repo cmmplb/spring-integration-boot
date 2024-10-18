@@ -1,4 +1,4 @@
-package com.cmmplb.netty.websocket.handler;
+package io.github.cmmplb.netty.websocket.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

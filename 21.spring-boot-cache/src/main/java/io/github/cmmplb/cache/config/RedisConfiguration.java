@@ -1,8 +1,8 @@
-package com.cmmplb.cache.config;
+package io.github.cmmplb.cache.config;
 
-import com.cmmplb.cache.config.properties.RedisConfigProperties;
-import com.cmmplb.cache.config.serializer.FastJson2JsonRedisSerializer;
-import com.cmmplb.cache.service.impl.RedisMessageListenerImpl;
+import io.github.cmmplb.cache.config.properties.RedisConfigProperties;
+import io.github.cmmplb.cache.config.serializer.FastJson2JsonRedisSerializer;
+import io.github.cmmplb.cache.service.impl.RedisMessageListenerImpl;
 import io.github.cmmplb.core.exception.CustomException;
 import io.github.cmmplb.core.result.HttpCodeEnum;
 import io.github.cmmplb.core.utils.StringUtil;

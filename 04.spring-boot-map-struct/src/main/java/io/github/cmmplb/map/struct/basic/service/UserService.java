@@ -1,6 +1,6 @@
-package com.cmmplb.map.struct.basic.service;
+package io.github.cmmplb.map.struct.basic.service;
 
-import com.cmmplb.map.struct.basic.vo.UserVO;
+import io.github.cmmplb.map.struct.basic.vo.UserVO;
 
 import java.util.List;
 

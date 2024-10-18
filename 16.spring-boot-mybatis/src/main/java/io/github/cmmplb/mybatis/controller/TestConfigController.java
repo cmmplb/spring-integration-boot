@@ -1,11 +1,11 @@
-package com.cmmplb.mybatis.controller;
+package io.github.cmmplb.mybatis.controller;
 
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import com.cmmplb.mybatis.entity.User;
-import com.cmmplb.mybatis.service.UserService;
-import com.cmmplb.mybatis.vo.UserInfoVO;
+import io.github.cmmplb.mybatis.entity.User;
+import io.github.cmmplb.mybatis.service.UserService;
+import io.github.cmmplb.mybatis.vo.UserInfoVO;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;

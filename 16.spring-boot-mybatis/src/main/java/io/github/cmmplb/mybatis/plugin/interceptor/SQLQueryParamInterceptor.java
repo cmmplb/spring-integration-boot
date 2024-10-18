@@ -1,4 +1,4 @@
-package com.cmmplb.mybatis.plugin.interceptor;
+package io.github.cmmplb.mybatis.plugin.interceptor;
 
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.utils.ObjectUtil;

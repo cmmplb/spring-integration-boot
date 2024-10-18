@@ -1,8 +1,8 @@
-package com.cmmplb.websocket.dao;
+package io.github.cmmplb.websocket.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cmmplb.websocket.domain.entity.User;
-import com.cmmplb.websocket.domain.vo.UserInfoVO;
+import io.github.cmmplb.websocket.domain.entity.User;
+import io.github.cmmplb.websocket.domain.vo.UserInfoVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

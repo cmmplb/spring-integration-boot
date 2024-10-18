@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cmmplb.mybatis.plus.dao.UserMapper">
+<mapper namespace="io.github.cmmplb.mybatis.plus.dao.UserMapper">
 
     <!--  keyColumn="id" keyProperty="id" useGeneratedKeys="true" -->
 
@@ -8,7 +8,7 @@
     <cache eviction="LRU" flushInterval="108000" readOnly="false" size="1024"/>
 
     <!-- 声明缓存, 这里3.x只需要这样配置 -->
-    <!-- <cache-ref namespace="com.cmmplb.mybatis.plus.dao.UserMapper"/> -->
+    <!-- <cache-ref namespace="dao.io.github.cmmplb.mybatis.plus.UserMapper"/> -->
 
     <!-- 1. eviction：缓存回收策略：• 默认的是 LRU。
             LRU – 最近最少使用的：移除最长时间不被使用的对象。
@@ -45,7 +45,7 @@
     </sql>
 
     <!-- 如果一条语句每次都需要最新的数据, 就意味着每次都需要从数据库中查询数据, 可以把这个属性设置为false -->
-    <select id="selectByPaged" resultType="com.cmmplb.mybatis.plus.entity.User" useCache="false">
+    <select id="selectByPaged" resultType="io.github.cmmplb.mybatis.plus.entity.User" useCache="false">
         select
         <include refid="base_column"/>
         from `user` u
@@ -56,17 +56,17 @@
         from `user`
     </select>
 
-    <select id="getByList" resultType="com.cmmplb.mybatis.plus.entity.User">
+    <select id="getByList" resultType="io.github.cmmplb.mybatis.plus.entity.User">
         select *
         from `user`
         limit #{start},#{size}
     </select>
 
-    <resultMap id="info_map" type="com.cmmplb.mybatis.plus.vo.UserInfoVO">
+    <resultMap id="info_map" type="io.github.cmmplb.mybatis.plus.vo.UserInfoVO">
         <result column="id" property="id"/>
         <!-- 一对一子查询 -->
-        <association property="userInfo" javaType="com.cmmplb.mybatis.plus.entity.UserInfo" column="{id = id}"
-                     select="com.cmmplb.mybatis.plus.dao.UserInfoMapper.selectById"/>
+        <association property="userInfo" javaType="io.github.cmmplb.mybatis.plus.entity.UserInfo" column="{id = id}"
+                     select="io.github.cmmplb.mybatis.plus.dao.UserInfoMapper.selectById"/>
     </resultMap>
 
     <!-- 如果一条语句每次都需要最新的数据, 就意味着每次都需要从数据库中查询数据, 可以把这个属性设置为false -->
@@ -75,10 +75,10 @@
         where u.id = #{id}
     </select>
 
-    <resultMap id="sub_query_map" type="com.cmmplb.mybatis.plus.vo.UserInfoVO" extends="info_map">
+    <resultMap id="sub_query_map" type="io.github.cmmplb.mybatis.plus.vo.UserInfoVO" extends="info_map">
         <!-- 一对多子查询 -->
-        <collection property="tagList" javaType="java.util.List" ofType="com.cmmplb.mybatis.plus.entity.Tag"
-                    column="{userId = id}" select="com.cmmplb.mybatis.plus.dao.TagMapper.selectByUserId"/>
+        <collection property="tagList" javaType="java.util.List" ofType="io.github.cmmplb.mybatis.plus.entity.Tag"
+                    column="{userId = id}" select="io.github.cmmplb.mybatis.plus.dao.TagMapper.selectByUserId"/>
     </resultMap>
 
     <select id="selectTestOneMany2SubQuery" resultMap="sub_query_map">
@@ -86,9 +86,9 @@
         where u.id = #{id}
     </select>
 
-    <resultMap id="field_mapping_map" type="com.cmmplb.mybatis.plus.vo.UserInfoVO" extends="info_map">
+    <resultMap id="field_mapping_map" type="io.github.cmmplb.mybatis.plus.vo.UserInfoVO" extends="info_map">
         <!-- 字段映射 -->
-        <collection property="tagList" ofType="com.cmmplb.mybatis.plus.entity.Tag">
+        <collection property="tagList" ofType="io.github.cmmplb.mybatis.plus.entity.Tag">
             <id column="tag_id" property="id"/>
             <result column="tag_name" property="name"/>
             <result column="tag_create_by" property="createBy"/>

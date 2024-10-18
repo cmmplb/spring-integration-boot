@@ -1,4 +1,4 @@
-package com.cmmplb.data.jpa.vo;
+package io.github.cmmplb.data.jpa.vo;
 
 import io.github.cmmplb.core.utils.DateUtil;
 import lombok.Data;

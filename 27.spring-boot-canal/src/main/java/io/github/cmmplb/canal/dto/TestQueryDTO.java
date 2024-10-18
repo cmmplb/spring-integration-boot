@@ -1,4 +1,4 @@
-package com.cmmplb.canal.dto;
+package io.github.cmmplb.canal.dto;
 
 import io.github.cmmplb.core.beans.QueryPageBean;
 import io.swagger.annotations.ApiModel;

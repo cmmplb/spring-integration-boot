@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.domain.dto;
+package io.github.cmmplb.websocket.domain.dto;
 
 import io.github.cmmplb.core.beans.QueryPageBean;
 import lombok.Data;
