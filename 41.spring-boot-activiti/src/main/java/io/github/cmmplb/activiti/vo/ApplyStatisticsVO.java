@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.vo;
+package io.github.cmmplb.activiti.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

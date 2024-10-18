@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cmmplb.mybatis.plus.dao.TagMapper">
+<mapper namespace="io.github.cmmplb.mybatis.plus.dao.TagMapper">
     <sql id="base_column">
         <!-- @sql select -->
         t.`id`,
@@ -19,12 +19,12 @@
         from `tag` t
     </sql>
 
-    <select id="selectById" resultType="com.cmmplb.mybatis.plus.entity.Tag">
+    <select id="selectById" resultType="io.github.cmmplb.mybatis.plus.entity.Tag">
         <include refid="base_select"/>
         where t.`id` = #{id}
     </select>
 
-    <select id="selectByUserId" resultType="com.cmmplb.mybatis.plus.entity.Tag">
+    <select id="selectByUserId" resultType="io.github.cmmplb.mybatis.plus.entity.Tag">
         select
         <include refid="base_column"/>
         from `user_tag` ut

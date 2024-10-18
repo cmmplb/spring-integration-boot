@@ -1,14 +1,14 @@
-package com.cmmplb.dynamic.datasource.service.impl;
+package io.github.cmmplb.dynamic.datasource.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.dynamic.datasource.annotation.DSTransactional;
 import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.dynamic.datasource.annotation.Master;
-import com.cmmplb.dynamic.datasource.dao.UserMapper;
-import com.cmmplb.dynamic.datasource.entity.User;
-import com.cmmplb.dynamic.datasource.service.UserService;
+import io.github.cmmplb.dynamic.datasource.annotation.Master;
+import io.github.cmmplb.dynamic.datasource.dao.UserMapper;
+import io.github.cmmplb.dynamic.datasource.entity.User;
+import io.github.cmmplb.dynamic.datasource.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

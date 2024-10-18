@@ -1,4 +1,4 @@
-package com.cmmplb.rabbitmq.controller;
+package io.github.cmmplb.rabbitmq.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

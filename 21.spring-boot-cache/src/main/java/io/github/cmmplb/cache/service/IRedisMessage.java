@@ -1,6 +1,6 @@
-package com.cmmplb.cache.service;
+package io.github.cmmplb.cache.service;
 
-import com.cmmplb.cache.domain.dto.RedisMessage;
+import io.github.cmmplb.cache.domain.dto.RedisMessage;
 
 /**
  * @author penglibo

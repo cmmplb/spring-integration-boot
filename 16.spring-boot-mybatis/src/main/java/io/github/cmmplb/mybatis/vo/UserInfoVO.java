@@ -1,7 +1,7 @@
-package com.cmmplb.mybatis.vo;
+package io.github.cmmplb.mybatis.vo;
 
-import com.cmmplb.mybatis.entity.Tag;
-import com.cmmplb.mybatis.entity.UserInfo;
+import io.github.cmmplb.mybatis.entity.Tag;
+import io.github.cmmplb.mybatis.entity.UserInfo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

@@ -1,8 +1,8 @@
-package com.cmmplb.mybatis.aspect;
+package io.github.cmmplb.mybatis.aspect;
 
-import com.cmmplb.mybatis.handler.exception.LockerException;
-import com.cmmplb.mybatis.handler.exception.RetryException;
-import com.cmmplb.mybatis.plugin.propertise.LockerProperties;
+import io.github.cmmplb.mybatis.handler.exception.LockerException;
+import io.github.cmmplb.mybatis.handler.exception.RetryException;
+import io.github.cmmplb.mybatis.plugin.propertise.LockerProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -32,8 +32,8 @@ public class RetryAspect {
     @Autowired
     private LockerProperties lockerProperties;
 
-    @Pointcut("@annotation(com.cmmplb.mybatis.annotations.Retry)")
-//    @Pointcut("execution(public * com.cmmplb.mybatis..*(..))")
+    @Pointcut("@annotation(io.github.cmmplb.mybatis.annotations.Retry)")
+//    @Pointcut("execution(public * io.github.cmmplb.mybatis..*(..))")
     public void pointcut() {
     }
 

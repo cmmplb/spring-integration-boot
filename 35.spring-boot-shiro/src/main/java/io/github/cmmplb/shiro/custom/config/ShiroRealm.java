@@ -84,8 +84,8 @@ public class ShiroRealm extends AuthorizingRealm {
 
     /**
      * 必须重写此方法, 不然Shiro会报错
-     * org.apache.shiro.authc.pam.UnsupportedTokenException: Realm [com.cmmplb.shiro.config.ShiroRealm@83829d]
-     * does not support authentication token [com.cmmplb.shiro.general.filter.AuthFilter$1@3b562275].
+     * org.apache.shiro.authc.pam.UnsupportedTokenException: Realm [io.github.cmmplb.shiro.config.ShiroRealm@83829d]
+     * does not support authentication token [io.github.cmmplb.shiro.general.filter.AuthFilter$1@3b562275].
      * Please ensure that the appropriate Realm implementation is configured correctly or that the realm accepts
      * AuthenticationTokens of this type
      */

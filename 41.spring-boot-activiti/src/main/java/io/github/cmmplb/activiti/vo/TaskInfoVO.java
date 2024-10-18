@@ -1,6 +1,6 @@
-package com.cmmplb.activiti.vo;
+package io.github.cmmplb.activiti.vo;
 
-import com.cmmplb.activiti.constant.KeyConstant;
+import io.github.cmmplb.activiti.constant.KeyConstant;
 import io.github.cmmplb.core.constants.GlobalConstant;
 import io.github.cmmplb.core.utils.StringUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;

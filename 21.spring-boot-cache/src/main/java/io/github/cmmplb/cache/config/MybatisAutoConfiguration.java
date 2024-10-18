@@ -1,4 +1,4 @@
-package com.cmmplb.cache.config;
+package io.github.cmmplb.cache.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@MapperScan(basePackages = {"com.cmmplb.cache.mapper"})
+@MapperScan(basePackages = {"io.github.cmmplb.cache.mapper"})
 public class MybatisAutoConfiguration {
 
 }

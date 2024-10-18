@@ -1,9 +1,9 @@
-package com.cmmplb.netty.socket.server;
+package io.github.cmmplb.netty.socket.server;
 
 
-import com.cmmplb.netty.coder.SocketDecoder;
-import com.cmmplb.netty.coder.SocketEncoder;
-import com.cmmplb.netty.socket.handler.ServerHandler;
+import io.github.cmmplb.netty.coder.SocketDecoder;
+import io.github.cmmplb.netty.coder.SocketEncoder;
+import io.github.cmmplb.netty.socket.handler.ServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

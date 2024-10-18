@@ -1,8 +1,8 @@
-package com.cmmplb.mybatis.service;
+package io.github.cmmplb.mybatis.service;
 
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.mybatis.entity.UserInfo;
+import io.github.cmmplb.mybatis.entity.UserInfo;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package com.cmmplb.dynamic.datasource.service.impl;
+package io.github.cmmplb.dynamic.datasource.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cmmplb.dynamic.datasource.dao.GoodsMapper;
-import com.cmmplb.dynamic.datasource.entity.Goods;
-import com.cmmplb.dynamic.datasource.service.GoodsService;
+import io.github.cmmplb.dynamic.datasource.dao.GoodsMapper;
+import io.github.cmmplb.dynamic.datasource.entity.Goods;
+import io.github.cmmplb.dynamic.datasource.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

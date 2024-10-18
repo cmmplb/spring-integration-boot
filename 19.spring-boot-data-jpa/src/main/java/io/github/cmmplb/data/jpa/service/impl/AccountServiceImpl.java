@@ -1,12 +1,12 @@
-package com.cmmplb.data.jpa.service.impl;
+package io.github.cmmplb.data.jpa.service.impl;
 
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.data.jpa.dao.AccountDao;
-import com.cmmplb.data.jpa.repository.AccountRepository;
-import com.cmmplb.data.jpa.entity.Account;
-import com.cmmplb.data.jpa.service.AccountService;
-import com.cmmplb.data.jpa.vo.AccountInfoVO;
+import io.github.cmmplb.data.jpa.dao.AccountDao;
+import io.github.cmmplb.data.jpa.repository.AccountRepository;
+import io.github.cmmplb.data.jpa.entity.Account;
+import io.github.cmmplb.data.jpa.service.AccountService;
+import io.github.cmmplb.data.jpa.vo.AccountInfoVO;
 import com.querydsl.core.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;

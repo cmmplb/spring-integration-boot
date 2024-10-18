@@ -1,13 +1,13 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cmmplb.activiti.dto.ApplyDTO;
-import com.cmmplb.activiti.dto.ApplyStatisticsTimeDTO;
-import com.cmmplb.activiti.entity.Apply;
-import com.cmmplb.activiti.entity.LeaveApplyDate;
-import com.cmmplb.activiti.vo.ApplyDetailsVO;
-import com.cmmplb.activiti.vo.ApplyStatisticsVO;
-import com.cmmplb.activiti.vo.ApplyVO;
+import io.github.cmmplb.activiti.dto.ApplyDTO;
+import io.github.cmmplb.activiti.dto.ApplyStatisticsTimeDTO;
+import io.github.cmmplb.activiti.entity.Apply;
+import io.github.cmmplb.activiti.entity.LeaveApplyDate;
+import io.github.cmmplb.activiti.vo.ApplyDetailsVO;
+import io.github.cmmplb.activiti.vo.ApplyStatisticsVO;
+import io.github.cmmplb.activiti.vo.ApplyVO;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
 

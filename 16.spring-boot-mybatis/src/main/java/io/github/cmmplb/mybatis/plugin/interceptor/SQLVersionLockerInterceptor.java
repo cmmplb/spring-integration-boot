@@ -1,4 +1,4 @@
-package com.cmmplb.mybatis.plugin.interceptor;
+package io.github.cmmplb.mybatis.plugin.interceptor;
 
 /**
  * @author penglibo
@@ -7,8 +7,8 @@ package com.cmmplb.mybatis.plugin.interceptor;
  * 乐观锁：数据版本插件
  */
 
-import com.cmmplb.mybatis.handler.exception.LockerException;
-import com.cmmplb.mybatis.plugin.propertise.LockerProperties;
+import io.github.cmmplb.mybatis.handler.exception.LockerException;
+import io.github.cmmplb.mybatis.plugin.propertise.LockerProperties;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.utils.PatternUtil;
 import lombok.extern.slf4j.Slf4j;

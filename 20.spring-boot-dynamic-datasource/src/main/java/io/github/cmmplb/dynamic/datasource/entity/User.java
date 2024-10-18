@@ -1,4 +1,4 @@
-package com.cmmplb.dynamic.datasource.entity;
+package io.github.cmmplb.dynamic.datasource.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

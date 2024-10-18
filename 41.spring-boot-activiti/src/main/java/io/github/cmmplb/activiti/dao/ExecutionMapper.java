@@ -1,9 +1,9 @@
-package com.cmmplb.activiti.dao;
+package io.github.cmmplb.activiti.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cmmplb.activiti.entity.Execution;
-import com.cmmplb.activiti.vo.LeaveApplyVO;
+import io.github.cmmplb.activiti.entity.Execution;
+import io.github.cmmplb.activiti.vo.LeaveApplyVO;
 import io.github.cmmplb.core.beans.QueryPageBean;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.vo;
+package io.github.cmmplb.activiti.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;

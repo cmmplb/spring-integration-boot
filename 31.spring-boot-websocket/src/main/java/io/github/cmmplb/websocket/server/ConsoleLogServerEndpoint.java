@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.server;
+package io.github.cmmplb.websocket.server;
 
 import io.github.cmmplb.core.utils.ErrorUtil;
 import io.github.cmmplb.core.utils.LogDirUtil;

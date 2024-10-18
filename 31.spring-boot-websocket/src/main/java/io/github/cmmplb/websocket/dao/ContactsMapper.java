@@ -1,10 +1,10 @@
-package com.cmmplb.websocket.dao;
+package io.github.cmmplb.websocket.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cmmplb.websocket.domain.entity.Contacts;
-import com.cmmplb.websocket.domain.vo.ContactsInfoVO;
-import com.cmmplb.websocket.domain.vo.ContactsVO;
+import io.github.cmmplb.websocket.domain.entity.Contacts;
+import io.github.cmmplb.websocket.domain.vo.ContactsInfoVO;
+import io.github.cmmplb.websocket.domain.vo.ContactsVO;
 import org.apache.ibatis.annotations.Param;
 
 /**

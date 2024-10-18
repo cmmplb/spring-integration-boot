@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.service.impl;
+package io.github.cmmplb.websocket.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -6,14 +6,14 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.constants.GlobalConstant;
 import io.github.cmmplb.core.utils.ListUtil;
-import com.cmmplb.websocket.dao.RecentlyMessageMapper;
-import com.cmmplb.websocket.domain.dto.RecentlyMessagePageQueryDTO;
-import com.cmmplb.websocket.domain.entity.MessageRecord;
-import com.cmmplb.websocket.domain.entity.RecentlyMessage;
-import com.cmmplb.websocket.service.MessageRecordService;
-import com.cmmplb.websocket.service.RecentlyMessageService;
-import com.cmmplb.websocket.utils.SecurityUtil;
-import com.cmmplb.websocket.domain.vo.RecentlyMessageVO;
+import io.github.cmmplb.websocket.dao.RecentlyMessageMapper;
+import io.github.cmmplb.websocket.domain.dto.RecentlyMessagePageQueryDTO;
+import io.github.cmmplb.websocket.domain.entity.MessageRecord;
+import io.github.cmmplb.websocket.domain.entity.RecentlyMessage;
+import io.github.cmmplb.websocket.service.MessageRecordService;
+import io.github.cmmplb.websocket.service.RecentlyMessageService;
+import io.github.cmmplb.websocket.utils.SecurityUtil;
+import io.github.cmmplb.websocket.domain.vo.RecentlyMessageVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;

@@ -1,7 +1,7 @@
-package com.cmmplb.netty.socket.handler;
+package io.github.cmmplb.netty.socket.handler;
 
 
-import com.cmmplb.netty.socket.entity.BusinessEntity;
+import io.github.cmmplb.netty.socket.entity.BusinessEntity;
 import org.springframework.beans.factory.InitializingBean;
 
 /**

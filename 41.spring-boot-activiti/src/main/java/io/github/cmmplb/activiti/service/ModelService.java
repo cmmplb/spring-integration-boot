@@ -1,7 +1,7 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
-import com.cmmplb.activiti.dto.ModelDTO;
-import com.cmmplb.activiti.vo.ModelVO;
+import io.github.cmmplb.activiti.dto.ModelDTO;
+import io.github.cmmplb.activiti.vo.ModelVO;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
 import com.fasterxml.jackson.databind.node.ObjectNode;

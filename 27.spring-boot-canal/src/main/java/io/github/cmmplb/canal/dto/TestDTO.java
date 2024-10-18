@@ -1,4 +1,4 @@
-package com.cmmplb.canal.dto;
+package io.github.cmmplb.canal.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

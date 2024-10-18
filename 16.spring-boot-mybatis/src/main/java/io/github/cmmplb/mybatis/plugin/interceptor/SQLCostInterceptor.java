@@ -1,4 +1,4 @@
-package com.cmmplb.mybatis.plugin.interceptor;
+package io.github.cmmplb.mybatis.plugin.interceptor;
 
 import io.github.cmmplb.core.utils.PatternUtil;
 import lombok.extern.slf4j.Slf4j;

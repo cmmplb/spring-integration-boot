@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.domain.vo;
+package io.github.cmmplb.websocket.domain.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

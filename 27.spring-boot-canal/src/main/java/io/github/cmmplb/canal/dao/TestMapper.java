@@ -1,10 +1,10 @@
-package com.cmmplb.canal.dao;
+package io.github.cmmplb.canal.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cmmplb.canal.dto.TestQueryDTO;
-import com.cmmplb.canal.entity.Test;
-import com.cmmplb.canal.vo.TestVO;
+import io.github.cmmplb.canal.dto.TestQueryDTO;
+import io.github.cmmplb.canal.entity.Test;
+import io.github.cmmplb.canal.vo.TestVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,6 +1,5 @@
-package com.cmmplb.data.jpa.entity;
+package io.github.cmmplb.data.jpa.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +14,7 @@ import java.util.Date;
  * 标签
  * at java.lang.String.valueOf(String.java:2994)
  * at java.lang.StringBuilder.append(StringBuilder.java:131)
- * at com.cmmplb.data.jpa.entity.Account.toString(Account.java:18)
+ * at io.github.cmmplb.data.jpa.entity.Account.toString(Account.java:18)
  */
 
 // @Data // 👆 此处不能用Data注解, 因为和用户类相互引用, 使用Data注解会重写equals等方法, 如果两个类都用Data注解会报错

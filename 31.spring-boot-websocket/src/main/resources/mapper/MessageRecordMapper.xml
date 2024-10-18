@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cmmplb.websocket.dao.MessageRecordMapper">
+<mapper namespace="io.github.cmmplb.websocket.dao.MessageRecordMapper">
     <!-- 这里用union all替换or查询 -->
-    <select id="selectUserMessageRecordByPaged" resultType="com.cmmplb.websocket.domain.vo.MessageRecordVO">
+    <select id="selectUserMessageRecordByPaged" resultType="io.github.cmmplb.websocket.domain.vo.MessageRecordVO">
         select cmr.id,
                cmr.`name`        as name,
                cmr.`avatar`      as avatar,
@@ -50,7 +50,7 @@
         order by cmr.`send_time` desc
     </select>
 
-    <select id="selectGroupMessageRecordByPaged" resultType="com.cmmplb.websocket.domain.vo.MessageRecordVO">
+    <select id="selectGroupMessageRecordByPaged" resultType="io.github.cmmplb.websocket.domain.vo.MessageRecordVO">
         select cmr.`id`                                      as id
              , concat(cmr.`type`, '-', cmr.`send_business_id`) as businessId
              , cmr.`type`                                    as type

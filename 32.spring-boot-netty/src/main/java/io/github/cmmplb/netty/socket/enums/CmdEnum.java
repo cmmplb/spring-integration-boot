@@ -1,4 +1,4 @@
-package com.cmmplb.netty.socket.enums;
+package io.github.cmmplb.netty.socket.enums;
 
 /**
  * @author penglibo

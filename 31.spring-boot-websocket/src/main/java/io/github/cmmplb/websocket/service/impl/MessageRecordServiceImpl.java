@@ -1,17 +1,17 @@
-package com.cmmplb.websocket.service.impl;
+package io.github.cmmplb.websocket.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.constants.GlobalConstant;
-import com.cmmplb.websocket.dao.MessageRecordMapper;
-import com.cmmplb.websocket.domain.dto.MessageRecordPageQueryDTO;
-import com.cmmplb.websocket.domain.entity.MessageRecord;
-import com.cmmplb.websocket.handler.ChatTextWebSocketHandler;
-import com.cmmplb.websocket.service.MessageRecordService;
-import com.cmmplb.websocket.utils.SecurityUtil;
-import com.cmmplb.websocket.domain.vo.MessageRecordVO;
+import io.github.cmmplb.websocket.dao.MessageRecordMapper;
+import io.github.cmmplb.websocket.domain.dto.MessageRecordPageQueryDTO;
+import io.github.cmmplb.websocket.domain.entity.MessageRecord;
+import io.github.cmmplb.websocket.handler.ChatTextWebSocketHandler;
+import io.github.cmmplb.websocket.service.MessageRecordService;
+import io.github.cmmplb.websocket.utils.SecurityUtil;
+import io.github.cmmplb.websocket.domain.vo.MessageRecordVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;

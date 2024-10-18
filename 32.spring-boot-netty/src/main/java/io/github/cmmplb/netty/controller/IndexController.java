@@ -1,4 +1,4 @@
-package com.cmmplb.netty.controller;
+package io.github.cmmplb.netty.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

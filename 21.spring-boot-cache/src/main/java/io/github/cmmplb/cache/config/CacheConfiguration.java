@@ -1,6 +1,6 @@
-package com.cmmplb.cache.config;
+package io.github.cmmplb.cache.config;
 
-import com.cmmplb.cache.config.properties.CacheProperties;
+import io.github.cmmplb.cache.config.properties.CacheProperties;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.utils.SpringUtil;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;

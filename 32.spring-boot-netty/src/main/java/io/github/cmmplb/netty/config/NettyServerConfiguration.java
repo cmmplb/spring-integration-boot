@@ -1,8 +1,8 @@
-package com.cmmplb.netty.config;
+package io.github.cmmplb.netty.config;
 
-import com.cmmplb.netty.properties.PortProperties;
-import com.cmmplb.netty.socket.server.SocketServer;
-import com.cmmplb.netty.websocket.server.WebSocketServer;
+import io.github.cmmplb.netty.properties.PortProperties;
+import io.github.cmmplb.netty.socket.server.SocketServer;
+import io.github.cmmplb.netty.websocket.server.WebSocketServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

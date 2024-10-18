@@ -18,6 +18,6 @@ mybatis-plus:
     - classpath:mapper/*.xml
     - classpath:mapper/*/*.xml
   # type-aliases扫描路径-mapper.xml的resultType中直接写类名, 可以不用写全限定名
-  type-aliases-package: com.cmmplb.dynamic.datasource.entity
+  type-aliases-package: io.github.cmmplb.dynamic.datasource.entity
   # 配置通用枚举包
-  type-enums-package: com.cmmplb.dynamic.datasource.enums
+  type-enums-package: io.github.cmmplb.dynamic.datasource.enums

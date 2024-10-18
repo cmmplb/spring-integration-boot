@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.utils;
+package io.github.cmmplb.websocket.utils;
 
 import io.github.cmmplb.core.utils.ServletUtil;
 

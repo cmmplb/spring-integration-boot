@@ -1,6 +1,6 @@
-package com.cmmplb.mybatis.service;
+package io.github.cmmplb.mybatis.service;
 
-import com.cmmplb.mybatis.entity.Tag;
+import io.github.cmmplb.mybatis.entity.Tag;
 
 /**
  * @author penglibo

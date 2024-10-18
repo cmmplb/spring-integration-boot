@@ -1,8 +1,8 @@
-package com.cmmplb.netty.socket.client;
+package io.github.cmmplb.netty.socket.client;
 
-import com.cmmplb.netty.coder.WebSocketDecoder;
-import com.cmmplb.netty.coder.WebSocketEncoder;
-import com.cmmplb.netty.socket.handler.ClientHandler;
+import io.github.cmmplb.netty.coder.WebSocketDecoder;
+import io.github.cmmplb.netty.coder.WebSocketEncoder;
+import io.github.cmmplb.netty.socket.handler.ClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

@@ -1,8 +1,8 @@
-package com.cmmplb.map.struct.basic.convert;
+package io.github.cmmplb.map.struct.basic.convert;
 
-import com.cmmplb.map.struct.basic.dto.UserDTO;
-import com.cmmplb.map.struct.basic.entity.User;
-import com.cmmplb.map.struct.basic.vo.UserVO;
+import io.github.cmmplb.map.struct.basic.dto.UserDTO;
+import io.github.cmmplb.map.struct.basic.entity.User;
+import io.github.cmmplb.map.struct.basic.vo.UserVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

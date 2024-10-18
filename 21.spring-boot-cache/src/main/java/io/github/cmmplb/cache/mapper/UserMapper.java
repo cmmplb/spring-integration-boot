@@ -1,6 +1,6 @@
-package com.cmmplb.cache.mapper;
+package io.github.cmmplb.cache.mapper;
 
-import com.cmmplb.cache.domain.entity.User;
+import io.github.cmmplb.cache.domain.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,4 +1,4 @@
-package com.cmmplb.cache.domain.dto;
+package io.github.cmmplb.cache.domain.dto;
 
 import org.springframework.data.redis.connection.DefaultMessage;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;

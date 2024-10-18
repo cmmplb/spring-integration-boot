@@ -1,9 +1,9 @@
-package com.cmmplb.data.jpa.service;
+package io.github.cmmplb.data.jpa.service;
 
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
-import com.cmmplb.data.jpa.entity.Account;
-import com.cmmplb.data.jpa.vo.AccountInfoVO;
+import io.github.cmmplb.data.jpa.entity.Account;
+import io.github.cmmplb.data.jpa.vo.AccountInfoVO;
 import com.querydsl.core.Tuple;
 import org.springframework.data.domain.Page;
 

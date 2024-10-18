@@ -1,7 +1,7 @@
-package com.cmmplb.rabbitmq.service.impl;
+package io.github.cmmplb.rabbitmq.service.impl;
 
-import com.cmmplb.rabbitmq.constants.RabbitMqConstants;
-import com.cmmplb.rabbitmq.service.ProducerService;
+import io.github.cmmplb.rabbitmq.constants.RabbitMqConstants;
+import io.github.cmmplb.rabbitmq.service.ProducerService;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,7 @@ public class ProducerServiceImpl implements ProducerService {
         // 两种方式：
         // 1、可以发送到有消费者的队列, 拒绝消费
         // rabbitTemplate.convertAndSend(GlobalConstant.COMMON_EXCHANGE, routingKey, message);
-        // 2、发送到没有消费者的队列, 设置队列过期时间-需要注释掉消费者-com.cmmplb.rabbitmq.listener.DeadListener.commonListener
+        // 2、发送到没有消费者的队列, 设置队列过期时间-需要注释掉消费者-io.github.cmmplb.rabbitmq.listener.DeadListener.commonListener
         rabbitTemplate.convertAndSend(RabbitMqConstants.COMMON_QUEUE, message, m -> {
             MessageProperties messageProperties = m.getMessageProperties();
             //为每条消息设定过期时间

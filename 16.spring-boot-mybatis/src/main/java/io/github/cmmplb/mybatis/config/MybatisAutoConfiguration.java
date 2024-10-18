@@ -1,4 +1,4 @@
-package com.cmmplb.mybatis.config;
+package io.github.cmmplb.mybatis.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@MapperScan(basePackages = {"com.cmmplb.mybatis.dao"})
+@MapperScan(basePackages = {"io.github.cmmplb.mybatis.dao"})
 public class MybatisAutoConfiguration {
 
 //    /**
@@ -69,7 +69,7 @@ public class MybatisAutoConfiguration {
 //        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 //        sqlSessionFactoryBean.setPlugins(new Interceptor[]{new SQLQueryParamInterceptor(), new SQLUpdateParamInterceptor()});
 //        sqlSessionFactoryBean.setDataSource(dataSource);
-//        sqlSessionFactoryBean.setTypeAliasesPackage("com.cmmplb.mybatis.entity");
+//        sqlSessionFactoryBean.setTypeAliasesPackage("io.github.cmmplb.mybatis.entity");
 //        sqlSessionFactoryBean.setMapperLocations(resolveMapperLocations());
 //        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
 //        // 开启驼峰配置

@@ -1,8 +1,8 @@
 package io.github.cmmplb.mybatis;
 
-import com.cmmplb.mybatis.dao.UserMapper;
-import com.cmmplb.mybatis.entity.User;
-import com.cmmplb.mybatis.service.UserService;
+import io.github.cmmplb.mybatis.dao.UserMapper;
+import io.github.cmmplb.mybatis.entity.User;
+import io.github.cmmplb.mybatis.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -117,7 +117,7 @@ public class MybatisTest {
             // 如果将该方法放在一个事务当中,一级缓存又生效了. 乐观锁重试的Bug就是由于在此场景下使用了一级缓存, 查询不到最新的数据库数据导致的
             // 实践中, 将Mybatis和Spring进行整合开发, 事务控制在service中. 如果是执行两次service调用查询相同的用户信息, 不走一级缓存, 因为Service方法结束, SqlSession就关闭, 一级缓存就清空. 
         }
-        // 打印出了命中缓存的概率为：0.5.    -> Cache Hit Ratio [com.cmmplb.mybatis.dao.UserMapper]: 0.5
+        // 打印出了命中缓存的概率为：0.5.    -> Cache Hit Ratio [io.github.cmmplb.mybatis.dao.UserMapper]: 0.5
 
         // 由于cache是针对整个Mapper中的查询方法的, 因此当某个方法不需要缓存时, 可在对应的select标签中添加useCache值为false来禁用二级缓存. 
     }

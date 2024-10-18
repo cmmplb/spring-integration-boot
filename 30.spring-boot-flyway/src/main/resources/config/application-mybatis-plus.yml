@@ -14,7 +14,7 @@ mybatis-plus:
   mapper-locations:
     - classpath:mapper/*.xml
     - classpath:mapper/*/*.xml
-  type-aliases-package: com.cmmplb.flyway.entity  # type-aliases扫描路径-mapper.xml的resultType中直接写类名, 可以不用写全限定名
-  type-enums-package: com.cmmplb.flyway.enums # 配置通用枚举包
+  type-aliases-package: io.github.cmmplb.flyway.entity  # type-aliases扫描路径-mapper.xml的resultType中直接写类名, 可以不用写全限定名
+  type-enums-package: io.github.cmmplb.flyway.enums # 配置通用枚举包
 
 

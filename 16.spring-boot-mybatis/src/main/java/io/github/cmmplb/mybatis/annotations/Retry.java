@@ -1,4 +1,4 @@
-package com.cmmplb.mybatis.annotations;
+package io.github.cmmplb.mybatis.annotations;
 
 import java.lang.annotation.*;
 

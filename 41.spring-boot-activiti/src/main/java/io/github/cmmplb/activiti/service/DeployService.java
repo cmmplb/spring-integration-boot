@@ -1,7 +1,7 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
-import com.cmmplb.activiti.dto.SuspendActivateProcessDefinitionDTO;
-import com.cmmplb.activiti.vo.ProcessDefinitionVO;
+import io.github.cmmplb.activiti.dto.SuspendActivateProcessDefinitionDTO;
+import io.github.cmmplb.activiti.vo.ProcessDefinitionVO;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
 import org.springframework.web.multipart.MultipartFile;

@@ -1,8 +1,8 @@
-package com.cmmplb.netty.utils;
+package io.github.cmmplb.netty.utils;
 
 
-import com.cmmplb.netty.socket.entity.NettyMessage;
-import com.cmmplb.netty.socket.handler.ServerHandler;
+import io.github.cmmplb.netty.socket.entity.NettyMessage;
+import io.github.cmmplb.netty.socket.handler.ServerHandler;
 import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

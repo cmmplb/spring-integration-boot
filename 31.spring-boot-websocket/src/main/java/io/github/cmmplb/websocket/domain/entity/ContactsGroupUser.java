@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.domain.entity;
+package io.github.cmmplb.websocket.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

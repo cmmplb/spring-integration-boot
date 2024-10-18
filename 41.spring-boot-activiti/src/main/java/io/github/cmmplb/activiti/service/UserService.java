@@ -1,8 +1,8 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cmmplb.activiti.entity.User;
-import com.cmmplb.activiti.vo.UserInfoVO;
+import io.github.cmmplb.activiti.entity.User;
+import io.github.cmmplb.activiti.vo.UserInfoVO;
 
 import java.util.List;
 import java.util.Set;

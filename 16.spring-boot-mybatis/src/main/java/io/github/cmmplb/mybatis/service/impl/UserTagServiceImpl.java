@@ -1,8 +1,8 @@
-package com.cmmplb.mybatis.service.impl;
+package io.github.cmmplb.mybatis.service.impl;
 
-import com.cmmplb.mybatis.dao.UserTagMapper;
-import com.cmmplb.mybatis.entity.UserTag;
-import com.cmmplb.mybatis.service.UserTagService;
+import io.github.cmmplb.mybatis.dao.UserTagMapper;
+import io.github.cmmplb.mybatis.entity.UserTag;
+import io.github.cmmplb.mybatis.service.UserTagService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

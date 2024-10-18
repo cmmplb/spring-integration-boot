@@ -1,4 +1,4 @@
-package com.cmmplb.canal.entity;
+package io.github.cmmplb.canal.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

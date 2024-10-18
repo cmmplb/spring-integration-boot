@@ -1,12 +1,12 @@
-package com.cmmplb.websocket.controller;
+package io.github.cmmplb.websocket.controller;
 
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
-import com.cmmplb.websocket.service.ContactsService;
-import com.cmmplb.websocket.domain.vo.ContactsInfoVO;
-import com.cmmplb.websocket.domain.vo.ContactsVO;
+import io.github.cmmplb.websocket.service.ContactsService;
+import io.github.cmmplb.websocket.domain.vo.ContactsInfoVO;
+import io.github.cmmplb.websocket.domain.vo.ContactsVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

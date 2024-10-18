@@ -1,7 +1,7 @@
-package com.cmmplb.netty.socket.factory;
+package io.github.cmmplb.netty.socket.factory;
 
 
-import com.cmmplb.netty.socket.handler.DeviceAbstractHandler;
+import io.github.cmmplb.netty.socket.handler.DeviceAbstractHandler;
 
 import java.util.HashMap;
 import java.util.Map;

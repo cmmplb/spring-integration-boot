@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.vo;
+package io.github.cmmplb.activiti.vo;
 
 import lombok.Data;
 

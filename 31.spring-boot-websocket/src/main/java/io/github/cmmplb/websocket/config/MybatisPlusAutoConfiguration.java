@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.config;
+package io.github.cmmplb.websocket.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 
 @Configuration
-@MapperScan(basePackages = {"com.cmmplb.websocket.dao"})
+@MapperScan(basePackages = {"io.github.cmmplb.websocket.dao"})
 public class MybatisPlusAutoConfiguration implements WebMvcConfigurer {
 
     @Bean

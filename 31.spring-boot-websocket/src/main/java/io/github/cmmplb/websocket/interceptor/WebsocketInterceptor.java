@@ -1,4 +1,4 @@
-package com.cmmplb.websocket.interceptor;
+package io.github.cmmplb.websocket.interceptor;
 
 import io.github.cmmplb.core.utils.MapObjectUtil;
 import lombok.extern.slf4j.Slf4j;

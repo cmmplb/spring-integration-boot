@@ -1,12 +1,12 @@
-package com.cmmplb.canal.service;
+package io.github.cmmplb.canal.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.github.cmmplb.core.beans.SelectVO;
-import com.cmmplb.canal.dto.TestDTO;
-import com.cmmplb.canal.dto.TestQueryDTO;
-import com.cmmplb.canal.entity.Test;
-import com.cmmplb.canal.vo.TestVO;
+import io.github.cmmplb.canal.dto.TestDTO;
+import io.github.cmmplb.canal.dto.TestQueryDTO;
+import io.github.cmmplb.canal.entity.Test;
+import io.github.cmmplb.canal.vo.TestVO;
 import java.util.List;
 
 /**
