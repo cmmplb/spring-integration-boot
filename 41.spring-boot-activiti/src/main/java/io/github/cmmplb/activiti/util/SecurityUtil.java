@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.util;
+package io.github.cmmplb.activiti.util;
 
 import io.github.cmmplb.core.utils.ServletUtil;
 

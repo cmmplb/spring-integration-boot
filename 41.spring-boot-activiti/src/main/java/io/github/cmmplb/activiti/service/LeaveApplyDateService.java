@@ -1,10 +1,10 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cmmplb.activiti.dto.LeaveApplyDTO;
-import com.cmmplb.activiti.entity.LeaveApply;
-import com.cmmplb.activiti.entity.LeaveApplyDate;
-import com.cmmplb.activiti.vo.LeaveApplyVO;
+import io.github.cmmplb.activiti.dto.LeaveApplyDTO;
+import io.github.cmmplb.activiti.entity.LeaveApply;
+import io.github.cmmplb.activiti.entity.LeaveApplyDate;
+import io.github.cmmplb.activiti.vo.LeaveApplyVO;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
 

@@ -1,9 +1,9 @@
-package com.cmmplb.activiti.controller;
+package io.github.cmmplb.activiti.controller;
 
-import com.cmmplb.activiti.dto.ApplyDTO;
-import com.cmmplb.activiti.service.ApplyService;
-import com.cmmplb.activiti.vo.ApplyDetailsVO;
-import com.cmmplb.activiti.vo.ApplyVO;
+import io.github.cmmplb.activiti.dto.ApplyDTO;
+import io.github.cmmplb.activiti.service.ApplyService;
+import io.github.cmmplb.activiti.vo.ApplyDetailsVO;
+import io.github.cmmplb.activiti.vo.ApplyVO;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;

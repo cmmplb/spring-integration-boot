@@ -1,9 +1,9 @@
-package com.cmmplb.activiti.controller;
+package io.github.cmmplb.activiti.controller;
 
-import com.cmmplb.activiti.service.ActivitiService;
-import com.cmmplb.activiti.vo.ProcessDefinitionVO;
-import com.cmmplb.activiti.vo.ProcessHistoricVO;
-import com.cmmplb.activiti.vo.TaskVO;
+import io.github.cmmplb.activiti.service.ActivitiService;
+import io.github.cmmplb.activiti.vo.ProcessDefinitionVO;
+import io.github.cmmplb.activiti.vo.ProcessHistoricVO;
+import io.github.cmmplb.activiti.vo.TaskVO;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
 import io.swagger.annotations.Api;

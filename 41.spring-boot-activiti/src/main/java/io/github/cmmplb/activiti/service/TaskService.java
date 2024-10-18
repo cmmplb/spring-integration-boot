@@ -1,9 +1,9 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
-import com.cmmplb.activiti.dto.HandleTaskDTO;
-import com.cmmplb.activiti.dto.TaskQueryDTO;
-import com.cmmplb.activiti.vo.CompletedTaskVO;
-import com.cmmplb.activiti.vo.IncompleteTaskVO;
+import io.github.cmmplb.activiti.dto.HandleTaskDTO;
+import io.github.cmmplb.activiti.dto.TaskQueryDTO;
+import io.github.cmmplb.activiti.vo.CompletedTaskVO;
+import io.github.cmmplb.activiti.vo.IncompleteTaskVO;
 import io.github.cmmplb.core.beans.PageResult;
 
 /**

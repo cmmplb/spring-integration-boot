@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.dto;
+package io.github.cmmplb.activiti.dto;
 
 import io.github.cmmplb.core.beans.QueryPageBean;
 import io.swagger.annotations.ApiModel;

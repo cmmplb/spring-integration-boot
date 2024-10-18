@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.entity;
+package io.github.cmmplb.activiti.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;

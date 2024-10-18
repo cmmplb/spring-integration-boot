@@ -1,7 +1,7 @@
-package com.cmmplb.activiti.convert;
+package io.github.cmmplb.activiti.convert;
 
-import com.cmmplb.activiti.entity.User;
-import com.cmmplb.activiti.vo.UserInfoVO;
+import io.github.cmmplb.activiti.entity.User;
+import io.github.cmmplb.activiti.vo.UserInfoVO;
 import io.github.cmmplb.core.converter.Converter;
 import org.mapstruct.Mapper;
 

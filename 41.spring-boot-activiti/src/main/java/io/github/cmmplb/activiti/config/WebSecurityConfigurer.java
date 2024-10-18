@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.config;
+package io.github.cmmplb.activiti.config;
 
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -1,9 +1,9 @@
-package com.cmmplb.activiti.service;
+package io.github.cmmplb.activiti.service;
 
-import com.cmmplb.activiti.vo.ExecutionInstanceVO;
-import com.cmmplb.activiti.vo.ProcessHistoricVO;
-import com.cmmplb.activiti.vo.ProcessInstanceVO;
-import com.cmmplb.activiti.vo.ProcessVariableVO;
+import io.github.cmmplb.activiti.vo.ExecutionInstanceVO;
+import io.github.cmmplb.activiti.vo.ProcessHistoricVO;
+import io.github.cmmplb.activiti.vo.ProcessInstanceVO;
+import io.github.cmmplb.activiti.vo.ProcessVariableVO;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
 

@@ -1,7 +1,7 @@
-package com.cmmplb.activiti.service.impl;
+package io.github.cmmplb.activiti.service.impl;
 
-import com.cmmplb.activiti.service.ManagementService;
-import com.cmmplb.activiti.vo.JobVO;
+import io.github.cmmplb.activiti.service.ManagementService;
+import io.github.cmmplb.activiti.vo.JobVO;
 import io.github.cmmplb.core.beans.PageResult;
 import io.github.cmmplb.core.beans.QueryPageBean;
 import lombok.extern.slf4j.Slf4j;

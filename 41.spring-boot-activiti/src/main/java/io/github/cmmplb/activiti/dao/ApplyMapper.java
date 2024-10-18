@@ -1,13 +1,13 @@
-package com.cmmplb.activiti.dao;
+package io.github.cmmplb.activiti.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cmmplb.activiti.dto.ApplyDTO;
-import com.cmmplb.activiti.dto.ApplyStatisticsTimeDTO;
-import com.cmmplb.activiti.entity.Apply;
-import com.cmmplb.activiti.vo.ApplyDetailsVO;
-import com.cmmplb.activiti.vo.ApplyStatisticsVO;
-import com.cmmplb.activiti.vo.ApplyVO;
+import io.github.cmmplb.activiti.dto.ApplyDTO;
+import io.github.cmmplb.activiti.dto.ApplyStatisticsTimeDTO;
+import io.github.cmmplb.activiti.entity.Apply;
+import io.github.cmmplb.activiti.vo.ApplyDetailsVO;
+import io.github.cmmplb.activiti.vo.ApplyStatisticsVO;
+import io.github.cmmplb.activiti.vo.ApplyVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

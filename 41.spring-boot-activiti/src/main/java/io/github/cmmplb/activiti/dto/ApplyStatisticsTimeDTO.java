@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.dto;
+package io.github.cmmplb.activiti.dto;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.util;
+package io.github.cmmplb.activiti.util;
 
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.bpmn.model.FlowNode;

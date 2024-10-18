@@ -1,7 +1,7 @@
-package com.cmmplb.activiti.controller;
+package io.github.cmmplb.activiti.controller;
 
-import com.cmmplb.activiti.service.UserService;
-import com.cmmplb.activiti.vo.UserInfoVO;
+import io.github.cmmplb.activiti.service.UserService;
+import io.github.cmmplb.activiti.vo.UserInfoVO;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
 import io.swagger.annotations.Api;

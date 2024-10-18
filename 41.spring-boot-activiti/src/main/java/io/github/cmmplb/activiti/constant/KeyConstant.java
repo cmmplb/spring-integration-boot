@@ -1,4 +1,4 @@
-package com.cmmplb.activiti.constant;
+package io.github.cmmplb.activiti.constant;
 
 /**
  * @author penglibo

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cmmplb.activiti.dao.LeaveApplyMapper">
+<mapper namespace="io.github.cmmplb.activiti.dao.LeaveApplyMapper">
 
     <sql id="base_column">
         <!-- @sql select -->
@@ -19,7 +19,7 @@
         from `biz_leave_apply` bla
     </sql>
 
-    <select id="selectDetailsById" resultType="com.cmmplb.activiti.vo.LeaveApplyVO">
+    <select id="selectDetailsById" resultType="io.github.cmmplb.activiti.vo.LeaveApplyVO">
         select
         <include refid="base_column"/>
         ,su.`name` as userName

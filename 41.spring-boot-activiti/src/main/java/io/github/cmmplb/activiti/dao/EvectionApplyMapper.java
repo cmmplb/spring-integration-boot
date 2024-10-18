@@ -1,8 +1,8 @@
-package com.cmmplb.activiti.dao;
+package io.github.cmmplb.activiti.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cmmplb.activiti.entity.EvectionApply;
-import com.cmmplb.activiti.vo.EvectionApplyDetailsVO;
+import io.github.cmmplb.activiti.entity.EvectionApply;
+import io.github.cmmplb.activiti.vo.EvectionApplyDetailsVO;
 import org.apache.ibatis.annotations.Param;
 
 /**

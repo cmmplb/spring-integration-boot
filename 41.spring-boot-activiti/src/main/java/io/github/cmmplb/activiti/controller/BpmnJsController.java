@@ -1,9 +1,9 @@
-package com.cmmplb.activiti.controller;
+package io.github.cmmplb.activiti.controller;
 
-import com.cmmplb.activiti.dto.ModelBpmnDTO;
-import com.cmmplb.activiti.service.BpmnJsService;
-import com.cmmplb.activiti.vo.BpmnInfoVO;
-import com.cmmplb.activiti.vo.BpmnProgressVO;
+import io.github.cmmplb.activiti.dto.ModelBpmnDTO;
+import io.github.cmmplb.activiti.service.BpmnJsService;
+import io.github.cmmplb.activiti.vo.BpmnInfoVO;
+import io.github.cmmplb.activiti.vo.BpmnProgressVO;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
 import io.swagger.annotations.Api;
