@@ -12,7 +12,7 @@ spring-boot 和 spring-cloud 版本关系图
 
 master 分支为最新版本 3.3.4.x：
 
-版本从新到旧排列，feature todo：
+版本从新到旧排列，feature：
 
 | 分支       | spring-boot    | spring-cloud | spring-cloud-alibaba | spring-cloud-kubernetes | 完成度 |
 |----------|----------------|--------------|----------------------|-------------------------|-----|
