@@ -34,7 +34,6 @@
         <dependency>
             <groupId>io.github.cmmplb</groupId>
             <artifactId>spring-boot-starter-canal</artifactId>
-            <version>2.5.15.2</version>
         </dependency>
         <!-- mysql -->
         <dependency>

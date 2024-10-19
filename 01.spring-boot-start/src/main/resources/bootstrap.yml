@@ -10,42 +10,13 @@ spring.profiles.active: @profiles.active@
 spring.application.name: @project.artifactId@
 # Spring Boot 2.1 禁用了覆盖相同名称的bean, spring中默认是true, 默认支持名称相同的bean的覆盖. 而springboot中的默认值是false
 spring.main.allow-bean-definition-overriding: true
+
 # =====================================================================================
-# 引用方式一：spring2.4分组配置
-#spring.profiles.group:
-#  local:
-#    - compression
-#    - custom
-#    - jetty
-#    - logging
-#    - management
-#    - tomcat
-#    - undertow
-#  sit:
-#    - custom
-#    - logging
-
-#===============================local===============================
-# 引用方式二：
----
-spring.config.activate.on-profile: local
-spring:
-  config:
-    import:
-      - classpath:/config/local/application-compression.yml
-      - classpath:/config/local/application-custom.yml
-      - classpath:/config/local/application-jetty.yml
-      - classpath:/config/local/application-logging.yml
-      - classpath:/config/local/application-management.yml
-      - classpath:/config/local/application-tomcat.yml
-      - classpath:/config/local/application-undertow.yml
-
-#===============================sit===============================
----
-spring.config.activate.on-profile: sit
-spring:
-  config:
-    import:
-      - classpath:/config/sit/application-custom.yml
-      - classpath:/config/sit/application-logging.yml
-      - classpath:/config/sit/application-tomcat.yml
+# 引用配置文件
+spring.profiles.include:
+  - custom
+  - jetty
+  - logging
+  - management
+  - tomcat
+  - undertow

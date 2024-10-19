@@ -31,8 +31,8 @@ import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.client.indices.GetIndexResponse;
-import org.elasticsearch.cluster.metadata.AliasMetadata;
-import org.elasticsearch.cluster.metadata.MappingMetadata;
+import org.elasticsearch.cluster.metadata.AliasMetaData;
+import org.elasticsearch.cluster.metadata.MappingMetaData;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.common.unit.TimeValue;
@@ -219,14 +219,14 @@ public class ClientController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Map<String, List<AliasMetadata>> aliases = getIndexResponse.getAliases();// 别名
-        Map<String, MappingMetadata> mappings = getIndexResponse.getMappings();// 配置 机构
+        Map<String, List<AliasMetaData>> aliases = getIndexResponse.getAliases();// 别名
+        Map<String, MappingMetaData> mappings = getIndexResponse.getMappings();// 配置 机构
         Map<String, Settings> settings = getIndexResponse.getSettings();
         log.info("aliases:{}", aliases);
         log.info("mappings:{}", mappings);
         log.info("settings:{}", settings);
-        Map<String, String> dataStreams = getIndexResponse.getDataStreams();
-        log.info("dataStreams:{}", dataStreams);
+        // Map<String, String> dataStreams = getIndexResponse.getDataStreams();
+        // log.info("dataStreams:{}", dataStreams);
     }
 
     @GetMapping("/get/id")

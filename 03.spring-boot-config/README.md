@@ -1,3 +1,8 @@
+application.yml的生效优先级高于额外引入的配置文件。如果application.yml中指定了相同的配置项，则它会覆盖
+
+@PropertySource支持引入多个配置文件。
+value = {"classpath:/extra.yml", "classpath:/extra-${spring.profiles.active}.yml"},
+
 ## 宽松绑定/松散绑定
 
 在ServerConfig中的ipAddress属性名

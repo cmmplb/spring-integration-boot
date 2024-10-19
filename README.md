@@ -20,34 +20,38 @@ master 分支为最新版本 3.3.4.x：
 | 3.1.12.x | 3.1.12         | 2022.0.5     | 2022.0.0.0           | 3.0.5                   | ✅   |
 | 2.7.18.x | 2.7.18         | 2021.0.9     | 2021.0.6.1           | 2.1.9                   | ✅   |
 | 2.5.15.x | 2.5.15         | 2020.0.6     | 2021.1               | 2.0.6                   | ✅   |
-| 2.3.12.x | 2.3.12.RELEASE | Hoxton.SR12  | 2.2.10-RC2           | 1.1.10.RELEASE          | ❌   |
+| 2.3.12.x | 2.3.12.RELEASE | Hoxton.SR12  | 2.2.10-RC2           | 1.1.10.RELEASE          | ✅   |
 
 当前分支整合相关依赖版本
 
-| 依赖                                     | 版本          |
-|----------------------------------------|-------------|
-| spring-boot                            | 2.5.15      |
-| mapstruct                              | 1.5.2.Final |
-| jsoup                                  | 1.14.2      |
-| springfox-boot-starter                 | 3.0.0       |
-| knife4j-spring-boot-starter            | 3.0.3       |
-| springdoc-openapi-ui                   | 1.8.0       |
-| pagehelper-spring-boot-starter         | 1.3.0       |
-| mybatis-spring-boot-starter            | 2.1.4       |
-| tk-mapper                              | 4.1.5       |
-| mybatis-plus-boot-starter              | 3.4.3.1     |
-| querydsl-jpa                           | 4.4.0       |
-| dynamic-datasource-spring-boot-starter | 3.4.1       |
-| druid-spring-boot-starter              | 1.2.5       |
-| easyexcel                              | 3.3.2       |
-| flyway-core                            | 7.7.3       |
-| sa-token-spring-boot-starter           | 1.38.0      |
-| shiro-spring                           | 1.8.0       |
-| sharding-jdbc-spring-boot-starter      | 3.1.0       |
-| xxl-job-core                           | 2.3.0       |
-| activiti-spring-boot-starter           | 7.1.0.M6    |
+| 依赖                                     | 版本             |
+|----------------------------------------|----------------|
+| spring-boot                            | 2.3.12.RELEASE |
+| mapstruct                              | 1.5.2.Final    |
+| jsoup                                  | 1.14.2         |
+| springfox-boot-starter                 | 3.0.0          |
+| knife4j-spring-boot-starter            | 3.0.3          |
+| springdoc-openapi-ui                   | 1.8.0          |
+| pagehelper-spring-boot-starter         | 1.3.0          |
+| mybatis-spring-boot-starter            | 2.1.4          |
+| tk-mapper                              | 4.1.5          |
+| mybatis-plus-boot-starter              | 3.4.3.1        |
+| querydsl-jpa                           | 4.4.0          |
+| dynamic-datasource-spring-boot-starter | 3.4.1          |
+| druid-spring-boot-starter              | 1.2.5          |
+| easyexcel                              | 3.3.2          |
+| flyway-core                            | 7.7.3          |
+| sa-token-spring-boot-starter           | 1.38.0         |
+| shiro-spring                           | 1.8.0          |
+| sharding-jdbc-spring-boot-starter      | 3.1.0          |
+| xxl-job-core                           | 2.3.0          |
+| activiti-spring-boot-starter           | 7.1.0.M6       |
 
 **其他版本查看spring-parent.pom中配置的properties**
+
+当前分支： feature/2.3.12.x
+
+[01.Spring-Boot-快速开始](01.spring-boot-start%2FREADME.md)
 
 **参考开源仓库**：
 

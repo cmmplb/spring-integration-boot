@@ -15,11 +15,4 @@ public class ConfigApplication {
         SpringApplicationUtil.run(ConfigApplication.class, args);
     }
 
-    // 使用@ConfigurationProperties注解为第三方bean进行属性绑定, 注意前缀是全小写的datasource
-    // @Bean
-    // @ConfigurationProperties(prefix = "datasource")
-    // public DruidDataSource datasource(){
-    //     DruidDataSource ds = new DruidDataSource();
-    //     return ds;
-    // }
 }

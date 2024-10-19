@@ -18,7 +18,11 @@ import org.springframework.context.annotation.Configuration;
 public class WebServerConfiguration {
 
     /**
-     * 解决报警告:UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+     * 警告:UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+     * 没有为 WebSocketDeploymentInfo 设置 Buffer pool，将会使用默认值。
+     * 解决方式：
+     * 1. ‌排除undertow-websockets-jsr 依赖
+     * 2. 通过编程式配置Buffer pool参数
      * @return WebServerFactoryCustomizer
      */
     @Bean

@@ -21,10 +21,15 @@
 
     <!-- 依赖 -->
     <dependencies>
-        <!-- core公共核心模块 -->
+        <!-- core 核心模块，异常捕获、基础实体、工具类等 -->
         <dependency>
             <groupId>io.github.cmmplb</groupId>
             <artifactId>spring-boot-starter-core</artifactId>
+        </dependency>
+        <!-- 健康检查 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <!-- undertow容器 -->
         <dependency>
@@ -43,14 +48,10 @@
             </exclusions>
         </dependency>
         <!-- jetty容器 -->
-        <!-- <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jetty</artifactId>
-        </dependency> -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>

@@ -20,9 +20,9 @@
     <description>${project.artifactId}</description>
 
     <!--属性 -->
-    <properties>
+    <!--<properties>
         <elasticsearch>7.16.1</elasticsearch>
-    </properties>
+    </properties>-->
 
     <!-- 依赖 -->
     <dependencies>
@@ -33,7 +33,7 @@
         </dependency>
         <!-- elasticsearch -->
         <dependency>
-            <!-- 这边匹配的版本是<elasticsearch>7.12.1</elasticsearch> -->
+            <!-- 这边匹配的版本是<elasticsearch>7.6.2</elasticsearch> -->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>

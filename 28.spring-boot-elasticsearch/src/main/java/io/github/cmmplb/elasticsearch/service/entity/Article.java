@@ -21,7 +21,17 @@ import org.springframework.data.elasticsearch.annotations.Setting;
 @AllArgsConstructor
 @Accessors(chain = true)
 @Document(indexName = "article")
-@Setting(shards = 1, replicas = 1, refreshInterval = "1s", indexStoreType = "fs")
+// @Document + @Setting，第2种方式，使用@Setting的settingPath属性
+// @Setting(shards = 1, replicas = 1, refreshInterval = "1s", indexStoreType = "fs")
+@Setting(settingPath = "indices/news.setting.json")
+// news.setting.json 文件位于 /src/main/resources/indices下
+// {
+// 	"number_of_shards": 2,
+// 	"refresh_interval": "2s",
+// 	"analyze": {
+// 		"max_token_count": 500
+// 	}
+// }
 public class Article {
 
     @Id
