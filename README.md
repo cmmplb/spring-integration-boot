@@ -20,7 +20,7 @@ master 分支为最新版本 3.3.4.x：
 | 3.1.12.x | 3.1.12         | 2022.0.5     | 2022.0.0.0           | 3.0.5                   | ✅   |
 | 2.7.18.x | 2.7.18         | 2021.0.9     | 2021.0.6.1           | 2.1.9                   | ✅   |
 | 2.5.15.x | 2.5.15         | 2020.0.6     | 2021.1               | 2.0.6                   | ✅   |
-| 2.3.12.x | 2.3.12.RELEASE | Hoxton.SR12  | 2.2.10-RC2           | 1.1.10.RELEASE          | ❌   |
+| 2.3.12.x | 2.3.12.RELEASE | Hoxton.SR12  | 2.2.10-RC2           | 1.1.10.RELEASE          | ✅   |
 
 当前分支整合相关依赖版本
 
@@ -48,6 +48,14 @@ master 分支为最新版本 3.3.4.x：
 | activiti-spring-boot-starter           | 7.1.0.M6    |
 
 **其他版本查看spring-parent.pom中配置的properties**
+
+当前分支： feature/2.5.15.x，对比上一个版本 2.3.12.x 的配置变化：
+
+1. 添加 PageableExecutionUtils
+
+2. org.elasticsearch.cluster.metadata.AliasMetadata 改为 org.elasticsearch.cluster.metadata.AliasMetaData
+
+3. GetIndexResponse 添加 getDataStreams
 
 **参考开源仓库**：
 
