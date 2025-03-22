@@ -35,6 +35,18 @@ public class RedisUtil {
         redisTemplate.expire(key, time, TimeUnit.SECONDS);
     }
 
+    public Set<Object> zrevrange(String key, int start, int stop) {
+        return redisTemplate.opsForZSet().reverseRange(key, start, stop);
+    }
+
+    public boolean zAdd(String key, Object value, long score) {
+        return redisTemplate.opsForZSet().add(key, value, score);
+    }
+
+    public Double incrementScore(String key, int value, long score) {
+        return redisTemplate.opsForZSet().incrementScore(key, value, score);
+    }
+
     /**
      * 根据key 获取过期时间
      * @param key 键 不能为null

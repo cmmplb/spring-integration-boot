@@ -55,8 +55,10 @@ master 分支为最新版本 3.3.4.x：
 - mapstruct-plus-spring-boot-starter                  对象模型之间需要相互转换
 - mybatis-plus-join-boot-starter                      mybatis-plus 连表查询插件
 - mybatis-flex                                        MyBatis 增强框架
+- Workflow-Vue3                                       https://github.com/StavinLi/Workflow-Vue3
 - camunda-bpm-spring-boot-starter                     工作流引擎
 - AbstractMojo                                        自定义maven插件
+- liteflow                                            组件式规则引擎  https://liteflow.cc/    -ea -Xmx1024m --add-opens java.base/sun.reflect.annotation=ALL-UNNAMED
 ````
 
 ****

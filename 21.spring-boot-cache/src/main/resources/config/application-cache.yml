@@ -2,7 +2,7 @@ spring:
   cache:
     # 指定缓存类型，缓存类型不再是EhCache了，EhCache3是实现JCache的一种缓存，jcache支持： ehcache3  redis等
     # 配置了spring.cache.jcache.config属性会自动装配JCacheCacheManager
-    type: jcache
+    # type: jcache
     # 这个文件名可以自己定义
     jcache.config: classpath:ehcache3.xml
     redis:

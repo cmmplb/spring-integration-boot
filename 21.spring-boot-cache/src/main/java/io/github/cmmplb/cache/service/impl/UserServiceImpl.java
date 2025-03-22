@@ -3,7 +3,7 @@ package io.github.cmmplb.cache.service.impl;
 import io.github.cmmplb.cache.domain.entity.User;
 import io.github.cmmplb.cache.mapper.UserMapper;
 import io.github.cmmplb.cache.service.UserService;
-import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -21,7 +21,7 @@ import java.util.List;
 @CacheConfig(cacheNames = "user")
 public class UserServiceImpl implements UserService {
 
-    @Resource
+    @Autowired
     private UserMapper userMapper;
 
     @Override

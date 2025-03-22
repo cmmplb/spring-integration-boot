@@ -61,7 +61,7 @@
     </cache>
     <cache alias="userInfo" uses-template="oneHourTemplate">
         <key-type>java.lang.String</key-type>
-        <value-type>com.cmmplb.cache.domain.entity.User</value-type>
+        <value-type>io.github.cmmplb.cache.domain.entity.User</value-type>
     </cache>
 
 </config>

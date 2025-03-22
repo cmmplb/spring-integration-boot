@@ -8,19 +8,26 @@ import io.github.cmmplb.cache.domain.entity.User;
 import io.github.cmmplb.cache.service.UserService;
 import io.github.cmmplb.cache.service.impl.RedisMessageListenerImpl;
 import io.github.cmmplb.cache.utils.RedisUtil;
+import io.github.cmmplb.core.beans.DataMap;
 import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.core.result.Result;
 import io.github.cmmplb.core.result.ResultUtil;
+import io.github.cmmplb.core.utils.DisplayUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.ehcache.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -131,4 +138,65 @@ public class CacheController {
     public Result<Boolean> send() {
         return ResultUtil.success(redisMessageService.sendMessage());
     }
+
+    private static Long count = 200L;
+
+    @GetMapping("/zSet")
+    public Map<String, Object> jackpot() {
+        // 参与抽奖人数-自增 每次0-3
+        Random rand = new Random();
+        count = count + rand.nextInt(4);
+        // 返回手机号列表-10个
+        Set<String> phones = getPhones(10);
+        // 设置手机号5分钟缓存处理
+        if (!redisUtil.hasKey("phones")) {
+            phones.forEach(phone -> {
+                redisUtil.zAdd("phones", phone, System.currentTimeMillis());
+
+            });
+            redisUtil.expire("phones", 60 * 60 * 24 * 30);
+        } else {
+            redisUtil.zAdd("phones", DisplayUtil.displayMobile(getTel()), System.currentTimeMillis());
+            Set<Object> sets = redisUtil.zrevrange("phones", 0, 9);
+            if (!CollectionUtils.isEmpty(sets)) {
+                phones = new HashSet<>();
+                for (Object set : sets) {
+                    phones.add(set.toString());
+                }
+            }
+        }
+        return new DataMap<String, Object>().set("count", count++).set("phones", phones);
+    }
+
+    public static Set<String> getPhones(int number) {
+        Set<String> phones = new HashSet<>();
+        for (int i = 0; i < number; i++) {
+            phones.add(DisplayUtil.displayMobile(getTel()));
+        }
+        if (phones.size() < number) {
+            for (int i = 0; i < number - phones.size(); i++) {
+                phones.add(DisplayUtil.displayMobile(getTel()));
+            }
+        }
+        return phones;
+    }
+
+    /**
+     * 返回手机号码
+     */
+    private static String[] telFirst = "134,135,136,137,138,139,150,151,152,157,158,159,130,131,132,155,156,133,153".split(",");
+
+
+    public static String getTel() {
+        int index = getNum(0, telFirst.length - 1);
+        String first = telFirst[index];
+        String second = String.valueOf(getNum(1, 888) + 10000).substring(1);
+        String third = String.valueOf(getNum(1, 9100) + 10000).substring(1);
+        return first + second + third;
+    }
+
+    public static int getNum(int start, int end) {
+        return (int) (Math.random() * (end - start + 1) + start);
+    }
+
 }
