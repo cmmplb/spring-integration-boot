@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  * 在Fanout模式中, 一条消息, 会被所有订阅的队列都消费. 但是, 在某些场景下, 我们希望不同的消息被不同的队列消费. 这时就要用到Direct类型的Exchange. 给特定的消费者消费
  * 在Direct模型下：
  * 1.队列与交换机的绑定, 不能是任意绑定了, 而是要指定一个RoutingKey（路由key）
- * 2.消息的发送方在 向 Exchange发送消息时, 也必须指定消息的 RoutingKey. 
+ * 2.消息的发送方在 向 Exchange发送消息时, 也必须指定消息的 RoutingKey.
  * 3.Exchange不再把消息交给每一个绑定的队列, 而是根据消息的Routing Key进行判断, 只有队列的 RoutingKey与消息的 Routing key完全一致, 才会接收到消息
  * --两个队列--三个队列绑定交换机--一个交换机--
  */
@@ -42,6 +42,8 @@ public class DirectConfig {
      */
     @Bean
     public Queue twoDirectQueue() {
+        // 参数 1：队列名称，参数 2：是否持久化，参数 3：是否独占此队列，参数 4：是否自动删除，参数 5：参数 6：队列其它属性
+        new Queue(RabbitMqConstants.TWO_DIRECT_QUEUE, true, false, false);
         return new Queue(RabbitMqConstants.TWO_DIRECT_QUEUE);
     }
 
@@ -51,6 +53,7 @@ public class DirectConfig {
      */
     @Bean
     public DirectExchange directExchange() {
+        // 参数 1：交换机名称，参数 2：是否持久化，参数 3：是否自动删除
         return new DirectExchange(RabbitMqConstants.DIRECT_EXCHANGE);
     }
 

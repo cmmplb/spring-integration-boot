@@ -1,6 +1,7 @@
 package io.github.cmmplb.start;
 
 import io.github.cmmplb.core.utils.SpringApplicationUtil;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StartApplication {
 
     public static void main(String[] args) {
+        SpringApplication.run(StartApplication.class, args);
         SpringApplicationUtil.run(StartApplication.class, args);
     }
 }
