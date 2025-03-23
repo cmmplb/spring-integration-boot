@@ -5,10 +5,12 @@ import io.github.cmmplb.core.constants.StringConstant;
 import io.github.cmmplb.rabbitmq.service.ProducerService;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import io.github.cmmplb.rabbitmq.service.RequireGoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +26,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/rabbitmq")
 public class RabbitMQController {
+
+    @Autowired
+    private RequireGoodsService requireGoodsService;
+
+    @GetMapping("/test/{id}/{i}")
+    public void test(@PathVariable(value = "id") Long id, @PathVariable(value = "i") Integer i) throws InterruptedException {
+        requireGoodsService.test(id, i);
+    }
 
     @Autowired
     private ProducerService producerService;

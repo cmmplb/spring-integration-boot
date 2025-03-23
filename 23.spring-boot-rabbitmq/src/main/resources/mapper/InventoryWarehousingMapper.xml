@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.cmmplb.rabbitmq.dao.InventoryWarehousingMapper">
+    <select id="selectByRequireGoodsListId" resultType="io.github.cmmplb.rabbitmq.entity.InventoryWarehousing">
+        select *
+        from `aps_inventory_warehousing`
+        where `require_goods_list_id` = #{requireGoodsListId} for
+        update
+    </select>
+
+    <update id="updateById">
+        update `aps_inventory_warehousing`
+        set `num`     = #{num},
+            `version` = #{version} + 1
+        where `id` = #{id}
+          and version = #{version}
+    </update>
+
+    <insert id="insert">
+        insert into `aps_inventory_warehousing`
+            (`require_goods_list_id`, `num`, `version`)
+        values (#{requireGoodsListId}, #{num}, 0)
+    </insert>
+</mapper>

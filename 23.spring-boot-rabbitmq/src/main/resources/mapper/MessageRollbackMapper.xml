@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.cmmplb.rabbitmq.dao.MessageRollbackMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into aps_message_rollback (business_id, content, type, recount, version)
+        values (#{businessId}, #{content}, #{type}, #{recount}, #{version})
+    </insert>
+
+    <select id="selectList" resultType="io.github.cmmplb.rabbitmq.entity.MessageRollback">
+        select *
+        from aps_message_rollback
+        where recount <![CDATA[ <= ]]> 3
+          and status = 0
+    </select>
+
+    <delete id="deleteById">
+        delete
+        from aps_message_rollback
+        where id = #{id}
+    </delete>
+</mapper>

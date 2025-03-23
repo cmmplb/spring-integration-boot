@@ -28,4 +28,21 @@ public class SimpleQueueConfig {
     public Queue simpleQueue() {
         return new Queue(RabbitMqConstants.SIMPLE_QUEUE);
     }
+
+    /**
+     * 声明简单队列
+     * @return
+     */
+    @Bean
+    public Queue testQueue() {
+        return new Queue("testQueue");
+    }
+    /**
+     * 声明简单队列
+     * @return
+     */
+    @Bean
+    public Queue reQueue() {
+        return new Queue("reQueue");
+    }
 }

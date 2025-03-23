@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.cmmplb.rabbitmq.dao.RequireGoodsListMapper">
+    <select id="selectById" resultType="io.github.cmmplb.rabbitmq.entity.RequireGoodsList">
+        select *
+        from `aps_require_goods_list`
+        where id = #{id}
+    </select>
+
+    <update id="updateById">
+        update `aps_require_goods_list`
+        set `logistics_status` = #{logisticsStatus},
+            `is_warehousing`   = #{isWarehousing},
+            `receive_num`      = #{receiveNum},
+            `standby_num`      = #{standbyNum},
+            `version`      = #{version} + 1
+        where id = #{id}
+        and version = #{version}
+    </update>
+
+    <select id="selectByIdForUpdate" resultType="io.github.cmmplb.rabbitmq.entity.RequireGoodsList">
+        select *
+        from `aps_require_goods_list`
+        where id = #{id} for
+        update
+    </select>
+</mapper>
