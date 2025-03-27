@@ -40,7 +40,13 @@ import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.xcontent.XContentBuilder;
 import org.elasticsearch.xcontent.XContentFactory;
 import org.elasticsearch.xcontent.XContentType;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.Query;
 
 import java.io.IOException;
 import java.util.*;
@@ -56,10 +62,21 @@ import java.util.*;
 @SpringBootTest
 public class ClientTest {
 
-    private final static String INDEX_NAME = "rest-client-one";
+    @Autowired
+    private ElasticsearchRestTemplate elasticsearchRestTemplate;
+
+    private final static String INDEX_NAME = "article";
 
     // 创建ES客户端
     private final static RestHighLevelClient CLIENT = getClient();
+
+    @Test
+    public void test(){
+        NativeSearchQuery query = new NativeSearchQueryBuilder()
+                // .withQuery(QueryBuilders.matchQuery("title", title))
+                .build();
+        Query query1 = elasticsearchRestTemplate.matchAllQuery();
+    }
 
     public static void main(String[] args) {
         // 客户端方式创建索引
@@ -89,7 +106,7 @@ public class ClientTest {
         // 条件查询
         // termQuery();
         // 模糊查询（通配符查询）
-        // wildcardQuery();
+        wildcardQuery();
         // 分页 排序 过滤字段 查询
         // pagedQuery();
         // 组合查询
@@ -103,7 +120,7 @@ public class ClientTest {
         // 聚合查询
         // aggregationBuilder();
         // 分组查询
-        groupAggregationBuilder();
+        // groupAggregationBuilder();
     }
 
     // 客户端方式创建索引
@@ -369,7 +386,7 @@ public class ClientTest {
         SearchRequest searchRequest = new SearchRequest().indices(INDEX_NAME);
         // *：表示所有的任意的多个字符组成
         // ?：表示1个任意的字符
-        WildcardQueryBuilder wildcarded = QueryBuilders.wildcardQuery("name", "宋*");
+        WildcardQueryBuilder wildcarded = QueryBuilders.wildcardQuery("title", "汤*");
 
         searchRequest.source(new SearchSourceBuilder().query(wildcarded));
         SearchResponse searchResponse;

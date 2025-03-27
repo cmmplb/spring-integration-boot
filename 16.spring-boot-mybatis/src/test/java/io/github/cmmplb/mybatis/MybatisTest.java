@@ -79,6 +79,8 @@ public class MybatisTest {
 
         // -----------------------一级缓存生效------------------------------------
         SqlSession sqlSession = sqlSessionFactory.openSession();
+
+
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
         // 测试一级缓存-同一个session会话
