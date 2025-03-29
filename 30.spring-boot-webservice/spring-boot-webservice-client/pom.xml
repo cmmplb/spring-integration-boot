@@ -50,10 +50,10 @@
         </dependency>-->
 
         <!-- JaxWsDynamicClientFactory 使用, 如果是 jakarta.servlet 的话使用最新版本 4.0.5/3.0.2 -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-xjc</artifactId>
             <version>2.3.9</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 </project>

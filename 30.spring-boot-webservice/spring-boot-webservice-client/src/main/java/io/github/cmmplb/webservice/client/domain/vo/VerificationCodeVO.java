@@ -35,8 +35,8 @@ public class VerificationCodeVO {
     private String resultMsg;
 
     /**
-     * orderId 需第三方保存
+     * 验证成功返回验证码
      */
-    @XmlElement(name = "orderId")
-    private String orderId;
+    @XmlElement(name = "verificationCode")
+    private String verificationCode;
 }

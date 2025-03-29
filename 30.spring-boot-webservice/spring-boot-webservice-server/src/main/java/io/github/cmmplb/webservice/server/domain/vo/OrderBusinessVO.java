@@ -1,4 +1,4 @@
-package io.github.cmmplb.webservice.client.domain.vo;
+package io.github.cmmplb.webservice.server.domain.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @NoArgsConstructor
 @AllArgsConstructor
-public class InversionOrderBusinessVO {
+public class OrderBusinessVO {
 
     /**
      * 服务返回状态 0成功,1：失败
@@ -33,10 +33,4 @@ public class InversionOrderBusinessVO {
      */
     @XmlElement(name = "resultmsg")
     private String resultMsg;
-
-    /**
-     * orderId 需第三方保存
-     */
-    @XmlElement(name = "orderId")
-    private String orderId;
 }

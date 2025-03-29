@@ -1,4 +1,4 @@
-package io.github.cmmplb.webservice.client.domain.dto;
+package io.github.cmmplb.webservice.server.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @NoArgsConstructor
 @AllArgsConstructor
-public class InversionOrderBusinessDTO {
+public class OrderBusinessDTO {
 
     /**
      * 订单ID号
@@ -81,18 +81,6 @@ public class InversionOrderBusinessDTO {
      */
     @XmlElement(name = "salesId")
     private String salesId;
-
-    /**
-     * 平台id
-     */
-    @XmlElement(name = "bussTerrace")
-    private String bussTerrace;
-
-    /**
-     * 验证码
-     */
-    @XmlElement(name = "verificationCode")
-    private String verificationCode;
 
     /**
      * 注册来源
