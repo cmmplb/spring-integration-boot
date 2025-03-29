@@ -97,6 +97,7 @@
         <module>28.spring-boot-elasticsearch</module>
         <module>29.spring-boot-excel</module>
         <module>30.spring-boot-flyway</module>
+        <module>30.spring-boot-webservice</module>
         <module>31.spring-boot-websocket</module>
         <module>32.spring-boot-netty</module>
         <module>33.spring-boot-permission</module>
