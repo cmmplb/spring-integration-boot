@@ -17,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @date 2024-10-12 11:52:36
  * @since jdk 1.8
  * Mock 测试
+ * @DisplayName("初始化方法"): 用于指定单元测试的名称
  */
 
 @Slf4j
@@ -30,7 +31,7 @@ public class StartMockitoTest {
     @BeforeEach
     @DisplayName("初始化方法")
     public void init() {
-        System.out.println("初始化方法");
+        System.out.println("@BeforeEach：在每个单元测试方法执行前都执行一遍");
     }
 
     @Test
