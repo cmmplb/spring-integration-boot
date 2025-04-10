@@ -1,6 +1,9 @@
 package io.github.cmmplb.webservice.server.service.impl;
 
+import io.github.cmmplb.core.utils.XmlUtil;
+import io.github.cmmplb.webservice.server.domain.dto.DataXmlDTO;
 import io.github.cmmplb.webservice.server.domain.dto.MessageDTO;
+import io.github.cmmplb.webservice.server.domain.vo.DataXmlVO;
 import io.github.cmmplb.webservice.server.domain.vo.MessageVO;
 import io.github.cmmplb.webservice.server.service.MessageService;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +39,25 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public MessageVO onMessage(MessageDTO msg) {
         log.info("接收到消息:{}", msg);
-        return new MessageVO(1L,"返回成功消息");
+        return new MessageVO(1L, "返回成功消息");
+    }
+
+    @Override
+    public String dataXml(String in0, String dataXml) {
+        DataXmlVO dataXmlVO;
+        try {
+            log.info("接收到消息：in0:{}, dataXml:\n{}", in0, dataXml);
+            // 去除 xml 中存在的空格
+            // dataXml = dataXml.replaceAll("\\s*", "");
+            // dataXml = dataXml.replaceAll("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>", "");
+            DataXmlDTO dataXmlDTO = XmlUtil.xmlStringToObject(dataXml, DataXmlDTO.class);
+            DataXmlDTO.DataXml params = dataXmlDTO.getDataXml();
+            dataXmlVO = new DataXmlVO(params.getId(), params.getMessage());
+        } catch (Exception e) {
+            log.error("失败：", e);
+            dataXmlVO = new DataXmlVO(2L, "失败:" + e.getMessage());
+        }
+        log.info("返回消息：\n{}", dataXmlVO);
+        return XmlUtil.objectToXml(dataXmlVO);
     }
 }

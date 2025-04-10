@@ -1,10 +1,8 @@
 package io.github.cmmplb.webservice.server.configuration;
 
 import io.github.cmmplb.webservice.server.service.MessageService;
-import io.github.cmmplb.webservice.server.service.TelecomBusinessService;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
-import org.apache.cxf.feature.LoggingFeature;
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.jaxws.EndpointImpl;
@@ -30,12 +28,9 @@ public class CXFConfiguration {
     @Autowired
     private MessageService messageService;
 
-    @Autowired
-    private TelecomBusinessService telecomBusinessService;
-
     @Bean
     public ServletRegistrationBean<CXFServlet> getRegistrationBean() {
-        // 根路径
+        // 根路径, 访问: http://localhost:80/server/services/MessageService?wsdl
         return new ServletRegistrationBean<>(new CXFServlet(), "/server/services/*");
     }
 
@@ -44,16 +39,6 @@ public class CXFConfiguration {
         EndpointImpl endpoint = new EndpointImpl(springBus(), this.messageService);
         // 二级路径
         endpoint.publish("/MessageService");
-        endpoint.getInInterceptors().add(new LoggingInInterceptor());
-        endpoint.getInInterceptors().add(new LoggingOutInterceptor());
-        return endpoint;
-    }
-
-    @Bean
-    public Endpoint telecomBusinessServiceEndPoint() {
-        EndpointImpl endpoint = new EndpointImpl(springBus(), this.telecomBusinessService);
-        // 二级路径
-        endpoint.publish("/TelecomBusinessService");
         endpoint.getInInterceptors().add(new LoggingInInterceptor());
         endpoint.getInInterceptors().add(new LoggingOutInterceptor());
         return endpoint;

@@ -1,34 +1,24 @@
 package io.github.cmmplb.webservice.client;
 
-import io.github.cmmplb.core.utils.MapObjectUtil;
 import io.github.cmmplb.core.utils.ObjectUtil;
-import io.github.cmmplb.webservice.client.domain.dto.InversionOrderBusinessDTO;
+import io.github.cmmplb.core.utils.XmlUtil;
+import io.github.cmmplb.webservice.client.domain.dto.DataXmlDTO;
 import io.github.cmmplb.webservice.client.domain.dto.MessageDTO;
-import io.github.cmmplb.webservice.client.domain.dto.VerificationCodeDTO;
-import io.github.cmmplb.webservice.client.domain.vo.InversionOrderBusinessVO;
+import io.github.cmmplb.webservice.client.domain.vo.DataXmlVO;
 import io.github.cmmplb.webservice.client.domain.vo.MessageVO;
-import io.github.cmmplb.webservice.client.domain.vo.VerificationCodeVO;
-import io.github.cmmplb.webservice.client.service.HaobaiService;
 import io.github.cmmplb.webservice.client.service.MessageService;
+import io.github.cmmplb.webservice.client.util.JaxWsUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.cxf.endpoint.Client;
-import org.apache.cxf.interceptor.LoggingInInterceptor;
-import org.apache.cxf.interceptor.LoggingOutInterceptor;
-import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.lang.reflect.Method;
-import java.util.Map;
 
 @Slf4j
 @SpringBootTest
 public class WebServiceClientTest {
 
     public static final String SERVICE_WSDL = "http://localhost:80/server/services/MessageService?wsdl";
-    public static final String VERIFICATION_CODE_SERVICE_WSDL = "http://135.0.120.89:19083/haobai-interface/services/DoVerificationCode?wsdl";
-    public static final String INVERSION_ORDER_BUSINESS_SERVICE_WSDL = "http://135.0.120.89:19083/haobai-interface/services/DoInversionOrderBusiness?wsdl";
 
     @Test
     public void test() {
@@ -38,60 +28,37 @@ public class WebServiceClientTest {
     public static void main(String[] args) throws Exception {
         // 动态创建客户端
         // jaxWsDynamicClient();
-        // 静态代理
-        // jaxWsProxy();
-        // 反射动态传入接口和方法调用
+        // 反射动态传入接口和方法静态代理调用
         reflection();
+        // String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+        //         "<ns2:root xmlns:ns2=\"http://impl.service.server.webservice.cmmplb.github.io/\">\n" +
+        //         "    <ns2:dataXml>\n" +
+        //         "        <id_1>1</id_1>\n" +
+        //         "        <message_1>传递 xml 参数</message_1>\n" +
+        //         "    </ns2:dataXml>\n" +
+        //         "</ns2:root>";
+        // DataXmlDTO dataXmlDTO = XmlUtil.xmlStringToObject(xml, DataXmlDTO.class);
+        // System.out.println(dataXmlDTO);
     }
 
     private static void reflection() {
-        MessageVO result = jaxWsProxy(SERVICE_WSDL, MessageService.class,
+        MessageVO result = JaxWsUtil.jaxWsProxy(SERVICE_WSDL, MessageService.class,
                 "onMessage", new MessageDTO(2L, "你好")
         );
-        log.info("vo:{}", result);
+        log.info("返回数据:{}", result);
 
-        // VerificationCodeVO verificationCodeVO = jaxWsProxy(VERIFICATION_CODE_SERVICE_WSDL, HaobaiService.class,
-        //         "verificationCode", new VerificationCodeDTO()
-        // );
-        // log.info("verificationCodeVO:{}", verificationCodeVO);
-        //
-        // InversionOrderBusinessVO inversionOrderBusinessVO = jaxWsProxy(INVERSION_ORDER_BUSINESS_SERVICE_WSDL, HaobaiService.class,
-        //         "inversionOrderBusinessVO", new InversionOrderBusinessDTO()
-        // );
-        // log.info("inversionOrderBusinessVO:{}", inversionOrderBusinessVO);
-    }
-
-    public static <T, R> R jaxWsProxy(String wsdl, Class<T> serviceClass, String methodName, Object... methodParams) {
-        JaxWsProxyFactoryBean jaxWsProxyFactoryBean = new JaxWsProxyFactoryBean();
-        jaxWsProxyFactoryBean.setAddress(wsdl);
-        jaxWsProxyFactoryBean.setServiceClass(serviceClass);
-        jaxWsProxyFactoryBean.getOutInterceptors().add(new LoggingOutInterceptor());
-        jaxWsProxyFactoryBean.getInInterceptors().add(new LoggingInInterceptor());
-        T service = serviceClass.cast(jaxWsProxyFactoryBean.create());
-        R result = null;
-        try {
-            // 获取方法的参数类型数组
-            Class<?>[] paramTypes = new Class[methodParams.length];
-            for (int i = 0; i < methodParams.length; i++) {
-                paramTypes[i] = methodParams[i].getClass();
-            }
-            // 通过反射获取要调用的方法
-            Method method = serviceClass.getMethod(methodName, paramTypes);
-            result = (R) method.invoke(service, methodParams);
-        } catch (Exception e) {
-            log.error("调用 Web 服务时出错", e);
-        }
-        return result;
-    }
-
-    private static void jaxWsProxy() {
-        JaxWsProxyFactoryBean jaxWsProxyFactoryBean = new JaxWsProxyFactoryBean();
-        jaxWsProxyFactoryBean.setAddress(SERVICE_WSDL);
-        // 映射接口
-        jaxWsProxyFactoryBean.setServiceClass(MessageService.class);
-        MessageService messageService = (MessageService) jaxWsProxyFactoryBean.create();
-        MessageVO result = messageService.onMessage(new MessageDTO(2L, "你好"));
-        log.info("result:{}", result);
+        // 传递 xml 参数
+        DataXmlDTO.DataXml dataXml = new DataXmlDTO.DataXml(1L, "传递 xml 参数");
+        DataXmlDTO dto = new DataXmlDTO(dataXml);
+        String xmlParams = XmlUtil.objectToXml(dto);
+        // xmlParams = xmlParams.replaceAll("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>", "");
+        log.info("请求参数:{}", xmlParams);
+        String xmlResult = JaxWsUtil.jaxWsProxy(SERVICE_WSDL, MessageService.class, "dataXml", "", xmlParams);
+        log.info("xmlResult:{}", xmlResult);
+        // 去除 xml 中存在的空格
+        // xmlResult = xmlResult.replaceAll("\\s*", "");
+        DataXmlVO dataXmlVO = XmlUtil.xmlStringToObject(xmlResult, DataXmlVO.class);
+        log.info("返回数据:{}", dataXmlVO);
     }
 
     // 动态代理创建在 jdk9 以上会报错 is in unnamed module of loader 'app', 需要在根目录创建  module-info.java 开放反射

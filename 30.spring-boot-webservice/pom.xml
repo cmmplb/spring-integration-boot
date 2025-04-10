@@ -29,6 +29,7 @@
             4.1.1 jakarta.servlet
         -->
         <cxf-spring-boot-starter-jaxws.version>3.6.6</cxf-spring-boot-starter-jaxws.version>
+        <jaxb-xjc.version>2.3.9</jaxb-xjc.version>
     </properties>
 
     <!-- 子模块 -->

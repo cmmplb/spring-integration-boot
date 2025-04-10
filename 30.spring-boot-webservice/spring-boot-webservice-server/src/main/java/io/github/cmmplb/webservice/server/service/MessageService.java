@@ -71,4 +71,14 @@ public interface MessageService {
             // 若为 true, 表示参数是从消息头而非消息体中获取的, 若为 false, 则表示参数从消息体中获取
             // header = true
     ) MessageDTO msg);
+
+    /**
+     * 测试字符串传递 xml 格式数据
+     * @param in0
+     * @param dataXml
+     * @return
+     */
+    @WebMethod(action = "http://impl.service.server.webservice.cmmplb.github.io/dataXml")
+    String dataXml(@WebParam(name = "in0", targetNamespace = "http://impl.service.server.webservice.cmmplb.github.io/") String in0,
+                   @WebParam(name = "dataXml", targetNamespace = "http://impl.service.server.webservice.cmmplb.github.io/") String dataXml);
 }

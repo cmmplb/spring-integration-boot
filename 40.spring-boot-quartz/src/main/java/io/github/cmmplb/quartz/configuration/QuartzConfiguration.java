@@ -4,10 +4,16 @@ import io.github.cmmplb.quartz.job.DongAoJob;
 import io.github.cmmplb.quartz.job.WelcomeJob;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import org.quartz.spi.JobFactory;
+import org.quartz.spi.TriggerFiredBundle;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
+import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
 import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
 
 /**
  * @author penglibo
@@ -18,6 +24,9 @@ import javax.annotation.PostConstruct;
 
 @Configuration
 public class QuartzConfiguration {
+
+    @Autowired
+    private DataSource dataSource;
 
     /**
      * 代码启用WelcomeJob定时任务
@@ -79,4 +88,23 @@ public class QuartzConfiguration {
     }
 
 
+    @Bean
+    public JobFactory jobFactory() {
+        return new SpringBeanJobFactory() {
+            @Override
+            protected Object createJobInstance(TriggerFiredBundle bundle) throws Exception {
+                return super.createJobInstance(bundle);
+            }
+        };
+    }
+
+    @Bean
+    public SchedulerFactoryBean schedulerFactoryBean(JobFactory jobFactory) {
+        SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
+        schedulerFactoryBean.setDataSource(dataSource);
+        schedulerFactoryBean.setJobFactory(jobFactory);
+        schedulerFactoryBean.setOverwriteExistingJobs(true);
+        schedulerFactoryBean.setAutoStartup(true);
+        return schedulerFactoryBean;
+    }
 }
