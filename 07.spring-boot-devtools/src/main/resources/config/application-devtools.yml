@@ -1,0 +1,27 @@
+spring:
+  devtools:
+    # 控制 Spring Boot 应用的自动重启功能
+    restart:
+      # 当类路径下的文件发生变化时是否开启自动重启功能, 默认开启
+      enabled: false
+      # 设置不参与热部署的文件或文件夹, 默认 DevToolsProperties.Restart.DEFAULT_RESTART_EXCLUDES
+      exclude: public/**,config/application.yml
+      # 指定不参与热部署额外的文件路径
+      additional-exclude: public/**,config/application.yml
+      # 设置轮询类路径变化时的时间间隔, 默认设置为 1 秒, poll-interval 必须大于 quiet-period
+      poll-interval: 1s
+      # 设置在检测到文件变化后, 需要等待的安静时间, 只有在这段时间内没有其他文件变化, 才会触发应用重启, 默认值为 400 毫秒
+      quiet-period: 400ms
+      # 指定一个触发文件, 只有当该文件发生变化时, 才会触发应用的重启检查. 若未指定该属性, 那么类路径下任意文件的变化都会触发重启
+      trigger-file: /src/main/resources/static/index.html
+      # 额外监视变化的文件路径
+      additional-paths: src/main/java
+      # 在重启时是否记录条件评估的差异, 在应用重启时会记录条件评估的差异, 默认值为 true
+      log-condition-evaluation-delta: true
+
+    # 控制 LiveReload 服务器, 它能在资源文件发生变化时自动刷新浏览器, 类似 vscode 的 liveServer, 需要从 idea 点击 浏览器打开 html
+    livereload:
+      # 开启此功能后, 当资源文件发生变化时, LiveReload 服务器会自动通知浏览器进行刷新, 默认为 true
+      enabled: true
+      # 指定 LiveReload 服务器监听的端口号, 浏览器会连接到这个端口, 接收服务器发送的刷新指令
+      port: 35729

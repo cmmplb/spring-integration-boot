@@ -1,0 +1,47 @@
+# 监控配置
+management:
+  server:
+    # 端点信息接口使用的端口，默认与主应用程序使用相同的端口
+    # port: 8082
+    servlet:
+      # Actuator 端点的上下文路径，默认值为空
+      context-path: /
+  # 端点暴露与启用配置
+  endpoints:
+    # 是否默认启用所有端点, 除了部分敏感端点（如 shutdown）,其他端点默认都会启用
+    enabled-by-default: true
+    # 以 Web 方式暴露的端点列表
+    web:
+      # 指定所有端点的基础路径, 默认是 /actuator,
+      base-path: /actuator
+      # 端点路径映射, 可自定义路径
+      path-mapping:
+        # 例如, 将 /actuator/health 映射为 /actuator/healthcheck
+        health: healthcheck
+      # 指定哪些源站点可以访问端点
+      cors:
+        # 指定允许访问端点的源站点, 默认空, 多个源用逗号分隔
+        allowed-origins: 'http://192.168.1.100:8080'
+        # 以逗号分隔的允许请求方式列表, '*' 允许所有方法. 当未设置时, 默认为GET。
+        allowed-methods: '*'
+      # 端点的安全配置
+      exposure:
+        # 暴露所有端点 '*',
+        include: '*'
+        # include: [ "health", "info" ]
+        # 不通过 Web 暴露的端点列表, 即便某个端点被包含在 include 中, 若同时出现在 exclude 里, 也不会被暴露
+        exclude: [ ]
+  # 端点特定配置
+  endpoint:
+    # health 端点
+    health:
+      # 控制健康检查结果是否显示详细信息, never ( 从不显示 ), when-authorized ( 仅授权用户可见 ), always ( 总是显示 )
+      show-details: always
+      # 是否启用 Kubernetes 健康检查探针
+      probes:
+        # 默认 false
+        enabled: true
+    # shutdown 端点
+    shutdown:
+      # 该端点允许通过 HTTP 请求优雅地关闭应用程序, 因存在安全风险, 默认禁用, post 请求访问 /actuator/shutdown 即可关闭应用
+      enabled: false

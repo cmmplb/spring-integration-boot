@@ -1,0 +1,7 @@
+# Spring Boot < 2.2.X 默认是启用 JMX ( Java Management Extensions ) 的, 并且默认是公开的 MBeans
+# 可以直接使用 jdk 自带的 jconsole ( shell 窗口使用命令 jconsole 即可 ) 客户端查看 Mbeans
+# 使用 JMX, 那么所有的 Actuator 端点 ( 除了 /heapdump ) 会通过 MBeans 进行公开
+# 请注意 Spring Boot > 2.2.x 默认禁用 JMX 暴露, 需要添加以下设置才能使其工作
+spring.jmx.enabled: false
+# 请注意 Spring Boot > 2.2.x 默认禁用 JMX Tomcat Bean 暴露
+server.tomcat.mbeanregistry.enabled: true

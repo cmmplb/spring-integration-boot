@@ -31,6 +31,7 @@ public class IndexController {
     @RequestMapping("/start")
     public String start() {
         log.info("start");
+        log.debug("start");
         return "start";
     }
 }

@@ -1,16 +1,79 @@
 server:
   tomcat:
-    # uri编码
-    uri-encoding: UTF-8
-    # Tomcat基目录, 如果未指定则使用临时目录, core根据系统环境指定. 
+    # 访问日志配置
+    accesslog:
+      enabled: false
+      # 只有当通过 ServletRequest 的 getAttribute 方法，以 conditionIf 作为键去获取属性值，且该值不为 null 时，请求的日志记录功能才会被启用
+      condition-if: true
+      # 是否仅在 ServletRequest.getAttribute(conditionUnless) 返回 null 时才启用请求日志记录
+      condition-unless: false
+      # 访问日志的格式模式
+      pattern: "common"
+      # 创建日志文件的目录。可以是绝对的，也可以是相对的
+      directory: logs
+      # 日志文件名前缀
+      prefix: access_log
+      # 日志文件名后缀
+      suffix: .log
+      # 日志文件使用的字符集。默认为系统默认字符集
+      encoding: UTF-8
+      # 用于格式化日志条目和日志文件名中的时间戳的区域设置后缀, 默认为Java进程的默认区域设置
+      # locale:
+      # 是否检查日志文件是否存在，以便在以下情况下重新创建它外部进程已将其重命名
+      check-exists: false
+      # 是否启用访问日志轮换
+      rotate: true
+      # 是否推迟将日期戳包含在文件名中，直到轮换时间
+      rename-on-rotate: false
+      # 在删除访问日志文件之前保留这些文件的天数
+      max-days: -1
+      # 日志文件名中要放置的日期格式
+      file-date-format: .yyyy-MM-dd
+      # 是否使用 RFC 5952 定义的 IPv6 规范表示格式
+      ipv6-canonical: false
+      # 设置用于请求的IP地址、主机名、协议和端口的请求属性
+      request-attributes-enabled: false
+      # 是否缓冲输出，以便仅定期刷新
+      buffered: true
+    threads:
+      # 最大工作线程数, 默认 200
+      max: 200
+      # 工作线程的最小数量, 默认 10
+      min-spare: 10
+    # Tomcat 基目录, 如果未指定则使用临时目录
     basedir: ${spring.application.name}
-    # 最大工作线程数, 默认200
-    threads.max: 200
-    # 最大连接数：Tomcat同一时间能接受的最大线程数量, 需要大于 max-threads + accept-count, 默认8192
-    max-connections: 5000
-    # 最大等待队列长度：每个请求使用一个线程, 线程数超过最大链接数后请求会进入等待队列, 直到有线程处理
+    # 后台处理程序延迟, 调用 backgroundProcess 方法之间的延迟, 如果未指定持续时间后缀*, 则将使用秒
+    backgroundProcessorDelay: 10
+    # HTTP post 请求中表单内容的最大大小, 默认是 2 * 1024 * 1024 -> 2M
+    max-http-form-post-size: 2048
+    # 可吞咽的请求正文的最大数量
+    max-swallow-size: 2048
+    # 是否应通过在路径后附加 / 来重定向对上下文根的请求。当使用在代理端终止的 SSL 时，此属性应设置为 false, 默认 true
+    # 例如上下文根是 /myapp，当用户访问 http://example.com/myapp 时, 则会将请求重定向到 http://example.com/myapp/
+    redirect-context-root: true
+    # 调用 sendRedirect 生成的 HTTP 1.1 和更高版本的位置标头将使用相对重定向还是绝对重定向, true-相对重定向; false-绝对重定向
+    use-relative-redirects: false
+    # 用于解码 URI 的字符编码
+    uri-encoding: UTF-8
+    # 最大连接数: Tomcat 同一时间能接受的最大线程数量, 需要大于 max-threads + accept-count, 默认8192
+    max-connections: 8192
+    # 最大等待队列长度: 每个请求使用一个线程, 线程数超过最大链接数后请求会进入等待队列, 直到有线程处理, 默认 100
     accept-count: 100
-    # 连接建立超时时间（单位：ms）
+    # 缓存中保留并在后续请求中重复使用的空闲处理器的最大数量, 当设置为-1时, 缓存将不受限制, 理论最大大小等于最大连接数。
+    processorCache: 200
+    # 连接建立超时时间 ( 单位: ms )
     connection-timeout: 600000
-    # 请求体最大长度（单位：KB）
-    max-http-form-post-size: 1024
+    # 静态资源配置
+    resource:
+      # 此 web 应用程序是否允许静态资源缓存
+      allow-caching: true
+      # 静态资源缓存的生存时间 ( 单位: ms )
+      cache-ttl: 1000
+    # 建模器 MBean 注册表配置
+    mbeanregistry:
+      # 是否应启用 Tomcat 的 MBean 注册表
+      enabled: false
+    # 远程Ip阀配置
+    remoteip:
+      # 从中提取远程主机的HTTP标头的名称
+      host-header: "X-Forwarded-Host"

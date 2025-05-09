@@ -1,4 +1,4 @@
-# 服务端口
+# 服务端口, 如不指定, 则从 80 开始, 重复则 +1
 # server.port: @project.port@
 # 路径
 server.servlet.context-path: /
@@ -8,15 +8,13 @@ spring.main.banner-mode: off
 spring.profiles.active: @profiles.active@
 # 应用程序名称
 spring.application.name: @project.artifactId@
-# Spring Boot 2.1 禁用了覆盖相同名称的bean, spring中默认是true, 默认支持名称相同的bean的覆盖. 而springboot中的默认值是false
+# Spring Boot 2.1 禁用了覆盖相同名称的 bean, spring 默认 true, springboot 默认 false
 spring.main.allow-bean-definition-overriding: true
-
 # =====================================================================================
 # 引用配置文件
 spring.profiles.include:
   - custom
   - jetty
   - logging
-  - management
   - tomcat
   - undertow

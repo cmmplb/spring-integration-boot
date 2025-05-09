@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 父工程 -->
+    <parent>
+        <artifactId>spring-integration-boot</artifactId>
+        <groupId>io.github.cmmplb</groupId>
+        <version>${revision}</version>
+    </parent>
+    <!-- 指定当前POM模型的版本 -->
+    <modelVersion>4.0.0</modelVersion>
+    <!-- 项目的唯一的标识符, 实际对应项目的名称, 就是项目根目录的名称。 -->
+    <artifactId>spring-boot-webservice</artifactId>
+    <!-- 项目的打包类型：pom、jar、war -->
+    <packaging>pom</packaging>
+    <!-- 项目名称 -->
+    <name>${project.artifactId}</name>
+    <!-- 描述信息 -->
+    <description>${project.artifactId}</description>
+
+    <properties>
+        <!--
+            3.4.10 javax.servlet, cxf-core\META-INF\cxf\cxf.xml 配置了 <bean id="cxf" class="org.apache.cxf.bus.spring.SpringBus" destroy-method="shutdown"/>
+            3.6.6 javax.servlet, 这个版本需要配置 Bus, org.apache.cxf.bus.spring.SpringBus
+            4.1.1 jakarta.servlet
+        -->
+        <cxf-spring-boot-starter-jaxws.version>3.6.6</cxf-spring-boot-starter-jaxws.version>
+        <jaxb-xjc.version>2.3.9</jaxb-xjc.version>
+    </properties>
+
+    <!-- 子模块 -->
+    <modules>
+        <module>spring-boot-webservice-server</module>
+        <module>spring-boot-webservice-client</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

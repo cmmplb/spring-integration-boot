@@ -1,0 +1,38 @@
+logging:
+  logback:
+    enabled: false
+  # 日志级别设置 ( TRACE < DEBUG < INFO < WARN < ERROR < FATAL )
+  level:
+    # 根日志级别, 默认是 INFO
+    root: info
+    # 为特定包设置日志级别
+    com.cmmplb: info
+  # 日志模式设置
+  pattern:
+    # 控制台日志输出格式
+    # 没有特殊字符-不使用引号; 包含需要转义的字符-使用双引号("Hello, \n World!"), 字符串内容原样输出-使用单引号.
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n}"
+    # 文件日志输出格式
+    file: "%date  %-5level [%thread] [%logger{200}] %file:%line - %msg%n"
+  # 日志文件设置
+  file:
+    # 日志文件路径, 生成日志为 spring.log
+    # path: /Users/penglibo/Cmmplb/Logs/${spring.application.name}/
+    # 日志文件名, 如果指定则覆盖 path
+    name: /Users/penglibo/Cmmplb/Logs/${spring.application.name}/${spring.application.name}.log
+    # 日志文件的最大大小, 达到该大小会进行滚动, 并将旧文件重命名为 xx.log.yyyy-MM-dd.0.gz, xx.log.yyyy-MM-dd.1.gz...
+    max-size: 50MB
+    # 保留的日志文件历史数量
+    max-history: 30
+  # 日志组设置
+  group:
+    # 当有多个相关的包或类需要设置相同的日志级别时, 无需逐个设置, 只需定义一个日志组并统一设置级别即可, 用逗号分隔
+    web: org.springframework.web, io.github.cmmplb.web
+    controller: io.github.cmmplb.start.controller
+    level:
+      # 为日志组设置日志级别
+      web: DEBUG
+      controller: INFO
+  # 指定自定义的日志配置文件路径, 如果配置了 logback, 则 logback-spring.xml 的配置会覆盖 application.yml 中的配置
+  # 未指定 Spring Boot 会按顺序查找: logback-spring.xml, logback-spring.groovy, logback.xml, logback.groovy
+#  config: classpath:logback-spring1.xml

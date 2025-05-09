@@ -1,10 +1,23 @@
 server:
   # undertow 容器配置
   undertow:
-    # 会用于服务器连接的IO操作
+    # HTTP post 请求中表单内容的最大大小, 默认值为 -1 时，大小不受限制
+    maxHttpPostSize: -1
+    # 每个缓冲区的大小. 默认值来自 JVM 可用的最大内存量
     buffer-size: 1024
-    # 是否分配的直接内存(NIO直接分配的堆外内存)
+    # 是否分配的直接内存 ( NIO 直接分配的堆外内存 ) 是否在Java堆外分配缓冲区。 默认值来自 JVM 可用的最大内存量
     direct-buffers: true
+    # 启动时是否应初始化servlet筛选器, 默认 true
+    eager-filter-init: true
+    # 允许的查询或路径参数的最大数量。此限制存在以防止基于哈希冲突的 DOS 攻击
+    max-parameters: 1000
+    # 允许的最大标头数, 存在此限制是为了防止基于哈希冲突的DOS攻击
+    max-headers: 200
+    # 允许的最大Cookie数量, 存在此限制是为了防止哈希基于碰撞的DOS攻击
+    max-cookies: 200
+    # 服务器是否应解码百分比编码的斜线字符
+    allow-encoded-slash: false
+    # 是否应解码URL。禁用时，中编码字符的百分比 URL 将保持原样
     threads:
       # 非阻塞的任务线程池：默认为CPU核心数量
       io: 16

@@ -1,0 +1,8 @@
+name: admin
+logback:
+  env: local
+
+logging:
+  level:
+    root: info
+  config: classpath:logback-spring-test.xml

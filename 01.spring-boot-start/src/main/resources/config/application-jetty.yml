@@ -1,8 +1,37 @@
 server:
-  #jetty配置, 主要是acceptors和selectors
+  # jetty 配置, 主要是 acceptors 和 selectors
   jetty:
-    threads:
-      acceptors: 2 #要使用的接受者线程数. 当值为 -1 时, 默认情况下, 接受器的 * 数量来自运行环境.  *
-      selectors: 4 #要使用的选择器线程数. 当值为 -1 时, 默认情况下, 选择器的 * 数量来自运行环境.
+    # 访问日志配置
     accesslog:
-      filename: /Users/penglibo/Cmmplb/Logs/AccessLog.log
+      # 是否启用访问日志
+      enabled: true
+      # 访问日志的格式, 可使用 "NCSA" 或 "EXTENDED_NCSA" 等
+      format: NCSA
+      # 日志文件的日期格式，用于生成带日期的日志文件名
+      custom-format: yyyy_MM_dd
+      # 访问日志文件的名称
+      filename: accessLog.log
+      # 访问日志文件的日期格式
+      file-date-format: yyyy-MM-dd
+      # 删除轮换日志文件之前的天数
+      retention-period: 31
+      # 是否启用日志文件的追加模式
+      append: true
+      # 不应记录的请求路径
+      ignore-paths: "/start"
+    # 线程相关配置
+    threads:
+      # 接受新连接的线程数量. 设置为 -1 时会根据运行环境自动确定数量
+      acceptors: 2
+      # 处理 I/O 事件的选择器线程数量. 设置为 -1 时会根据运行环境自动确定数量
+      selectors: 4
+      # 工作线程池的最小线程数
+      min: 8
+      # 工作线程池的最大线程数
+      max: 200
+      # 线程空闲超时时间 ( 毫秒 ) , 超过该时间空闲线程会被回收
+      idle-timeout: 60000
+    # HTTP post 请求中表单内容的最大大小, 默认 200000
+    max-http-form-post-size: 200000
+    # 连接在关闭之前可以空闲的时间
+    connection-idle-timeout: 30000
