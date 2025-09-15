@@ -1,7 +1,6 @@
-package io.github.cmmplb.start;
+package io.github.cmmplb.unit.test;
 
 import io.github.cmmplb.core.utils.SpringApplicationUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**

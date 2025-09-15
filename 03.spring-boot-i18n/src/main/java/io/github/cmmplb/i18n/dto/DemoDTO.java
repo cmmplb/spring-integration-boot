@@ -1,6 +1,5 @@
 package io.github.cmmplb.i18n.dto;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -14,19 +13,20 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class DemoDTO {
 
-    @ApiModelProperty(value = "主键id")
+    // 主键id
     // @Null(message = "新增时id必须为空", groups = {Insert.class})
     // @NotNull(message = "更新时id不能为空", groups = {Update.class})
     private String id;
 
-    @NotBlank(message = "{vo.user}")
-    @ApiModelProperty(value = "姓名", example = "张飞")
+    // 姓名
+    @NotBlank(message = "{user.name.require}")
     private String name;
 
-    @ApiModelProperty(value = "邮箱")
+    // 邮箱
+    @NotBlank(message = "{user.email.require}")
     private String email;
 
-    @ApiModelProperty(value = "订单信息")
+    // 订单信息
     private OrderDate orderDate;
 
     //more...

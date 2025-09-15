@@ -44,7 +44,7 @@ public class XssRequestWrapper extends HttpServletRequestWrapper {
         if (StringUtil.isEmpty(name)) {
             return name;
         }
-        return Jsoup.clean(name, Safelist.relaxed());
+        return cleanHtml(name);
     }
 
     /**
@@ -61,7 +61,7 @@ public class XssRequestWrapper extends HttpServletRequestWrapper {
         if (StringUtil.isNotBlank(name)) {
             return name;
         }
-        return Jsoup.clean(name, Safelist.relaxed());
+        return cleanHtml(name);
     }
 
     /**
@@ -76,8 +76,27 @@ public class XssRequestWrapper extends HttpServletRequestWrapper {
             return null;
         }
         for (int i = 0; i < values.length; i++) {
-            values[i] = Jsoup.clean(values[i], Safelist.relaxed());
+            values[i] = cleanHtml(values[i]);
         }
         return values;
+    }
+
+    /**
+     * 清理HTML内容，防止XSS攻击
+     * @param dirtyHtml 原始HTML内容
+     * @return 清理后的安全内容
+     */
+    public static String cleanHtml(String dirtyHtml) {
+        if (dirtyHtml == null || dirtyHtml.isEmpty()) {
+            return "";
+        }
+        // 使用预定义的Safelist并自定义扩展
+        Safelist safelist = Safelist.basic()
+                // 新增允许的标签
+                .addTags("img", "div", "span");
+        // 图片标签允许的属性
+        Safelist images = Safelist.basicWithImages();
+        // 清理HTML并确保输出安全
+        return Jsoup.clean(dirtyHtml, Safelist.relaxed());
     }
 }

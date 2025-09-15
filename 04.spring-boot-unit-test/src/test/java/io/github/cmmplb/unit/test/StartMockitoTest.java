@@ -1,8 +1,9 @@
-package io.github.cmmplb.start;
+package io.github.cmmplb.unit.test;
 
 import io.github.cmmplb.core.utils.RandomUtil;
-import io.github.cmmplb.start.entity.User;
-import io.github.cmmplb.start.service.UserService;
+import io.github.cmmplb.start.UnitTestApplication;
+import io.github.cmmplb.unit.test.entity.User;
+import io.github.cmmplb.unit.test.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,13 +16,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 /**
  * @author penglibo
  * @date 2024-10-12 11:52:36
+ * @DisplayName("初始化方法"): 用于指定单元测试的名称
  * @since jdk 1.8
  * Mock 测试
- * @DisplayName("初始化方法"): 用于指定单元测试的名称
  */
 
 @Slf4j
-@SpringBootTest(classes = StartApplication.class)
+@SpringBootTest(classes = UnitTestApplication.class)
 public class StartMockitoTest {
 
     // 由@Aotowired改为@Mock注入

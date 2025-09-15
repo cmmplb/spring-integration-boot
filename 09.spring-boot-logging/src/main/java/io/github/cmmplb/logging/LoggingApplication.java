@@ -2,6 +2,7 @@ package io.github.cmmplb.logging;
 
 import io.github.cmmplb.core.utils.SpringApplicationUtil;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author penglibo
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since jdk 1.8
  */
 
+@EnableScheduling
 @SpringBootApplication
 public class LoggingApplication {
 

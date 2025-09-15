@@ -1,4 +1,4 @@
-package io.github.cmmplb.start.filter;
+package io.github.cmmplb.logging.filter;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.filter.Filter;

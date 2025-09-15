@@ -1,16 +1,6 @@
-package io.github.cmmplb.map.struct;
+package io.github.cmmplb.logging;
 
-import io.github.cmmplb.map.struct.advanced.service.AdvancedUserService;
-import io.github.cmmplb.map.struct.basic.convert.UserConvert;
-import io.github.cmmplb.map.struct.basic.dao.UserDao;
-import io.github.cmmplb.map.struct.basic.dto.UserDTO;
-import io.github.cmmplb.map.struct.basic.entity.User;
-import io.github.cmmplb.map.struct.basic.vo.UserVO;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 /**
  * @author penglibo

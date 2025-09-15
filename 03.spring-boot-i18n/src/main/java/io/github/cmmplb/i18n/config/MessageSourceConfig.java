@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.lang.NonNull;
@@ -26,7 +27,7 @@ import java.util.Locale;
  * @since jdk 1.8
  */
 
-// @Configuration
+@Configuration
 @EnableConfigurationProperties(MessageSourceProperties.class)
 @ConditionalOnProperty(prefix = MessageSourceProperties.PREFIX, name = MessageSourceProperties.ENABLED, havingValue = StringConstant.TRUE)
 public class MessageSourceConfig {

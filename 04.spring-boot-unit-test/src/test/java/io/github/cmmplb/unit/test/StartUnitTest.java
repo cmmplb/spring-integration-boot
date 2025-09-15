@@ -1,7 +1,7 @@
-package io.github.cmmplb.start;
+package io.github.cmmplb.unit.test;
 
-import io.github.cmmplb.start.entity.User;
-import io.github.cmmplb.start.service.UserService;
+import io.github.cmmplb.unit.test.entity.User;
+import io.github.cmmplb.unit.test.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 @Slf4j
-@SpringBootTest(classes = StartApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = UnitTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 // 开启虚拟MVC调用
 @AutoConfigureMockMvc
 // 优先级: @TestPropertySource > @ActiveProfiles > application

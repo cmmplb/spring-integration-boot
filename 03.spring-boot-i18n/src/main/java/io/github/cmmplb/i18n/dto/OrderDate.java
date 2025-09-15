@@ -1,6 +1,5 @@
 package io.github.cmmplb.i18n.dto;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -12,6 +11,7 @@ import lombok.Data;
 @Data
 public class OrderDate {
 
-    @ApiModelProperty(value = "主键id")
+    // 主键id
+    // @NotBlank
     private String id;
 }

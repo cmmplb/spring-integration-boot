@@ -1,4 +1,4 @@
-# 服务端口
+# 服务端口, 如不指定, 则从 80 开始, 重复则 +1
 # server.port: @project.port@
 # 路径
 server.servlet.context-path: /

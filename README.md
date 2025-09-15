@@ -34,6 +34,8 @@ master 分支为最新版本 3.3.4.x：
 | springdoc-openapi-ui                   | 1.8.0          |
 | pagehelper-spring-boot-starter         | 1.3.0          |
 | mybatis-spring-boot-starter            | 2.1.4          |
+| spark                                  | 3.4.4          |
+| janino                                 | 3.1.12         |
 | tk-mapper                              | 4.1.5          |
 | mybatis-plus-boot-starter              | 3.4.3.1        |
 | querydsl-jpa                           | 4.4.0          |

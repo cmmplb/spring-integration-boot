@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 日志级别从低到高分为 TRACE < DEBUG < INFO < WARN < ERROR < FATAL, 如果设置为 WARN, 则低于 WARN 的信息都不会输出 -->
+<!-- scan: 配置文件的自动扫描功能, 默认值为 true, logback.xml 文件发生变化时, 会自动重新加载配置, 无需重启应用程序, 生产环境建议关闭 -->
+<!-- scanPeriod: 设置配置文件的扫描间隔时间, 如果没有给出时间单位, 默认单位是毫秒, 默认的时间间隔为 1 分钟, 时间单位支持 seconds, minutes, hours -->
+<!-- debug: 启动和运行时输出详细的内部状态信息, 实时查看 logback 运行状态 -->
+<!-- 注意: 如果是 idea 启动项目, 需要修改 target 里面文件才生效 -->
+<configuration scan="false" scanPeriod="60 seconds" debug="true">
+
+    <!-- 引用 LOGBACK 默认的规则 -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!--
+        logback-spring.xml 的加载要先于 application.yml, 所以直接通过 ${参数key} 的形式获取是无法获取到 application.yml 对应参数值
+        具体的执行顺序是: bootstrap.properties > bootstrap.yml > application.properties > application.yml
+        log 文件执行顺序是: logback-spring.xml, logback-spring.groovy, logback.xml, logback.groovy
+     -->
+    <!-- application-dev.yml 传递参数, 不能使用 LOGBACK 自带的 <property> 标签 -->
+    <!-- properties 配置文件定义日志文件的存储地址勿在 LOGBACK 的配置中使用相对路径, source 配置文件内参数 key -->
+    <springProperty scope="context" name="ENV" source="spring.profiles.active" defaultValue="local"/>
+    <springProperty scope="context" name="SPRING_APPLICATION_NAME" source="spring.application.name"
+                    defaultValue="spring"/>
+    <springProperty scope="context" name="LOGGING_LEVEL" source="logging.level.root" defaultValue="INFO"/>
+
+    <!-- 日志存放路径, 通过类动态生成属性值, 并将其绑定到 name 属性指定的变量上 -->
+    <define name="LOGGING_FILE_PATH" class="io.github.cmmplb.core.utils.LoggingFilePathPropertyDefiner"/>
+
+    <!-- property 文件配置, name 变量名称, value 变量定义的值, 通过定义的值会被插入到 logger 上下文中,可以使用 ${} 来引用变量 -->
+    <property name="LOGGING_FILE_NAME" value="${LOGGING_FILE_PATH}/${SPRING_APPLICATION_NAME}"/>
+
+    <!-- 编码格式设置 -->
+    <property name="CHARSET" value="UTF-8"/>
+
+    <!-- 控制台输出 -->
+    <!-- ConsoleAppender: 将日志输出到标准输出 ( System.out ) 或标准错误 ( System.err ), 默认是 System.out, 核心参数: target -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 指定输出目标: System.out/System.err -->
+        <target>System.out</target>
+        <!-- PatternLayoutEncoder: 定义日志的输出格式, 通过转换模式 ( conversion pattern ) 控制日志样式, 核心参数 pattern -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!-- 引用 LOGBACK CONSOLE_LOG_PATTERN -->
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+    </appender>
+
+    <!-- 变量控制日志输出, 这样在 local 环境时就不生成 INFO/DEBUG/ERROR.log -->
+    <if condition='property("ENV").equals("local")'>
+        <then>
+            <!--
+                生产环境应禁用, 输出详细的配置文件解析过程: XML 元素解析顺序, 属性值处理, 配置上下文状态
+                通常需同时启用 Logback 自身的调试模式 <configuration debug="true"> 以获取更全面的信息
+             -->
+            <logger name="ch.qos.logback.core.joran.event.SaxEventRecorder" level="DEBUG"/>
+        </then>
+        <else>
+            <!-- INFO 日志输出 -->
+            <!-- RollingFileAppender: 将日志输出到滚动文件, 支持按大小或时间滚动 -->
+            <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <!-- 被写入的文件名, 可以是相对目录, 也可以是绝对目录, 如果上级目录不存在会自动创建, 没有默认值 -->
+                <file>${LOGGING_FILE_NAME}/INFO.log</file>
+                <!-- 滚动策略配置：基于时间和文件大小的滚动策略 -->
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <!--
+                        定义归档日志的文件名格式
+                        %d{yyyy-MM, aux}：创建二级目录（如 2023-10）,aux 表示辅助目录（避免影响主时间戳）
+                        %d{yyyy-MM-dd}：按日期划分日志文件（如 INFO.2023-10-01.log.gz）
+                        %i：当单个日期的日志超过 maxFileSize 时, 自动递增（如 INFO.2023-10-01.1.log.gz）
+                        .gz：启用日志压缩
+                     -->
+                    <fileNamePattern>${LOGGING_FILE_NAME}/%d{yyyy-MM, aux}/INFO.%d{yyyy-MM-dd}.%i.log.gz
+                    </fileNamePattern>
+                    <!-- 单个日志文件达到 maxFileSize 时触发滚动 -->
+                    <maxFileSize>50MB</maxFileSize>
+                    <!-- 保留最近 maxHistory 天的日志, 自动删除过期文件 -->
+                    <maxHistory>30</maxHistory>
+                </rollingPolicy>
+                <!-- layout 将日志事件转换为字符串, 仅处理格式化, Logback 组件 ( 1.0.x 之前 ) -->
+                <!--<layout class="ch.qos.logback.classic.PatternLayout">
+                    <pattern>${FILE_LOG_PATTERN}</pattern>
+                </layout>-->
+                <!--
+                    encoder 格式化 + 编码输出, Logback 组件 ( 1.0.x 之后 ),
+                    同时配置 <encoder> 会覆盖 <layout> 并且会打印警告 This appender no longer admits a layout as a sub-component,
+                    set an encoder instead, 建议删除冗余的 <layout> 配置, 仅保留 <encoder>
+                -->
+                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <!-- 引用 LOGBACK FILE_LOG_PATTERN -->
+                    <pattern>${FILE_LOG_PATTERN}</pattern>
+                    <charset>${CHARSET}</charset>
+                </encoder>
+                <!--
+                    过滤策略：
+                    LevelFilter: 只打印 level 标签设置的日志级别
+                    ThresholdFilter: 打印大于等于 level 标签设置的级别, 小的舍弃
+                 -->
+                <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                    <!-- 过滤的级别 -->
+                    <level>INFO</level>
+                    <!-- 当日志级别等于 INFO 时, onMatch=ACCEPT: 记录该日志 -->
+                    <onMatch>ACCEPT</onMatch>
+                    <!-- 当日志级别不等于 INFO 时, onMismatch=DENY: 丢弃该日志 -->
+                    <onMismatch>DENY</onMismatch>
+                </filter>
+            </appender>
+
+            <!-- 可选：异步模式提高性能, 减少日志记录对应用程序的影响 -->
+            <appender name="ASYNC_INFO" class="ch.qos.logback.classic.AsyncAppender">
+                <!-- 队列配置 -->
+                <queueSize>2048</queueSize>
+                <!-- 丢弃阈值（队列剩余容量百分比，默认 20%） -->
+                <discardingThreshold>0</discardingThreshold>
+                <!-- 队列满时的处理策略（默认 BLOCK） -->
+                <neverBlock>false</neverBlock>
+                <!-- 1.3.x+ executorService -->
+                <!--<executorService class="ch.qos.logback.core.util.FixedThreadPoolExecutorServiceFactory">
+                    &lt;!&ndash; 线程名称前缀（便于监控） &ndash;&gt;
+                    <threadNamePrefix>LOGBACK_ASYNC_INFO</threadNamePrefix>
+                    &lt;!&ndash; 线程是否为守护线程, true 表示应用退出时自动终止线程, 推荐 false（确保应用关闭时日志能完整处理） &ndash;&gt;
+                    <daemon>false</daemon>
+                    &lt;!&ndash; 核心线程数 &ndash;&gt;
+                    <corePoolSize>1</corePoolSize>
+                    &lt;!&ndash; 最大线程数 &ndash;&gt;
+                    <maximumPoolSize>1</maximumPoolSize>
+                    &lt;!&ndash; 空闲线程存活时间（秒） &ndash;&gt;
+                    <keepAliveTime>0</keepAliveTime>
+                    &lt;!&ndash; 线程优先级（1-10） &ndash;&gt;
+                    <threadPriority>5</threadPriority>
+                </executorService>-->
+                <!-- 应用关闭时是否等待队列中的日志处理完毕（默认 true） -->
+                <includeCallerData>false</includeCallerData>
+                <!-- 应用关闭时最多等待的时间（毫秒，默认 10000） -->
+                <maxFlushTime>20000</maxFlushTime>
+                <!-- 目标 appender -->
+                <appender-ref ref="INFO"/>
+            </appender>
+
+            <!-- DEBUG 日志输出 -->
+            <!-- RollingFileAppender: 将日志输出到滚动文件, 支持按大小或时间滚动 -->
+            <appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <!-- 被写入的文件名, 可以是相对目录, 也可以是绝对目录, 如果上级目录不存在会自动创建, 没有默认值 -->
+                <file>${LOGGING_FILE_NAME}/DEBUG.log</file>
+                <!-- 滚动策略配置：基于时间和文件大小的滚动策略 -->
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <!--
+                        定义归档日志的文件名格式
+                        %d{yyyy-MM, aux}：创建二级目录（如 2023-10）,aux 表示辅助目录（避免影响主时间戳）
+                        %d{yyyy-MM-dd}：按日期划分日志文件（如 INFO.2023-10-01.log.gz）
+                        %i：当单个日期的日志超过 maxFileSize 时, 自动递增（如 INFO.2023-10-01.1.log.gz）
+                        .gz：启用日志压缩
+                     -->
+                    <fileNamePattern>${LOGGING_FILE_NAME}/%d{yyyy-MM, aux}/DEBUG.%d{yyyy-MM-dd}.%i.log.gz
+                    </fileNamePattern>
+                    <!-- 单个日志文件达到 maxFileSize 时触发滚动 -->
+                    <maxFileSize>50MB</maxFileSize>
+                    <!-- 保留最近 maxHistory 天的日志, 自动删除过期文件 -->
+                    <maxHistory>30</maxHistory>
+                </rollingPolicy>
+                <!-- encoder 格式化 + 编码输出, Logback 组件 ( 1.0.x 之后 ), 同时配置 <encoder> 会覆盖 <layout> -->
+                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <!-- 引用 LOGBACK FILE_LOG_PATTERN -->
+                    <pattern>${FILE_LOG_PATTERN}</pattern>
+                    <charset>${CHARSET}</charset>
+                </encoder>
+                <!--
+                    过滤策略：
+                    LevelFilter: 只打印 level 标签设置的日志级别
+                    ThresholdFilter: 打印大于等于 level 标签设置的级别, 小的舍弃
+                 -->
+                <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                    <!-- 过滤的级别 -->
+                    <level>DEBUG</level>
+                    <!-- 当日志级别等于 INFO 时, onMatch=ACCEPT: 记录该日志 -->
+                    <onMatch>ACCEPT</onMatch>
+                    <!-- 当日志级别不等于 INFO 时, onMismatch=DENY: 丢弃该日志 -->
+                    <onMismatch>DENY</onMismatch>
+                </filter>
+            </appender>
+
+            <!-- 可选：异步模式提高性能, 减少日志记录对应用程序的影响 -->
+            <appender name="ASYNC_DEBUG" class="ch.qos.logback.classic.AsyncAppender">
+                <!-- 队列配置 -->
+                <queueSize>2048</queueSize>
+                <!-- 丢弃阈值（队列剩余容量百分比，默认 20%） -->
+                <discardingThreshold>0</discardingThreshold>
+                <!-- 队列满时的处理策略（默认 BLOCK） -->
+                <neverBlock>false</neverBlock>
+                <!-- 应用关闭时是否等待队列中的日志处理完毕（默认 true） -->
+                <includeCallerData>false</includeCallerData>
+                <!-- 应用关闭时最多等待的时间（毫秒，默认 10000） -->
+                <maxFlushTime>20000</maxFlushTime>
+                <!-- 目标 appender -->
+                <appender-ref ref="DEBUG"/>
+            </appender>
+
+            <!-- ERROR 日志输出 -->
+            <!-- RollingFileAppender: 将日志输出到滚动文件, 支持按大小或时间滚动 -->
+            <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <!-- 被写入的文件名, 可以是相对目录, 也可以是绝对目录, 如果上级目录不存在会自动创建, 没有默认值 -->
+                <file>${LOGGING_FILE_NAME}/ERROR.log</file>
+                <!-- 滚动策略配置：基于时间和文件大小的滚动策略 -->
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <!--
+                        定义归档日志的文件名格式
+                        %d{yyyy-MM, aux}：创建二级目录（如 2023-10）,aux 表示辅助目录（避免影响主时间戳）
+                        %d{yyyy-MM-dd}：按日期划分日志文件（如 INFO.2023-10-01.log.gz）
+                        %i：当单个日期的日志超过 maxFileSize 时, 自动递增（如 INFO.2023-10-01.1.log.gz）
+                        .gz：启用日志压缩
+                     -->
+                    <fileNamePattern>${LOGGING_FILE_NAME}/%d{yyyy-MM, aux}/ERROR.%d{yyyy-MM-dd}.%i.log.gz
+                    </fileNamePattern>
+                    <maxFileSize>50MB</maxFileSize>
+                    <!-- 保留最近 maxHistory 天的日志, 自动删除过期文件 -->
+                    <maxHistory>30</maxHistory>
+                </rollingPolicy>
+                <!-- encoder 格式化 + 编码输出, Logback 组件 ( 1.0.x 之后 ), 同时配置 <encoder> 会覆盖 <layout> -->
+                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <!-- 引用 LOGBACK FILE_LOG_PATTERN -->
+                    <pattern>${FILE_LOG_PATTERN}</pattern>
+                    <charset>${CHARSET}</charset>
+                </encoder>
+                <!--
+                    过滤策略：
+                    LevelFilter: 只打印 level 标签设置的日志级别
+                    ThresholdFilter: 打印大于等于 level 标签设置的级别, 小的舍弃
+                 -->
+                <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                    <!-- 过滤的级别 -->
+                    <level>ERROR</level>
+                    <!-- 当日志级别等于 INFO 时, onMatch=ACCEPT: 记录该日志 -->
+                    <onMatch>ACCEPT</onMatch>
+                    <!-- 当日志级别不等于 INFO 时, onMismatch=DENY: 丢弃该日志 -->
+                    <onMismatch>DENY</onMismatch>
+                </filter>
+            </appender>
+
+            <!-- 可选：异步模式提高性能, 减少日志记录对应用程序的影响 -->
+            <appender name="ASYNC_ERROR" class="ch.qos.logback.classic.AsyncAppender">
+                <!-- 队列配置 -->
+                <queueSize>2048</queueSize>
+                <!-- 丢弃阈值（队列剩余容量百分比，默认 20%） -->
+                <discardingThreshold>0</discardingThreshold>
+                <!-- 队列满时的处理策略（默认 BLOCK） -->
+                <neverBlock>false</neverBlock>
+                <!-- 应用关闭时是否等待队列中的日志处理完毕（默认 true） -->
+                <includeCallerData>false</includeCallerData>
+                <!-- 应用关闭时最多等待的时间（毫秒，默认 10000） -->
+                <maxFlushTime>20000</maxFlushTime>
+                <!-- 目标 appender -->
+                <appender-ref ref="ERROR"/>
+            </appender>
+
+            <!-- 用户登录日志, 使用 private static final Logger log = LoggerFactory.getLogger("USER_LOGIN"); -->
+            <appender name="USER_LOGIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <!-- 被写入的文件名, 可以是相对目录, 也可以是绝对目录, 如果上级目录不存在会自动创建, 没有默认值 -->
+                <file>${LOGGING_FILE_NAME}/USER_LOGIN.log</file>
+                <!-- 滚动策略配置：基于时间和文件大小的滚动策略 -->
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <!--
+                        定义归档日志的文件名格式
+                        %d{yyyy-MM, aux}：创建二级目录（如 2023-10）,aux 表示辅助目录（避免影响主时间戳）
+                        %d{yyyy-MM-dd}：按日期划分日志文件（如 INFO.2023-10-01.log.gz）
+                        %i：当单个日期的日志超过 maxFileSize 时, 自动递增（如 INFO.2023-10-01.1.log.gz）
+                        .gz：启用日志压缩
+                     -->
+                    <fileNamePattern>${LOGGING_FILE_NAME}/%d{yyyy-MM, aux}/USER_LOGIN.%d{yyyy-MM-dd}.%i.log.gz
+                    </fileNamePattern>
+                    <!-- 单个日志文件达到 maxFileSize 时触发滚动 -->
+                    <maxFileSize>50MB</maxFileSize>
+                    <!-- 保留最近 maxHistory 天的日志, 自动删除过期文件 -->
+                    <maxHistory>30</maxHistory>
+                </rollingPolicy>
+                <!-- encoder 格式化 + 编码输出, Logback 组件 ( 1.0.x 之后 ), 同时配置 <encoder> 会覆盖 <layout> -->
+                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <!-- 引用 LOGBACK FILE_LOG_PATTERN -->
+                    <pattern>${FILE_LOG_PATTERN}</pattern>
+                    <charset>${CHARSET}</charset>
+                </encoder>
+            </appender>
+
+            <!-- Logstash 日志输出, 通过 TCP 协议将日志事件发送到 Logstash 服务器, 需要添加依赖 -->
+            <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+                <!-- 连接配置 -->
+                <!-- Logstash 服务器地址 -->
+                <destination>localhost:5044</destination>
+                <!-- 可选：多个服务器时的负载均衡 -->
+                <!--<destination>192.168.68.128:5044</destination>-->
+                <!-- 连接重试策略 -->
+                <!-- 连接失败后重试间隔 (毫秒) -->
+                <reconnectionDelay>5000</reconnectionDelay>
+                <!-- 保持连接的时间 -->
+                <keepAliveDuration>30 seconds</keepAliveDuration>
+
+                <param name="encoding" value="UTF-8"/>
+                <param name="Encoding" value="UTF-8"/>
+
+                <!-- 编码器: 将日志转换为 JSON 格式 -->
+                <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+                    <!-- 自定义字段，会添加到每个日志条目中 -->
+                    <customFields>{"service_name": "spring"}</customFields>
+                    <!-- 包含 MDC ( Mapped Diagnostic Context ) 数据 -->
+                    <includeMdc>true</includeMdc>
+                </encoder>
+            </appender>
+
+            <!-- 异步 -->
+            <appender name="ASYNC_LOGSTASH" class="ch.qos.logback.classic.AsyncAppender">
+                <appender-ref ref="LOGSTASH"/>
+                <queueSize>2048</queueSize>
+                <!-- 队列满时不丢弃日志 -->
+                <discardingThreshold>0</discardingThreshold>
+            </appender>
+        </else>
+    </if>
+
+    <!--
+        配置针对 org.springframework.core.env.PropertySourcesPropertyResolver 的 Logger, 不配置会打印:
+        WARN in Logger[org.springframework.core.env.PropertySourcesPropertyResolver] - No appenders present in
+        context [default] for logger [org.springframework.core.env.PropertySourcesPropertyResolver].
+    -->
+    <logger name="org.springframework.core.env.PropertySourcesPropertyResolver" level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- 如果整合了 nacos -配置心跳 INFO 屏蔽 -->
+    <!--<logger name="com.alibaba.nacos" level="ERROR">
+        <appender-ref ref="ERROR"/>
+    </logger>-->
+
+    <!-- Ignore the empty nacos configuration and get it based on dataId[] & group[] -->
+    <!--<logger name="com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder" level="ERROR"/>-->
+
+    <!--
+        ERROR [ModelSpecification.spec] At least one type of specification is required
+        这不是真正的错误, 因为它是在 Debug 级别记录的. 虽然很混乱, 但可以忽略它.
+        这是一个已知的问题, 将在下一个版本 7.1.0中修复, 见 https://github.com/jhipster/generator-jhipster/issues/13835
+     -->
+    <!--<logger name="Validator" level="INFO"/>-->
+
+    <!-- Spring 日志级别控制 -->
+    <logger name="org.springframework" level="${LOGGING_LEVEL}"/>
+
+    <!-- start 日志级别 -->
+    <logger name="io.github.cmmplb" level="${LOGGING_LEVEL}"/>
+
+    <!-- 由 application.yml 中的spring.profiles.active 配置 -->
+    <springProfile name="local">
+        <root level="LOGGING_LEVEL">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <!-- 用户登录日志, 使用 private static final Logger log = LoggerFactory.getLogger("USER_LOGIN"); -->
+        <logger name="USER_LOGIN" level="INFO">
+            <appender-ref ref="USER_LOGIN"/>
+        </logger>
+    </springProfile>
+
+    <!-- Root Logger -->
+    <root level="LOGGING_LEVEL">
+        <!-- 通过 if-else 配置打印 -->
+        <if condition='property("ENV").equals("local")'>
+            <then>
+                <appender-ref ref="CONSOLE"/>
+            </then>
+            <else>
+                <appender-ref ref="CONSOLE"/>
+                <appender-ref ref="ASYNC_INFO"/>
+                <appender-ref ref="ASYNC_DEBUG"/>
+                <appender-ref ref="ASYNC_ERROR"/>
+                <appender-ref ref="ASYNC_LOGSTASH"/>
+            </else>
+        </if>
+    </root>
+</configuration>

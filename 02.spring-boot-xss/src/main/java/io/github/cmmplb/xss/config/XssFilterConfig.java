@@ -30,9 +30,15 @@ public class XssFilterConfig {
     @Bean
     public FilterRegistrationBean<?> xssFilterRegistration() {
         FilterRegistrationBean<XssFilter> registrationBean = new FilterRegistrationBean<>();
+        // 设置过滤器的分发类型为请求类型
         registrationBean.setDispatcherTypes(DispatcherType.REQUEST);
         registrationBean.setFilter(new XssFilter());
         registrationBean.addUrlPatterns(StringUtils.split(xssProperties.getUrlPatterns(), StringConstant.COMMA));
+        // 设置过滤器的名称
+        registrationBean.setName("XssFilter");
+        // 设置过滤器的执行顺序，数值越小，优先级越高
+        registrationBean.setOrder(9999);
+        // 存储过滤器的初始化参数
         DataMap<String, String> param = new DataMap<>();
         param.set(XssProperties.COL_ENABLED, String.valueOf(xssProperties.getEnabled()));
         param.set(XssProperties.COL_IS_INCLUDE_RICH_TEXT, String.valueOf(xssProperties.getIsIncludeRichText()));

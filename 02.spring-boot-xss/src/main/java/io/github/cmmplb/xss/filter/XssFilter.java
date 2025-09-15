@@ -41,7 +41,7 @@ public class XssFilter implements Filter {
         if (StringUtil.isNotBlank(isIncludeRichText)) {
             this.isIncludeRichText = BooleanUtils.toBoolean(isIncludeRichText);
         }
-        //将不需要xss过滤的接口添加到列表中
+        // 将不需要 xss 过滤的接口添加到列表中
         if (StringUtil.isNotEmpty(strExcludes)) {
             String[] urls = strExcludes.split(",");
             Collections.addAll(excludes, urls);
@@ -60,7 +60,7 @@ public class XssFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
-        // 拦截该url并进行xss过滤
+        // 拦截该 url 并进行 xss 过滤
         filterChain.doFilter(new XssRequestWrapper(request, isIncludeRichText), servletResponse);
     }
 

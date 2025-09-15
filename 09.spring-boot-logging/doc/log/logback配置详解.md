@@ -66,7 +66,17 @@ Appender 用于定义日志的输出目标，Logback 支持多种类型的 appen
   </appender>
   ````
 
-- DatabaseAppender：将日志输出到数据库，相关数据库表脚本文件存放在源码 `ch.qos.logback.classic.db.script` 包下。
+FileAppender 和 RollingFileAppender 的区别：
+
+````
+特性	              FileAppender	            RollingFileAppender
+文件管理	          单一文件持续写入	            自动按策略分割、归档旧日志
+文件大小控制	      无，文件会无限增长	        支持按大小（如 50MB）或时间（如每天）滚动
+历史日志处理	      需手动清理	                自动删除过期日志（如保留最近 30 天）
+典型场景	          临时调试、小应用日志	        生产环境、需要长期保存日志的场景
+````
+
+- DatabaseAppender：将日志输出到数据库，相关数据库表脚本文件存放在源码 `ch.qos.logback:logback-classic:1.2.3.jar-ch.qos.logback.classic.db.script` 包下。
 
   ````xml
   

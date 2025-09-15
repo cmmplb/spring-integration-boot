@@ -4,8 +4,7 @@
 server.servlet.context-path: /
 # 关闭banner
 spring.main.banner-mode: off
-# 激活配置
-spring.profiles.active: @profiles.active@
+
 # 应用程序名称
 spring.application.name: @project.artifactId@
 # Spring Boot 2.1 禁用了覆盖相同名称的 bean, spring 默认 true, springboot 默认 false

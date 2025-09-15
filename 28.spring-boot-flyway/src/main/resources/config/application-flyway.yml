@@ -1,0 +1,4 @@
+spring:
+  flyway:
+    baseline-description: 描述  #描述
+    locations: classpath:/db/migration  #配置Flyway要加载的SQL脚本位置

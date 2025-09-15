@@ -1,4 +1,4 @@
-package io.github.cmmplb.start.entity;
+package io.github.cmmplb.unit.test.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

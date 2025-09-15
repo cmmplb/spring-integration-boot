@@ -1,0 +1,5 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1048576000     #100M-单位字节(b)
+      max-request-size: 1048576000  #100M-单位字节(b)

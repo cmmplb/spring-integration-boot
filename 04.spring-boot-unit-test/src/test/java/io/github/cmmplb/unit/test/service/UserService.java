@@ -1,8 +1,9 @@
-package io.github.cmmplb.start.service;
+package io.github.cmmplb.unit.test.service;
 
 import io.github.cmmplb.core.beans.DataMap;
-import io.github.cmmplb.start.entity.User;
-import org.springframework.beans.factory.annotation.Value;import org.springframework.stereotype.Service;
+import io.github.cmmplb.unit.test.entity.User;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class UserService {
         System.out.println("没有返回值");
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 

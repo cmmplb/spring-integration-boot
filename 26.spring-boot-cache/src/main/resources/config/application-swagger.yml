@@ -1,0 +1,11 @@
+# swagger配置
+swagger:
+  # 是否开启swagger
+  enabled: true
+  # 标题
+  title: @project.artifactId@ Swagger API
+  # 版本
+  version: @project.varsion@
+
+knife4j:
+  enable: true

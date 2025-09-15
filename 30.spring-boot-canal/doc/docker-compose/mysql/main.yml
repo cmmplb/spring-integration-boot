@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  mysql:
+    image: mysql:5.7.22
+    restart: always
+    container_name: mysql
+    ports:
+      - 3306:3306
+    env_file:
+      - ./mysql-config.env
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --default-authentication-plugin=mysql_native_password
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+      # canal 配置开启二进制日志 , ref: https://github.com/alibaba/canal/wiki/QuickStart
+      --log-bin=mysql-bin
+      --server_id=1000
+      --binlog-format=ROW
+    volumes:
+      - ./data/:/var/lib/mysql
+    networks:
+      - cmmplb
+networks:
+  cmmplb:
+    external: true

@@ -16,7 +16,7 @@
 
 package org.springframework.boot.autoconfigure.web;
 
-import io.github.cmmplb.core.utils.LogDirUtil;
+import io.github.cmmplb.core.utils.LoggingFilePathPropertyDefiner;
 import io.github.cmmplb.core.utils.StringUtil;
 import io.github.cmmplb.core.utils.YmlUtil;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -465,7 +465,7 @@ public class ServerProperties {
 
         // logs/basedir/tomcat/
         public void setBasedir(File basedir) {
-            this.basedir = new File(LogDirUtil.getLogDir() + File.separator + basedir.getPath() + File.separator + "tomcat" + File.separator);
+            this.basedir = new File(LoggingFilePathPropertyDefiner.getLoggingFilePath() + File.separator + basedir.getPath() + File.separator + "tomcat" + File.separator);
         }
 
         @DeprecatedConfigurationProperty(replacement = "server.tomcat.remoteip.internal-proxies")
@@ -1250,7 +1250,7 @@ public class ServerProperties {
                     this.filename = filename + ".log";
                 }
                 if (StringUtil.isNotEmpty(applicationName)) {
-                    this.filename = LogDirUtil.getLogDir() + File.separator + applicationName + File.separator + "jetty" + File.separator + filename;
+                    this.filename = LoggingFilePathPropertyDefiner.getLoggingFilePath() + File.separator + applicationName + File.separator + "jetty" + File.separator + filename;
                 }
             }
 
@@ -1705,7 +1705,7 @@ public class ServerProperties {
 
             // logs/setDir/undertow/
             public void setDir(File dir) {
-                this.dir = new File(LogDirUtil.getLogDir() + File.separator + dir.getPath() + File.separator + "undertow" + File.separator);
+                this.dir = new File(LoggingFilePathPropertyDefiner.getLoggingFilePath() + File.separator + dir.getPath() + File.separator + "undertow" + File.separator);
             }
 
             public boolean isRotate() {
